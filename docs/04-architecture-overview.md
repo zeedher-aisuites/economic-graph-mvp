@@ -6,7 +6,9 @@
 
 **Ampliación 002B implementada:** archivos aprobados restringidos → auditoría → proyección de 83 observaciones → ledger público → consultas temporales, conflictos e identidad candidata. PyMongo permite cargar explícitamente solo el ledger en una base dedicada; idempotencia probada con dobles. En 002C el usuario reportó integración real exitosa desde Windows con VS Code, registrada en `11-atlas-integration-validation.md`; no fue ejecutada por Codex Cloud. El contrato físico y sus límites se detallan en `10-design-validation.md`.
 
-El siguiente diagrama describe el flujo objetivo del MVP completo: extracción de señales, rankings, gráficos y Control Tower siguen **pendientes**. No se generan datos aleatorios ni eventos comerciales en 002B.
+**Ampliación 003A implementada:** ledger público o lectura MongoDB temporal → `snapshot` → `rankings.compare_rankings` → JSON explicable o tabla Markdown. `rank_companies.py` separa I/O del cálculo puro. Ambas políticas usan una sola vista por corte, la misma elegibilidad y capacidad fija de cinco cuentas. No hay nuevos servicios, dependencias, colecciones, índices ni escrituras en Atlas. La paridad de lectura se prueba con un doble; rankings en Atlas real no verificados. Reglas y límites en `12-commercial-ranking.md`.
+
+El siguiente diagrama describe el flujo objetivo del MVP completo. Extracción de señales y rankings ya tienen una implementación mínima 003A; gráficos, historial comercial y Control Tower siguen **pendientes**. No se agregan hechos al ledger ni eventos comerciales en 003A.
 
 ## 1. Arquitectura mínima de demostración
 
@@ -59,7 +61,7 @@ Generador sintético reproducible
 1. **Verdad sintética** del generador: sirve para comprobar coherencia de la simulación.
 2. **Vista observable** de la Telco: única entrada permitida para rankings y decisiones de negocio.
 
-El esquema concreto de colecciones, embebido/referenciado, validaciones e índices está **pendiente**. No asumir que MongoDB es una base de datos de grafos especializada; justificar consultas de relaciones según la profundidad realmente necesaria.
+La persistencia mínima implementada guarda observaciones, no colecciones de perfiles o eventos; sus índices y límites están en `10-design-validation.md`. La evolución del esquema objetivo sigue pendiente. El ranking 003A cuenta vecinos a un salto en Python sobre la vista pequeña disponible; no requiere recorridos profundos ni demuestra rendimiento a escala. No asumir que MongoDB es una base de datos de grafos especializada.
 
 ## 4. Flujo temporal y prevención de fuga
 
