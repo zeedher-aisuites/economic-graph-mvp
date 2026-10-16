@@ -2,6 +2,8 @@
 
 **Estado:** insumos aprobados por el usuario; validación offline ejecutada. Esta misión demuestra construcción, trazabilidad y observabilidad, sin medir valor económico incremental. Los seis entregables siguen rigiéndose por `02-challenge-traceability.md`.
 
+**Seguimiento 002C:** este documento conserva las observaciones históricas de 002B. El usuario reportó posteriormente ping, cargas y consultas exitosos en Atlas desde Windows con VS Code; se registran por separado en [validación Atlas](11-atlas-integration-validation.md). No se atribuyen a Codex Cloud ni sustituyen los pendientes de nueva evidencia del diseño.
+
 ## Origen y reproducción
 
 Se leyó `main` actualizado en `e81a898` antes de implementar; su base tenía 35 pruebas aprobadas. Se incorporaron los cuatro Markdown de diseño y el README adjunto en `design-data/README.md`, conservando el README principal. `design-data/manifest.json` identifica origen, versión, tamaño y SHA-256 de los 16 adjuntos. Los 11 CSV/JSON están preservados **byte por byte** en `design-data/restricted/`; solo se actualizan estado y seguimiento en los documentos.

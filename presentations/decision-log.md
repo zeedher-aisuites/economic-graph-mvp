@@ -64,10 +64,20 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 
 ## DEC-007 — Persistir un ledger mínimo e inmutable
 
-- **Estado:** elección técnica de implementación dentro de la autorización 002B; implementada y verificada offline, pendiente de integración Atlas.
+- **Estado:** elección técnica de implementación dentro de la autorización 002B; verificada offline. En 002C el usuario reportó integración Atlas exitosa desde Windows con VS Code; no fue ejecutada por Codex Cloud.
 - **Problema:** hacer reintentable la carga y reconstruir cortes sin alterar colecciones ajenas ni duplicar perfiles.
 - **Alternativas:** reemplazar colecciones; guardar snapshots completos por corte; almacenar observaciones y derivar las vistas.
 - **Justificación:** una colección de observaciones por ID y una marca de propiedad bastan. Base dedicada, dry-run por defecto, confirmación explícita, `$setOnInsert` y rechazo de colisiones. Índices por disponibilidad y por sujeto/disponibilidad responden a consultas concretas.
-- **Riesgos y compromisos:** el lote no es una transacción; puede quedar incompleto ante un fallo, pero se puede reintentar. No se afirma rendimiento a escala ni se han provisionado roles Atlas.
+- **Riesgos y compromisos:** el lote no es una transacción; puede quedar incompleto ante un fallo, pero se puede reintentar. No se afirma rendimiento a escala ni validación de la separación de roles Atlas.
 - **Explicación al CEO:** repetir una preparación no duplica el conocimiento ni modifica datos de otros sistemas.
-- **Evidencia:** pruebas de carga repetida, contenido distinto, base incorrecta y colecciones ajenas; prueba real opcional, aún no ejecutada.
+- **Evidencia:** pruebas offline de carga repetida, contenido distinto, base incorrecta y colecciones ajenas. Reporte local del usuario en 002C: primera carga 83 insertadas; segunda 0 insertadas/83 sin cambios; consultas T0/T1/T2 con conteos esperados. Ver `../docs/11-atlas-integration-validation.md`; no se afirma ejecución de la prueba automatizada de integración en cloud.
+
+## DEC-008 — Registrar la integración local con su procedencia
+
+- **Estado:** aprobada por la solicitud explícita de cierre documental de misión 002C; bloques Economic Graph y Architecture.
+- **Problema:** distinguir el éxito local reportado de los intentos cloud sin ping exitoso y evitar atribuir resultados a un entorno que no los ejecutó.
+- **Alternativas:** mantener toda integración como pendiente; presentar el éxito como validación cloud; registrar por separado el reporte local y las comprobaciones offline de Codex.
+- **Justificación:** Windows con VS Code es el entorno de las ejecuciones reales comunicadas por el usuario. Se registran exactamente ping, auditoría, dos cargas y conteos de consultas, sin inventar resultados adicionales.
+- **Riesgos y compromisos:** no se aportaron logs completos ni SHA del checkout local. La evidencia no valida conectividad cloud, roles, escala ni impacto económico; las advertencias conocidas permanecen.
+- **Explicación al CEO:** ya se reportó funcionamiento real de almacenamiento y consulta en Atlas desde el equipo local. Eso reduce una incertidumbre técnica; todavía no demuestra ventas ni margen adicional.
+- **Evidencia:** reporte del usuario preservado en `../docs/11-atlas-integration-validation.md`; pruebas offline y Ruff ejecutados por Codex se informan separadamente. No se añaden funcionalidades ni se modifica Atlas para este cierre.
