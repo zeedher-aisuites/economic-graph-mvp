@@ -124,3 +124,16 @@ Priorizar la calidad del argumento empresarial sobre la cantidad de diapositivas
 - Calcular exclusivamente desde el ledger observable o su lectura MongoDB temporal; mismo baseline, cohorte y capacidad para ambas políticas. Conservar evidencia, incertidumbre, conflictos, candidatos y empates. No editar el ledger ni consultar el oráculo para puntuar.
 - La CLI de rankings es de solo lectura. No ejecutar cargas ni la prueba opcional de integración que escribe en Atlas durante esta misión; verificar paridad mediante dobles offline. No presentar 002C como validación real de los nuevos rankings.
 - Conservar las tablas reproducibles y la trazabilidad. Cambiar una selección no acredita intención de compra, conversiones ni incremento causal. No implementar ventas simuladas, evaluación causal, ML, agentes ni Control Tower; publicar mediante PR sin integrar automáticamente en `main`.
+
+## Alcance histórico — misión 003B, fase de diseño
+
+- El usuario autorizó únicamente auditoría, fórmulas, variables, escenarios propuestos y diseño experimental, publicados como documentación en PR borrador desde `main` actualizado. No implementar todavía el simulador financiero ni el experimento.
+- `docs/14-incremental-economic-case.md` y `docs/15-incrementality-experiment.md` separan evidencia, supuestos y resultados medibles futuros. ECO-01 a ECO-06 requieren revisión y aprobación expresa; no inferirla del PR ni de la aprobación de rankings 003A.
+- Conservar políticas, código, pruebas, dependencias, ledger y Atlas. No consultar el oráculo para decidir resultados económicos ni transformar cambios de ranking en conversiones, ingresos o ROI causal. Mantener DEC-004/010 como propuestas hasta la aprobación correspondiente.
+
+## Alcance vigente — misión 003B, calculador educativo
+
+- El usuario aprobó provisionalmente ECO-01 a ECO-06, exclusivamente como metodología PoC, y autorizó calculador determinista, escenarios, sensibilidad y equilibrio. Se actualiza el PR #5 para revisión, sin integrarlo automáticamente. Registrar límites en `docs/14-incremental-economic-case.md` y DEC-004/010.
+- Mantener separados cinco plazas de demostración, 500 plazas hipotéticas y protocolo experimental futuro. Mostrar deterioro, efecto nulo obligatorio, casos positivos y referencia de saldo cero sin ajustar parámetros para favorecer al grafo. No generar ventas por empresa ni atribuir resultados a las 30 PyMEs o a Totalplay.
+- Etiquetar supuestos no calibrados, validar unidades/valoración temporal y evitar duplicar costos/reserva. Conservar rankings, ledger, oráculo, Atlas y dependencias. Probar matemáticas y CLI offline, incluido UTF-8 en Windows; no ejecutar integración que escribe en Atlas.
+- La aprobación es metodológica, no validación financiera ni autorización de datos reales, contactos, presupuesto, piloto operativo o despliegue. El experimento es solo diseño: no calcular muestra sin varianza/ICC ni afirmar inferencia causal si faltan bolsas independientes suficientes.

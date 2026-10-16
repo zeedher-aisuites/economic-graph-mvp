@@ -1,0 +1,194 @@
+{
+  "schema_version": "003b-finance-v1",
+  "assumption_status": "educational_uncalibrated",
+  "settings": {
+    "currency": "MXN",
+    "capacity_per_pool": 5,
+    "activation_window_days": 90,
+    "horizon_months": 12,
+    "monthly_discount_rate": "0.01",
+    "reserve_rate": "0.20"
+  },
+  "scenarios": [
+    {
+      "name": "conservative",
+      "activation_window_days": 90,
+      "baseline_activation_rate": "0.10",
+      "activation_rate_increment": "-0.02",
+      "contract_margin_scope": "net_of_service_installation_commission",
+      "commercial_cost_scope": "prospecting_only",
+      "contract_margin_per_activation": {
+        "basis": "present_value",
+        "unit": "MXN_per_activation",
+        "value": "4000",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "baseline_commercial_cost_per_slot": {
+        "basis": "present_value",
+        "unit": "MXN_per_slot",
+        "value": "300",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "incremental_commercial_cost_per_slot": {
+        "basis": "present_value",
+        "unit": "MXN_per_slot",
+        "value": "100",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "unselected_margin_increment": {
+        "basis": "present_value",
+        "unit": "MXN_total",
+        "value": "-1000",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "costs": [
+        {
+          "cost_id": "implementation",
+          "category": "fixed",
+          "amount": {
+            "basis": "present_value",
+            "unit": "MXN_total",
+            "value": "20000",
+            "horizon_months": 12,
+            "monthly_discount_rate": "0.01"
+          }
+        },
+        {
+          "cost_id": "data_and_operations",
+          "category": "operating",
+          "amount": {
+            "basis": "present_value",
+            "unit": "MXN_total",
+            "value": "12000",
+            "horizon_months": 12,
+            "monthly_discount_rate": "0.01"
+          }
+        }
+      ]
+    },
+    {
+      "name": "base",
+      "activation_window_days": 90,
+      "baseline_activation_rate": "0.10",
+      "activation_rate_increment": "0.02",
+      "contract_margin_scope": "net_of_service_installation_commission",
+      "commercial_cost_scope": "prospecting_only",
+      "contract_margin_per_activation": {
+        "basis": "present_value",
+        "unit": "MXN_per_activation",
+        "value": "8000",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "baseline_commercial_cost_per_slot": {
+        "basis": "present_value",
+        "unit": "MXN_per_slot",
+        "value": "300",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "incremental_commercial_cost_per_slot": {
+        "basis": "present_value",
+        "unit": "MXN_per_slot",
+        "value": "50",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "unselected_margin_increment": {
+        "basis": "present_value",
+        "unit": "MXN_total",
+        "value": "0",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "costs": [
+        {
+          "cost_id": "implementation",
+          "category": "fixed",
+          "amount": {
+            "basis": "present_value",
+            "unit": "MXN_total",
+            "value": "10000",
+            "horizon_months": 12,
+            "monthly_discount_rate": "0.01"
+          }
+        },
+        {
+          "cost_id": "data_and_operations",
+          "category": "operating",
+          "amount": {
+            "basis": "present_value",
+            "unit": "MXN_total",
+            "value": "6000",
+            "horizon_months": 12,
+            "monthly_discount_rate": "0.01"
+          }
+        }
+      ]
+    },
+    {
+      "name": "optimistic",
+      "activation_window_days": 90,
+      "baseline_activation_rate": "0.10",
+      "activation_rate_increment": "0.05",
+      "contract_margin_scope": "net_of_service_installation_commission",
+      "commercial_cost_scope": "prospecting_only",
+      "contract_margin_per_activation": {
+        "basis": "present_value",
+        "unit": "MXN_per_activation",
+        "value": "12000",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "baseline_commercial_cost_per_slot": {
+        "basis": "present_value",
+        "unit": "MXN_per_slot",
+        "value": "300",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "incremental_commercial_cost_per_slot": {
+        "basis": "present_value",
+        "unit": "MXN_per_slot",
+        "value": "25",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "unselected_margin_increment": {
+        "basis": "present_value",
+        "unit": "MXN_total",
+        "value": "0",
+        "horizon_months": 12,
+        "monthly_discount_rate": "0.01"
+      },
+      "costs": [
+        {
+          "cost_id": "implementation",
+          "category": "fixed",
+          "amount": {
+            "basis": "present_value",
+            "unit": "MXN_total",
+            "value": "5000",
+            "horizon_months": 12,
+            "monthly_discount_rate": "0.01"
+          }
+        },
+        {
+          "cost_id": "data_and_operations",
+          "category": "operating",
+          "amount": {
+            "basis": "present_value",
+            "unit": "MXN_total",
+            "value": "3000",
+            "horizon_months": 12,
+            "monthly_discount_rate": "0.01"
+          }
+        }
+      ]
+    }
+  ]
+}

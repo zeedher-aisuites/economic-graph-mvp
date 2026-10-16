@@ -34,13 +34,13 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 
 ## DEC-004 — Validación económica con contrafactual
 
-- **Estado:** propuesta metodológica; refleja la restricción aprobada D-008 de no atribuir ROI real a datos sintéticos. El experimento concreto no está aprobado.
+- **Estado:** aprobada provisionalmente como metodología educativa en ECO-03 a ECO-06 de 003B; ejecución, contactos, presupuesto y despliegue no autorizados. Conserva D-008: no atribuir ROI causal real a supuestos o datos sintéticos.
 - **Problema:** cambios en ranking o conversiones podrían deberse a capacidad comercial, selección o contexto y no al grafo.
 - **Alternativas:** comparación antes/después; observación de adopción; experimento con control y aleatorización cuando sea viable.
 - **Justificación:** un contrafactual permite separar el efecto de la política enriquecida de lo que habría ocurrido con la política actual.
 - **Riesgos y compromisos:** potencia insuficiente, spillovers, costos no registrados, diferencias de ejecución y restricciones operativas. Un experimento real excede la PoC.
 - **Explicación al CEO:** solo escalaremos por margen adicional atribuible y neto de costos, no porque la demostración se vea convincente.
-- **Evidencia para validarla:** protocolo con unidad y ventana, control comparable, costos, análisis predefinido e incertidumbre. Todos permanecen pendientes.
+- **Evidencia para validarla:** protocolo con unidad y ventana, control comparable, costos, análisis ITT e incertidumbre; diseño futuro en `../docs/15-incrementality-experiment.md`, aprobado solo metodológicamente. Faltan fuentes autorizadas, varianza/ICC, muestra e independencia suficiente de bolsas. No hay ensayo ejecutado ni efecto causal medido.
 
 ## DEC-005 — Separar la construcción del mundo de la consulta comercial
 
@@ -91,3 +91,13 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Riesgos y compromisos:** fuerte escasez de atributos, sesgo hacia cuentas documentadas, muchos empates e identidad pendiente. Servicio desconocido no equivale a no-cliente. Los puntos no son probabilidades; una selección distinta no demuestra ventas adicionales.
 - **Explicación al CEO:** con cinco plazas por corte, estas reglas seleccionan dos cuentas en común y tres distintas. Mostramos qué evidencia explica el cambio y cuándo una plaza depende de un empate técnico. Eso permite revisar una decisión; todavía no demuestra que el esfuerzo comercial rinda más.
 - **Evidencia:** aprobación de la política; regresiones offline sin oráculo ni fuga temporal; tabla reproducible y explicación por cuenta en `../docs/12-commercial-ranking.md` y `../docs/13-ranking-comparison.md`. La lectura MongoDB se contrasta con un doble de solo lectura; rankings en Atlas real no verificados. Evaluar superioridad comercial requerirá datos autorizados y un contrafactual.
+
+## DEC-010 — Calcular hipótesis económicas sin atribuirlas a resultados reales
+
+- **Estado:** ECO-01 a ECO-06 aprobadas provisionalmente y exclusivamente para la PoC educativa tras revisión del PR #5. El usuario autorizó calculador determinista, escenarios, sensibilidad y equilibrio; no validación financiera ni operación real.
+- **Problema:** convertir cambios de priorización en una pregunta de margen incremental neto, sin inventar ventas ni atribuir causalidad a los rankings.
+- **Alternativas:** usar un ROI de escenario como demostración; comparar antes/después; aleatorizar empresas ignorando sus relaciones; proponer finanzas explícitas y un A/B por bolsas con análisis poblacional ITT. Cambiar el baseline aprobado para que coincida con una práctica real no documentada requeriría otra aprobación.
+- **Justificación:** separar margen, costo comercial, implantación, adquisición de datos/operación y efectos del resto permite comprobar el umbral sin duplicar costos. El calculador no consume empresas, ledger ni oráculo. Distingue cinco plazas, 500 plazas hipotéticas y protocolo futuro. Decimal, unidades y metadatos de valoración evitan errores de punto flotante y reutilizar valores presentes bajo otro H/descuento; la reserva se muestra sin convertirla en un segundo gasto.
+- **Riesgos y compromisos:** costos y tasas no calibrados, volumen sin validar, identidad/permisos pendientes, interferencia oculta y pocas bolsas independientes. No se calcula muestra sin varianza/ICC. La contabilidad semántica de facturas sigue requiriendo revisión humana; IDs únicos no prueban que dos costos sean distintos. Las reglas 003A permanecen intactas.
+- **Explicación al CEO:** cinco plazas no cubren el costo bajo ninguno de los cuatro casos aprobados. Quinientas pueden dar pérdidas o saldos positivos según hipótesis, pero no prueban que el beneficio sea alcanzable. Un saldo cero es el umbral matemático; cero mejora de conversión puede seguir perdiendo dinero. Ninguno autoriza invertir: faltan efecto atribuible, costos reales y autorización operativa.
+- **Evidencia:** aprobación explícita del usuario con límites ECO-01 a ECO-06; pruebas de identidades, regresiones, sensibilidad, valoración e aislamiento; resultados reproducibles en `../docs/16-financial-calculation.md`. El diseño futuro sigue en `../docs/15-incrementality-experiment.md`. Calculador implementado; sin ventas por empresa, ensayo, muestra, presupuesto ni despliegue.

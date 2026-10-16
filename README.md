@@ -8,9 +8,11 @@ Este repositorio prepara una PoC pequeña, operada por personas, para explorar a
 
 Implementado y verificado offline: ingesta del diseño aprobado, auditoría de 30 empresas/48 relaciones/83 observaciones, proyección física e interfaces separadas, consultas a fecha de corte, historial, conflictos e identidad como candidatos. Las empresas conocidas son 12/17/23 en T0/T1/T2; no se exponen las 7 nunca descubiertas ni se completan perfiles desde el catálogo. La carga PyMongo está preparada con dry-run, protección de base dedicada e idempotencia probada con dobles.
 
-La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Cierre 002C:** el usuario reportó validación real de Atlas desde Windows con VS Code: ping exitoso, carga de 83 observaciones, segunda carga con 0 inserciones/83 sin cambios y consultas T0/T1/T2 con los conteos esperados. La evidencia y su procedencia están en [validación Atlas](docs/11-atlas-integration-validation.md); no son ejecuciones realizadas por Codex Cloud y su conectividad sigue sin verificarse. No hay modelos ML, eventos comerciales, ventas, conversiones, cálculo económico ni Control Tower implementados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
+La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Cierre 002C:** el usuario reportó validación real de Atlas desde Windows con VS Code: ping exitoso, carga de 83 observaciones, segunda carga con 0 inserciones/83 sin cambios y consultas T0/T1/T2 con los conteos esperados. La evidencia y su procedencia están en [validación Atlas](docs/11-atlas-integration-validation.md); no son ejecuciones realizadas por Codex Cloud y su conectividad sigue sin verificarse. No hay modelos ML, eventos comerciales, ventas, conversiones ni Control Tower implementados. El cálculo financiero 003B usa solo supuestos; no acredita resultados económicos observados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
 
 **Misión 003A:** rankings baseline y con grafo deterministas, con reglas aprobadas por el usuario, capacidad fija de cinco cuentas, cortes temporales, contribuciones y evidencia. La [auditoría y política](docs/12-commercial-ranking.md) explica señales y sesgos; la [comparación T0/T1/T2](docs/13-ranking-comparison.md) muestra selecciones reproducibles. No demuestra mayor conversión ni valor económico incremental.
+
+**Misión 003B:** ECO-01 a ECO-06 aprobadas provisionalmente solo como metodología educativa. Calculador determinista de escenarios, sensibilidad y equilibrio, con [fórmulas y límites](docs/14-incremental-economic-case.md), [resultados hipotéticos](docs/16-financial-calculation.md) y [protocolo futuro A/B](docs/15-incrementality-experiment.md). No valida finanzas de Totalplay ni autoriza datos reales, contactos, presupuesto, piloto o despliegue.
 
 ## Requisitos
 
@@ -175,6 +177,46 @@ uv run python scripts/rank_companies.py --mongo --all-cuts
 
 Este comando solo consulta `m002b_observations` mediante `find` con filtro de disponibilidad. No carga datos, crea índices ni escribe colecciones. `--mongo` y `--ledger` son alternativas excluyentes; no hay fallback silencioso si falla Atlas. La paridad se probó con un doble de lectura; **integración real de rankings en Atlas no verificada**. La evidencia local de 002C no es una nueva ejecución de este comando.
 
+## Calculador financiero educativo — sin empresas ni Atlas
+
+Desde la raíz, sin `.env`, ledger, datos de empresas ni red:
+
+```powershell
+uv run python scripts/calculate_finance.py --format markdown
+uv run python scripts/calculate_finance.py --scope demo --format markdown
+uv run python scripts/calculate_finance.py --scope hypothetical --format markdown
+uv run python scripts/calculate_finance.py --sensitivity
+uv run python scripts/calculate_finance.py --sensitivity --format markdown
+```
+
+`demo` calcula cinco plazas; `hypothetical` calcula 500 plazas (100 bolsas hipotéticas de cinco). La salida predeterminada incluye ambos, separados del experimento futuro. Ese volumen no demuestra que existan oportunidades ni suficientes bolsas independientes para un A/B.
+
+Las entradas aprobadas provisionalmente están en [config/financial_assumptions.json](config/financial_assumptions.json). Se incluyen conservador, base, optimista y un nulo obligatorio derivado de base con incremento de conversión y margen del resto iguales a cero, conservando costos. Con cinco plazas los cuatro saldos son negativos. Con 500, el caso base arroja **39 000 MXN hipotéticos**, y el nulo **−41 000 MXN**. El saldo cero se muestra como referencia algebraica de equilibrio; no es un efecto medido. No se generan ventas de las 30 PyMEs.
+
+Para inspeccionar explicaciones y sensibilidad:
+
+```powershell
+$finanzas = uv run python scripts/calculate_finance.py --sensitivity | ConvertFrom-Json
+$finanzas.settings
+$finanzas.results | Format-Table scope, scenario, slots, net_present_value_mxn, reserve_mxn
+$finanzas.sensitivity.hypothetical.one_way | ConvertTo-Json -Depth 20
+$finanzas.zero_balance_reference
+```
+
+La CLI emite UTF-8; en PowerShell 5, si hacen falta acentos correctos en tuberías, usa `[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()` en la sesión. Acepta JSON UTF-8 con o sin BOM.
+
+Para explorar otro supuesto, copia el archivo y declara los cambios explícitamente:
+
+```powershell
+Copy-Item config/financial_assumptions.json supuestos-locales.json
+notepad supuestos-locales.json
+uv run python scripts/calculate_finance.py --config supuestos-locales.json --format markdown
+```
+
+Los números financieros son cadenas decimales: `"0.02"` para dos puntos porcentuales absolutos, no `"2"`. Cada importe indica si son MXN por activación, por plaza o totales. Los valores presentes llevan horizonte y descuento: cambiar solo H/d en la cabecera se rechaza, para evitar reutilizar una valoración incompatible. Puedes aportar valores revalorados explícitos o flujos mensuales agregados del mes 0 a H. La [guía del contrato](docs/14-incremental-economic-case.md#7-uso-y-contrato-del-calculador) explica estas alternativas y sus límites.
+
+La reserva del 20% se muestra aparte: no vuelve a descontarse del saldo neto como si fuera un segundo gasto. `clears_reserve_mathematically` no autoriza invertir; todos los reportes mantienen `operational_authorization=false`. No se calcula una muestra, IC de un efecto real, ROI causal ni recomendación operativa.
+
 ## Carga MongoDB opcional y explícita — operación de misión 002B
 
 Primero revisa, sin credenciales ni conexión:
@@ -211,6 +253,7 @@ Para ejecutar únicamente las pruebas de rankings, o excluir expresamente cualqu
 
 ```powershell
 uv run pytest tests/test_rankings.py tests/test_ranking_commands.py
+uv run pytest tests/test_finance.py tests/test_finance_commands.py
 uv run pytest -m "not integration"
 ```
 
@@ -249,8 +292,11 @@ La prueba hace ping, carga idempotente y lecturas observacionales T0/T1/T2. Cons
 | `src/economic_graph/mongo_observable.py` | Carga protegida y lectura temporal MongoDB |
 | `src/economic_graph/rankings.py` | Dos políticas versionadas, comparación y explicaciones sin I/O |
 | `scripts/rank_companies.py` | CLI de rankings offline o lectura MongoDB, JSON y Markdown |
+| `src/economic_graph/finance.py` y `scripts/calculate_finance.py` | Aritmética financiera pura y CLI educativa, sin empresas ni red |
+| `config/financial_assumptions.json` | Entradas financieras provisionales, no calibradas; unidades y valoración explícitas |
 | `docs/06` a `docs/10` | Diseño aprobado y auditoría de implementación |
 | `docs/11` a `docs/13` | Evidencia Atlas local, política de rankings y tablas comparativas |
+| `docs/14` a `docs/16` | Caso económico, protocolo futuro y resultados hipotéticos reproducidos |
 | `docs/00` a `docs/04` | Contexto recibido, alcance, trazabilidad y arquitectura propuesta |
 | `docs/05-executive-communication.md` | Reglas para comunicar decisiones e impacto potencial |
 | `presentations/executive-deck.md` | Única presentación ejecutiva principal, todavía inicial |
@@ -264,4 +310,4 @@ La referencia del alcance es [la matriz de los seis entregables](docs/02-challen
 
 Las pruebas ejecutadas y la publicación de cada entrega deben reportarse con su SHA y resultados reales. Los comandos de PowerShell son instrucciones para Windows; su ejecución en Windows no queda demostrada por las pruebas de Linux. La conexión real requiere configuración válida y un servidor disponible; nunca se deduce de los mocks.
 
-El diseño conceptual, catálogo, relaciones y observabilidad ya fueron aprobados y materializados en misión 002B. Las limitaciones documentadas de fusión, transiciones y caducidad requieren nueva evidencia aprobada si se desea ampliar esos ejemplos. La misión 003A añade comparación de políticas, sin cambiar el ledger ni escribir en Atlas. Evaluación causal, simulaciones de ventas y Control Tower permanecen fuera de esta misión: los datos sintéticos no prueban ROI ni uplift causal. La medición futura deberá usar un contrafactual y descontar costos incrementales.
+El diseño conceptual, catálogo, relaciones y observabilidad ya fueron aprobados y materializados en misión 002B. Las limitaciones documentadas de fusión, transiciones y caducidad requieren nueva evidencia aprobada si se desea ampliar esos ejemplos. La misión 003A añade comparación de políticas, sin cambiar el ledger ni escribir en Atlas. La misión 003B implementa únicamente un calculador agregado bajo aprobación provisional educativa; el experimento, ventas por empresa y Control Tower siguen sin ejecutarse. Los datos sintéticos y supuestos no prueban ROI ni uplift causal. Una decisión real requiere contrafactual, datos autorizados, costos completos y nueva autorización operativa.
