@@ -1,6 +1,6 @@
 # ConectaPyME Economic Intelligence
 
-Fuente editable de la única presentación ejecutiva principal. Estructura inicial de 12 diapositivas; **no constituye la defensa final ni contiene resultados de negocio**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
+Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada a misión 002B; **no constituye la defensa final ni contiene resultados de negocio**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
 
 ## 1. Pregunta central y propuesta de trabajo
 
@@ -18,21 +18,21 @@ Pendiente: línea base, restricciones operativas y evidencia del problema en una
 
 Fuente: `../docs/01-product-brief.md`, secciones 1–4.
 
-## 3. Economic Graph — qué conectaremos
+## 3. Economic Graph — construcción verificable y conocimiento parcial
 
-El MVP aprobado contempla 30 empresas ficticias y relaciones con significado explícito. La cercanía geográfica no demuestra una transacción.
+Diseño aprobado y materializado: universo sintético restringido de 30 empresas y 48 vínculos verdaderos. La Telco solo conoce 12 empresas en T0, 17 en T1 y 23 en T2, a partir de 83 observaciones con fuente, evidencia y disponibilidad.
 
-Pendiente: entidades y relaciones concretas, atributos y consultas que respondan al caso de adquisición. No se generaron datos en misión 001.
+Las 7 restantes permanecen fuera de la interfaz comercial. Los 2/11/23 vínculos verdaderos observados son cifras de auditoría del simulador; no son relaciones confirmadas ni métricas comerciales.
 
-Fuente: `../docs/03-scope-and-decisions.md`, P-001; reto, diapositiva 6.
+Fuente: `../docs/10-design-validation.md`; estado: verificado offline con datos ficticios, sin Atlas.
 
-## 4. Economic Graph — por qué confiar en una señal
+## 4. Economic Graph — qué sabe la Telco y dónde debe desconfiar
 
-Cada relación deberá explicar fuente, fecha de conocimiento, vigencia y confianza. La vista observable por la Telco debe estar separada de la verdad del simulador.
+El usuario ve afirmaciones y referencias con su estado, fecha y procedencia; no las etiquetas de verdad del simulador. Se preservan dos conflictos de atributos y dos alias candidatos sin fusionar. Un reporte o inferencia no se convierte automáticamente en confirmación.
 
-Pendiente: diseño de identidad, procedencia y controles temporales; fuentes reales requerirían autorización y gobierno.
+La construcción oculta los diagnósticos que revelaban falsedad en tres notas y consulta solo datos disponibles al corte. Esto evita usar respuestas del simulador, pero no demuestra que el método detecte por sí solo todas las afirmaciones falsas.
 
-Fuente: `../docs/04-architecture-overview.md`, secciones 3–4.
+Fuente: `../docs/10-design-validation.md`, DV-001 a DV-005; `decision-log.md`, DEC-005/006. Pendiente: evidencia fuerte para resolver alias y evaluar calidad con datos operacionales autorizados.
 
 ## 5. AI/ML Approach — comparación comprensible
 
@@ -42,13 +42,13 @@ Pendiente: variables, reglas, corte temporal, métricas y explicaciones. No exis
 
 Fuente: `../docs/02-challenge-traceability.md`, bloque 3; reto, diapositiva 9.
 
-## 6. Architecture — base técnica y flujo futuro
+## 6. Architecture — del diseño aprobado a la vista observable
 
-Base implementada: configuración local → cliente PyMongo → `ping` sin escrituras; dependencias bloqueadas y pruebas unitarias sin servidor.
+Implementado: fuentes ficticias aprobadas y restringidas → auditoría de archivos → proyección unidireccional → ledger público → consultas T0/T1/T2, historia y conflictos. La interfaz comercial no lee el catálogo completo ni completa atributos ausentes.
 
-Flujo propuesto: generación sintética → persistencia → consultas → señales → comparación → evidencia. Estas etapas están pendientes. La selección de MongoDB no aprueba un modelo de colecciones ni demuestra consultas de grafo.
+Carga PyMongo explícita en base dedicada, con dry-run e idempotencia probada offline. Integración Atlas, roles de acceso y rendimiento productivo no verificados. Extracción de señales y ranking siguen fuera de esta misión.
 
-Fuente: `../docs/04-architecture-overview.md`; `decision-log.md`, DEC-001.
+Fuente: `../docs/10-design-validation.md`; `decision-log.md`, DEC-005/007.
 
 ## 7. Architecture — criterios para producción
 
@@ -94,8 +94,10 @@ Fuente: reto, diapositiva 11 y notas; `../docs/02-challenge-traceability.md`.
 
 ## 12. Estado, riesgos y siguiente decisión
 
-La misión 001 prepara la base de desarrollo; no demuestra aún el Economic Graph ni su valor económico. Riesgos centrales: señales no observables, fuga temporal, atribución incorrecta y crecimiento de alcance.
+La misión 002B demuestra construcción, trazabilidad y conocimiento parcial reproducible. No demuestra mejores decisiones comerciales, ventas ni margen adicional. Los datos son ficticios y no constituyen evidencia causal.
 
-Siguiente decisión propuesta: revisar y aprobar modelo conceptual, fuentes observables y temporalidad antes de generar datos. La entrega final requiere brief de 2–3 páginas y defensa con perspectiva de CEO.
+Faltan para evaluar valor: baseline y política enriquecida aprobados, datos y costos pertinentes, unidad y horizonte de medición, control comparable e incertidumbre. No se han implementado scoring, eventos comerciales ni Control Tower. La entrega final conserva el brief de 2–3 páginas y la defensa con perspectiva de CEO.
 
-Fuente: `../docs/03-scope-and-decisions.md`, P-001 a P-008; reto, notas de diapositivas 12–13.
+Riesgos vigentes: identidad sin evidencia fuerte, conflictos abiertos, sesgo del escenario sintético y atribuir efecto a una demostración técnica. No se agregan observaciones para inventar ejemplos de fusión, transición o caducidad.
+
+Fuente: `../docs/10-design-validation.md`; `../docs/02-challenge-traceability.md`.

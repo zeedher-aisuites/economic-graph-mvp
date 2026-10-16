@@ -4,11 +4,11 @@
 
 Este repositorio prepara una PoC pequeña, operada por personas, para explorar adquisición B2B y defender sus decisiones arquitectónicas, económicas y experimentales. ConectaPyME Telecom, Distrito Centro y Villa Conecta son ficticios. No contiene datos de clientes reales ni resultados económicos comprobados.
 
-## Estado de la misión 001
+## Estado de la misión 002B
 
-Implementado: paquete Python, lectura y validación de configuración, cliente PyMongo, comprobación explícita mediante `ping`, pruebas sin servidor y herramientas de calidad. Incluye contexto, matriz de trazabilidad y estructura de una presentación ejecutiva de 12 diapositivas.
+Implementado y verificado offline: ingesta del diseño aprobado, auditoría de 30 empresas/48 relaciones/83 observaciones, proyección física e interfaces separadas, consultas a fecha de corte, historial, conflictos e identidad como candidatos. Las empresas conocidas son 12/17/23 en T0/T1/T2; no se exponen las 7 nunca descubiertas ni se completan perfiles desde el catálogo. La carga PyMongo está preparada con dry-run, protección de base dedicada e idempotencia probada con dobles.
 
-Todavía no implementado: las 30 empresas sintéticas, relaciones, colecciones, Economic Graph, consultas analíticas, baseline, scoring, ML, Control Tower y evaluación económica. La Control Tower es un entregable obligatorio del reto como dashboard o prototipo, que se atenderá en otra misión. No hay agentes, LLM, API, dashboard ni Docker.
+La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Integración real no verificada:** no hay servidor/configuración Atlas disponible en esta ejecución. No hay scoring, modelos ML, eventos comerciales, ventas, conversiones, cálculo económico ni Control Tower implementados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
 
 ## Requisitos
 
@@ -26,7 +26,7 @@ git clone https://github.com/zeedher-aisuites/economic-graph-mvp.git
 Set-Location economic-graph-mvp
 ```
 
-Usa tu acceso GitHub habitual para repositorios privados. Si revisas una rama aún no integrada, ejecuta `git switch mision-001-inicializacion` después del clone. No vuelvas a clonar si ya estás en el checkout de Codex.
+Usa tu acceso GitHub habitual para repositorios privados. Si revisas la misión 002B aún no integrada, ejecuta `git switch mision-002b-economic-graph-data` después del clone. No vuelvas a clonar si ya estás en el checkout de Codex.
 
 ### 2. Instalar uv y Python
 
@@ -87,6 +87,63 @@ La operación usa `ping` en la base configurada, con tiempos de espera de cinco 
 
 Si falla: comprueba primero que ambas variables estén definidas; después revisa el servidor, host/DNS, reglas de red, TLS y permisos. No desactives la validación de certificados ni publiques el error crudo del driver. No atribuyas el fallo automáticamente a una contraseña incorrecta.
 
+## Validar e inspeccionar el modelo aprobado
+
+Ejecuta desde la raíz. Estos pasos no requieren Atlas, red ni `.env`:
+
+```powershell
+uv sync --locked
+uv run python scripts/validate_design.py
+uv run python scripts/build_observable.py --dry-run
+uv run python scripts/build_observable.py
+uv run python scripts/inspect_graph.py --as-of T0 --summary
+uv run python scripts/inspect_graph.py --as-of T1 --summary
+uv run python scripts/inspect_graph.py --as-of T2 --summary
+```
+
+`validate_design.py` es una herramienta de auditoría restringida: muestra cantidades de verdad sintética para el desarrollador. Lee los 11 CSV/JSON aprobados, sus huellas y referencias; no escribe. No edites esos datos para hacer pasar una validación: registra la desviación en [la auditoría](docs/10-design-validation.md) y solicita aprobación si cambiaría hechos.
+
+`build_observable.py` transforma únicamente las 83 observaciones aprobadas. Su dry-run no escribe; el modo normal genera `data/observable/observations.json` y una conciliación privada ignorada por Git. No agrega aleatoriedad ni necesita semilla. No edites directamente el ledger generado. Al repetir el comando produce los mismos bytes. La vista comercial no lee `design-data/restricted/`.
+
+Los resúmenes comerciales muestran empresas **12/17/23**, observaciones **28/54/83**, afirmaciones económicas **2/13/26** y referencias **0/2/3**. No etiquetan qué afirmaciones son falsas ni suman referencias como suministro. La auditoría restringida comprueba, por separado, las **2/11/23 relaciones verdaderas observadas**.
+
+Los cortes son exactamente `2026-01-15T12:00:00Z`, `2026-05-15T12:00:00Z` y `2026-09-15T12:00:00Z`. También puedes consultar un instante con zona, nunca una fecha sin hora:
+
+```powershell
+uv run python scripts/inspect_graph.py --as-of "2026-05-15T11:59:59Z" --summary
+uv run python scripts/inspect_graph.py --as-of T2
+```
+
+La salida completa muestra empresas con atributos conocidos/desconocidos, observaciones, relaciones con historia, conflictos y alias candidatos. Usa un `company_id` CO-... devuelto por esa salida para pedir procedencia:
+
+```powershell
+$vista = uv run python scripts/inspect_graph.py --as-of T2 | ConvertFrom-Json
+$empresa = $vista.companies | Where-Object { $_.attributes.display_name.value -eq "Hornos del Centro" }
+uv run python scripts/inspect_graph.py --as-of T2 --company $empresa.company_id --attribute branch_count
+```
+
+Tamaño, sector u otros atributos ausentes permanecen UNKNOWN; valores distintos sin arbitraje quedan CONFLICTED. Nombre parecido solo sugiere un candidato, no fusiona empresas. Las tres notas que revelaban diagnósticos del oráculo se conservan en los originales y se proyectan con texto comercial neutral. Ver IDs y límites en `docs/10-design-validation.md`.
+
+## Carga MongoDB opcional y explícita
+
+Primero revisa, sin credenciales ni conexión:
+
+```powershell
+uv run python scripts/load_observable.py --dry-run
+```
+
+Solo un operador autorizado debe usar una instancia no productiva y configurar en `.env` **MONGODB_DATABASE=conectapyme_mvp_observable**, junto con su URI privada. El ejemplo local `conectapyme` de la misión 001 sirve para ping; **no está autorizado para carga**. No copies aquí credenciales.
+
+```powershell
+uv run python scripts/load_observable.py --apply --confirm-database conectapyme_mvp_observable
+uv run python scripts/load_observable.py --apply --confirm-database conectapyme_mvp_observable
+uv run python scripts/inspect_graph.py --mongo --as-of T2 --summary
+```
+
+La segunda carga no debe insertar nuevos registros. Se usan solo `m002b_observations` y `m002b_metadata`; se rechazan colecciones ajenas y documentos existentes con contenido diferente. No se borran ni se reemplazan registros. Un fallo puede dejar un lote parcialmente cargado; reintentarlo es seguro por ID. La verificación de red y roles debe realizarla el operador antes de usar Atlas. No se carga la verdad sintética en esa base.
+
+Entrega al usuario comercial solo el directorio observable, o una credencial distinta con acceso de lectura limitado a `m002b_observations`. Un desarrollador con acceso al checkout completo puede leer los diseños; no se afirma aislamiento frente a ese usuario. Los permisos POSIX no sustituyen ACL de Windows ni roles MongoDB. Los diagnósticos `check_connection.py`, `validate_design.py` e `inspect_graph.py` no escriben.
+
 ## Pruebas y calidad
 
 Desde la raíz, sin necesidad de MongoDB ni de `.env`:
@@ -97,13 +154,25 @@ uv run ruff check .
 uv run ruff format --check .
 ```
 
-Las pruebas configuran entornos temporales y sustituyen el cliente MongoDB. Verifican precedencia, campos obligatorios, nombres válidos, errores sanitizados, `ping`, ausencia de escrituras y liberación del cliente. Un resultado unitario exitoso no verifica la conectividad real.
+Las pruebas offline cubren la infraestructura y los invariantes del modelo: conteos, enlaces, fechas, cortes, ausencia de oráculo, desconocidos, evidencia duplicada, conflictos, alias y carga repetida contra un doble de MongoDB. No leen `.env` ni abren Atlas. Un resultado unitario exitoso no verifica conectividad real. La única integración aparece omitida por defecto con su motivo explícito.
 
 Para formatear cambios locales de código de manera intencional:
 
 ```powershell
 uv run ruff format .
 ```
+
+Para activar la integración **solo en la base dedicada autorizada**, después de configurar el servidor:
+
+```powershell
+$env:RUN_MONGODB_INTEGRATION = "1"
+$env:MONGODB_INTEGRATION_DATABASE_CONFIRM = "conectapyme_mvp_observable"
+uv run pytest -m integration
+Remove-Item Env:RUN_MONGODB_INTEGRATION
+Remove-Item Env:MONGODB_INTEGRATION_DATABASE_CONFIRM
+```
+
+La prueba hace ping, carga idempotente y lecturas observacionales T0/T1/T2. Conserva los registros de la PoC; no borra colecciones para limpiar.
 
 ## Organización
 
@@ -113,7 +182,14 @@ uv run ruff format .
 | `src/economic_graph/database.py` | Crear el cliente y verificar mediante `ping` |
 | `scripts/check_connection.py` | Comando de comprobación con salida y código de estado claros |
 | `tests/` | Pruebas unitarias independientes de MongoDB |
-| `data/synthetic/` | Reservada para una misión futura; actualmente solo `.gitkeep` |
+| `data/synthetic/restricted/` | Conciliación privada generada, ignorada por Git |
+| `design-data/restricted/` | Insumos aprobados intactos; solo ingesta y auditoría |
+| `design-data/README.md` y `manifest.json` | README adjunto, origen, versión y huellas |
+| `data/observable/` | Ledger público materializado |
+| `src/economic_graph/simulator/` | Ingesta, auditoría y proyección restringida |
+| `src/economic_graph/observable.py` | Consultas públicas a fecha de corte |
+| `src/economic_graph/mongo_observable.py` | Carga protegida y lectura temporal MongoDB |
+| `docs/06` a `docs/10` | Diseño aprobado y auditoría de implementación |
 | `docs/00` a `docs/04` | Contexto recibido, alcance, trazabilidad y arquitectura propuesta |
 | `docs/05-executive-communication.md` | Reglas para comunicar decisiones e impacto potencial |
 | `presentations/executive-deck.md` | Única presentación ejecutiva principal, todavía inicial |
@@ -127,4 +203,4 @@ La referencia del alcance es [la matriz de los seis entregables](docs/02-challen
 
 Las pruebas ejecutadas y la publicación de cada entrega deben reportarse con su SHA y resultados reales. Los comandos de PowerShell son instrucciones para Windows; su ejecución en Windows no queda demostrada por las pruebas de Linux. La conexión real requiere configuración válida y un servidor disponible; nunca se deduce de los mocks.
 
-Próxima misión propuesta: revisar y aprobar modelo conceptual, fuentes observables, identidad y temporalidad (P-001 a P-003) antes de generar empresas. Los datos sintéticos ilustrarán viabilidad y no probarán ROI ni uplift causal. La evaluación económica futura deberá usar un contrafactual y descontar costos incrementales.
+El diseño conceptual, catálogo, relaciones y observabilidad ya fueron aprobados y materializados en misión 002B. Las limitaciones documentadas de fusión, transiciones y caducidad requieren nueva evidencia aprobada si se desea ampliar esos ejemplos. Scoring y evaluación económica pertenecen a misiones posteriores: los datos sintéticos no prueban ROI ni uplift causal. La medición futura deberá usar un contrafactual y descontar costos incrementales.

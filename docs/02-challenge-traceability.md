@@ -7,9 +7,9 @@
 | Bloque | Pregunta que debemos responder | Evidencia a entregar | Criterio de aceptación | Estado |
 |---|---|---|---|---|
 | 1. Business Framing | ¿Qué problema de adquisición B2B se resuelve y cómo genera valor? | Hipótesis de usuario, embudo, mecanismo económico y KPIs | Conecta problema → decisión → intervención → resultado medible | Contexto definido; evidencia por completar |
-| 2. Economic Graph | ¿Qué son nodos y aristas, de dónde vienen y cuán confiables son? | Modelo de entidades/relaciones, fuentes, resolución de identidad, fechas, confianza y procedencia; ejemplo consultable | Se puede reconstruir por qué existe una conexión y desde cuándo era conocida | Diseño pendiente |
+| 2. Economic Graph | ¿Qué son nodos y aristas, de dónde vienen y cuán confiables son? | Modelo de entidades/relaciones, fuentes, resolución de identidad, fechas, confianza y procedencia; ejemplo consultable | Se puede reconstruir por qué existe una conexión y desde cuándo era conocida | Diseño aprobado; construcción y consultas temporales verificadas offline en 002B; identidad fuerte pendiente |
 | 3. AI/ML Approach | ¿Cómo usar las señales y demostrar que superan un baseline? | Baseline, ranking enriquecido, características, evaluación sin fuga; plan ML si escala | Elección justificada de regla/ML, métricas claras y límites reconocidos | Enfoque preliminar |
-| 4. Architecture | ¿Cómo fluye y se gobierna la información desde fuentes hasta usuarios? | Diagrama PoC + arquitectura objetivo; ingestión, entity resolution, procesamiento, serving, escalabilidad, seguridad, gobernanza, MLOps condicional | Diferencia claramente lo implementado de lo propuesto para producción | Propuesta preliminar |
+| 4. Architecture | ¿Cómo fluye y se gobierna la información desde fuentes hasta usuarios? | Diagrama PoC + arquitectura objetivo; ingestión, entity resolution, procesamiento, serving, escalabilidad, seguridad, gobernanza, MLOps condicional | Diferencia claramente lo implementado de lo propuesto para producción | Separación e ingesta implementadas; carga MongoDB probada con doble; Atlas y escala no verificados |
 | 5. Economic Case | ¿Cuál es la rentabilidad incremental atribuible? | Modelo de unit economics, costos, escenarios, diseño A/B y fórmula de margen neto incremental | Identifica contrafactual, unidad de asignación, horizonte y costos de operación | Pendiente de modelado |
 | 6. Control Tower | ¿Cómo monitorear datos, método y negocio? | Indicadores Graph Health, AI Performance, Business Funnel y Economic Impact | Cada indicador tiene definición, frecuencia/fuente futura y limitaciones | Estructura definida |
 
@@ -105,3 +105,17 @@ Las cifras de score y funnel de las diapositivas 8 y 11 son **ilustraciones del 
 **Discrepancias registradas:** el brief inicial hacía opcional una Control Tower visual. La fuente exige el entregable, aunque permite un prototipo: se conserva flexibilidad de interfaz y se corrige la obligatoriedad. La arquitectura y las 30 PyMEs describen el MVP futuro; la instrucción explícita de misión 001 limita el trabajo actual a su base técnica. No se resuelven P-001 a P-008 ni se aprueba un esquema de datos.
 
 **Trazabilidad de esta misión:** configuración, PyMongo, pruebas, instalación y documentación habilitan el bloque 4 (Architecture). El deck y las reglas ejecutivas organizan los seis bloques, sin declarar su implementación. La conexión real requiere servidor y configuración válida; no se considera verificada mediante mocks.
+
+## Evidencia de misión 002B
+
+El diseño de `06-economic-graph-design.md` y los tres paquetes fueron aprobados explícitamente. `10-design-validation.md` registra procedencia, invariantes y discrepancias con IDs. No se considera implementada una fusión, transición o caducidad ausente en el plan aprobado.
+
+| Bloque | Evidencia implementada | Límite |
+|---|---|---|
+| Economic Graph | 30 empresas/48 relaciones en fuentes restringidas; 83 observaciones materializadas; vistas T0/T1/T2 con empresas 12/17/23; historia, procedencia, conflictos y alias candidatos | 7 empresas y 25 relaciones verdaderas permanecen desconocidas; no se revelan a la interfaz comercial |
+| Architecture | `simulator/design.py` audita todos los archivos; `simulator/project.py` proyecta sin enriquecer desde el catálogo; `observable.py` consulta solo el ledger público | Separación por archivos e interfaces; roles comerciales de Atlas no provisionados y sin validación a escala |
+| Architecture / persistencia | `mongo_observable.py` limita base y colecciones, rechaza contenido ajeno y usa inserciones inmutables por ID; prueba de idempotencia offline | Integración real no verificada; no se ha ejecutado carga en Atlas |
+| Graph Health como evidencia de calidad | Pruebas de IDs, enlaces huérfanos, tipos, tiempos, incertidumbre, duplicados, ausencia de verdad y desconocidos | No es una Control Tower implementada ni precisión medida de entity resolution |
+| AI/ML, economía y funnel | Contratos y límites documentados | Sin scoring, ML, eventos, conversiones, causalidad ni valor económico medido |
+
+Pruebas relevantes: `tests/test_design.py`, `test_observable.py`, `test_mongo_observable.py` y `test_graph_commands.py`. La integración está separada en `tests/integration/test_atlas_observable.py`. Las 2/11/23 relaciones verdaderas observadas son un conteo restringido de validación del simulador, no una métrica comercial de confirmaciones.

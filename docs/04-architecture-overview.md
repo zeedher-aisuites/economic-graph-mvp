@@ -4,7 +4,9 @@
 
 **Base implementada en misión 001:** `src/economic_graph/config.py` lee y valida configuración; `database.py` crea un cliente PyMongo con tiempos de espera de cinco segundos y ofrece `ping`; `scripts/check_connection.py` presenta un resultado seguro y cierra la conexión. `ping` se dirige a la base configurada, no crea colecciones ni inserta datos. La instancia MongoDB debe existir previamente, local o administrada por el usuario; no se instala en esta misión. Crear el cliente no confirma conectividad y un `ping` exitoso no demuestra permisos de lectura/escritura, disponibilidad del grafo ni rendimiento.
 
-Las capas del siguiente diagrama siguen **pendientes**. La Control Tower final es obligatoria como dashboard o prototipo; no se implementa en esta misión.
+**Ampliación 002B implementada:** archivos aprobados restringidos → auditoría → proyección de 83 observaciones → ledger público → consultas temporales, conflictos e identidad candidata. PyMongo permite cargar explícitamente solo el ledger en una base dedicada; idempotencia probada con dobles, integración real no verificada. El contrato físico y sus límites se detallan en `10-design-validation.md`.
+
+El siguiente diagrama describe el flujo objetivo del MVP completo: extracción de señales, rankings, gráficos y Control Tower siguen **pendientes**. No se generan datos aleatorios ni eventos comerciales en 002B.
 
 ## 1. Arquitectura mínima de demostración
 

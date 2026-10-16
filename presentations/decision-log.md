@@ -41,3 +41,33 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Riesgos y compromisos:** potencia insuficiente, spillovers, costos no registrados, diferencias de ejecución y restricciones operativas. Un experimento real excede la PoC.
 - **Explicación al CEO:** solo escalaremos por margen adicional atribuible y neto de costos, no porque la demostración se vea convincente.
 - **Evidencia para validarla:** protocolo con unidad y ventana, control comparable, costos, análisis predefinido e incertidumbre. Todos permanecen pendientes.
+
+## DEC-005 — Separar la construcción del mundo de la consulta comercial
+
+- **Estado:** aprobada por la misión 002B; bloques Economic Graph y Architecture.
+- **Problema:** el simulador conoce atributos y vínculos que la Telco no conoce; incluso algunas notas revelan diagnósticos de falsedad.
+- **Alternativas:** consultar directamente el catálogo; quitar solo campos `truth`; proyectar un ledger observable y aislar su interfaz.
+- **Justificación:** se preservan los originales, se eliminan campos privados, se neutralizan tres notas diagnósticas y se asignan IDs públicos desde la evidencia. El visor nunca consulta el mundo ni su denominador completo.
+- **Riesgos y compromisos:** un desarrollador con acceso al checkout puede leer la verdad; producción exige credenciales/roles y montaje separados. No se confunde UUID con autorización.
+- **Explicación al CEO:** podemos mostrar lo que sabemos y cuándo lo supimos sin regalar al método respuestas que ningún comercial tendría.
+- **Evidencia:** pruebas as-of, desconocidos, rechazo de campos anidados y lectura del ledger sin directorio de diseño; auditoría DV-001. No implica mayor conversión.
+
+## DEC-006 — Conservar incertidumbre sin fabricar resolución
+
+- **Estado:** aprobada por la prohibición explícita de fusiones y confirmaciones arbitrarias en misión 002B.
+- **Problema:** alias parecidos, atributos distintos y reportes de fuentes no prueban identidad ni existencia de transacciones.
+- **Alternativas:** elegir el dato más reciente; fusionar por nombre; consultar la verdad del simulador; conservar candidatos, conflicto e historia.
+- **Justificación:** no hay evidencia fuerte aprobada para fusionar ALIAS-001/002; los valores de CG-001/002 se mantienen sin arbitraje. REPORTED e INFERRED no pasan a CONFIRMED por existir el vínculo en la verdad.
+- **Riesgos y compromisos:** menor cantidad de atributos consolidados; faltan ejemplos reales de transición/caducidad y de fusión fuerte. Requieren adenda aprobada, no generación automática.
+- **Explicación al CEO:** es preferible reconocer una duda que priorizar una cuenta apoyándonos en una certeza inventada.
+- **Evidencia:** historial intacto, candidatos sin empresas adicionales y conflictos visibles. DV-002/003 documentan lo no demostrado.
+
+## DEC-007 — Persistir un ledger mínimo e inmutable
+
+- **Estado:** elección técnica de implementación dentro de la autorización 002B; implementada y verificada offline, pendiente de integración Atlas.
+- **Problema:** hacer reintentable la carga y reconstruir cortes sin alterar colecciones ajenas ni duplicar perfiles.
+- **Alternativas:** reemplazar colecciones; guardar snapshots completos por corte; almacenar observaciones y derivar las vistas.
+- **Justificación:** una colección de observaciones por ID y una marca de propiedad bastan. Base dedicada, dry-run por defecto, confirmación explícita, `$setOnInsert` y rechazo de colisiones. Índices por disponibilidad y por sujeto/disponibilidad responden a consultas concretas.
+- **Riesgos y compromisos:** el lote no es una transacción; puede quedar incompleto ante un fallo, pero se puede reintentar. No se afirma rendimiento a escala ni se han provisionado roles Atlas.
+- **Explicación al CEO:** repetir una preparación no duplica el conocimiento ni modifica datos de otros sistemas.
+- **Evidencia:** pruebas de carga repetida, contenido distinto, base incorrecta y colecciones ajenas; prueba real opcional, aún no ejecutada.
