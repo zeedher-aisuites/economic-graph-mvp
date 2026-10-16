@@ -12,6 +12,8 @@ La infraestructura de misión 001 se conserva: configuración, cliente y ping si
 
 **Misión 003A:** rankings baseline y con grafo deterministas, con reglas aprobadas por el usuario, capacidad fija de cinco cuentas, cortes temporales, contribuciones y evidencia. La [auditoría y política](docs/12-commercial-ranking.md) explica señales y sesgos; la [comparación T0/T1/T2](docs/13-ranking-comparison.md) muestra selecciones reproducibles. No demuestra mayor conversión ni valor económico incremental.
 
+**Misión 003B, diseño para revisión:** [caso económico incremental](docs/14-incremental-economic-case.md) y [protocolo A/B](docs/15-incrementality-experiment.md). Incluyen variables, fórmulas, escenarios hipotéticos, sensibilidad, umbral y decisiones ECO-01 a ECO-06 pendientes de aprobación. No hay simulador financiero ni resultados comerciales nuevos; la entrega es exclusivamente documental.
+
 ## Requisitos
 
 - Windows con PowerShell y Git; también puede usarse Linux con comandos equivalentes.
@@ -264,4 +266,4 @@ La referencia del alcance es [la matriz de los seis entregables](docs/02-challen
 
 Las pruebas ejecutadas y la publicación de cada entrega deben reportarse con su SHA y resultados reales. Los comandos de PowerShell son instrucciones para Windows; su ejecución en Windows no queda demostrada por las pruebas de Linux. La conexión real requiere configuración válida y un servidor disponible; nunca se deduce de los mocks.
 
-El diseño conceptual, catálogo, relaciones y observabilidad ya fueron aprobados y materializados en misión 002B. Las limitaciones documentadas de fusión, transiciones y caducidad requieren nueva evidencia aprobada si se desea ampliar esos ejemplos. La misión 003A añade comparación de políticas, sin cambiar el ledger ni escribir en Atlas. Evaluación causal, simulaciones de ventas y Control Tower permanecen fuera de esta misión: los datos sintéticos no prueban ROI ni uplift causal. La medición futura deberá usar un contrafactual y descontar costos incrementales.
+El diseño conceptual, catálogo, relaciones y observabilidad ya fueron aprobados y materializados en misión 002B. Las limitaciones documentadas de fusión, transiciones y caducidad requieren nueva evidencia aprobada si se desea ampliar esos ejemplos. La misión 003A añade comparación de políticas, sin cambiar el ledger ni escribir en Atlas. La primera fase de 003B propone el caso económico y el experimento; su implementación, simulaciones de ventas y Control Tower siguen sin autorizarse. Los datos sintéticos no prueban ROI ni uplift causal. La medición futura deberá usar un contrafactual y descontar costos incrementales.

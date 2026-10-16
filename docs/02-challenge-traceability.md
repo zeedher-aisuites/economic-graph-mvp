@@ -10,7 +10,7 @@
 | 2. Economic Graph | ¿Qué son nodos y aristas, de dónde vienen y cuán confiables son? | Modelo de entidades/relaciones, fuentes, resolución de identidad, fechas, confianza y procedencia; ejemplo consultable | Se puede reconstruir por qué existe una conexión y desde cuándo era conocida | Construcción verificada offline en 002B; consultas Atlas T0/T1/T2 reportadas por el usuario desde Windows en 002C; identidad fuerte pendiente |
 | 3. AI/ML Approach | ¿Cómo usar las señales y demostrar que superan un baseline? | Baseline, ranking enriquecido, características, evaluación sin fuga; plan ML si escala | Elección justificada de regla/ML, métricas claras y límites reconocidos | Comparación determinista 003A implementada offline; sin evidencia de superioridad comercial ni predictiva |
 | 4. Architecture | ¿Cómo fluye y se gobierna la información desde fuentes hasta usuarios? | Diagrama PoC + arquitectura objetivo; ingestión, entity resolution, procesamiento, serving, escalabilidad, seguridad, gobernanza, MLOps condicional | Diferencia claramente lo implementado de lo propuesto para producción | Separación e ingesta implementadas; integración Atlas local reportada por el usuario en 002C; conectividad desde Codex Cloud y escala no verificadas |
-| 5. Economic Case | ¿Cuál es la rentabilidad incremental atribuible? | Modelo de unit economics, costos, escenarios, diseño A/B y fórmula de margen neto incremental | Identifica contrafactual, unidad de asignación, horizonte y costos de operación | Pendiente de modelado |
+| 5. Economic Case | ¿Cuál es la rentabilidad incremental atribuible? | Modelo de unit economics, costos, escenarios, diseño A/B y fórmula de margen neto incremental | Identifica contrafactual, unidad de asignación, horizonte y costos de operación | Diseño documental 003B propuesto; supuestos y protocolo pendientes de aprobación; sin simulador ni efecto medido |
 | 6. Control Tower | ¿Cómo monitorear datos, método y negocio? | Indicadores Graph Health, AI Performance, Business Funnel y Economic Impact | Cada indicador tiene definición, frecuencia/fuente futura y limitaciones | Estructura definida |
 
 ## 1. Business Framing
@@ -150,3 +150,16 @@ El usuario aprobó explícitamente fórmula, elegibilidad y K=5 (DEC-009). `rank
 Pruebas nuevas: `tests/test_rankings.py` y `tests/test_ranking_commands.py`. Verifican regresiones temporales, contribuciones, incertidumbre, duplicados, alias, elegibilidad, ausencia de campos restringidos y ejecución con solo módulos públicos/ledger. Los seis entregables completos no quedan terminados: economía, experimento causal, funnel, Control Tower y brief final siguen pendientes de sus respectivas misiones.
 
 Seguimiento de portabilidad: el reporte de fallo Windows motivó una reproducción con tuberías cp1252 y la corrección del contrato UTF-8 del CLI y su consumidor de pruebas. Las regresiones conservan el aislamiento e incluyen ambos formatos, rutas con espacios/acentos y diagnóstico sin URI privadas. Causa, comprobaciones y límite de validación nativa Windows en [la guía de rankings](12-commercial-ranking.md#corrección-de-portabilidad-tras-el-reporte-de-windows).
+
+## Propuesta de misión 003B — diseño económico sin implementación
+
+Se releyeron las 13 diapositivas y notas del reto original desde `main` en `0e1088c`. [Caso económico](14-incremental-economic-case.md) y [protocolo experimental](15-incrementality-experiment.md) desarrollan el bloque 5; sus escenarios y decisiones ECO-01 a ECO-06 son propuestas no aprobadas. Las cifras ilustrativas del reto y los cambios de ranking no se usan como tasas de conversión.
+
+| Requisito | Diseño entregado | Evidencia que sigue faltando |
+|---|---|---|
+| Business Framing → margen | Igual capacidad; margen neto de ventas y costo comercial, efectos sobre no seleccionadas y costo incremental de datos/plataforma | Demanda, producto/cobertura, permisos, conversión, margen y costos reales |
+| Economic Case: reproducibilidad | Variables con unidades/procedencia, fórmulas de valor presente, escenarios conservador/base/optimista/nulo, sensibilidad y umbral de equilibrio | Aprobación de entradas, fuentes financieras, simulador futuro autorizado; no hay ROI causal |
+| Economic Case: contrafactual | A/B propuesto por bolsas, asignación previa a selección, KPI por cuenta elegible asignada, ITT, madurez y control de contaminación | Población autorizada, unidades suficientes, varianza/ICC, tamaño muestral, ejecución y resultados |
+| Control Tower: definición futura | KPI económico y métricas secundarias con requisitos de medición | Eventos comerciales, instrumentación y dashboard/prototipo no implementados |
+
+DEC-004 conserva estado de propuesta; DEC-010 registra alternativas y riesgos del diseño 003B. No se cambian `003a-conservative-v1`, el ledger, Atlas ni código/pruebas. T0/T1/T2 no se convierten en cohortes independientes. Esta entrega termina en un PR borrador documental; implementar el simulador o ejecutar el experimento requiere aprobación explícita posterior.

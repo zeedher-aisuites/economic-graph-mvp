@@ -1,6 +1,6 @@
 # ConectaPyME Economic Intelligence
 
-Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada a misión 003A; **no constituye la defensa final ni contiene resultados de negocio**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
+Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada al diseño propuesto 003B; **no constituye la defensa final ni contiene resultados de negocio**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
 
 ## 1. Pregunta central y propuesta de trabajo
 
@@ -64,19 +64,19 @@ Fuente: `../docs/04-architecture-overview.md`, secciones 6–8; reto, diapositiv
 
 Hipótesis: mejores señales → mejor priorización → uso más eficiente del esfuerzo comercial → mayor margen potencial.
 
-Marco orientativo: valor incremental neto = margen tratado − margen contrafactual estimado − costo incremental de la solución. Deben fijarse unidad, período y normalización antes de calcular.
+Propuesta 003B: a igual capacidad, margen adicional de las cuentas seleccionadas y del resto de la población, menos costo comercial adicional, implantación y operación del grafo. Se consideran adquisición de datos, infraestructura y revisión humana; el punto de equilibrio depende de volumen, margen y diferencia de conversión, no de puntos de score.
 
-Pendiente: supuestos, costos, márgenes y escenarios. No hay ingresos, ahorro ni ROI propios calculados.
+Se proponen escenarios conservador, base, optimista y nulo, con sensibilidad y umbral mínimo. Todos sus valores económicos son supuestos pedagógicos pendientes de aprobación, sin cotizaciones ni ventas observadas. No existe simulador financiero ni ROI causal calculado.
 
-Fuente: `../docs/02-challenge-traceability.md`, bloque 5.
+Fuente: `../docs/02-challenge-traceability.md`, bloque 5; `../docs/14-incremental-economic-case.md`; `decision-log.md`, DEC-010.
 
 ## 9. Economic Case — demostrar incrementalidad
 
-Propuesta: comparar política actual y política enriquecida mediante asignación aleatoria cuando sea viable. Mantener capacidad comparable y considerar contaminación entre empresas conectadas y equipos comerciales.
+Propuesta 003B: asignar bolsas comerciales completas antes de seleccionar cuentas y comparar el baseline aprobado con su variante enriquecida. Igual límite de esfuerzo; medir margen neto por toda cuenta elegible asignada, incluso sin contacto. Las políticas aprobadas no representan una práctica actual de Totalplay observada.
 
-Pendiente: unidad de asignación, potencia, horizonte, análisis por intención de tratar e incertidumbre. Treinta empresas inventadas no prueban causalidad.
+Diseño pendiente de aprobación: agrupar conectadas y separar equipos para reducir contaminación; activar dentro de 90 días y seguir margen hasta doce meses desde asignación; análisis por intención de tratar e incertidumbre por bolsa. No hay tamaño muestral calculado ni población autorizada; pocas bolsas o interferencia no controlada impedirían la atribución defendible.
 
-Fuente: `../docs/02-challenge-traceability.md`, diseño futuro de prueba.
+Fuente: `../docs/15-incrementality-experiment.md`; `decision-log.md`, DEC-004/010. Estado: propuesta no ejecutada.
 
 ## 10. Control Tower — de señal técnica a resultado
 
@@ -98,8 +98,8 @@ Fuente: reto, diapositiva 11 y notas; `../docs/02-challenge-traceability.md`.
 
 Las misiones 002B/003A demuestran construcción, trazabilidad, conocimiento parcial y comparación de decisiones bajo igual capacidad. No demuestran mejores resultados comerciales, ventas ni margen adicional. Los datos son ficticios y no constituyen evidencia causal.
 
-Ya existen dos políticas aprobadas y explicables. Faltan para evaluar valor: validación de elegibilidad, datos y costos pertinentes, unidad y horizonte de medición, control comparable e incertidumbre. No se han implementado eventos comerciales ni Control Tower. La entrega final conserva el brief de 2–3 páginas y la defensa con perspectiva de CEO.
+Ya existen dos políticas aprobadas y explicables. Ahora se propone el diseño económico y A/B, sin programarlo: faltan aprobar ECO-01 a ECO-06, datos/costos autorizados, factibilidad y tamaño del experimento y medición real. Un escenario favorable justifica como máximo considerar un piloto; desplegar exigiría margen atribuible que cubra costos y reserva con incertidumbre aceptable. No se han implementado eventos comerciales ni Control Tower. La entrega final conserva el brief de 2–3 páginas y la defensa con perspectiva de CEO.
 
 Riesgos vigentes: identidad sin evidencia fuerte, conflictos abiertos, cobertura escasa, empates, sesgo del escenario sintético y atribuir efecto a una demostración técnica. No se agregan observaciones para inventar ejemplos de fusión, transición o caducidad.
 
-Fuente: `../docs/10-design-validation.md`; `../docs/12-commercial-ranking.md`; `../docs/13-ranking-comparison.md`; `../docs/02-challenge-traceability.md`.
+Fuente: `../docs/10-design-validation.md`; `../docs/12-commercial-ranking.md`; `../docs/13-ranking-comparison.md`; `../docs/14-incremental-economic-case.md`; `../docs/15-incrementality-experiment.md`; `../docs/02-challenge-traceability.md`.

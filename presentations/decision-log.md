@@ -40,7 +40,7 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Justificación:** un contrafactual permite separar el efecto de la política enriquecida de lo que habría ocurrido con la política actual.
 - **Riesgos y compromisos:** potencia insuficiente, spillovers, costos no registrados, diferencias de ejecución y restricciones operativas. Un experimento real excede la PoC.
 - **Explicación al CEO:** solo escalaremos por margen adicional atribuible y neto de costos, no porque la demostración se vea convincente.
-- **Evidencia para validarla:** protocolo con unidad y ventana, control comparable, costos, análisis predefinido e incertidumbre. Todos permanecen pendientes.
+- **Evidencia para validarla:** protocolo con unidad y ventana, control comparable, costos, análisis predefinido e incertidumbre. El diseño detallado está propuesto en `../docs/15-incrementality-experiment.md` (003B), todavía sin aprobación ni ejecución. No hay efecto causal medido.
 
 ## DEC-005 — Separar la construcción del mundo de la consulta comercial
 
@@ -91,3 +91,13 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Riesgos y compromisos:** fuerte escasez de atributos, sesgo hacia cuentas documentadas, muchos empates e identidad pendiente. Servicio desconocido no equivale a no-cliente. Los puntos no son probabilidades; una selección distinta no demuestra ventas adicionales.
 - **Explicación al CEO:** con cinco plazas por corte, estas reglas seleccionan dos cuentas en común y tres distintas. Mostramos qué evidencia explica el cambio y cuándo una plaza depende de un empate técnico. Eso permite revisar una decisión; todavía no demuestra que el esfuerzo comercial rinda más.
 - **Evidencia:** aprobación de la política; regresiones offline sin oráculo ni fuga temporal; tabla reproducible y explicación por cuenta en `../docs/12-commercial-ranking.md` y `../docs/13-ranking-comparison.md`. La lectura MongoDB se contrasta con un doble de solo lectura; rankings en Atlas real no verificados. Evaluar superioridad comercial requerirá datos autorizados y un contrafactual.
+
+## DEC-010 — Diseñar el caso económico antes de simular resultados
+
+- **Estado:** propuesta de modelo y protocolo en misión 003B. El usuario autorizó únicamente auditoría, diseño y publicación en PR borrador; los supuestos ECO-01 a ECO-06 no están aprobados.
+- **Problema:** convertir cambios de priorización en una pregunta de margen incremental neto, sin inventar ventas ni atribuir causalidad a los rankings.
+- **Alternativas:** usar un ROI de escenario como demostración; comparar antes/después; aleatorizar empresas ignorando sus relaciones; proponer finanzas explícitas y un A/B por bolsas con análisis poblacional ITT. Cambiar el baseline aprobado para que coincida con una práctica real no documentada requeriría otra aprobación.
+- **Justificación:** descontar costo comercial, implantación, adquisición de datos y operación, y considerar a las no seleccionadas, permite formular un umbral verificable. Bolsas completas asignadas antes del top-5 reducen contaminación conocida sin consultar el oráculo; mantienen la decisión comercial y su contrafactual claros.
+- **Riesgos y compromisos:** costos y tasas pedagógicos, volumen de despliegue sin validar, identidad y permisos pendientes, interferencia oculta, pocas unidades independientes y horizontes inmaduros. No se promete potencia ni rentabilidad. La extensión de K=5 a bolsas reales necesita aprobación; las reglas 003A no cambian.
+- **Explicación al CEO:** necesitamos saber qué mejora mínima paga el costo total adicional y financiar, como máximo, un piloto para medirla. Que dos listas difieran no demuestra más ventas. Una recomendación de despliegue exige margen atribuible, incertidumbre y costos cotizados.
+- **Evidencia para validarla:** aprobación de entradas y protocolo; luego trazabilidad financiera, presupuesto, muestra por bolsas, medición madura y límite inferior del efecto que supere costos/reserva. Ver `../docs/14-incremental-economic-case.md` y `../docs/15-incrementality-experiment.md`. No existe simulador financiero ni ensayo ejecutado.
