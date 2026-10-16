@@ -193,3 +193,9 @@ El usuario aprobó CT-01 a CT-05 y amplió CT-02 con red económica interactiva 
 Pruebas automáticas de adaptador/AppTest, regresión aislada sin red/env/simulador y revisión Chromium Linux. No equivalen a ejecución nativa Windows: el usuario validará visualmente y contrastará resultados antes de integrar PR #6. No cambian ledger, políticas ni supuestos aprobados; brief final y experimento real siguen pendientes.
 
 Portabilidad de la suite 004B: tras reporte Windows de 269 aprobadas/un fallo/un error, se separan importaciones nativas del límite AppTest y se permite solo el IPC `socketpair`, conservando bloqueo de conexiones externas y separación física de datos privados. Los 271 casos se conservan y pasan en Linux; timeout de 15 segundos intacto y pila segura si persiste. Diagnóstico y alcance de evidencia en la guía 004B; nueva ejecución nativa Windows pendiente. Sin cambios de datos, reglas, finanzas o Atlas.
+
+## Pulido 004C — legibilidad ejecutiva del bloque 6
+
+El usuario confirmó posteriormente 271 pruebas aprobadas y funcionamiento Windows de 004B. Esta misión mejora presentación: hallazgo tres de cinco, red centrada con evidencia de feature resaltada, matriz de dos compartidas/tres sustituciones, funnel visual con exclusiones aparte y cuatro escenarios hipotéticos con signo y umbral visible. Paneles contraídos mantienen auditoría de ranking, procedencia, conflictos, incertidumbre, sensibilidad y finanzas; filtros no recalculan decisiones.
+
+Pruebas de regresión amplían foco al corte, conmutación de vistas/escalas, restablecimiento global, estados de paneles y paridad de evidencia resaltada. Se revisa Chromium a 1366×900, sin añadir dependencias. La nueva validación visual Windows queda pendiente; no es nueva evidencia de ventas, causalidad, Atlas, reglas o supuestos. Detalle en `18-control-tower-demo.md` y diseño v3.

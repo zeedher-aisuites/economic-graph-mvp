@@ -150,3 +150,9 @@ Priorizar la calidad del argumento empresarial sobre la cantidad de diapositivas
 - El usuario aprobó CT-01 a CT-05 y amplió CT-02 con red interactiva sencilla dentro de Graph Health. Implementar en la rama existente del PR #6, sin integrar en `main`. Streamlit en grupo opcional `ui`; usar Vega-Lite integrado y selector sincronizado, sin motor gráfico adicional ni nuevas fórmulas.
 - Mantener cinco vistas, Resumen/T2/Offline por defecto. Distinguir afirmaciones y confirmaciones, referencias, conflictos, candidatos no fusionados y nodos sin evidencia. Filtros de inspección conservan puntuaciones, posiciones, top-5 y supuestos agregados. No escribir en Atlas ni ejecutar integración histórica que carga datos.
 - Probar adaptador y UI con `uv run --group ui pytest`, además de Ruff y formato; mantener CLI base independiente. Registrar diferencias entre validación Linux, regresiones de codificación Windows y ejecución nativa Windows pendiente. Actualizar diseño, guía de demo, decisiones y trazabilidad con evidencia real.
+
+## Alcance vigente — misión 004C, pulido ejecutivo
+
+- Pulir la presentación en la misma rama del PR #6, sin cambios a ledger, Atlas, scoring, elegibilidad, rankings, fórmulas o supuestos. Cinco vistas y dependencia UI existentes; no añadir bibliotecas pesadas ni cambiar arquitectura.
+- Dar prioridad al hallazgo de tres sustituciones, red centrada, matriz de selección, funnel con exclusiones separadas y escenarios hipotéticos legibles. Mantener auditoría completa contraída, fuentes/fechas/versiones y filtros sin reordenar. Resaltar evidencia de la feature aprobada, no calcular un score desde el dibujo.
+- El usuario confirmó 271 pruebas y funcionamiento Windows de 004B. Conservar preparación de AppTest, límite de 15 s y guard de IPC/red. Pruebas nuevas y revisión Chromium/Linux a 1366×900 no sustituyen revisión nativa de los cambios 004C; no integrar automáticamente.

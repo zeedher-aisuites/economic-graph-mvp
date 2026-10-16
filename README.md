@@ -14,7 +14,7 @@ La infraestructura de misión 001 se conserva: configuración, cliente y ping si
 
 **Misión 003B:** ECO-01 a ECO-06 aprobadas provisionalmente solo como metodología educativa. Calculador determinista de escenarios, sensibilidad y equilibrio, con [fórmulas y límites](docs/14-incremental-economic-case.md), [resultados hipotéticos](docs/16-financial-calculation.md) y [protocolo futuro A/B](docs/15-incrementality-experiment.md). No valida finanzas de Totalplay ni autoriza datos reales, contactos, presupuesto, piloto o despliegue.
 
-**Misión 004B:** Control Tower Streamlit local, con CT-01 a CT-05 aprobadas y ampliación de red interactiva mediante selector sincronizado. Cinco vistas, trazabilidad por cuenta, filtros sin recalcular rankings y economía de solo lectura. Consulta [diseño e indicadores](docs/17-control-tower-design.md) y [guía de uso, límites y guion ejecutivo](docs/18-control-tower-demo.md). Validación visual nativa Windows pendiente del usuario; sin nueva lectura real de Atlas.
+**Misiones 004B/004C:** Control Tower Streamlit local con cinco vistas, red centrada en una cuenta, comparación de dos compartidas/tres sustituciones, funnel visual y cuatro escenarios en tarjetas. Trazabilidad técnica en paneles contraídos; filtros sin recalcular rankings y economía de solo lectura. Consulta [diseño e indicadores](docs/17-control-tower-design.md) y [guía y guion ejecutivo](docs/18-control-tower-demo.md). El usuario confirmó 271 pruebas y funcionamiento Windows de 004B; el pulido 004C requiere nueva revisión visual. Sin nueva lectura real de Atlas.
 
 ## Iniciar la Control Tower en Windows PowerShell
 
@@ -39,7 +39,7 @@ uv run --group ui ruff format --check .
 
 Selecciona Graph Health y una **Empresa** para explorar conexiones directas y abrir su ficha. Industria y empresa conservan scores, posiciones y top-5 globales; las etapas sin datos dicen **No observado**. Atlas exige elegir su modo y pulsar **Leer Atlas al corte**; no hay escrituras ni respaldo offline silencioso. La economía no se recalcula por industria o cuenta. Las CLI siguen independientes y están documentadas en la guía como alternativa de demostración.
 
-Compatibilidad de pruebas Windows: la suite prepara dependencias nativas antes del timeout funcional de AppTest, conservado en 15 segundos. La prueba aislada permite únicamente el canal interno `socketpair` de Python y sigue bloqueando conexiones externas y otros servicios locales. Diagnóstico y límites en la [guía de compatibilidad](docs/18-control-tower-demo.md#corrección-de-la-suite-tras-el-reporte-windows). Usa `uv run --group ui pytest --durations=5` para identificar las fases lentas; la confirmación posterior en Windows sigue pendiente.
+Compatibilidad de pruebas Windows: la suite prepara dependencias nativas antes del timeout funcional de AppTest, conservado en 15 segundos. La prueba aislada permite únicamente el canal interno `socketpair` de Python y sigue bloqueando conexiones externas y otros servicios locales. Diagnóstico y límites en la [guía de compatibilidad](docs/18-control-tower-demo.md#corrección-de-la-suite-tras-el-reporte-windows). El usuario confirmó la corrección de 004B en Windows; las nuevas pruebas visuales/interacciones de 004C mantienen esa infraestructura. Usa `uv run --group ui pytest --durations=5` para repetir.
 
 ## Requisitos
 

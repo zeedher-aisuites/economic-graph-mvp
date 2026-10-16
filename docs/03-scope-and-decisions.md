@@ -112,3 +112,7 @@ CT-01 a CT-05 requieren aprobación explícita antes de programar. No se cambian
 El usuario aprueba CT-01 a CT-05 y añade una red económica interactiva a CT-02. Streamlit opcional y Vega-Lite integrado satisfacen el alcance sin otra dependencia directa. Cinco vistas, filtros descriptivos y selector de cuenta sincronizado conservan módulos públicos como fuentes únicas; escenarios permanecen de solo lectura, sin eventos comerciales ni escrituras Atlas. Ver [diseño actualizado](17-control-tower-design.md) y [guía de demo](18-control-tower-demo.md).
 
 La validación automática y de navegador local Linux no se presenta como ejecución nativa Windows. PR #6 listo para revisión, sin integración automática; el usuario comprobará visualmente la app y su paridad antes de decidir. No se autorizan servicios, contactos, datos reales, presupuesto o despliegue.
+
+## 13. Pulido ejecutivo autorizado 004C
+
+El usuario confirmó la ejecución de 271 pruebas y funcionamiento de las cinco vistas en Windows de 004B. Autoriza pulir jerarquía visual, red centrada, comparación de políticas, funnel y escenarios, con auditoría contraída. El alcance se limita a presentación y regresiones: no cambia arquitectura, dependencias, datos, scoring, elegibilidad, fórmulas o supuestos. Continúan fuente offline predeterminada, Atlas opt-in de solo lectura y PR #6 sin merge. La nueva revisión Windows del pulido queda pendiente; ver guía 004B/004C y DEC-011.

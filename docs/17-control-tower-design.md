@@ -1,6 +1,6 @@
 # Control Tower local — diseño aprobado e implementación 004B
 
-**Estado: CT-01 a CT-05 aprobadas expresamente por el usuario en 004B**, con ampliación de CT-02 para red interactiva sencilla. Versión `004b-design-v2`. Aplicación local y adaptador implementados en la rama del PR #6; revisión visual nativa Windows pendiente antes de integrar. Ledger, políticas, supuestos financieros y Atlas intactos. [Guía de uso y demo](18-control-tower-demo.md).
+**Estado: CT-01 a CT-05 aprobadas expresamente por el usuario en 004B**, con ampliación de CT-02 para red interactiva sencilla y pulido ejecutivo autorizado en 004C. Versión `004c-design-v3`. Aplicación y adaptador en la rama del PR #6, sin merge. El usuario confirmó funcionamiento Windows y 271 pruebas de 004B; nueva revisión visual 004C pendiente. Ledger, políticas, supuestos financieros y Atlas intactos. [Guía de uso y demo](18-control-tower-demo.md).
 
 ## 1. Qué debe demostrar y qué no sabemos
 
@@ -99,7 +99,7 @@ Fuente: Offline | Corte: T2 · 2026-09-15T12:00:00Z | Política y procedencia
 └──────────────────────┴────────────────────────────────────────────────┘
 ```
 
-Fondo neutro, tipografía predeterminada, jerarquía clara y tablas legibles en portátil. Azul para contexto/datos, ámbar para incertidumbre/hipótesis, texto y signo para pérdidas; ningún estado se comunica solo por color. No semáforos de «salud buena» ni «inversión aprobada» sin regla validada. Etiquetas descriptivas, ayuda breve de métricas y unidades en cabeceras. Sin animación, CSS personalizado o diseño móvil dedicado.
+Fondo neutro, tipografía predeterminada, jerarquía clara y tablas legibles en portátil. Azul para contexto/datos, ámbar para incertidumbre/hipótesis, texto y signo para pérdidas; ningún estado se comunica solo por color. No semáforos de «salud buena» ni «inversión aprobada» sin regla validada. Sin animación o diseño móvil dedicado. 004C añade únicamente CSS estático de margen superior, sin HTML de datos o recursos externos; no una biblioteca o tema visual nuevo.
 
 ## 5. Diccionario mínimo de indicadores
 
@@ -235,3 +235,11 @@ La aprobación explícita de misión 004B autoriza esta implementación, sin amp
 Ejecutado en Codex Cloud/Linux sobre esta rama: `uv sync --locked` correcto; `uv run pytest` con integración real desactivada (`RUN_MONGODB_INTEGRATION=0`), **233 aprobadas y 1 omitida**; `uv run ruff check .` y `uv run ruff format --check .`, correctos. También se comprobaron enlaces Markdown locales y `git diff --check`.
 
 En aquella entrega 004A no cambiaron código, pruebas, dependencias, configuración financiera, ledger ni archivos restringidos; no se instaló Streamlit, ejecutó interfaz ni consultó Atlas. Esa evidencia es histórica. La implementación y comprobaciones 004B están documentadas en la guía; no sustituyen la revisión nativa Windows pendiente.
+
+## 12. Ajustes ejecutivos 004C sin cambiar el modelo
+
+Resumen ordena hallazgo → indicadores → comparación → potencial hipotético, con cuatro tarjetas financieras en lugar de tabla ancha. AI muestra una matriz de selecciones con posiciones/puntos copiados del informe; dos compartidas y tres sustituciones no son lift de ventas. Graph Health inicia en Empresa y vecinos, con red completa secundaria. La cuenta pública elegida queda al centro; grosor resalta solo LINK-ID presentes en `confirmed_neighbors.neighbors.relationship_ids` de su feature aprobada. No se suman aristas ni se infieren nuevos vecinos, identidades, prioridades o puntos.
+
+La ficha, procedencia, ranking completo/empates, evolución y JSON siguen auditables en paneles contraídos. Business Funnel representa progresión y exclusiones aparte; etapas posteriores No observado. Economic Impact inicia en cinco plazas, permite cambiar a 500 hipotéticas y mantiene cuatro escenarios con signo; umbral base visible, sensibilidad/detalle contraídos. Las tarjetas redondean a pesos enteros solo para presentación; el módulo y JSON conservan precisión. Los filtros mantienen su semántica y Mostrar todas las empresas restablece explícitamente el segmento.
+
+Se amplían CT-A01/A02/A04/A13 con regresiones de foco temporal, evidencia resaltada, conmutación red completa, restablecimiento de filtros, signos/escalas/umbral y paneles cerrados. Verificación de navegador 1366×900 incluye ausencia de recorte horizontal en contenido principal y apertura de auditoría. No se agregan dependencias ni se modifica acceso Atlas. La evidencia y el guion actualizado están en la guía 004B/004C; confirmación Windows reportada se separa de ejecución Linux y nueva revisión pendiente.

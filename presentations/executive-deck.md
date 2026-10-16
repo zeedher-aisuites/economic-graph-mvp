@@ -1,6 +1,6 @@
 # ConectaPyME Economic Intelligence
 
-Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada a la Control Tower local 004B; **no constituye la defensa final ni contiene resultados de negocio observados**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
+Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada al pulido ejecutivo de Control Tower 004C; **no constituye la defensa final ni contiene resultados de negocio observados**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
 
 ## 1. Pregunta central y propuesta de trabajo
 
@@ -84,6 +84,8 @@ Entregable obligatorio como dashboard o prototipo. Cadena: Graph Health → AI P
 
 Implementación 004B: tablero local con Resumen y las cuatro dimensiones, usando fuentes y reglas aprobadas. Red económica observable con selección de cuenta → conexiones directas → ficha → score/evidencia. Distingue datos sintéticos, ejecución técnica, acción comercial No observado e hipótesis financieras. Streamlit opcional, offline predeterminado y Atlas manual de solo lectura; revisión visual nativa Windows pendiente. El dibujo de la red no prueba valor económico.
 
+Pulido 004C: «El grafo modifica tres de las cinco selecciones». Matriz de dos compartidas/tres sustituciones y red centrada explican la decisión; líneas gruesas respaldan evidencia del score existente. Tarjetas económicas con signo y umbral hipotético permiten discutir costos, sin atribuir ventas. Auditoría completa contraída. 004B funciona en Windows según el usuario; el nuevo pulido requiere revisión, sin merge.
+
 Fuente: reto, diapositiva 10 y notas; `../docs/02-challenge-traceability.md`, bloque 6; `../docs/17-control-tower-design.md`; `decision-log.md`, DEC-011.
 
 ## 11. Control Tower — funnel segmentable y límites
@@ -91,6 +93,8 @@ Fuente: reto, diapositiva 10 y notas; `../docs/02-challenge-traceability.md`, bl
 Universo elegible → oportunidades → leads calificados → contactos activados → conversiones. El reto pide segmentación por industria, geografía, cluster, producto, canal, score y período.
 
 Implementación 004B: período exacto, industria observable, empresa y score permiten inspeccionar resultados sin modificar decisiones. Geografía, cluster, producto y canal carecen de soporte y están deshabilitados. En T2 hay 23 conocidas, 21 elegibles y cinco priorizadas por política; dos excluidas. Contactos, oportunidades, activaciones y ventas siguen No observado, no cero. Una cuenta elegible en la PoC no es un lead calificado ni permiso de contacto.
+
+La demo 004C muestra 23 → 21 → 5, con las dos exclusiones en rama separada y etapas posteriores No observado. Tras explorar una cuenta, restablecer Mostrar todas las empresas para recuperar el segmento global; los filtros nunca rellenan plazas ni cambian rankings.
 
 Fuente: reto, diapositiva 11 y notas; `../docs/02-challenge-traceability.md`; `../docs/17-control-tower-design.md`. La segmentación propuesta conserva top-5 y posiciones globales; no produce rentabilidad por cuenta/sector.
 
