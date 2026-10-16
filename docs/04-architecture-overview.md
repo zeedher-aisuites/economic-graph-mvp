@@ -111,3 +111,9 @@ Los agentes son una línea **posterior a la entrega**, no una dependencia ni con
 ## 9. Verificación de la PoC
 
 Antes de considerar la PoC lista: generación repetible, integridad referencial, consultas funcionando, rankings auditables, pruebas básicas y documentación de lo **implementado**, **simulado** y **propuesto**.
+
+## 10. Control Tower local — propuesta 004A
+
+La infraestructura 002/003 permanece como fuente de dominio. `finance.py` implementa el calculador educativo 003B, independiente de datos empresariales. [El diseño 004A](17-control-tower-design.md) propone una UI Streamlit local con adaptador de presentación: ledger público o lectura MongoDB temporal → snapshot/informe de rankings; archivo de supuestos → informe financiero; ambos alimentan vistas y etiquetas sin copiar fórmulas.
+
+Solo se diseña en esta misión: grupo opcional `ui`, app local, cinco vistas y estado de sesión público. No existen todavía esos archivos ni una dependencia Streamlit instalada. Atlas sería opt-in, solo `find`, con paridad visible y sin fallback silencioso. La economía no recibe filtros de empresa/sector/período. CT-01 a CT-05 requieren aprobación técnica/visual antes de implementar; no se añade un backend, API o servicio separado.

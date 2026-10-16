@@ -11,7 +11,7 @@
 | 3. AI/ML Approach | ¿Cómo usar las señales y demostrar que superan un baseline? | Baseline, ranking enriquecido, características, evaluación sin fuga; plan ML si escala | Elección justificada de regla/ML, métricas claras y límites reconocidos | Comparación determinista 003A implementada offline; sin evidencia de superioridad comercial ni predictiva |
 | 4. Architecture | ¿Cómo fluye y se gobierna la información desde fuentes hasta usuarios? | Diagrama PoC + arquitectura objetivo; ingestión, entity resolution, procesamiento, serving, escalabilidad, seguridad, gobernanza, MLOps condicional | Diferencia claramente lo implementado de lo propuesto para producción | Separación e ingesta implementadas; integración Atlas local reportada por el usuario en 002C; conectividad desde Codex Cloud y escala no verificadas |
 | 5. Economic Case | ¿Cuál es la rentabilidad incremental atribuible? | Modelo de unit economics, costos, escenarios, diseño A/B y fórmula de margen neto incremental | Identifica contrafactual, unidad de asignación, horizonte y costos de operación | Calculador 003B y metodología aprobados provisionalmente solo para PoC; escenarios y umbrales ejecutados, sin rentabilidad real ni efecto causal medido |
-| 6. Control Tower | ¿Cómo monitorear datos, método y negocio? | Indicadores Graph Health, AI Performance, Business Funnel y Economic Impact | Cada indicador tiene definición, frecuencia/fuente futura y limitaciones | Estructura definida |
+| 6. Control Tower | ¿Cómo monitorear datos, método y negocio? | Indicadores Graph Health, AI Performance, Business Funnel y Economic Impact | Cada indicador tiene definición, frecuencia/fuente futura y limitaciones | Diseño visual/técnico 004A propuesto con fuentes y aceptación; CT-01 a CT-05 pendientes; interfaz no implementada |
 
 ## 1. Business Framing
 
@@ -163,3 +163,17 @@ Se releyeron las 13 diapositivas y notas del reto original desde `main` en `0e10
 | Control Tower: definición futura | KPI económico y métricas secundarias con requisitos de medición | Eventos comerciales, instrumentación y dashboard/prototipo no implementados |
 
 DEC-004/010 registran aprobación provisional metodológica y límites. Cinco plazas de demostración, 500 hipotéticas y experimento futuro son niveles separados; T0/T1/T2 no se convierten en cohortes independientes. El nulo conserva costos y pierde dinero con las entradas aprobadas; los casos positivos no autorizan invertir. Las nuevas pruebas matemáticas/CLI están en `test_finance.py` y `test_finance_commands.py`; no se modifican rankings, ledger, Atlas ni dependencias. No se generan eventos comerciales o ventas por empresa. Datos reales, contactos, presupuesto, piloto y despliegue siguen sin autorizarse. El PR #5 queda listo para revisión sin integración automática.
+
+## Propuesta de misión 004A — Control Tower sin interfaz implementada
+
+Desde `main` en `8e39c8b`, con PR #5 ya integrado, se revisaron reto original (diapositivas/notas 10–12), módulos y evidencia. [Diseño de Control Tower](17-control-tower-design.md) detalla arquitectura visual/técnica, cinco vistas, diccionario de indicadores, filtros, fuentes existentes, trazabilidad, fallos y CT-A01 a CT-A12. No se instalan dependencias ni se programa UI.
+
+| Dimensión obligatoria | Propuesta verificable contra fuentes actuales | Límite explícito |
+|---|---|---|
+| Graph Health | Snapshot y resumen por corte: empresas, afirmaciones y referencias separadas, estados, fuentes, conflictos, candidatos y frescura descriptiva | Sin denominador privado, confianza numérica inventada ni fusiones/verdad inferidas del simulador |
+| AI Performance | Informe 003A: posiciones y contribuciones, top-5, cambios, cobertura y empates | Comparación de reglas sin modelo; no etiquetas para precision/recall/lift/calibración |
+| Business Funnel | Conocidas, elegibles, priorizadas por una política y exclusiones; segmentación descriptiva | Contactos, oportunidades, activaciones y ventas como No observado, sin ceros/tasas fabricadas |
+| Economic Impact | Informe 003B: cinco/500 plazas, cuatro escenarios, sensibilidad y umbrales | Hipótesis educativa, sin segmentación económica por cuenta/sector, efecto causal ni permiso de invertir |
+| Filtros del reto | Período exacto, industria conocida/desconocida, empresa y rangos de score; fuente/tipo/estado para inspección | Geografía, cluster, producto y canal sin soporte deshabilitados o pendientes; source_type no es canal |
+
+Streamlit opcional, cinco vistas, semántica de filtros, economía de solo lectura y flujo offline/Atlas quedan propuestos en CT-01 a CT-05 y DEC-011. No reinterpretar la obligatoriedad del entregable como aprobación técnica/visual. La misión termina en PR borrador para decisión del usuario, no en tablero funcional ni evaluación causal.

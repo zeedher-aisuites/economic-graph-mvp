@@ -24,6 +24,7 @@ Este documento separa decisiones ya aceptadas, propuestas de implementación y c
 | D-016 | Misión 003A: política `003a-conservative-v1`, elegibilidad y K=5 aprobados expresamente | Baseline y grafo comparables implementados; DEC-009 y `12-commercial-ranking.md`; no demuestra efecto económico |
 | D-017 | Misión 003B, primera fase: exclusivamente diseño económico y experimental en PR borrador | No autoriza supuestos financieros, simulador, eventos ni experimento real |
 | D-018 | 003B, aprobación provisional educativa ECO-01 a ECO-06 y calculador determinista | Escenarios, sensibilidad y equilibrio autorizados; metodología no calibrada, sin finanzas reales, datos/contactos, presupuesto, piloto ni despliegue |
+| D-019 | Misión 004A: diseñar Control Tower y publicar propuesta en PR borrador | No implementar interfaz; tecnología, visuales y filtros requieren revisión CT-01 a CT-05 |
 
 ## 2. Propuestas técnicas, no decisiones cerradas
 
@@ -58,6 +59,7 @@ La elección final se documentará cuando exista diseño de datos y tarea concre
 | P-007 | Evaluación offline | Comparación temporal 003A implementada; efectividad comercial y causalidad no verificadas |
 | P-008 | Caso económico | ECO-01 a ECO-06 aprobadas provisionalmente solo para metodología PoC; calculador implementado. Efecto causal, muestra y aplicación financiera/operativa real no verificados ni autorizados |
 | P-009 | Presentación | Estructura inicial de 12 diapositivas autorizada en misión 001; contenido final y brief de 2–3 páginas pendientes |
+| P-010 | Control Tower | Diseño 004A en `17-control-tower-design.md`; CT-01 a CT-05 pendientes de aprobación antes de código o dependencias |
 
 ## 5. Condiciones de cambio
 
@@ -97,3 +99,9 @@ La respuesta posterior del usuario al PR #5 autoriza provisionalmente ECO-01 a E
 `finance.py`, `calculate_finance.py` y `config/financial_assumptions.json` implementan aritmética agregada, sensibilidad y equilibrio. No generan ventas ni resultados de las 30 empresas. Separan cinco plazas y 500 plazas hipotéticas del protocolo futuro. No cambian rankings, ledger, oráculo, Atlas ni dependencias.
 
 ECO-03/04/05 son aprobación de diseño, no permiso de ejecutar el experimento; ECO-06 no autoriza presupuesto, piloto o despliegue. El detalle está en `14-incremental-economic-case.md`. La entrega actualiza el PR #5 para revisión, sin integrarlo automáticamente.
+
+## 11. Control Tower — fase de diseño 004A
+
+El PR #5 ya está integrado en `main`. Esta misión propone un tablero local para demostrar lo construido y sus límites, reutilizando módulos existentes. Su alcance es exclusivamente documentación: arquitectura, páginas, indicadores, filtros, fuentes y aceptación. Streamlit en grupo opcional `ui` es una propuesta, sin instalación, versión fijada ni cambios a `uv.lock`.
+
+CT-01 a CT-05 requieren aprobación explícita antes de programar. No se cambian ledger, reglas comerciales, supuestos económicos ni Atlas. Los filtros describen segmentos de resultados existentes; no redefinen el top-5 ni producen márgenes por empresa. Las cuatro dimensiones son obligatorias, pero métricas no sustentadas se muestran como no observadas/no disponibles. La entrega es un PR borrador, sin integración automática.

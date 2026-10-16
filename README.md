@@ -14,6 +14,8 @@ La infraestructura de misión 001 se conserva: configuración, cliente y ping si
 
 **Misión 003B:** ECO-01 a ECO-06 aprobadas provisionalmente solo como metodología educativa. Calculador determinista de escenarios, sensibilidad y equilibrio, con [fórmulas y límites](docs/14-incremental-economic-case.md), [resultados hipotéticos](docs/16-financial-calculation.md) y [protocolo futuro A/B](docs/15-incrementality-experiment.md). No valida finanzas de Totalplay ni autoriza datos reales, contactos, presupuesto, piloto o despliegue.
 
+**Misión 004A — solo diseño:** [propuesta de Control Tower](docs/17-control-tower-design.md), con cinco vistas, las cuatro dimensiones del reto, filtros respaldados por datos y trazabilidad por cuenta. Streamlit se propone como dependencia opcional; todavía no está instalado ni existe interfaz. CT-01 a CT-05 requieren aprobación visual/técnica antes de programar. Las CLI existentes siguen siendo el modo de ejecución disponible.
+
 ## Requisitos
 
 - Windows con PowerShell y Git; también puede usarse Linux con comandos equivalentes.
@@ -297,6 +299,7 @@ La prueba hace ping, carga idempotente y lecturas observacionales T0/T1/T2. Cons
 | `docs/06` a `docs/10` | Diseño aprobado y auditoría de implementación |
 | `docs/11` a `docs/13` | Evidencia Atlas local, política de rankings y tablas comparativas |
 | `docs/14` a `docs/16` | Caso económico, protocolo futuro y resultados hipotéticos reproducidos |
+| `docs/17-control-tower-design.md` | Arquitectura visual/técnica, indicadores, filtros y aceptación propuestos; no UI implementada |
 | `docs/00` a `docs/04` | Contexto recibido, alcance, trazabilidad y arquitectura propuesta |
 | `docs/05-executive-communication.md` | Reglas para comunicar decisiones e impacto potencial |
 | `presentations/executive-deck.md` | Única presentación ejecutiva principal, todavía inicial |

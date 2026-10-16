@@ -137,3 +137,10 @@ Priorizar la calidad del argumento empresarial sobre la cantidad de diapositivas
 - Mantener separados cinco plazas de demostración, 500 plazas hipotéticas y protocolo experimental futuro. Mostrar deterioro, efecto nulo obligatorio, casos positivos y referencia de saldo cero sin ajustar parámetros para favorecer al grafo. No generar ventas por empresa ni atribuir resultados a las 30 PyMEs o a Totalplay.
 - Etiquetar supuestos no calibrados, validar unidades/valoración temporal y evitar duplicar costos/reserva. Conservar rankings, ledger, oráculo, Atlas y dependencias. Probar matemáticas y CLI offline, incluido UTF-8 en Windows; no ejecutar integración que escribe en Atlas.
 - La aprobación es metodológica, no validación financiera ni autorización de datos reales, contactos, presupuesto, piloto operativo o despliegue. El experimento es solo diseño: no calcular muestra sin varianza/ICC ni afirmar inferencia causal si faltan bolsas independientes suficientes.
+
+## Alcance vigente — misión 004A, diseño de Control Tower
+
+- El usuario autorizó auditoría y propuesta documental de arquitectura visual/técnica, páginas, indicadores, filtros, fuentes y aceptación en PR borrador desde `main` actualizado. No implementar interfaz, instalar Streamlit ni modificar código, pruebas, dependencias o lockfile en esta fase.
+- Mantener CT-01 a CT-05 de `docs/17-control-tower-design.md` como propuestas hasta aprobación explícita. La Control Tower es obligatoria por el reto; eso no aprueba todavía su tecnología o diseño visual.
+- Reutilizar como fuentes autorizadas los módulos de observabilidad, rankings y finanzas, sin reinterpretar reglas ni alterar ledger, políticas, supuestos u operaciones Atlas. Filtros no redefinen cohortes, posiciones o finanzas. No observar una venta no equivale a venta cero.
+- Separar sintético observable, evidencia técnica con procedencia, hipótesis educativa y experimento futuro. Offline por defecto; Atlas solo diseño de lectura opcional. No avanzar a programar antes de revisar las decisiones CT.

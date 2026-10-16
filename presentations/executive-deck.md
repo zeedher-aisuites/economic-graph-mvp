@@ -1,6 +1,6 @@
 # ConectaPyME Economic Intelligence
 
-Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada al calculador educativo 003B; **no constituye la defensa final ni contiene resultados de negocio observados**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
+Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada al diseño de Control Tower 004A; **no constituye la defensa final ni contiene resultados de negocio observados**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
 
 ## 1. Pregunta central y propuesta de trabajo
 
@@ -82,17 +82,17 @@ Fuente: `../docs/15-incrementality-experiment.md`; `decision-log.md`, DEC-004/01
 
 Entregable obligatorio como dashboard o prototipo. Cadena: Graph Health → AI Performance → Business Funnel → Economic Impact. Debe conectar desempeño del método, decisión, acción comercial y resultado económico.
 
-Pendiente: definiciones operativas, fuentes, frecuencia y prototipo. Las dimensiones están identificadas; no existen indicadores ejecutados. Sin modelo entrenado, reportar desempeño analítico con los límites correspondientes.
+Propuesta 004A: tablero local con Resumen y las cuatro dimensiones, usando fuentes y reglas ya implementadas. Muestra datos sintéticos observables, rankings explicables, etapas comerciales No observado e hipótesis económicas por separado. Streamlit opcional, filtros y criterios de aceptación están pendientes CT-01 a CT-05; no existe interfaz implementada.
 
-Fuente: reto, diapositiva 10 y notas; `../docs/02-challenge-traceability.md`, bloque 6.
+Fuente: reto, diapositiva 10 y notas; `../docs/02-challenge-traceability.md`, bloque 6; `../docs/17-control-tower-design.md`; `decision-log.md`, DEC-011.
 
 ## 11. Control Tower — funnel segmentable y límites
 
 Universo elegible → oportunidades → leads calificados → contactos activados → conversiones. El reto pide segmentación por industria, geografía, cluster, producto, canal, score y período.
 
-Pendiente: factibilidad y definiciones sobre el modelo aprobado. No copiar cifras ilustrativas del reto como resultados del proyecto ni presentar métricas causales a partir de simulación.
+Diseño 004A: período exacto, industria observable, empresa y score permiten inspeccionar resultados sin modificar decisiones. Geografía, cluster, producto y canal carecen de soporte y se deshabilitarían. En T2 hay 23 conocidas, 21 elegibles y cinco priorizadas por política; dos excluidas. Contactos, oportunidades, activaciones y ventas siguen No observado, no cero. Una cuenta elegible en la PoC no es un lead calificado ni permiso de contacto.
 
-Fuente: reto, diapositiva 11 y notas; `../docs/02-challenge-traceability.md`.
+Fuente: reto, diapositiva 11 y notas; `../docs/02-challenge-traceability.md`; `../docs/17-control-tower-design.md`. La segmentación propuesta conserva top-5 y posiciones globales; no produce rentabilidad por cuenta/sector.
 
 ## 12. Estado, riesgos y siguiente decisión
 
