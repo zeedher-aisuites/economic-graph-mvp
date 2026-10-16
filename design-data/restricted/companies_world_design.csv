@@ -1,0 +1,31 @@
+﻿company_id,sector,display_name,size_truth,employee_count_truth,branch_count_truth,microzone_truth,business_operation_truth,digital_maturity_truth,connectivity_use_case_truth,commercial_constraint_truth,seed_crm_t0
+EMP-001,Panaderías,La Espiga del Barrio,Micro,5,1,Barrio Alameda,Venta en mostrador y encargos,Baja,TPV y mensajería comercial,Presupuesto restringido,1
+EMP-002,Panaderías,Hornos del Centro,Pequeña,24,3,Corredor Mercado,Producción y distribución a puntos de venta,Media,Sincronización de TPV entre sucursales,Contratos actuales por sede,1
+EMP-003,Panaderías,Panificadora Valle Claro,Mediana,92,6,Parque Productivo,"Planta, mayoristas y distribución",Alta,Conectividad de planta y continuidad de ERP,Proceso de compra formal,0
+EMP-004,Logística,Ruta Corta Mensajería,Micro,8,1,Terminal Norte,Última milla en motocicleta,Media,Despacho y seguimiento móvil,Alta variación diaria de operaciones,1
+EMP-005,Logística,Carga Urbana del Centro,Pequeña,38,2,Parque Productivo,Almacén y rutas de reparto B2B,Media,Conexión entre almacén y oficina,Dependencia de proveedor existente,0
+EMP-006,Tecnología,Nodo Azul Soporte TI,Micro,6,1,Plaza Tecnológica,Soporte y mantenimiento a negocios,Alta,Acceso remoto estable y videollamadas,Ingresos por proyecto,1
+EMP-007,Tecnología,Bitácora Software,Pequeña,19,1,Plaza Tecnológica,Desarrollo de software a medida,Alta,Conectividad simétrica y respaldo,Equipo híbrido,1
+EMP-008,Tecnología,Nube Sencilla Sistemas,Micro,9,1,Barrio Alameda,Implementación de herramientas SaaS,Alta,Enlaces confiables para demos,Presupuesto acotado,0
+EMP-009,Tecnología,Taller de Datos Centro,Pequeña,27,2,Distrito Oficinas,Integración y análisis de datos,Alta,Transferencia segura y videocolaboración,Demanda estacional de proyectos,0
+EMP-010,Tecnología,Enlace Punto POS,Micro,7,1,Corredor Mercado,Instalación y soporte de TPV,Media,Soporte remoto y gestión de tickets,Dependencia de visitas de campo,1
+EMP-011,Tecnología,Vector Local Ciberseguridad,Pequeña,21,1,Distrito Oficinas,Consultoría de seguridad informática,Alta,Baja latencia y redundancia,Requisitos de seguridad de clientes,0
+EMP-012,Tecnología,Mapa Digital Studio,Micro,5,1,Plaza Tecnológica,Diseño web y marketing digital,Alta,Subida de archivos y trabajo remoto,Variabilidad de contratos,0
+EMP-013,Fintech,Cobro Ágil Pagos,Pequeña,31,2,Distrito Oficinas,Servicios de aceptación de pagos,Alta,Disponibilidad y canales redundantes,Cumplimiento y evaluación de proveedores,1
+EMP-014,Fintech,Caja Vecina Digital,Micro,8,1,Corredor Mercado,Herramienta de conciliación para comercios,Alta,Integraciones estables y soporte remoto,Presupuesto por crecimiento,0
+EMP-015,Fintech,Saldo Claro Finanzas,Pequeña,25,1,Distrito Oficinas,Software financiero para PyMEs,Alta,Acceso seguro y continuidad operativa,Políticas de compra estrictas,0
+EMP-016,Fintech,Fondo Marea Capital,Micro,10,1,Plaza Tecnológica,Plataforma de gestión de crédito comercial,Alta,Videoconferencia y continuidad de servicio,Escala operativa reducida,0
+EMP-017,Restaurantes y cafeterías,Café Jacaranda,Micro,7,1,Barrio Alameda,Cafetería de mostrador,Media,TPV y pedidos por aplicaciones,Sensibilidad a precio,1
+EMP-018,Restaurantes y cafeterías,Comedor del Andén,Micro,9,1,Terminal Norte,Comidas corridas y servicio a oficinas,Baja,Cobros con terminal y pedidos,Horarios limitados,1
+EMP-019,Restaurantes y cafeterías,Mesa de Barrio,Pequeña,18,2,Barrio Alameda,Restaurante familiar con dos locales,Media,"TPV, reservas y enlace entre sedes",Administración familiar,0
+EMP-020,Restaurantes y cafeterías,Brasa y Huerto,Pequeña,26,2,Corredor Mercado,Restaurante con reparto propio,Media,"Pedidos, reparto y CCTV",Estacionalidad de ventas,1
+EMP-021,Restaurantes y cafeterías,Café Estación Nueve,Micro,6,1,Terminal Norte,Café para viajeros y empleados,Media,Wi-Fi visitantes y TPV,Alta rotación de personal,0
+EMP-022,Restaurantes y cafeterías,Sazón de Patio,Micro,11,1,Barrio Alameda,Cocina local y servicio a domicilio,Media,Apps de entrega y mensajería,Capacidad operativa limitada,0
+EMP-023,Restaurantes y cafeterías,Terraza del Reloj,Pequeña,23,1,Distrito Oficinas,Restaurante con reservas y eventos,Media,"Reservas, cámaras y Wi-Fi de invitados",Picos en fines de semana,0
+EMP-024,Restaurantes y cafeterías,Almuerzo Punto Cero,Micro,8,1,Corredor Mercado,Desayunos y ventas para llevar,Baja,TPV y pedidos móviles,Presupuesto restringido,0
+EMP-025,Comercio minorista,Papelería Horizonte,Micro,4,1,Barrio Alameda,Papelería y copias,Baja,Cobros y pedidos a proveedores,Flujo de caja variable,1
+EMP-026,Comercio minorista,Ferretería Cinco Calles,Pequeña,16,2,Corredor Mercado,Ferretería y entrega local,Media,Inventario compartido y TPV,Sistemas antiguos,1
+EMP-027,Comercio minorista,Moda Prisma Local,Micro,7,1,Plaza Tecnológica,Ropa y ventas por redes,Media,"Catálogo, pagos y publicaciones",Dependencia de temporadas,0
+EMP-028,Comercio minorista,Botica del Parque,Pequeña,14,2,Barrio Alameda,Comercio de cuidado personal,Media,Inventario y terminales,Normativa y compras planificadas,0
+EMP-029,Comercio minorista,Mercado Verde Insumos,Pequeña,20,2,Parque Productivo,Venta de empaques y suministros,Media,Inventario y pedidos B2B,Alto volumen en temporadas,0
+EMP-030,Comercio minorista,Bici Centro Taller y Tienda,Micro,6,1,Terminal Norte,Refacciones y reparación de bicicletas,Baja,"Citas, TPV y mensajería",Ventas dependientes del clima,0
