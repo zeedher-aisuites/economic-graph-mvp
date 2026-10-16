@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 import pytest
+from ui_test_support import prepare_ui_runtime, run_app
 
 from economic_graph import tower_read_model as tower
 from economic_graph.finance import financial_report, load_financial_config
@@ -29,13 +30,19 @@ def assert_ok(app):
     assert not app.exception, [error.message for error in app.exception]
 
 
+@pytest.fixture(scope="module")
+def ui_runtime():
+    return prepare_ui_runtime()
+
+
 @pytest.fixture
-def app(monkeypatch):
+def app(monkeypatch, ui_runtime, record_property):
+    record_property("ui_dependency_setup_seconds", json.dumps(ui_runtime, sort_keys=True))
     for key in ("MONGODB_URI", "MONGODB_DATABASE"):
         monkeypatch.delenv(key, raising=False)
     monkeypatch.setattr(tower, "load_config", lambda *_: pytest.fail("Offline no lee .env"))
     monkeypatch.setattr(tower, "create_client", lambda *_: pytest.fail("Offline no crea cliente"))
-    result = AppTest.from_file(APP, default_timeout=15).run()
+    result = run_app(AppTest.from_file(APP, default_timeout=15))
     assert_ok(result)
     return result
 
@@ -216,6 +223,7 @@ def test_public_only_ui_utf8_and_paths_with_spaces_without_network_or_env(tmp_pa
     shutil.copy(
         ROOT / "config/financial_assumptions.json", root / "config/financial_assumptions.json"
     )
+    shutil.copy(ROOT / "tests/ui_test_support.py", root / "ui_test_support.py")
     package = root / "economic_graph"
     shutil.copytree(
         ROOT / "src/economic_graph",
@@ -223,16 +231,82 @@ def test_public_only_ui_utf8_and_paths_with_spaces_without_network_or_env(tmp_pa
         ignore=shutil.ignore_patterns("simulator", "__pycache__"),
     )
     script = """
-import json, socket, sys
+import asyncio, json, socket, sys, threading
 from pathlib import Path
+from ui_test_support import install_network_guard, prepare_ui_runtime, run_app
+
+native_pair = socket.socketpair
+def windows_style_pair(*args, **kwargs):
+    if sys.platform == 'win32':
+        return native_pair(*args, **kwargs)
+    # Ejercitar el mecanismo TCP de Windows incluso en Linux, sin red externa.
+    assert not args and not kwargs
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as listener:
+        listener.bind(('127.0.0.1', 0))
+        listener.listen(1)
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            client.connect(listener.getsockname())
+            server, _ = listener.accept()
+        except BaseException:
+            client.close()
+            raise
+    assert server.getpeername() == client.getsockname()
+    return server, client
+
+pair_factory = native_pair if sys.platform == 'win32' else getattr(
+    socket, '_fallback_socketpair', windows_style_pair
+)
+install_network_guard(socketpair_factory=pair_factory)
+# IPC real permitido; los destinos externos y otros servicios locales siguen bloqueados.
+left, right = socket.socketpair()
+try:
+    left.sendall(b'ipc')
+    assert right.recv(3) == b'ipc'
+finally:
+    left.close()
+    right.close()
+loop = asyncio.new_event_loop()
+try:
+    loop.run_until_complete(asyncio.sleep(0))
+finally:
+    loop.close()
+for address in (('198.51.100.1', 443), ('127.0.0.1', 9), ('::1', 9)):
+    family = socket.AF_INET6 if ':' in address[0] else socket.AF_INET
+    with socket.socket(family, socket.SOCK_STREAM) as probe:
+        for method in (probe.connect, probe.connect_ex):
+            try:
+                method(address)
+            except AssertionError:
+                pass
+            else:
+                raise AssertionError('El guard permitió una conexión no autorizada')
+for operation in (
+    lambda: socket.create_connection(('example.com', 443)),
+    lambda: socket.getaddrinfo('example.com', 443),
+):
+    try:
+        operation()
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError('El guard permitió acceso de red o DNS')
+
+class ColdImportGuard:
+    def find_spec(self, fullname, path=None, target=None):
+        if fullname in {'numpy', 'pandas', 'pyarrow', 'altair'}:
+            assert threading.current_thread() is threading.main_thread(), (
+                'Importación nativa fría dentro del timeout funcional: ' + fullname
+            )
+        return None
+
+sys.meta_path.insert(0, ColdImportGuard())
+prepare_ui_runtime()
 from streamlit.testing.v1 import AppTest
-def blocked(*args, **kwargs):
-    raise AssertionError('Red no autorizada en modo offline')
-socket.socket.connect = blocked
-socket.create_connection = blocked
-app = AppTest.from_file('app/control_tower.py', default_timeout=20).run()
+app = run_app(AppTest.from_file('app/control_tower.py', default_timeout=20))
 for page in app.radio[0].options:
-    app.radio[0].set_value(page).run()
+    app.radio[0].set_value(page)
+    run_app(app)
     if app.exception:
         raise AssertionError([e.message for e in app.exception])
 import economic_graph.tower_read_model as tower

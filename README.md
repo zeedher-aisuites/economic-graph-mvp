@@ -39,6 +39,8 @@ uv run --group ui ruff format --check .
 
 Selecciona Graph Health y una **Empresa** para explorar conexiones directas y abrir su ficha. Industria y empresa conservan scores, posiciones y top-5 globales; las etapas sin datos dicen **No observado**. Atlas exige elegir su modo y pulsar **Leer Atlas al corte**; no hay escrituras ni respaldo offline silencioso. La economía no se recalcula por industria o cuenta. Las CLI siguen independientes y están documentadas en la guía como alternativa de demostración.
 
+Compatibilidad de pruebas Windows: la suite prepara dependencias nativas antes del timeout funcional de AppTest, conservado en 15 segundos. La prueba aislada permite únicamente el canal interno `socketpair` de Python y sigue bloqueando conexiones externas y otros servicios locales. Diagnóstico y límites en la [guía de compatibilidad](docs/18-control-tower-demo.md#corrección-de-la-suite-tras-el-reporte-windows). Usa `uv run --group ui pytest --durations=5` para identificar las fases lentas; la confirmación posterior en Windows sigue pendiente.
+
 ## Requisitos
 
 - Windows con PowerShell y Git; también puede usarse Linux con comandos equivalentes.

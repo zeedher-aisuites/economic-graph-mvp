@@ -98,3 +98,29 @@ Resultados reales en Codex Cloud/Linux, Python 3.12.14:
 | `git diff --check`, enlaces Markdown y comparación de archivos protegidos | Correctos; ledger, diseños, configuración financiera y módulos de dominio intactos |
 
 La única instalación adicional directa fue Streamlit; el navegador usado para inspección ya existía en el entorno, sin añadirlo al manifiesto. Los tiempos de la prueba Linux no son una medición de rendimiento del equipo Windows ni un SLA. Cronometrar arranque/refresco en la laptop de presentación y registrar esa evidencia durante la revisión pendiente.
+
+### Corrección de la suite tras el reporte Windows
+
+El usuario confirmó instalación en Windows 11, Python 3.12.10 y Streamlit 1.66.0 y reportó **269 aprobadas, una fallida, un error y una integración omitida**. Fallaron el primer fixture AppTest por timeout de 15 segundos y el subprocess público porque el bloqueo global de `socket.connect` impedía `socketpair()`. Ese reporte no incluye una pila del hilo en el instante del primer timeout.
+
+**Inicialización de AppTest.** Se inspeccionó Streamlit 1.66.0: crea el bucle de eventos antes del contador del script y lo conserva sin ejecutarlo durante el render. No hay trabajo asíncrono propio de la aplicación. Se instrumentó una ejecución fría Linux: NumPy, PyArrow y pandas se importaron en `ScriptRunner.scriptThread`, dentro del presupuesto funcional; render frío aproximado de 1.90 s y repetido de 0.07 s. La preparación separada de NumPy/pandas/PyArrow/Altair tardó aproximadamente 0.55 s en otra medición y el primer AppTest preparado tardó 0.54 s. Son mediciones puntuales, no comparativa de rendimiento ni evidencia de tiempos Windows.
+
+La prueba mezclaba carga inicial de dependencias nativas con su límite de render. Ahora `ui_test_support.prepare_ui_runtime` importa esas dependencias una vez, en el hilo principal, y registra tiempos por módulo como propiedad pytest. El límite funcional sigue **15 s**; el subprocess conserva 20 s por render y 60 s totales. No hay reintentos ni ampliaciones de timeout. La regresión aislada rechaza una primera importación pesada desde el hilo de script. Un watchdog captura pila antes del cierre si el timeout persiste, mostrando solo archivo/línea/función, sin código fuente, variables o secretos.
+
+No se reprodujeron los 15 s en Linux; sin la pila del Windows original no puede atribuirse con certeza su duración a una DLL, antivirus, CPU o bloqueo concreto. La separación corrige el alcance del timeout y añade diagnóstico para comprobarlo en el equipo afectado; no se afirma que el arranque real de Windows haya sido medido o validado por Codex.
+
+**Aislamiento de red.** El [fallback de socketpair de CPython 3.12.10](https://github.com/python/cpython/blob/v3.12.10/Lib/socket.py) crea un listener TCP loopback efímero y conecta su otro extremo; `asyncio` lo utiliza como canal interno de señalización. Bloquear cualquier `connect`, incluso el de ese par, rompe la inicialización de AppTest en Windows. El guard nuevo solo admite el endpoint recién enlazado dentro de la llamada confiable a `socketpair`, limitado al mismo hilo y a la duración de esa llamada. No es una excepción general para localhost.
+
+La protección continúa activa antes de importar dependencias y ejecutar la UI: bloquea conexiones directas, `connect_ex`, DNS, `create_connection` y envío de datagramas; servicios de loopback ajenos también se rechazan. La prueba verifica intercambio real por el par local y ejecución de un bucle `asyncio`, seguida de rechazos explícitos a destinos externos y otros puertos locales. En Linux fuerza el fallback TCP de la biblioteca estándar cuando existe, con emulación equivalente como respaldo para versiones que no lo exponen; en Windows usa su implementación real. No se intentan conexiones externas para comprobar esos rechazos.
+
+Se conservan **los 271 casos anteriores**, sin omitir ni borrar los dos casos reportados; las nuevas aserciones de regresión están dentro de la prueba aislada existente. Sigue copiando solo app, módulos públicos, ledger, configuración financiera aprobada y helper de pruebas a una ruta con espacios/acentos, sin simulador ni diseños privados. No cambia código de la aplicación, dependencias, ledger, rankings, finanzas ni Atlas.
+
+Reejecución Linux tras la corrección: **271 aprobadas y una integración Atlas omitida**; Ruff y formato correctos. La confirmación nativa Windows queda pendiente del usuario. Para repetir y mostrar las fases más lentas desde la raíz:
+
+```powershell
+$env:RUN_MONGODB_INTEGRATION = "0"
+uv sync --locked --group ui
+uv run --group ui pytest --durations=5
+uv run --group ui ruff check .
+uv run --group ui ruff format --check .
+```

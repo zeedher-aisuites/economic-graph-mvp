@@ -191,3 +191,5 @@ El usuario aprobó CT-01 a CT-05 y amplió CT-02 con red económica interactiva 
 | Fuentes/filtros | Ledger offline predeterminado, Atlas manual solo `find` y hash de paridad; cortes exactos y segmentos descriptivos | Sin escrituras, respaldo silencioso, filtros sin soporte ni nueva lectura Atlas real verificada |
 
 Pruebas automáticas de adaptador/AppTest, regresión aislada sin red/env/simulador y revisión Chromium Linux. No equivalen a ejecución nativa Windows: el usuario validará visualmente y contrastará resultados antes de integrar PR #6. No cambian ledger, políticas ni supuestos aprobados; brief final y experimento real siguen pendientes.
+
+Portabilidad de la suite 004B: tras reporte Windows de 269 aprobadas/un fallo/un error, se separan importaciones nativas del límite AppTest y se permite solo el IPC `socketpair`, conservando bloqueo de conexiones externas y separación física de datos privados. Los 271 casos se conservan y pasan en Linux; timeout de 15 segundos intacto y pila segura si persiste. Diagnóstico y alcance de evidencia en la guía 004B; nueva ejecución nativa Windows pendiente. Sin cambios de datos, reglas, finanzas o Atlas.
