@@ -1,6 +1,7 @@
 """Adaptación descriptiva de fuentes públicas; sin nuevas reglas comerciales ni UI."""
 
 import math
+import textwrap
 from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
@@ -145,12 +146,14 @@ def account_detail(context: dict, company_id: str) -> dict | None:
     }
 
 
-def network_data(context: dict, ids: set) -> dict:
+def network_data(context: dict, ids: set, focus_id: str | None = None) -> dict:
     """Red incidente al segmento; extremos externos conocidos permanecen como contexto."""
     view, report = context["view"], context["ranking"]
     known = {row["company_id"]: row for row in view["companies"]}
     if not ids <= known.keys():
         raise ValueError("La selección contiene una empresa no conocida al corte.")
+    if focus_id is not None and ids != {focus_id}:
+        raise ValueError("El foco debe corresponder a la única empresa seleccionada.")
     claims = [
         row for row in view["relationships"] if ids & {row["from_company_id"], row["to_company_id"]}
     ]
@@ -158,13 +161,23 @@ def network_data(context: dict, ids: set) -> dict:
     shown = ids | {row[key] for row in claims for key in ("from_company_id", "to_company_id")}
     if not shown <= known.keys():
         raise ValueError("La red contiene un extremo no identificable al corte.")
-    ordered = sorted(known)
+    ordered = sorted(shown - {focus_id}) if focus_id else sorted(known)
     # Layout circular determinista: posición decorativa, sin distancia comercial implícita.
     positions = {
         key: (math.cos(2 * math.pi * i / len(ordered)), math.sin(2 * math.pi * i / len(ordered)))
         for i, key in enumerate(ordered)
     }
+    if focus_id:
+        positions[focus_id] = (0, 0)
     ranked = {row["company_id"]: row for row in report["companies"]}
+    focus = ranked.get(focus_id, {})
+    support_ids = {
+        identifier
+        for neighbor in focus.get("features", {})
+        .get("confirmed_neighbors", {})
+        .get("neighbors", [])
+        for identifier in neighbor["relationship_ids"]
+    }
     nodes = []
     for key in sorted(shown):
         company = known[key]
@@ -187,12 +200,15 @@ def network_data(context: dict, ids: set) -> dict:
             {
                 "id": key,
                 "name": company["attributes"]["display_name"]["value"] or key,
-                "label": (company["attributes"]["display_name"]["value"] or key)
+                "label": textwrap.fill(company["attributes"]["display_name"]["value"] or key, 18)
                 if len(shown) <= 10
                 else "",
                 "sector": sector(company),
                 "x": positions[key][0],
                 "y": positions[key][1],
+                "label_x": positions[key][0] * 1.22,
+                "label_y": positions[key][1] * 1.22 if key != focus_id else -0.22,
+                "size": 650 if key == focus_id else 180,
                 "scope": "Selección" if key in ids else "Vecino de contexto",
                 "state": state,
                 "identity": company["identity_status"],
@@ -213,6 +229,9 @@ def network_data(context: dict, ids: set) -> dict:
                 "type": TYPES[row["relationship_type"]],
                 "status": STATES[row["verification_status"]],
                 "scoring_status": diagnostics[row["relationship_id"]]["scoring_status"],
+                "supports_focus": row["relationship_id"] in support_ids,
+                "emphasis": 4 if row["relationship_id"] in support_ids else 1.5,
+                "opacity": 1 if row["relationship_id"] in support_ids else 0.5,
                 "source": ", ".join(sorted({r["source_type"] for r in row["status_history"]})),
                 "evidence": ", ".join(r["observation_id"] for r in row["status_history"]),
                 "x": positions[left][0],
@@ -228,16 +247,28 @@ def network_spec(network: dict) -> dict:
     """Vega-Lite integrado en Streamlit: sin bibliotecas de red, CDN o HTML propio."""
     axes = {"type": "quantitative", "axis": None, "scale": {"domain": [-1.45, 1.45]}}
     return {
-        "height": 460,
+        "height": 350,
         "layer": [
             {
                 "data": {"values": network["edges"]},
-                "mark": {"type": "rule", "strokeWidth": 2, "opacity": 0.7},
+                "mark": {"type": "rule"},
                 "encoding": {
                     "x": {"field": "x", **axes},
                     "y": {"field": "y", **axes},
                     "x2": {"field": "x2"},
                     "y2": {"field": "y2"},
+                    "strokeWidth": {
+                        "field": "emphasis",
+                        "type": "quantitative",
+                        "scale": None,
+                        "legend": None,
+                    },
+                    "opacity": {
+                        "field": "opacity",
+                        "type": "quantitative",
+                        "scale": None,
+                        "legend": None,
+                    },
                     "color": {
                         "field": "type",
                         "type": "nominal",
@@ -264,6 +295,7 @@ def network_spec(network: dict) -> dict:
                             ("type", "Tipo"),
                             ("status", "Estado"),
                             ("scoring_status", "Diagnóstico scoring"),
+                            ("supports_focus", "Respalda señal de la cuenta"),
                             ("source", "Fuentes"),
                             ("evidence", "Observaciones"),
                         )
@@ -272,10 +304,16 @@ def network_spec(network: dict) -> dict:
             },
             {
                 "data": {"values": network["nodes"]},
-                "mark": {"type": "point", "filled": True, "size": 210, "stroke": "white"},
+                "mark": {"type": "point", "filled": True, "stroke": "white"},
                 "encoding": {
                     "x": {"field": "x", **axes},
                     "y": {"field": "y", **axes},
+                    "size": {
+                        "field": "size",
+                        "type": "quantitative",
+                        "scale": None,
+                        "legend": None,
+                    },
                     "color": {
                         "field": "scope",
                         "type": "nominal",
@@ -289,6 +327,7 @@ def network_spec(network: dict) -> dict:
                         "field": "state",
                         "type": "nominal",
                         "title": "Evidencia económica",
+                        "legend": None,
                         "scale": {
                             "domain": [
                                 "Con vínculo confirmado utilizable",
@@ -313,10 +352,16 @@ def network_spec(network: dict) -> dict:
             },
             {
                 "data": {"values": network["nodes"]},
-                "mark": {"type": "text", "dy": -15, "fontSize": 10, "limit": 135},
+                "mark": {
+                    "type": "text",
+                    "fontSize": 12,
+                    "lineHeight": 14,
+                    "lineBreak": "\n",
+                    "limit": 160,
+                },
                 "encoding": {
-                    "x": {"field": "x", **axes},
-                    "y": {"field": "y", **axes},
+                    "x": {"field": "label_x", **axes},
+                    "y": {"field": "label_y", **axes},
                     "text": {"field": "label", "type": "nominal"},
                 },
             },

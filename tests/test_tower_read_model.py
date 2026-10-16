@@ -275,6 +275,42 @@ def test_atlas_failure_never_exposes_driver_text(monkeypatch, public_rows):
 
 
 @pytest.mark.parametrize("cut", ["T0", "T1", "T2"])
+def test_focused_network_only_highlights_approved_feature_evidence(public_rows, cut):
+    context = tower.build_context(public_rows, cut)
+    before = deepcopy(context)
+    cafe = next(
+        row for row in context["ranking"]["companies"] if row["display_name"] == "Café Jacaranda"
+    )
+    key = cafe["company_id"]
+    network = tower.network_data(context, {key}, focus_id=key)
+    center = next(node for node in network["nodes"] if node["id"] == key)
+    assert (center["x"], center["y"]) == (0, 0)
+    expected = {
+        identifier
+        for neighbor in cafe["features"]["confirmed_neighbors"]["neighbors"]
+        for identifier in neighbor["relationship_ids"]
+    }
+    assert {edge["id"] for edge in network["edges"] if edge["supports_focus"]} == expected
+    assert all(
+        edge["scoring_status"] == "CONFIRMED" for edge in network["edges"] if edge["supports_focus"]
+    )
+    assert all(
+        not edge["supports_focus"]
+        for edge in network["edges"]
+        if edge["type"] == tower.TYPES["REFERS_TO"]
+    )
+    assert len({(node["x"], node["y"]) for node in network["nodes"]}) == len(network["nodes"])
+    assert context == before
+    assert_no_private_fields(network)
+
+
+def test_focus_cannot_refer_to_company_outside_selection(public_rows):
+    context = tower.build_context(public_rows, "T0")
+    with pytest.raises(ValueError, match="única empresa"):
+        tower.network_data(context, tower.segment_ids(context), focus_id="CO-unknown")
+
+
+@pytest.mark.parametrize("cut", ["T0", "T1", "T2"])
 def test_context_has_exact_parity_with_ranking_cli(public_rows, cut):
     environment = {
         key: value for key, value in os.environ.items() if not key.upper().startswith("MONGODB_")

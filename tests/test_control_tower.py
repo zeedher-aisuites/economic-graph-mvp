@@ -26,6 +26,10 @@ def select(app, label):
     return next(widget for widget in app.selectbox if widget.label == label)
 
 
+def view(app):
+    return next(widget for widget in app.radio if widget.label == "Vista")
+
+
 def assert_ok(app):
     assert not app.exception, [error.message for error in app.exception]
 
@@ -48,7 +52,7 @@ def app(monkeypatch, ui_runtime, record_property):
 
 
 def test_default_is_executive_summary_t2_offline(app):
-    assert app.radio[0].value == "Resumen"
+    assert view(app).value == "Resumen"
     assert select(app, "Período").value == "T2"
     assert select(app, "Fuente de datos").value == "Offline"
     metrics = {metric.label: metric.value for metric in app.metric}
@@ -57,11 +61,15 @@ def test_default_is_executive_summary_t2_offline(app):
     assert metrics["Cuentas elegibles · global"] == "21"
     assert metrics["Cambios en cinco plazas · global"] == "3"
     assert any("No observado" in row.value for row in app.markdown)
+    text = "\n".join(row.value for row in app.markdown)
+    assert "El grafo modifica 3 de las 5 selecciones comerciales" in text
+    assert "+$39,000" in text and "−$41,000" in text
+    assert len(app.dataframe) == 2  # Solo selecciones; finanzas principales sin tabla ancha.
 
 
 @pytest.mark.parametrize("page", PAGES)
 def test_five_pages_render_and_unsupported_filters_disabled(app, page):
-    app.radio[0].set_value(page).run()
+    view(app).set_value(page).run()
     assert_ok(app)
     for label in ("Geografía", "Cluster", "Producto", "Canal comercial"):
         assert select(app, label).disabled
@@ -76,7 +84,7 @@ def test_five_pages_render_and_unsupported_filters_disabled(app, page):
 def test_cut_controls_options_and_no_future_evolution(app, cut, known, observations):
     select(app, "Período").set_value(cut).run()
     assert len(select(app, "Empresa").options) == known + 1
-    app.radio[0].set_value("Graph Health").run()
+    view(app).set_value("Graph Health").run()
     assert_ok(app)
     assert app.metric[0].value == str(observations)
     frames = [frame.value for frame in app.dataframe]
@@ -85,7 +93,7 @@ def test_cut_controls_options_and_no_future_evolution(app, cut, known, observati
 
 
 def test_company_selector_updates_network_and_detail_without_rescoring(app):
-    app.radio[0].set_value("Graph Health").run()
+    view(app).set_value("Graph Health").run()
     companies = tower.build_context(load_observations(), "T2")["view"]["companies"]
     cafe = next(
         c["company_id"]
@@ -106,12 +114,13 @@ def test_company_selector_updates_network_and_detail_without_rescoring(app):
     assert any("Procedencia e historia" in e.label for e in app.expander)
     select(app, "Período").set_value("T0").run()
     assert_ok(app)
-    assert select(app, "Empresa").value is None
-    assert len(select(app, "Empresa").options) == 13
+    known = tower.segment_ids(tower.build_context(load_observations(), "T0"))
+    assert select(app, "Empresa").value in known
+    assert len(select(app, "Empresa").options) == 12
 
 
 def test_industry_and_score_filters_preserve_global_rankings(app):
-    app.radio[0].set_value("AI Performance").run()
+    view(app).set_value("AI Performance").run()
     select(app, "Industria").set_value(tower.UNKNOWN).run()
     assert_ok(app)
     context = tower.build_context(load_observations(), "T2")
@@ -128,7 +137,7 @@ def test_industry_and_score_filters_preserve_global_rankings(app):
 
 
 def test_funnel_missing_stages_are_text_not_zero(app):
-    app.radio[0].set_value("Business Funnel").run()
+    view(app).set_value("Business Funnel").run()
     rows = app.dataframe[0].value.to_dict("records")
     assert [row["Cantidad"] for row in rows[:4]] == ["23", "21", "2", "5"]
     assert all(row["Cantidad"] == "No observado" for row in rows[4:])
@@ -136,18 +145,24 @@ def test_funnel_missing_stages_are_text_not_zero(app):
 
 def test_finance_tables_match_module_and_do_not_depend_on_company_filters(app):
     select(app, "Industria").set_value(tower.UNKNOWN).run()
-    app.radio[0].set_value("Economic Impact").run()
+    view(app).set_value("Economic Impact").run()
     assert_ok(app)
     report = financial_report(load_financial_config(), sensitivity=True)
-    for index, scope in enumerate(("demo", "hypothetical")):
-        table = app.dataframe[index].value
+    for scope, capacity in (("demo", 5), ("hypothetical", 500)):
+        table = app.dataframe[0].value
+        table = table[table["Capacidad"] == capacity]
         results = [row for row in report["results"] if row["scope"] == scope]
         assert len(table) == 4
         for actual, row in zip(table.to_dict("records"), results, strict=True):
             assert actual["Saldo neto"] == f"${float(row['net_present_value_mxn']):,.2f} MXN"
             assert actual["Equilibrio (pp)"] == row["break_even"]["delta_pp"]
-    assert "$39,000.00 MXN" in app.dataframe[1].value["Saldo neto"].values
-    assert "$-41,000.00 MXN" in app.dataframe[1].value["Saldo neto"].values
+    assert "$39,000.00 MXN" in app.dataframe[0].value["Saldo neto"].values
+    assert "$-41,000.00 MXN" in app.dataframe[0].value["Saldo neto"].values
+    scale = next(widget for widget in app.radio if widget.label == "Escala del ejercicio")
+    scale.set_value("hypothetical").run()
+    assert_ok(app)
+    text = "\n".join(element.value for element in app.markdown)
+    assert "+$39,000" in text and "−$41,000" in text
 
 
 def test_atlas_requires_button_and_context_changes_invalidate_old_rows(app, monkeypatch):
@@ -184,9 +199,9 @@ def test_invalid_ledger_is_visible_and_finance_still_available(app, monkeypatch)
     assert_ok(app)
     assert any("ledger observable" in error.value for error in app.error)
     assert len(app.metric) == 0
-    app.radio[0].set_value("Economic Impact").run()
+    view(app).set_value("Economic Impact").run()
     assert_ok(app)
-    assert len(app.dataframe[0].value) == 4
+    assert len(app.dataframe[0].value) == 8
 
 
 def test_atlas_error_does_not_reuse_previous_success(app, monkeypatch):
@@ -206,9 +221,11 @@ def test_empty_eligible_population_has_no_percentage_with_zero_denominator(app, 
     from economic_graph import observable
 
     monkeypatch.setattr(observable, "load_observations", lambda *_: [])
-    app.radio[0].set_value("AI Performance").run()
+    view(app).set_value("AI Performance").run()
     assert_ok(app)
-    assert [metric.value for metric in app.metric] == ["No aplica", "No aplica"]
+    metrics = {metric.label: metric.value for metric in app.metric}
+    assert metrics["Cobertura individual · global"] == "No aplica"
+    assert metrics["Señal relacional utilizable · global"] == "No aplica"
 
 
 def test_public_only_ui_utf8_and_paths_with_spaces_without_network_or_env(tmp_path):
@@ -303,9 +320,11 @@ class ColdImportGuard:
 sys.meta_path.insert(0, ColdImportGuard())
 prepare_ui_runtime()
 from streamlit.testing.v1 import AppTest
+def view(app):
+    return next(widget for widget in app.radio if widget.label == "Vista")
 app = run_app(AppTest.from_file('app/control_tower.py', default_timeout=20))
-for page in app.radio[0].options:
-    app.radio[0].set_value(page)
+for page in view(app).options:
+    view(app).set_value(page)
     run_app(app)
     if app.exception:
         raise AssertionError([e.message for e in app.exception])
@@ -330,3 +349,87 @@ sys.stdout.buffer.write(message.encode('utf-8'))
         diagnostic = re.sub(r"mongodb(?:\+srv)?://\S+", "[URI redactada]", diagnostic)
         pytest.fail("UI aislada falló:\n" + diagnostic, pytrace=False)
     assert json.loads(result.stdout.decode("utf-8"))["resultado"] == "Red económica y Café ✓"
+
+
+def test_graph_opens_focused_and_full_network_is_secondary(app):
+    view(app).set_value("Graph Health").run()
+    assert_ok(app)
+    mode = next(widget for widget in app.radio if widget.label == "Exploración de red")
+    assert mode.value == "Empresa y vecinos"
+    context = tower.build_context(load_observations(), "T2")
+    cafe = next(
+        row["company_id"]
+        for row in context["ranking"]["companies"]
+        if row["display_name"] == "Café Jacaranda"
+    )
+    assert select(app, "Empresa").value == cafe
+    mode.set_value("Red completa del segmento").run()
+    assert_ok(app)
+    assert select(app, "Empresa").value is None
+    assert select(app, "Empresa").disabled
+    mode = next(widget for widget in app.radio if widget.label == "Exploración de red")
+    mode.set_value("Empresa y vecinos").run()
+    assert_ok(app)
+    assert select(app, "Empresa").value == cafe
+    assert not select(app, "Empresa").disabled
+
+
+def test_focus_drops_future_account_when_cut_changes(app):
+    view(app).set_value("Graph Health").run()
+    early = tower.segment_ids(tower.build_context(load_observations(), "T0"))
+    future = tower.segment_ids(tower.build_context(load_observations(), "T2")) - early
+    selected = sorted(future)[0]
+    select(app, "Empresa").set_value(selected).run()
+    assert_ok(app)
+    select(app, "Período").set_value("T0").run()
+    assert_ok(app)
+    assert select(app, "Empresa").value in early
+    assert selected != app.session_state["company"]
+
+
+@pytest.mark.parametrize("page", PAGES)
+def test_all_technical_panels_are_collapsed_initially(app, page):
+    view(app).set_value(page).run()
+    assert_ok(app)
+    assert app.expander
+    assert all(not panel.proto.expanded for panel in app.expander)
+
+
+def test_economic_scale_switch_keeps_four_signed_scenarios_and_baseline_threshold(app):
+    view(app).set_value("Economic Impact").run()
+    assert_ok(app)
+    assert (
+        next(widget for widget in app.radio if widget.label == "Escala del ejercicio").value
+        == "demo"
+    )
+    text = "\n".join(row.value for row in app.markdown)
+    assert all(label in text for label in ("Conservador", "Base", "Optimista", "Nulo"))
+    assert "−$15,450" in text and "−$16,250" in text
+    metric = next(metric for metric in app.metric if metric.label == "Equilibrio · supuesto base")
+    assert metric.value == "40.625 pp"
+    next(widget for widget in app.radio if widget.label == "Escala del ejercicio").set_value(
+        "hypothetical"
+    ).run()
+    assert_ok(app)
+    metric = next(metric for metric in app.metric if metric.label == "Equilibrio · supuesto base")
+    assert metric.value == "1.025 pp"
+    assert all(not panel.proto.expanded for panel in app.expander)
+
+
+def test_returning_to_global_view_restores_funnel_without_changing_rankings(app):
+    view(app).set_value("Graph Health").run()
+    assert_ok(app)
+    view(app).set_value("Business Funnel").run()
+    assert_ok(app)
+    button = next(widget for widget in app.button if widget.label == "Mostrar todas las empresas")
+    button.click().run()
+    assert_ok(app)
+    assert select(app, "Empresa").value is None
+    assert select(app, "Industria").value == "Todas"
+    counts = {metric.label: metric.value for metric in app.metric}
+    assert counts["Conocidas"] == "23"
+    assert counts["Elegibles para ranking"] == "21"
+    assert counts["Priorizadas del top-5 global"] == "5"
+    assert all(
+        row["Cantidad"] == "No observado" for row in app.dataframe[0].value.to_dict("records")[4:]
+    )
