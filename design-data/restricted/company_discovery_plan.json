@@ -1,0 +1,182 @@
+[
+  {
+    "company_id": "EMP-001",
+    "company_name": "La Espiga del Barrio",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-002",
+    "company_name": "Hornos del Centro",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-003",
+    "company_name": "Panificadora Valle Claro",
+    "first_known_phase": "T1",
+    "first_known_source": "DIRECTORY"
+  },
+  {
+    "company_id": "EMP-004",
+    "company_name": "Ruta Corta Mensajería",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-005",
+    "company_name": "Carga Urbana del Centro",
+    "first_known_phase": "T1",
+    "first_known_source": "DIRECTORY"
+  },
+  {
+    "company_id": "EMP-006",
+    "company_name": "Nodo Azul Soporte TI",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-007",
+    "company_name": "Bitácora Software",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-008",
+    "company_name": "Nube Sencilla Sistemas",
+    "first_known_phase": "T2",
+    "first_known_source": "DIRECTORY"
+  },
+  {
+    "company_id": "EMP-009",
+    "company_name": "Taller de Datos Centro",
+    "first_known_phase": "T2",
+    "first_known_source": "PUBLIC_PROFILE"
+  },
+  {
+    "company_id": "EMP-010",
+    "company_name": "Enlace Punto POS",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-011",
+    "company_name": "Vector Local Ciberseguridad",
+    "first_known_phase": "NEVER",
+    "first_known_source": "NONE"
+  },
+  {
+    "company_id": "EMP-012",
+    "company_name": "Mapa Digital Studio",
+    "first_known_phase": "T2",
+    "first_known_source": "DIRECTORY"
+  },
+  {
+    "company_id": "EMP-013",
+    "company_name": "Cobro Ágil Pagos",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-014",
+    "company_name": "Caja Vecina Digital",
+    "first_known_phase": "T1",
+    "first_known_source": "REFERRAL"
+  },
+  {
+    "company_id": "EMP-015",
+    "company_name": "Saldo Claro Finanzas",
+    "first_known_phase": "T2",
+    "first_known_source": "PUBLIC_PROFILE"
+  },
+  {
+    "company_id": "EMP-016",
+    "company_name": "Fondo Marea Capital",
+    "first_known_phase": "NEVER",
+    "first_known_source": "NONE"
+  },
+  {
+    "company_id": "EMP-017",
+    "company_name": "Café Jacaranda",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-018",
+    "company_name": "Comedor del Andén",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-019",
+    "company_name": "Mesa de Barrio",
+    "first_known_phase": "T1",
+    "first_known_source": "PUBLIC_PROFILE"
+  },
+  {
+    "company_id": "EMP-020",
+    "company_name": "Brasa y Huerto",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-021",
+    "company_name": "Café Estación Nueve",
+    "first_known_phase": "NEVER",
+    "first_known_source": "NONE"
+  },
+  {
+    "company_id": "EMP-022",
+    "company_name": "Sazón de Patio",
+    "first_known_phase": "NEVER",
+    "first_known_source": "NONE"
+  },
+  {
+    "company_id": "EMP-023",
+    "company_name": "Terraza del Reloj",
+    "first_known_phase": "NEVER",
+    "first_known_source": "NONE"
+  },
+  {
+    "company_id": "EMP-024",
+    "company_name": "Almuerzo Punto Cero",
+    "first_known_phase": "NEVER",
+    "first_known_source": "NONE"
+  },
+  {
+    "company_id": "EMP-025",
+    "company_name": "Papelería Horizonte",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-026",
+    "company_name": "Ferretería Cinco Calles",
+    "first_known_phase": "T0",
+    "first_known_source": "CRM"
+  },
+  {
+    "company_id": "EMP-027",
+    "company_name": "Moda Prisma Local",
+    "first_known_phase": "T2",
+    "first_known_source": "DIRECTORY"
+  },
+  {
+    "company_id": "EMP-028",
+    "company_name": "Botica del Parque",
+    "first_known_phase": "NEVER",
+    "first_known_source": "NONE"
+  },
+  {
+    "company_id": "EMP-029",
+    "company_name": "Mercado Verde Insumos",
+    "first_known_phase": "T1",
+    "first_known_source": "PUBLIC_PROFILE"
+  },
+  {
+    "company_id": "EMP-030",
+    "company_name": "Bici Centro Taller y Tienda",
+    "first_known_phase": "T2",
+    "first_known_source": "REFERRAL"
+  }
+]

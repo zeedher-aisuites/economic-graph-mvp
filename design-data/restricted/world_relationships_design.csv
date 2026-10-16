@@ -1,0 +1,49 @@
+﻿relationship_id,from_company_id,from_company_name,to_company_id,to_company_name,relationship_type,truth_exists,plausibility_rationale,first_observed_phase,planned_source,planned_initial_status,observation_caveat
+REL-001,EMP-029,Mercado Verde Insumos,EMP-001,La Espiga del Barrio,SUPPLIES_TO,True,Insumos de empaque y abastecimiento de mostrador,T1,REFERRAL,REPORTED,Proveedor señalado por un contacto; no comprobado
+REL-002,EMP-029,Mercado Verde Insumos,EMP-002,Hornos del Centro,SUPPLIES_TO,True,Suministro de consumibles para tres sucursales,T2,CRM,CONFIRMED,Confirmación en conversación comercial autorizada
+REL-003,EMP-029,Mercado Verde Insumos,EMP-003,Panificadora Valle Claro,SUPPLIES_TO,True,Lotes periódicos de insumos para operación mayorista,NEVER,NONE,NOT_OBSERVED,No llega al CRM durante el MVP
+REL-004,EMP-003,Panificadora Valle Claro,EMP-019,Mesa de Barrio,SUPPLIES_TO,True,Panificados al negocio de alimentos,T2,REFERRAL,REPORTED,Referencia no verificada
+REL-005,EMP-003,Panificadora Valle Claro,EMP-023,Terraza del Reloj,SUPPLIES_TO,True,Pan de mesa para servicio de terraza,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-006,EMP-002,Hornos del Centro,EMP-020,Brasa y Huerto,SUPPLIES_TO,True,Pan para menú de restaurante,T1,REFERRAL,REPORTED,Reporte unilateral
+REL-007,EMP-002,Hornos del Centro,EMP-017,Café Jacaranda,SUPPLIES_TO,True,Piezas de pan para cafetería,T2,CRM,CONFIRMED,Verificada por visita comercial
+REL-008,EMP-001,La Espiga del Barrio,EMP-022,Sazón de Patio,SUPPLIES_TO,True,Pan para desayunos del comedor,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-009,EMP-029,Mercado Verde Insumos,EMP-017,Café Jacaranda,SUPPLIES_TO,True,Insumos empaquetados para café,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-010,EMP-029,Mercado Verde Insumos,EMP-020,Brasa y Huerto,SUPPLIES_TO,True,Insumos y consumibles para cocina,T2,DIRECTORY,REPORTED,Mención en catálogo comercial no equivale a comprobante
+REL-011,EMP-029,Mercado Verde Insumos,EMP-024,Almuerzo Punto Cero,SUPPLIES_TO,True,Suministro de empaques para alimentos,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-012,EMP-004,Ruta Corta Mensajería,EMP-001,La Espiga del Barrio,SUPPLIES_TO,True,Reparto local de pedidos de panadería,T1,REFERRAL,REPORTED,Mencionado por un tercero
+REL-013,EMP-004,Ruta Corta Mensajería,EMP-017,Café Jacaranda,SUPPLIES_TO,True,Servicio ocasional de reparto en motocicleta,T1,CRM,REPORTED,Servicio reportado en nota
+REL-014,EMP-004,Ruta Corta Mensajería,EMP-021,Café Estación Nueve,SUPPLIES_TO,True,Reparto de pedidos en zona terminal,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-015,EMP-005,Carga Urbana del Centro,EMP-003,Panificadora Valle Claro,SUPPLIES_TO,True,Transporte de pedidos al mayoreo,T2,DIRECTORY,REPORTED,Referencia pública parcial
+REL-016,EMP-005,Carga Urbana del Centro,EMP-029,Mercado Verde Insumos,SUPPLIES_TO,True,Traslado de inventario para dos puntos de venta,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-017,EMP-005,Carga Urbana del Centro,EMP-026,Ferretería Cinco Calles,SUPPLIES_TO,True,Traslado de materiales y ferretería,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-018,EMP-006,Nodo Azul Soporte TI,EMP-025,Papelería Horizonte,SUPPLIES_TO,True,Soporte a equipos de punto de venta,T0,CRM,CONFIRMED,Cliente y servicio anotado
+REL-019,EMP-006,Nodo Azul Soporte TI,EMP-018,Comedor del Andén,SUPPLIES_TO,True,Mantenimiento de equipo de caja,T1,REFERRAL,REPORTED,Recomendación no confirma factura
+REL-020,EMP-006,Nodo Azul Soporte TI,EMP-028,Botica del Parque,SUPPLIES_TO,True,Soporte de hardware administrativo,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-021,EMP-007,Bitácora Software,EMP-002,Hornos del Centro,SUPPLIES_TO,True,Software para seguimiento de pedidos y ventas,T1,CRM,REPORTED,Nota del CRM sin documento corroborante
+REL-022,EMP-007,Bitácora Software,EMP-013,Cobro Ágil Pagos,SUPPLIES_TO,True,Desarrollo de módulo de integración,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-023,EMP-008,Nube Sencilla Sistemas,EMP-019,Mesa de Barrio,SUPPLIES_TO,True,Soporte a sincronización de inventarios,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-024,EMP-008,Nube Sencilla Sistemas,EMP-027,Moda Prisma Local,SUPPLIES_TO,True,Servicio básico de nube comercial,T2,PUBLIC_PROFILE,REPORTED,Caso mencionado en sitio ficticio
+REL-025,EMP-009,Taller de Datos Centro,EMP-005,Carga Urbana del Centro,SUPPLIES_TO,True,Tablero de indicadores de rutas y almacén,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-026,EMP-009,Taller de Datos Centro,EMP-015,Saldo Claro Finanzas,SUPPLIES_TO,True,Integración y reportes para operación financiera,T2,REFERRAL,REPORTED,Contacto referido sin acceso a contratos
+REL-027,EMP-010,Enlace Punto POS,EMP-017,Café Jacaranda,SUPPLIES_TO,True,Instalación y asistencia del punto de venta,T0,CRM,CONFIRMED,Servicio asentado en CRM de cliente
+REL-028,EMP-010,Enlace Punto POS,EMP-020,Brasa y Huerto,SUPPLIES_TO,True,Terminal y configuración de caja,T1,REFERRAL,REPORTED,Reporte no corroborado
+REL-029,EMP-010,Enlace Punto POS,EMP-024,Almuerzo Punto Cero,SUPPLIES_TO,True,Mantenimiento a terminal POS,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-030,EMP-011,Vector Local Ciberseguridad,EMP-013,Cobro Ágil Pagos,SUPPLIES_TO,True,Revisión de seguridad de servicios financieros,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-031,EMP-011,Vector Local Ciberseguridad,EMP-015,Saldo Claro Finanzas,SUPPLIES_TO,True,Revisión periódica de controles digitales,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-032,EMP-012,Mapa Digital Studio,EMP-023,Terraza del Reloj,SUPPLIES_TO,True,Diseño de materiales digitales y carta,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-033,EMP-012,Mapa Digital Studio,EMP-027,Moda Prisma Local,SUPPLIES_TO,True,Diseño de catálogo digital,T2,PUBLIC_PROFILE,REPORTED,Créditos en página ficticia
+REL-034,EMP-013,Cobro Ágil Pagos,EMP-020,Brasa y Huerto,SUPPLIES_TO,True,Procesamiento de cobros electrónicos,T1,CRM,REPORTED,Vendedor observa marca de cobro; no contrato
+REL-035,EMP-013,Cobro Ágil Pagos,EMP-019,Mesa de Barrio,SUPPLIES_TO,True,Solución de pagos en mostrador,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-036,EMP-014,Caja Vecina Digital,EMP-025,Papelería Horizonte,SUPPLIES_TO,True,Herramienta de cobros de pequeña escala,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-037,EMP-014,Caja Vecina Digital,EMP-030,Bici Centro Taller y Tienda,SUPPLIES_TO,True,Cobros digitales en tienda y taller,T2,REFERRAL,REPORTED,Referencia comercial no verificada
+REL-038,EMP-015,Saldo Claro Finanzas,EMP-026,Ferretería Cinco Calles,SUPPLIES_TO,True,Herramienta de conciliación de ventas,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-039,EMP-016,Fondo Marea Capital,EMP-009,Taller de Datos Centro,SUPPLIES_TO,True,Servicio financiero empresarial,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-040,EMP-028,Botica del Parque,EMP-022,Sazón de Patio,SUPPLIES_TO,True,Productos de higiene para cocina,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-041,EMP-026,Ferretería Cinco Calles,EMP-030,Bici Centro Taller y Tienda,SUPPLIES_TO,True,Herramientas y consumibles de reparación,T2,REFERRAL,REPORTED,Mencionado por negocio cercano
+REL-042,EMP-008,Nube Sencilla Sistemas,EMP-010,Enlace Punto POS,PARTNERS_WITH,True,Integración conjunta de sistemas POS y nube,T2,PUBLIC_PROFILE,REPORTED,Colaboración promocionada en web ficticia
+REL-043,EMP-010,Enlace Punto POS,EMP-013,Cobro Ágil Pagos,PARTNERS_WITH,True,Integración de terminales con pasarela de pagos,T1,PUBLIC_PROFILE,REPORTED,Acuerdo anunciado públicamente
+REL-044,EMP-006,Nodo Azul Soporte TI,EMP-011,Vector Local Ciberseguridad,PARTNERS_WITH,True,Atención conjunta de soporte y seguridad,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-045,EMP-007,Bitácora Software,EMP-009,Taller de Datos Centro,PARTNERS_WITH,True,Desarrollo conjunto de tablero y automatizaciones,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-046,EMP-004,Ruta Corta Mensajería,EMP-005,Carga Urbana del Centro,PARTNERS_WITH,True,Colaboración puntual en rutas de reparto,NEVER,NONE,NOT_OBSERVED,No se descubre
+REL-047,EMP-017,Café Jacaranda,EMP-019,Mesa de Barrio,PARTNERS_WITH,True,Promoción conjunta de alimentos y bebidas,T2,PUBLIC_PROFILE,REPORTED,Post de promoción compartida
+REL-048,EMP-021,Café Estación Nueve,EMP-030,Bici Centro Taller y Tienda,PARTNERS_WITH,True,Promoción local para usuarios de movilidad,NEVER,NONE,NOT_OBSERVED,No se descubre

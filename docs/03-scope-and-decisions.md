@@ -19,6 +19,8 @@ Este documento separa decisiones ya aceptadas, propuestas de implementación y c
 | D-011 | Misión 001: Python >=3.11, uv, PyMongo, python-dotenv, pytest y Ruff; conexión de solo verificación | Aprobación explícita del usuario; sin instalar servidor MongoDB ni Docker |
 | D-012 | Infraestructura inicial sin generación de datos, grafo, scoring ni analítica | La implementación funcional del MVP requiere misiones posteriores |
 | D-013 | Una presentación ejecutiva principal de aproximadamente 10–12 diapositivas | Se crea una estructura de 12; sin resultados inventados |
+| D-014 | Misión 002B: implementar los paquetes aprobados de diseño, catálogo, relaciones y observabilidad | 30 empresas, 48 relaciones, 3 afirmaciones falsas, 3 referencias y 83 observaciones; no inventar hechos |
+| D-015 | Construir solo conocimiento observable en fechas explícitas, separado del simulador | 12/17/23 empresas; consultas por disponibilidad; sin scoring, eventos, economía ni Control Tower |
 
 ## 2. Propuestas técnicas, no decisiones cerradas
 
@@ -44,9 +46,9 @@ La elección final se documentará cuando exista diseño de datos y tarea concre
 
 | ID | Tema | Decisión requerida antes de implementar |
 |---|---|---|
-| P-001 | Modelo conceptual | Campos de empresa, clases de relación y semántica |
-| P-002 | Fuentes sintéticas | Qué conoce de forma legítima ConectaPyME y con qué confiabilidad |
-| P-003 | Identidad y temporalidad | IDs, deduplicación, fechas de evento y fechas de observación |
+| P-001 | Modelo conceptual | Aprobado para 002B en `06-economic-graph-design.md`; evento comercial permanece sin materializar |
+| P-002 | Fuentes sintéticas | Aprobadas cinco fuentes y 83 observaciones en `09-observability-plan.md`; no se infieren tasas reales |
+| P-003 | Identidad y temporalidad | Aprobados cortes y candidatos; se conservan alias sin fusión fuerte ni evidencia inventada |
 | P-004 | Historia comercial | Estados, eventos, políticas de contacto y resultados |
 | P-005 | Baseline | Variables, regla o fórmula y justificación |
 | P-006 | Grafo enriquecido | Features relacionales admisibles y explicaciones |
@@ -72,3 +74,9 @@ Implementado: paquete Python, lectura de configuración, cliente y `ping`, prueb
 El detalle de decisiones relevantes se mantiene en `../presentations/decision-log.md`. La selección de Python 3.12 en `.python-version` es una elección técnica compatible con el mínimo 3.11 aprobado. No altera el alcance del producto.
 
 Contraste con el reto: Control Tower obligatoria como dashboard o prototipo; brief final de 2–3 páginas pendiente. Ver referencias y discrepancias en `02-challenge-traceability.md`. No se cambia ningún pendiente de datos o análisis por conveniencia de implementación.
+
+## 8. Ampliación autorizada en misión 002B
+
+El usuario aprobó diseño y paquetes adjuntos, que sustituyen los pendientes de aprobación de 002A para este alcance. La construcción y las consultas offline están implementadas, con detalle en `10-design-validation.md`. No se amplía historia comercial, scoring ni evaluación económica.
+
+DV-002 y DV-003 registran ejemplos de fusión fuerte y transición/caducidad que no existen en los insumos: se detiene únicamente su generación. Una adenda de evidencia necesitará aprobación; no se cambia el plan de 83 registros para simular que esos ejemplos se ejecutaron.

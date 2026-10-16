@@ -1,0 +1,386 @@
+[
+  {
+    "relationship_id": "REL-001",
+    "first_observed_phase": "T1",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-029",
+    "to_company_id": "EMP-001"
+  },
+  {
+    "relationship_id": "REL-002",
+    "first_observed_phase": "T2",
+    "source": "CRM",
+    "status": "CONFIRMED",
+    "from_company_id": "EMP-029",
+    "to_company_id": "EMP-002"
+  },
+  {
+    "relationship_id": "REL-003",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-029",
+    "to_company_id": "EMP-003"
+  },
+  {
+    "relationship_id": "REL-004",
+    "first_observed_phase": "T2",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-003",
+    "to_company_id": "EMP-019"
+  },
+  {
+    "relationship_id": "REL-005",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-003",
+    "to_company_id": "EMP-023"
+  },
+  {
+    "relationship_id": "REL-006",
+    "first_observed_phase": "T1",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-002",
+    "to_company_id": "EMP-020"
+  },
+  {
+    "relationship_id": "REL-007",
+    "first_observed_phase": "T2",
+    "source": "CRM",
+    "status": "CONFIRMED",
+    "from_company_id": "EMP-002",
+    "to_company_id": "EMP-017"
+  },
+  {
+    "relationship_id": "REL-008",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-001",
+    "to_company_id": "EMP-022"
+  },
+  {
+    "relationship_id": "REL-009",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-029",
+    "to_company_id": "EMP-017"
+  },
+  {
+    "relationship_id": "REL-010",
+    "first_observed_phase": "T2",
+    "source": "DIRECTORY",
+    "status": "REPORTED",
+    "from_company_id": "EMP-029",
+    "to_company_id": "EMP-020"
+  },
+  {
+    "relationship_id": "REL-011",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-029",
+    "to_company_id": "EMP-024"
+  },
+  {
+    "relationship_id": "REL-012",
+    "first_observed_phase": "T1",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-004",
+    "to_company_id": "EMP-001"
+  },
+  {
+    "relationship_id": "REL-013",
+    "first_observed_phase": "T1",
+    "source": "CRM",
+    "status": "REPORTED",
+    "from_company_id": "EMP-004",
+    "to_company_id": "EMP-017"
+  },
+  {
+    "relationship_id": "REL-014",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-004",
+    "to_company_id": "EMP-021"
+  },
+  {
+    "relationship_id": "REL-015",
+    "first_observed_phase": "T2",
+    "source": "DIRECTORY",
+    "status": "REPORTED",
+    "from_company_id": "EMP-005",
+    "to_company_id": "EMP-003"
+  },
+  {
+    "relationship_id": "REL-016",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-005",
+    "to_company_id": "EMP-029"
+  },
+  {
+    "relationship_id": "REL-017",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-005",
+    "to_company_id": "EMP-026"
+  },
+  {
+    "relationship_id": "REL-018",
+    "first_observed_phase": "T0",
+    "source": "CRM",
+    "status": "CONFIRMED",
+    "from_company_id": "EMP-006",
+    "to_company_id": "EMP-025"
+  },
+  {
+    "relationship_id": "REL-019",
+    "first_observed_phase": "T1",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-006",
+    "to_company_id": "EMP-018"
+  },
+  {
+    "relationship_id": "REL-020",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-006",
+    "to_company_id": "EMP-028"
+  },
+  {
+    "relationship_id": "REL-021",
+    "first_observed_phase": "T1",
+    "source": "CRM",
+    "status": "REPORTED",
+    "from_company_id": "EMP-007",
+    "to_company_id": "EMP-002"
+  },
+  {
+    "relationship_id": "REL-022",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-007",
+    "to_company_id": "EMP-013"
+  },
+  {
+    "relationship_id": "REL-023",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-008",
+    "to_company_id": "EMP-019"
+  },
+  {
+    "relationship_id": "REL-024",
+    "first_observed_phase": "T2",
+    "source": "PUBLIC_PROFILE",
+    "status": "REPORTED",
+    "from_company_id": "EMP-008",
+    "to_company_id": "EMP-027"
+  },
+  {
+    "relationship_id": "REL-025",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-009",
+    "to_company_id": "EMP-005"
+  },
+  {
+    "relationship_id": "REL-026",
+    "first_observed_phase": "T2",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-009",
+    "to_company_id": "EMP-015"
+  },
+  {
+    "relationship_id": "REL-027",
+    "first_observed_phase": "T0",
+    "source": "CRM",
+    "status": "CONFIRMED",
+    "from_company_id": "EMP-010",
+    "to_company_id": "EMP-017"
+  },
+  {
+    "relationship_id": "REL-028",
+    "first_observed_phase": "T1",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-010",
+    "to_company_id": "EMP-020"
+  },
+  {
+    "relationship_id": "REL-029",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-010",
+    "to_company_id": "EMP-024"
+  },
+  {
+    "relationship_id": "REL-030",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-011",
+    "to_company_id": "EMP-013"
+  },
+  {
+    "relationship_id": "REL-031",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-011",
+    "to_company_id": "EMP-015"
+  },
+  {
+    "relationship_id": "REL-032",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-012",
+    "to_company_id": "EMP-023"
+  },
+  {
+    "relationship_id": "REL-033",
+    "first_observed_phase": "T2",
+    "source": "PUBLIC_PROFILE",
+    "status": "REPORTED",
+    "from_company_id": "EMP-012",
+    "to_company_id": "EMP-027"
+  },
+  {
+    "relationship_id": "REL-034",
+    "first_observed_phase": "T1",
+    "source": "CRM",
+    "status": "REPORTED",
+    "from_company_id": "EMP-013",
+    "to_company_id": "EMP-020"
+  },
+  {
+    "relationship_id": "REL-035",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-013",
+    "to_company_id": "EMP-019"
+  },
+  {
+    "relationship_id": "REL-036",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-014",
+    "to_company_id": "EMP-025"
+  },
+  {
+    "relationship_id": "REL-037",
+    "first_observed_phase": "T2",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-014",
+    "to_company_id": "EMP-030"
+  },
+  {
+    "relationship_id": "REL-038",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-015",
+    "to_company_id": "EMP-026"
+  },
+  {
+    "relationship_id": "REL-039",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-016",
+    "to_company_id": "EMP-009"
+  },
+  {
+    "relationship_id": "REL-040",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-028",
+    "to_company_id": "EMP-022"
+  },
+  {
+    "relationship_id": "REL-041",
+    "first_observed_phase": "T2",
+    "source": "REFERRAL",
+    "status": "REPORTED",
+    "from_company_id": "EMP-026",
+    "to_company_id": "EMP-030"
+  },
+  {
+    "relationship_id": "REL-042",
+    "first_observed_phase": "T2",
+    "source": "PUBLIC_PROFILE",
+    "status": "REPORTED",
+    "from_company_id": "EMP-008",
+    "to_company_id": "EMP-010"
+  },
+  {
+    "relationship_id": "REL-043",
+    "first_observed_phase": "T1",
+    "source": "PUBLIC_PROFILE",
+    "status": "REPORTED",
+    "from_company_id": "EMP-010",
+    "to_company_id": "EMP-013"
+  },
+  {
+    "relationship_id": "REL-044",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-006",
+    "to_company_id": "EMP-011"
+  },
+  {
+    "relationship_id": "REL-045",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-007",
+    "to_company_id": "EMP-009"
+  },
+  {
+    "relationship_id": "REL-046",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-004",
+    "to_company_id": "EMP-005"
+  },
+  {
+    "relationship_id": "REL-047",
+    "first_observed_phase": "T2",
+    "source": "PUBLIC_PROFILE",
+    "status": "REPORTED",
+    "from_company_id": "EMP-017",
+    "to_company_id": "EMP-019"
+  },
+  {
+    "relationship_id": "REL-048",
+    "first_observed_phase": "NEVER",
+    "source": "NONE",
+    "status": "NOT_OBSERVED",
+    "from_company_id": "EMP-021",
+    "to_company_id": "EMP-030"
+  }
+]

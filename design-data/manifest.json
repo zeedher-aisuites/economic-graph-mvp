@@ -1,0 +1,152 @@
+{
+  "version": "1.0",
+  "origin": "Adjuntos aportados y aprobados por el usuario en misión 002B",
+  "approval": "Misión 002B: implementar diseño aprobado sin cambiar hechos ni IDs",
+  "files": [
+    {
+      "name": "06-economic-graph-design.md",
+      "kind": "document",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "3976d2874390eec867a2c5bb99071b06f82005f72d4fc960b3e1a5204b5e6a55",
+      "bytes": 19796,
+      "stored_path": "docs/06-economic-graph-design.md"
+    },
+    {
+      "name": "07-company-catalog.md",
+      "kind": "document",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "e65e63a4ec75f937821dc47d0bf9d202cdd537096e816a58137c30bca9d8736f",
+      "bytes": 19864,
+      "stored_path": "docs/07-company-catalog.md"
+    },
+    {
+      "name": "08-relationship-matrix.md",
+      "kind": "document",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "47a6e65dcacb9c8f9a2bf6fd79522e7040fb35b7b152007dc53f43cc7d5893be",
+      "bytes": 11686,
+      "stored_path": "docs/08-relationship-matrix.md"
+    },
+    {
+      "name": "09-observability-plan.md",
+      "kind": "document",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "b730ee456101204648b8b94a30b696fa28542543c50552b825d239399e30ed8e",
+      "bytes": 11611,
+      "stored_path": "docs/09-observability-plan.md"
+    },
+    {
+      "name": "README.md",
+      "kind": "document",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "7af0e0caeb8c034c066109860ac1f8013b635df270d2fbdf24db7ae4d57f9a32",
+      "bytes": 2253,
+      "stored_path": "design-data/README.md"
+    },
+    {
+      "name": "companies_world_design.csv",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "cd7771d1f63eb81cd608384be39993ad29d98d87e5d6c577aff7329987dcfac3",
+      "bytes": 5505,
+      "stored_path": "design-data/restricted/companies_world_design.csv"
+    },
+    {
+      "name": "company_discovery_plan.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "8c2ec79e8d8ef1e35c3af913730e27350a4981a224b516aaa8a52a23e7b3dcc4",
+      "bytes": 4449,
+      "stored_path": "design-data/restricted/company_discovery_plan.json"
+    },
+    {
+      "name": "companies_world_design.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "74f9f79af80280b8826c68e200e0b70d352778f3ccbcd394f2c4b19e1a863b85",
+      "bytes": 15328,
+      "stored_path": "design-data/restricted/companies_world_design.json"
+    },
+    {
+      "name": "false_claims_design.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "37e011ffd2272a74173ddd05ab68dd238a7e10abca06c0bac599642915cbb2bf",
+      "bytes": 979,
+      "stored_path": "design-data/restricted/false_claims_design.json"
+    },
+    {
+      "name": "identity_alias_plan.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "98ad2430845e8deb5864c9923fc4c52498bf71ca4777f24f5307381270f9b916",
+      "bytes": 549,
+      "stored_path": "design-data/restricted/identity_alias_plan.json"
+    },
+    {
+      "name": "observation_plan.csv",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "2be2b2c8c3f290b43eee51141b87b35197fe9de6c22bbc4692d5ee26c33755b0",
+      "bytes": 19616,
+      "stored_path": "design-data/restricted/observation_plan.csv"
+    },
+    {
+      "name": "observation_plan.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "c01c68e8c3e00c2a57bd8ab72d287aa98c12ab6a9f395e72c56606f775b41fac",
+      "bytes": 46356,
+      "stored_path": "design-data/restricted/observation_plan.json"
+    },
+    {
+      "name": "referrals_design.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "8f3fda43ada0fcd99b5fd76efc471f760b104ebe3f25fa7bccda414fd1da2614",
+      "bytes": 724,
+      "stored_path": "design-data/restricted/referrals_design.json"
+    },
+    {
+      "name": "relationship_visibility_plan.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "46f000c384048d8931b6517e08909057f32655287b6bef33ab673ccf250487bd",
+      "bytes": 9391,
+      "stored_path": "design-data/restricted/relationship_visibility_plan.json"
+    },
+    {
+      "name": "world_relationships_design.csv",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "945405d5ba26adbd3f2de598815ab305c4374bdfec5caa81b109481dad44347a",
+      "bytes": 8381,
+      "stored_path": "design-data/restricted/world_relationships_design.csv"
+    },
+    {
+      "name": "world_relationships_design.json",
+      "kind": "data",
+      "source_version": "1.0",
+      "origin": "adjunto del usuario",
+      "sha256": "329c643bd6047facb464c4a1d15e56c1674daec0555006fe49a654ca75fe9e93",
+      "bytes": 24344,
+      "stored_path": "design-data/restricted/world_relationships_design.json"
+    }
+  ],
+  "hash_scope": "Adjunto original; los Markdown solo actualizan aprobación y seguimiento, los CSV/JSON se conservan intactos."
+}
