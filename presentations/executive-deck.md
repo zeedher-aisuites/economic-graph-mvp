@@ -38,9 +38,11 @@ Fuente: `../docs/10-design-validation.md`, DV-001 a DV-005; `decision-log.md`, D
 
 Compararemos un baseline empresarial con una variante que agregue señales del grafo. Una relación no prueba intención de compra. Un modelo entrenado no es requisito para la PoC.
 
-Pendiente: variables, reglas, corte temporal, métricas y explicaciones. No existe scoring implementado ni precisión medida.
+Propuesta 003A pendiente de aprobación: comparar sucursales adicionales observadas frente a esa misma base más vecinos económicos confirmados, con capacidad hipotética de cinco cuentas y explicaciones por contribución. La auditoría del ledger encuentra pocos atributos individuales; los reportes y las inferencias no se tratarían como vínculos confirmados. Deben acordarse pesos, elegibilidad y capacidad antes de implementar.
 
-Fuente: `../docs/02-challenge-traceability.md`, bloque 3; reto, diapositiva 9.
+No existe todavía scoring implementado, comparación ejecutada ni precisión medida. Cambiar la selección no demostraría incremento de ventas.
+
+Fuente: `../docs/02-challenge-traceability.md`, bloque 3; `../docs/12-commercial-ranking.md`; `decision-log.md`, DEC-009; reto, diapositiva 9.
 
 ## 6. Architecture — del diseño aprobado a la vista observable
 

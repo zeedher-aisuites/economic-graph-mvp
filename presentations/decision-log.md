@@ -81,3 +81,13 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Riesgos y compromisos:** no se aportaron logs completos ni SHA del checkout local. La evidencia no valida conectividad cloud, roles, escala ni impacto económico; las advertencias conocidas permanecen.
 - **Explicación al CEO:** ya se reportó funcionamiento real de almacenamiento y consulta en Atlas desde el equipo local. Eso reduce una incertidumbre técnica; todavía no demuestra ventas ni margen adicional.
 - **Evidencia:** reporte del usuario preservado en `../docs/11-atlas-integration-validation.md`; pruebas offline y Ruff ejecutados por Codex se informan separadamente. No se añaden funcionalidades ni se modifica Atlas para este cierre.
+
+## DEC-009 — Comparar reglas explicables con capacidad fija
+
+- **Estado:** propuesta para misión 003A; fórmula, elegibilidad y capacidad pendientes de aprobación explícita. No hay scoring implementado.
+- **Problema:** explicar qué cuentas elegiría una política con señales del grafo frente a una basada en atributos individuales, usando la misma información temporal y capacidad.
+- **Alternativas:** priorizar por sector o reseñas; usar vínculos reportados con descuento; contar solo vecinos confirmados; entrenar un modelo. No existen etiquetas para entrenar ni evidencia que convierta reseñas en intención de compra.
+- **Justificación:** proponer un baseline por sucursales adicionales y agregar vecinos económicos confirmados permite mostrar contribuciones sencillas sin consultar el mundo restringido. La auditoría encuentra sucursales sin conflicto solo para 2/3/3 cuentas en T0/T1/T2 y 2/2/4 vínculos económicos confirmados. Se proponen pesos y top-5 explícitos para revisión, sin ajustarlos a resultados.
+- **Riesgos y compromisos:** fuerte escasez de atributos, sesgo hacia cuentas documentadas, muchos empates e identidad pendiente. Servicio desconocido no equivale a no-cliente. Los puntos no son probabilidades; una selección distinta no demuestra ventas adicionales.
+- **Explicación al CEO:** podemos comparar dos formas transparentes de distribuir una capacidad hipotética, mostrando qué señal cambia la decisión y dónde falta información. Primero debemos acordar qué cuentas son elegibles y qué prioridades queremos representar.
+- **Evidencia para validarla:** aprobación de la política y luego pruebas sin oráculo ni fuga temporal, tabla reproducible por corte, explicación por cuenta y comparación bajo igual capacidad. Las pruebas del repositorio existente pasan; no validan un ranking todavía inexistente. Ver `../docs/12-commercial-ranking.md`.

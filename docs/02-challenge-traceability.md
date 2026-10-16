@@ -132,3 +132,9 @@ Fuente: [validación Atlas](11-atlas-integration-validation.md), resultados comu
 | Calidad del diseño | `validate_design.py`: 0 errores y 5 advertencias conocidas | DV-001 a DV-005 permanecen documentadas |
 
 Este cierre no incorpora funcionalidades ni resultados de scoring, funnel, economía, causalidad o Control Tower. La evidencia técnica no se convierte en valor económico incremental demostrado.
+
+## Preparación de misión 003A — política pendiente de aprobación
+
+La [auditoría de señales y propuesta de rankings](12-commercial-ranking.md) cubre el bloque 3 (AI/ML Approach), apoyado por los bloques 2 y 4. Se verificó la cobertura real por corte leyendo solo el ledger observable: sucursales sin conflicto en 2/3/3 cuentas y vínculos económicos confirmados 2/2/4. No existen etiquetas de conversión ni información suficiente para afirmar que todas las cuentas sin servicio observado sean prospectos nuevos.
+
+DEC-009 propone reglas deterministas, conservación de incertidumbre y capacidad fija para comparar selecciones. **Fórmula, elegibilidad y capacidad siguen pendientes de aprobación explícita; no hay implementación ni resultados de ranking en este cambio.** Las pruebas de la base existente no se presentan como validación del scoring propuesto. No se modifica el ledger ni se realizan escrituras en Atlas.
