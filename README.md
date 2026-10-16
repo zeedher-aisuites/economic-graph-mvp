@@ -4,13 +4,13 @@
 
 Este repositorio prepara una PoC pequeña, operada por personas, para explorar adquisición B2B y defender sus decisiones arquitectónicas, económicas y experimentales. ConectaPyME Telecom, Distrito Centro y Villa Conecta son ficticios. No contiene datos de clientes reales ni resultados económicos comprobados.
 
-## Estado de la misión 002B
+## Estado de las misiones
 
 Implementado y verificado offline: ingesta del diseño aprobado, auditoría de 30 empresas/48 relaciones/83 observaciones, proyección física e interfaces separadas, consultas a fecha de corte, historial, conflictos e identidad como candidatos. Las empresas conocidas son 12/17/23 en T0/T1/T2; no se exponen las 7 nunca descubiertas ni se completan perfiles desde el catálogo. La carga PyMongo está preparada con dry-run, protección de base dedicada e idempotencia probada con dobles.
 
-La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Cierre 002C:** el usuario reportó validación real de Atlas desde Windows con VS Code: ping exitoso, carga de 83 observaciones, segunda carga con 0 inserciones/83 sin cambios y consultas T0/T1/T2 con los conteos esperados. La evidencia y su procedencia están en [validación Atlas](docs/11-atlas-integration-validation.md); no son ejecuciones realizadas por Codex Cloud y su conectividad sigue sin verificarse. No hay scoring, modelos ML, eventos comerciales, ventas, conversiones, cálculo económico ni Control Tower implementados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
+La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Cierre 002C:** el usuario reportó validación real de Atlas desde Windows con VS Code: ping exitoso, carga de 83 observaciones, segunda carga con 0 inserciones/83 sin cambios y consultas T0/T1/T2 con los conteos esperados. La evidencia y su procedencia están en [validación Atlas](docs/11-atlas-integration-validation.md); no son ejecuciones realizadas por Codex Cloud y su conectividad sigue sin verificarse. No hay modelos ML, eventos comerciales, ventas, conversiones, cálculo económico ni Control Tower implementados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
 
-**Preparación 003A:** la [auditoría de atributos y propuesta de rankings](docs/12-commercial-ranking.md) documenta las señales realmente disponibles y las decisiones comerciales pendientes de aprobación. Todavía no incorpora scoring ni resultados comparativos.
+**Misión 003A:** rankings baseline y con grafo deterministas, con reglas aprobadas por el usuario, capacidad fija de cinco cuentas, cortes temporales, contribuciones y evidencia. La [auditoría y política](docs/12-commercial-ranking.md) explica señales y sesgos; la [comparación T0/T1/T2](docs/13-ranking-comparison.md) muestra selecciones reproducibles. No demuestra mayor conversión ni valor económico incremental.
 
 ## Requisitos
 
@@ -28,7 +28,7 @@ git clone https://github.com/zeedher-aisuites/economic-graph-mvp.git
 Set-Location economic-graph-mvp
 ```
 
-Usa tu acceso GitHub habitual para repositorios privados. Si revisas la misión 002B aún no integrada, ejecuta `git switch mision-002b-economic-graph-data` después del clone. No vuelvas a clonar si ya estás en el checkout de Codex.
+Usa tu acceso GitHub habitual para repositorios privados. Para revisar la misión 003A antes de su integración, ejecuta `git switch mision-003a-comparable-rankings` después del clone. No vuelvas a clonar si ya estás en el checkout de Codex.
 
 ### 2. Instalar uv y Python
 
@@ -126,7 +126,50 @@ uv run python scripts/inspect_graph.py --as-of T2 --company $empresa.company_id 
 
 Tamaño, sector u otros atributos ausentes permanecen UNKNOWN; valores distintos sin arbitraje quedan CONFLICTED. Nombre parecido solo sugiere un candidato, no fusiona empresas. Las tres notas que revelaban diagnósticos del oráculo se conservan en los originales y se proyectan con texto comercial neutral. Ver IDs y límites en `docs/10-design-validation.md`.
 
-## Carga MongoDB opcional y explícita
+## Comparar rankings sin Atlas
+
+Desde la raíz, sin red, MongoDB ni `.env`:
+
+```powershell
+uv run python scripts/rank_companies.py --as-of T0 --format markdown
+uv run python scripts/rank_companies.py --all-cuts --format markdown
+uv run python scripts/rank_companies.py --as-of T2
+```
+
+La política `003a-conservative-v1` compara las mismas cuentas elegibles con cinco plazas por corte. Baseline: 10 puntos por sucursal adicional observada, máximo 50. Con grafo: misma base más 5 por vecino económico distinto confirmado, máximo 20 adicionales. Se excluyen únicamente cuentas con servicio activo confirmado y sin conflicto; el resto requiere validación comercial, sin asumir que sean no-clientes. Incertidumbre y conflictos no se completan desde el catálogo. Los pesos son exploratorios, sin significado probabilístico.
+
+Markdown muestra posiciones, puntos, diferencia, selección y empates en el límite. JSON es la salida predeterminada e incluye reglas, fuentes, fechas y evidencia por característica. Por ejemplo:
+
+```powershell
+$ranking = uv run python scripts/rank_companies.py --as-of T2 | ConvertFrom-Json
+$ranking.policy
+$ranking.comparison
+$cafe = $ranking.companies | Where-Object { $_.display_name -eq "Café Jacaranda" }
+$cafe.features | ConvertTo-Json -Depth 20
+$ranking.excluded | ConvertTo-Json -Depth 20
+```
+
+También admite instantes con zona y un ledger público copiado a otra ruta:
+
+```powershell
+uv run python scripts/rank_companies.py --as-of "2026-05-15T11:59:59Z" --format markdown
+uv run python scripts/rank_companies.py --as-of T2 --ledger data/observable/observations.json
+```
+
+No hace falta regenerar el ledger ni ejecutar la carga para comparar. Conceptos de features, scoring, baseline, sesgo y evaluación, así como reglas frente a contradicciones y duplicados, están en [la guía de rankings](docs/12-commercial-ranking.md). Las tablas completas están en [la comparación reproducible](docs/13-ranking-comparison.md). Tres sustituciones del top-5 no significan tres ventas adicionales; muchos empates reflejan escasez de evidencia.
+
+### Lectura opcional desde Atlas
+
+Solo si ya tienes conectividad y acceso de lectura a la base dedicada `conectapyme_mvp_observable`, con las dos variables configuradas de forma privada:
+
+```powershell
+uv run python scripts/rank_companies.py --mongo --as-of T2 --format markdown
+uv run python scripts/rank_companies.py --mongo --all-cuts
+```
+
+Este comando solo consulta `m002b_observations` mediante `find` con filtro de disponibilidad. No carga datos, crea índices ni escribe colecciones. `--mongo` y `--ledger` son alternativas excluyentes; no hay fallback silencioso si falla Atlas. La paridad se probó con un doble de lectura; **integración real de rankings en Atlas no verificada**. La evidencia local de 002C no es una nueva ejecución de este comando.
+
+## Carga MongoDB opcional y explícita — operación de misión 002B
 
 Primero revisa, sin credenciales ni conexión:
 
@@ -156,7 +199,14 @@ uv run ruff check .
 uv run ruff format --check .
 ```
 
-Las pruebas offline cubren la infraestructura y los invariantes del modelo: conteos, enlaces, fechas, cortes, ausencia de oráculo, desconocidos, evidencia duplicada, conflictos, alias y carga repetida contra un doble de MongoDB. No leen `.env` ni abren Atlas. Un resultado unitario exitoso no verifica conectividad real. La única integración aparece omitida por defecto con su motivo explícito.
+Las pruebas offline cubren la infraestructura y los invariantes del modelo: conteos, enlaces, fechas, cortes, ausencia de oráculo, desconocidos, evidencia duplicada, conflictos, alias y carga repetida contra un doble de MongoDB. Las pruebas 003A añaden regresiones del top-5, contribuciones, elegibilidad, empates, invariancia ante datos futuros y paridad de lectura con MongoDB simulado. No leen `.env` ni abren Atlas. Un resultado unitario exitoso no verifica conectividad real. La única integración aparece omitida por defecto con su motivo explícito.
+
+Para ejecutar únicamente las pruebas de rankings, o excluir expresamente cualquier integración:
+
+```powershell
+uv run pytest tests/test_rankings.py tests/test_ranking_commands.py
+uv run pytest -m "not integration"
+```
 
 Para formatear cambios locales de código de manera intencional:
 
@@ -191,7 +241,10 @@ La prueba hace ping, carga idempotente y lecturas observacionales T0/T1/T2. Cons
 | `src/economic_graph/simulator/` | Ingesta, auditoría y proyección restringida |
 | `src/economic_graph/observable.py` | Consultas públicas a fecha de corte |
 | `src/economic_graph/mongo_observable.py` | Carga protegida y lectura temporal MongoDB |
+| `src/economic_graph/rankings.py` | Dos políticas versionadas, comparación y explicaciones sin I/O |
+| `scripts/rank_companies.py` | CLI de rankings offline o lectura MongoDB, JSON y Markdown |
 | `docs/06` a `docs/10` | Diseño aprobado y auditoría de implementación |
+| `docs/11` a `docs/13` | Evidencia Atlas local, política de rankings y tablas comparativas |
 | `docs/00` a `docs/04` | Contexto recibido, alcance, trazabilidad y arquitectura propuesta |
 | `docs/05-executive-communication.md` | Reglas para comunicar decisiones e impacto potencial |
 | `presentations/executive-deck.md` | Única presentación ejecutiva principal, todavía inicial |
@@ -205,4 +258,4 @@ La referencia del alcance es [la matriz de los seis entregables](docs/02-challen
 
 Las pruebas ejecutadas y la publicación de cada entrega deben reportarse con su SHA y resultados reales. Los comandos de PowerShell son instrucciones para Windows; su ejecución en Windows no queda demostrada por las pruebas de Linux. La conexión real requiere configuración válida y un servidor disponible; nunca se deduce de los mocks.
 
-El diseño conceptual, catálogo, relaciones y observabilidad ya fueron aprobados y materializados en misión 002B. Las limitaciones documentadas de fusión, transiciones y caducidad requieren nueva evidencia aprobada si se desea ampliar esos ejemplos. Scoring y evaluación económica pertenecen a misiones posteriores: los datos sintéticos no prueban ROI ni uplift causal. La medición futura deberá usar un contrafactual y descontar costos incrementales.
+El diseño conceptual, catálogo, relaciones y observabilidad ya fueron aprobados y materializados en misión 002B. Las limitaciones documentadas de fusión, transiciones y caducidad requieren nueva evidencia aprobada si se desea ampliar esos ejemplos. La misión 003A añade comparación de políticas, sin cambiar el ledger ni escribir en Atlas. Evaluación causal, simulaciones de ventas y Control Tower permanecen fuera de esta misión: los datos sintéticos no prueban ROI ni uplift causal. La medición futura deberá usar un contrafactual y descontar costos incrementales.

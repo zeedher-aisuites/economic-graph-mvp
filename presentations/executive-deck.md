@@ -1,6 +1,6 @@
 # ConectaPyME Economic Intelligence
 
-Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada a misión 002B; **no constituye la defensa final ni contiene resultados de negocio**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
+Fuente editable de la única presentación ejecutiva principal. Presentación de 12 diapositivas actualizada a misión 003A; **no constituye la defensa final ni contiene resultados de negocio**. Los títulos en inglés conservan la nomenclatura de los seis entregables del reto; el contenido se comunica en español.
 
 ## 1. Pregunta central y propuesta de trabajo
 
@@ -36,21 +36,21 @@ Fuente: `../docs/10-design-validation.md`, DV-001 a DV-005; `decision-log.md`, D
 
 ## 5. AI/ML Approach — comparación comprensible
 
-Compararemos un baseline empresarial con una variante que agregue señales del grafo. Una relación no prueba intención de compra. Un modelo entrenado no es requisito para la PoC.
+Comparamos una regla por sucursales adicionales observadas con esa misma base más vecinos económicos confirmados. El usuario aprobó pesos exploratorios y capacidad de cinco cuentas; se excluyen clientes con servicio activo confirmado y el resto requiere validación comercial.
 
-Propuesta 003A pendiente de aprobación: comparar sucursales adicionales observadas frente a esa misma base más vecinos económicos confirmados, con capacidad hipotética de cinco cuentas y explicaciones por contribución. La auditoría del ledger encuentra pocos atributos individuales; los reportes y las inferencias no se tratarían como vínculos confirmados. Deben acordarse pesos, elegibilidad y capacidad antes de implementar.
+En los tres cortes, las políticas seleccionan dos cuentas en común y tres distintas. Los reportes muestran contribuciones, evidencia y empates: el baseline atraviesa un empate en las tres selecciones y la variante con grafo en T1/T2. El desempate por ID no tiene significado comercial.
 
-No existe todavía scoring implementado, comparación ejecutada ni precisión medida. Cambiar la selección no demostraría incremento de ventas.
+La comparación se ejecutó offline sobre el ledger sintético observable, sin oráculo ni datos posteriores al corte. Pocos atributos están disponibles; los puntos no son probabilidades y una relación no prueba intención de compra. No hay precisión predictiva ni incremento de ventas medidos.
 
-Fuente: `../docs/02-challenge-traceability.md`, bloque 3; `../docs/12-commercial-ranking.md`; `decision-log.md`, DEC-009; reto, diapositiva 9.
+Fuente: `../docs/02-challenge-traceability.md`, bloque 3; `../docs/12-commercial-ranking.md`; `../docs/13-ranking-comparison.md`; `decision-log.md`, DEC-009; reto, diapositiva 9.
 
 ## 6. Architecture — del diseño aprobado a la vista observable
 
 Implementado: fuentes ficticias aprobadas y restringidas → auditoría de archivos → proyección unidireccional → ledger público → consultas T0/T1/T2, historia y conflictos. La interfaz comercial no lee el catálogo completo ni completa atributos ausentes.
 
-Carga PyMongo explícita en base dedicada, con dry-run e idempotencia probada offline. En 002C el usuario reportó ping, carga de 83 observaciones, segunda carga sin inserciones y consultas temporales exitosos desde Windows con VS Code. No son ejecuciones de Codex Cloud; roles de acceso y rendimiento productivo siguen sin verificarse. Extracción de señales y ranking permanecen fuera de alcance.
+Carga PyMongo explícita en base dedicada, con dry-run e idempotencia probada offline. En 002C el usuario reportó ping, carga de 83 observaciones, segunda carga sin inserciones y consultas temporales exitosos desde Windows con VS Code. No son ejecuciones de Codex Cloud; roles de acceso y rendimiento productivo siguen sin verificarse. En 003A, una CLI de solo lectura consume el ledger local o MongoDB y deriva rankings; la opción MongoDB de rankings se verifica con un doble, sin nuevas escrituras ni validación real Atlas.
 
-Fuente: `../docs/10-design-validation.md`; `../docs/11-atlas-integration-validation.md` (reporte del usuario); `decision-log.md`, DEC-005/007/008.
+Fuente: `../docs/10-design-validation.md`; `../docs/11-atlas-integration-validation.md` (reporte del usuario); `../docs/12-commercial-ranking.md`; `decision-log.md`, DEC-005/007/008/009.
 
 ## 7. Architecture — criterios para producción
 
@@ -96,10 +96,10 @@ Fuente: reto, diapositiva 11 y notas; `../docs/02-challenge-traceability.md`.
 
 ## 12. Estado, riesgos y siguiente decisión
 
-La misión 002B demuestra construcción, trazabilidad y conocimiento parcial reproducible. No demuestra mejores decisiones comerciales, ventas ni margen adicional. Los datos son ficticios y no constituyen evidencia causal.
+Las misiones 002B/003A demuestran construcción, trazabilidad, conocimiento parcial y comparación de decisiones bajo igual capacidad. No demuestran mejores resultados comerciales, ventas ni margen adicional. Los datos son ficticios y no constituyen evidencia causal.
 
-Faltan para evaluar valor: baseline y política enriquecida aprobados, datos y costos pertinentes, unidad y horizonte de medición, control comparable e incertidumbre. No se han implementado scoring, eventos comerciales ni Control Tower. La entrega final conserva el brief de 2–3 páginas y la defensa con perspectiva de CEO.
+Ya existen dos políticas aprobadas y explicables. Faltan para evaluar valor: validación de elegibilidad, datos y costos pertinentes, unidad y horizonte de medición, control comparable e incertidumbre. No se han implementado eventos comerciales ni Control Tower. La entrega final conserva el brief de 2–3 páginas y la defensa con perspectiva de CEO.
 
-Riesgos vigentes: identidad sin evidencia fuerte, conflictos abiertos, sesgo del escenario sintético y atribuir efecto a una demostración técnica. No se agregan observaciones para inventar ejemplos de fusión, transición o caducidad.
+Riesgos vigentes: identidad sin evidencia fuerte, conflictos abiertos, cobertura escasa, empates, sesgo del escenario sintético y atribuir efecto a una demostración técnica. No se agregan observaciones para inventar ejemplos de fusión, transición o caducidad.
 
-Fuente: `../docs/10-design-validation.md`; `../docs/02-challenge-traceability.md`.
+Fuente: `../docs/10-design-validation.md`; `../docs/12-commercial-ranking.md`; `../docs/13-ranking-comparison.md`; `../docs/02-challenge-traceability.md`.

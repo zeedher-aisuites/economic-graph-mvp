@@ -8,7 +8,7 @@
 |---|---|---|---|---|
 | 1. Business Framing | ¿Qué problema de adquisición B2B se resuelve y cómo genera valor? | Hipótesis de usuario, embudo, mecanismo económico y KPIs | Conecta problema → decisión → intervención → resultado medible | Contexto definido; evidencia por completar |
 | 2. Economic Graph | ¿Qué son nodos y aristas, de dónde vienen y cuán confiables son? | Modelo de entidades/relaciones, fuentes, resolución de identidad, fechas, confianza y procedencia; ejemplo consultable | Se puede reconstruir por qué existe una conexión y desde cuándo era conocida | Construcción verificada offline en 002B; consultas Atlas T0/T1/T2 reportadas por el usuario desde Windows en 002C; identidad fuerte pendiente |
-| 3. AI/ML Approach | ¿Cómo usar las señales y demostrar que superan un baseline? | Baseline, ranking enriquecido, características, evaluación sin fuga; plan ML si escala | Elección justificada de regla/ML, métricas claras y límites reconocidos | Enfoque preliminar |
+| 3. AI/ML Approach | ¿Cómo usar las señales y demostrar que superan un baseline? | Baseline, ranking enriquecido, características, evaluación sin fuga; plan ML si escala | Elección justificada de regla/ML, métricas claras y límites reconocidos | Comparación determinista 003A implementada offline; sin evidencia de superioridad comercial ni predictiva |
 | 4. Architecture | ¿Cómo fluye y se gobierna la información desde fuentes hasta usuarios? | Diagrama PoC + arquitectura objetivo; ingestión, entity resolution, procesamiento, serving, escalabilidad, seguridad, gobernanza, MLOps condicional | Diferencia claramente lo implementado de lo propuesto para producción | Separación e ingesta implementadas; integración Atlas local reportada por el usuario en 002C; conectividad desde Codex Cloud y escala no verificadas |
 | 5. Economic Case | ¿Cuál es la rentabilidad incremental atribuible? | Modelo de unit economics, costos, escenarios, diseño A/B y fórmula de margen neto incremental | Identifica contrafactual, unidad de asignación, horizonte y costos de operación | Pendiente de modelado |
 | 6. Control Tower | ¿Cómo monitorear datos, método y negocio? | Indicadores Graph Health, AI Performance, Business Funnel y Economic Impact | Cada indicador tiene definición, frecuencia/fuente futura y limitaciones | Estructura definida |
@@ -76,7 +76,7 @@ Definir claramente período, unidad y tratamiento de costos. Para comparar grupo
 |---|---|---|
 | Graph Health | entidades enlazadas, relaciones con procedencia, datos incompletos, edad de relaciones, duplicados | No inventar exactitud de entity resolution sin verdad etiquetada |
 | AI Performance | cambio de ranking, cobertura de scoring, métricas offline cuando haya etiquetas, drift futuro | Si no hay ML entrenado, llamarlo desempeño analítico, no precisión de IA |
-| Business Funnel | prospectos priorizados, contactos, oportunidades, cierres y tiempos | La PoC solo dispone de eventos sintéticos |
+| Business Funnel | prospectos priorizados, contactos, oportunidades, cierres y tiempos | No se han materializado eventos comerciales; requieren datos y definiciones autorizados |
 | Economic Impact | margen por cuenta elegible, CAC incremental, costo de plataforma, valor incremental neto | Distinguir escenarios de estimaciones causales reales |
 
 ## Verificación final de entrega
@@ -133,8 +133,18 @@ Fuente: [validación Atlas](11-atlas-integration-validation.md), resultados comu
 
 Este cierre no incorpora funcionalidades ni resultados de scoring, funnel, economía, causalidad o Control Tower. La evidencia técnica no se convierte en valor económico incremental demostrado.
 
-## Preparación de misión 003A — política pendiente de aprobación
+## Evidencia de misión 003A — rankings comparables
 
-La [auditoría de señales y propuesta de rankings](12-commercial-ranking.md) cubre el bloque 3 (AI/ML Approach), apoyado por los bloques 2 y 4. Se verificó la cobertura real por corte leyendo solo el ledger observable: sucursales sin conflicto en 2/3/3 cuentas y vínculos económicos confirmados 2/2/4. No existen etiquetas de conversión ni información suficiente para afirmar que todas las cuentas sin servicio observado sean prospectos nuevos.
+La [auditoría de señales y política aprobada](12-commercial-ranking.md) cubre el bloque 3 (AI/ML Approach), apoyado por los bloques 2 y 4. Se verificó la cobertura real por corte leyendo solo el ledger observable: sucursales sin conflicto en 2/3/3 cuentas y vínculos económicos confirmados 2/2/4. No existen etiquetas de conversión ni información suficiente para afirmar que todas las cuentas sin servicio observado sean prospectos nuevos.
 
-DEC-009 propone reglas deterministas, conservación de incertidumbre y capacidad fija para comparar selecciones. **Fórmula, elegibilidad y capacidad siguen pendientes de aprobación explícita; no hay implementación ni resultados de ranking en este cambio.** Las pruebas de la base existente no se presentan como validación del scoring propuesto. No se modifica el ledger ni se realizan escrituras en Atlas.
+El usuario aprobó explícitamente fórmula, elegibilidad y K=5 (DEC-009). `rankings.py` y `rank_companies.py` implementan la política `003a-conservative-v1`. No se modifica el ledger ni se realizan escrituras en Atlas.
+
+| Requisito | Evidencia implementada | Límite |
+|---|---|---|
+| AI/ML: baseline y variante con grafo | Baseline por sucursales adicionales; misma base más vecinos económicos confirmados distintos; pesos y contribuciones explicables | Reglas exploratorias; sin probabilidades ni modelo entrenado |
+| Comparabilidad y selección | Mismas 12/17/21 cuentas elegibles y cinco plazas por corte; posiciones, diferencias, top-5, entradas/salidas y empates | T2 excluye dos clientes activos confirmados; las demás cuentas requieren validación comercial |
+| Economic Graph: trazabilidad y tiempo | Solo ledger observable, filtros `available_at <= as_of`, historia y procedencia por contribución; sin fusión de candidatos | Evidencia escasa; los conflictos conservan incertidumbre; no se evalúa exactitud contra el oráculo para priorizar |
+| Architecture: consumo reproducible | CLI offline y lectura MongoDB opcional; prueba de paridad con un doble que solo admite `find` | Integración real de rankings Atlas no verificada; sin escrituras ni validación de escala |
+| Comparación de políticas | [Tablas T0/T1/T2](13-ranking-comparison.md): dos seleccionadas en común y tres sustituciones por corte | Baseline atraviesa empates en los tres cortes; grafo en T1/T2; no demuestra mejor conversión ni valor incremental |
+
+Pruebas nuevas: `tests/test_rankings.py` y `tests/test_ranking_commands.py`. Verifican regresiones temporales, contribuciones, incertidumbre, duplicados, alias, elegibilidad, ausencia de campos restringidos y ejecución con solo módulos públicos/ledger. Los seis entregables completos no quedan terminados: economía, experimento causal, funnel, Control Tower y brief final siguen pendientes de sus respectivas misiones.

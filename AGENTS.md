@@ -117,3 +117,10 @@ Priorizar la calidad del argumento empresarial sobre la cantidad de diapositivas
 - Mantener alias como candidatos y conflictos sin arbitraje automático. No inventar evidencia de fusión, caducidad o transición para completar ejemplos ausentes; ver DV-002 y DV-003. Los eventos comerciales siguen como contrato pendiente.
 - Los diagnósticos no escriben. La carga es dry-run por defecto y solo puede aplicar en `conectapyme_mvp_observable`, con confirmación explícita, propiedad de colecciones comprobada y sin operaciones destructivas. Las credenciales del operador no deben entregarse al consumidor comercial.
 - Detener la misión al publicar la implementación revisable: no implementar scoring, ventas, ML, economía, causalidad ni Control Tower; no integrar automáticamente en `main`.
+
+## Alcance vigente — misión 003A
+
+- La prohibición de scoring anterior describe el cierre histórico de 002B. El usuario autorizó dos rankings comparables y aprobó expresamente la política conservadora, elegibilidad y K=5, registrados en `docs/12-commercial-ranking.md` y DEC-009. Mantener esa versión; cambios de prioridades comerciales requieren aprobación explícita.
+- Calcular exclusivamente desde el ledger observable o su lectura MongoDB temporal; mismo baseline, cohorte y capacidad para ambas políticas. Conservar evidencia, incertidumbre, conflictos, candidatos y empates. No editar el ledger ni consultar el oráculo para puntuar.
+- La CLI de rankings es de solo lectura. No ejecutar cargas ni la prueba opcional de integración que escribe en Atlas durante esta misión; verificar paridad mediante dobles offline. No presentar 002C como validación real de los nuevos rankings.
+- Conservar las tablas reproducibles y la trazabilidad. Cambiar una selección no acredita intención de compra, conversiones ni incremento causal. No implementar ventas simuladas, evaluación causal, ML, agentes ni Control Tower; publicar mediante PR sin integrar automáticamente en `main`.
