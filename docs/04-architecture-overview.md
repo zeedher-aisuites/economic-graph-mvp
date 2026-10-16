@@ -112,8 +112,10 @@ Los agentes son una línea **posterior a la entrega**, no una dependencia ni con
 
 Antes de considerar la PoC lista: generación repetible, integridad referencial, consultas funcionando, rankings auditables, pruebas básicas y documentación de lo **implementado**, **simulado** y **propuesto**.
 
-## 10. Control Tower local — propuesta 004A
+## 10. Control Tower local — implementación 004B
 
 La infraestructura 002/003 permanece como fuente de dominio. `finance.py` implementa el calculador educativo 003B, independiente de datos empresariales. [El diseño 004A](17-control-tower-design.md) propone una UI Streamlit local con adaptador de presentación: ledger público o lectura MongoDB temporal → snapshot/informe de rankings; archivo de supuestos → informe financiero; ambos alimentan vistas y etiquetas sin copiar fórmulas.
 
-Solo se diseña en esta misión: grupo opcional `ui`, app local, cinco vistas y estado de sesión público. No existen todavía esos archivos ni una dependencia Streamlit instalada. Atlas sería opt-in, solo `find`, con paridad visible y sin fallback silencioso. La economía no recibe filtros de empresa/sector/período. CT-01 a CT-05 requieren aprobación técnica/visual antes de implementar; no se añade un backend, API o servicio separado.
+CT-01 a CT-05 aprobadas, con ampliación de red económica. `app/control_tower.py` implementa cinco vistas; `tower_read_model.py` adapta datos públicos sin importar Streamlit ni simulador. Grupo `ui` con Streamlit fijado en lockfile, grafo Vega-Lite integrado y selector sincronizado; no otra biblioteca directa de grafos. `.streamlit/config.toml` limita escucha a loopback y desactiva telemetría. Estado de sesión conserva solo contexto público y procedencia, sin URI ni cliente persistente.
+
+Atlas es opt-in manual, solo `find`, validación de base previa y hash visible igual al ledger, sin fallback silencioso. Cambiar corte/fuente invalida lecturas. La economía no recibe filtros de empresa/sector/período; no hay escrituras, eventos inventados, backend o API separados. Guía y límites reales de validación: [004B](18-control-tower-demo.md). Revisión visual Windows pendiente.

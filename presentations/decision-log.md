@@ -22,15 +22,15 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Explicación al CEO:** dejamos lista la herramienta de trabajo antes de decidir qué información será válida para orientar una inversión comercial.
 - **Evidencia para validarla:** repositorio sin generadores ni scoring, pendientes explícitos y aprobación del modelo antes de la misión siguiente.
 
-## DEC-003 — Control Tower obligatoria; interfaz por decidir
+## DEC-003 — Control Tower obligatoria
 
 - **Estado:** aprobada por requisito comprobado del reto, diapositivas 10 y 12 y sus notas. Corrige la clasificación inicial del brief; no autoriza implementarla en misión 001.
 - **Problema:** una visualización opcional no puede volver opcional la conexión entre calidad técnica y efecto económico.
 - **Alternativas:** dashboard funcional; prototipo de Control Tower. Streamlit y una interfaz sofisticada siguen siendo opcionales.
 - **Justificación:** la fuente requiere enlazar Graph Health, AI Performance, Business Funnel y Economic Impact y admite un prototipo.
-- **Riesgos y compromisos:** las definiciones y el prototipo aún no existen; un tablero con cifras simuladas no prueba incremento causal.
+- **Riesgos y compromisos:** el prototipo incorporado en 004B no aporta eventos comerciales; un tablero con cifras simuladas no prueba incremento causal.
 - **Explicación al CEO:** debemos poder seguir cómo una señal termina en una acción y en un resultado, antes de decidir si conviene escalar.
-- **Evidencia para validarla:** prototipo trazable que conecte las cuatro dimensiones y distinga resultados de escenarios; formato concreto pendiente.
+- **Evidencia para validarla:** prototipo trazable que conecte las cuatro dimensiones y distinga resultados de escenarios; formato aprobado e implementado en DEC-011, revisión Windows pendiente.
 
 ## DEC-004 — Validación económica con contrafactual
 
@@ -102,12 +102,12 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Explicación al CEO:** cinco plazas no cubren el costo bajo ninguno de los cuatro casos aprobados. Quinientas pueden dar pérdidas o saldos positivos según hipótesis, pero no prueban que el beneficio sea alcanzable. Un saldo cero es el umbral matemático; cero mejora de conversión puede seguir perdiendo dinero. Ninguno autoriza invertir: faltan efecto atribuible, costos reales y autorización operativa.
 - **Evidencia:** aprobación explícita del usuario con límites ECO-01 a ECO-06; pruebas de identidades, regresiones, sensibilidad, valoración e aislamiento; resultados reproducibles en `../docs/16-financial-calculation.md`. El diseño futuro sigue en `../docs/15-incrementality-experiment.md`. Calculador implementado; sin ventas por empresa, ensayo, muestra, presupuesto ni despliegue.
 
-## DEC-011 — Proponer una Control Tower que distinga evidencia y supuestos
+## DEC-011 — Control Tower que distingue evidencia y supuestos
 
-- **Estado:** propuesta 004A, pendiente de CT-01 a CT-05. El usuario autorizó diseño y PR borrador, no interfaz ni dependencias nuevas.
+- **Estado:** aprobada expresamente en 004B, CT-01 a CT-05 con ampliación CT-02 para red económica interactiva sencilla; implementada en PR #6, sin integración automática. Revisión visual Windows pendiente.
 - **Problema:** demostrar Graph Health → priorización → acción → resultado sin ocultar los eslabones comerciales no observados ni presentar hipótesis como desempeño medido.
-- **Alternativas:** CLI/Markdown actuales; HTML estático o web propia; Streamlit local con módulos existentes. Streamlit facilita controles y detalle, a cambio de dependencias transitivas como pandas/PyArrow; no está instalado ni validado todavía.
-- **Justificación:** cinco vistas, adaptación descriptiva y fuente única de reglas/finanzas permiten explicar qué se sabe y por qué cambia una selección. Los filtros mantienen posiciones/top-5 y la economía agregada independiente de empresas. Se propone grupo opcional `ui`, sin extras, tablas y barras, offline predeterminado y Atlas manual de solo lectura.
-- **Riesgos y compromisos:** versión/dependencias y Windows pendientes de comprobar; datos escasos, candidatos de identidad sin fusionar, métricas predictivas/funnel inexistentes y cachés que podrían mezclar cortes. El diseño requiere procedencia, invalidación de contexto, sin fallback silencioso y ninguna confianza basada en el oráculo.
-- **Explicación al CEO:** el tablero mostrará qué cuentas se consideran y por qué, dónde falta evidencia y qué mejora hipotética pagaría la solución. No mostrará ventas que nadie midió ni aprobará inversión por una tarjeta positiva.
-- **Evidencia para validarla:** aprobar CT-01 a CT-05 y luego contrastar UI con API/CLI, aislamiento temporal/privado, filtros sin nuevas reglas, etapas No observado, finanzas sin cambios y navegación local en Windows/Linux. CT-A01 a CT-A12 en `../docs/17-control-tower-design.md`; todavía no hay UI ejecutada ni nueva validación Atlas.
+- **Alternativas:** CLI/Markdown actuales; HTML estático o web propia; Streamlit local con módulos existentes. Para la red: Vega-Lite integrado frente a bibliotecas especializadas; selección lateral sincronizada frente a callbacks de clic en nodos.
+- **Justificación:** cinco vistas y adaptación descriptiva conservan fuentes únicas de reglas/finanzas. Streamlit 1.66.0 en grupo opcional `ui` aporta controles y Vega-Lite; no hace falta otra dependencia directa de red. Layout circular determinista y selector evitan complejidad de motor gráfico. Los filtros mantienen posiciones/top-5 y economía independiente de empresas; Atlas manual solo lectura con paridad e invalidación de contexto.
+- **Riesgos y compromisos:** transitivas como pandas/PyArrow aumentan instalación; versión fijada y probada Linux, Windows nativo pendiente. Datos escasos, identidad sin resolver, ausencia de etiquetas/eventos y superposición visual en red completa. Nombres por hover/tablas y detalle al seleccionar; sin inferir distancia comercial ni confianza del oráculo. La red no acredita efecto económico.
+- **Explicación al CEO:** el tablero muestra qué cuentas se consideran y por qué, dónde falta evidencia y qué mejora hipotética pagaría la solución. Ventas no observadas y escenarios educativos se distinguen; una tarjeta positiva no autoriza invertir.
+- **Evidencia:** pruebas de paridad, aislamiento temporal/privado, filtros sin nuevas reglas, etapas No observado, finanzas intactas y lectura Atlas con doble `find`. AppTest y Chromium Linux ejercitan las vistas/red; regresión pública aislada sin red/env/simulador. CT-A01 a CT-A13 en `../docs/17-control-tower-design.md`; resultados y guion en `../docs/18-control-tower-demo.md`. Sin nueva validación real Atlas, Windows nativo o rendimiento a escala.

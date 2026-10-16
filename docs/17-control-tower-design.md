@@ -1,6 +1,6 @@
-# Control Tower local — propuesta 004A
+# Control Tower local — diseño aprobado e implementación 004B
 
-**Estado: diseño para revisión; interfaz y nuevas dependencias no aprobadas ni implementadas.** Versión `004a-design-v1`. La misión termina en un PR borrador y requiere aprobación de CT-01 a CT-05 antes de programar. No modifica ledger, rankings, supuestos financieros, Atlas, código ni lockfile.
+**Estado: CT-01 a CT-05 aprobadas expresamente por el usuario en 004B**, con ampliación de CT-02 para red interactiva sencilla. Versión `004b-design-v2`. Aplicación local y adaptador implementados en la rama del PR #6; revisión visual nativa Windows pendiente antes de integrar. Ledger, políticas, supuestos financieros y Atlas intactos. [Guía de uso y demo](18-control-tower-demo.md).
 
 ## 1. Qué debe demostrar y qué no sabemos
 
@@ -21,15 +21,15 @@ No hay contactos, oportunidades comerciales, activaciones ni ventas en los insum
 
 | Opción | Aporte | Costo y compromiso | Recomendación |
 |---|---|---|---|
-| Streamlit local | Selectores, tablas, tarjetas, gráficos simples y detalle interactivo en Python; reutiliza funciones sin API adicional | Añade dependencias transitivas y un proceso web local; requiere instalar/verificar en Windows antes de demostrar | **Preferida**, sujeta a CT-01 |
+| Streamlit local | Selectores, tablas, tarjetas, gráficos simples y detalle interactivo en Python; reutiliza funciones sin API adicional | Añade dependencias transitivas y un proceso web local; requiere instalar/verificar en Windows antes de demostrar | **Aprobada CT-01**, revisión nativa Windows pendiente |
 | CLI y Markdown actuales | Sin nuevas dependencias; fallback reproducible ya disponible | Navegación y segmentación manuales; experiencia menos fluida ante evaluadores | Conservar como respaldo, no declarar que ya existe tablero |
 | HTML estático o aplicación web propia | Puede evitar Streamlit o dar más control | HTML simple pierde interacción; añadir filtros y estado propios aumenta trabajo y riesgo de duplicar lógica | No priorizar para este plazo |
 
-En la consulta oficial a [PyPI](https://pypi.org/pypi/streamlit/json), Streamlit **1.66.0** declara Python `>=3.11`, compatible por declaración con Python 3.12 del proyecto. Entre sus dependencias están pandas, NumPy, PyArrow, Altair y PyDeck; no es una dependencia pequeña. No está instalado en el entorno ni en `pyproject.toml`. La consulta no demuestra instalación, funcionamiento ni compatibilidad nativa Windows.
+En la consulta oficial a [PyPI](https://pypi.org/pypi/streamlit/json), Streamlit **1.66.0** declara Python `>=3.11`, compatible por declaración con Python 3.12 del proyecto. Entre sus dependencias están pandas, NumPy, PyArrow, Altair y PyDeck; no es una dependencia pequeña. En 004B se instaló esa versión fijada mediante el grupo opcional `ui` y `uv.lock`. Se comprobó en Linux; compatibilidad nativa Windows de esta UI pendiente de ejecución en ese equipo.
 
-Propuesta: un grupo opcional de desarrollo `ui` con **solo Streamlit como dependencia directa nueva**, sin extras `all`, `snowflake`, `auth`, `charts`, etc. Elegir/fijar versión y actualizar `uv.lock` solo tras aprobación y comprobación de resolución, ejecución y prueba en Windows. Las CLI y pruebas de dominio seguirán funcionando con la instalación base. No añadir directamente Plotly, NetworkX, PyVis, otra base, API, autenticación o servicios. Usar tablas y gráficos integrados; no canvas de grafo interactivo en la primera versión. Un vecindario tabular a un salto basta para demostrar conexiones y evidencia.
+Decisión aprobada: grupo opcional de desarrollo `ui` con **solo Streamlit como dependencia directa nueva**, sin extras. Las CLI y pruebas de dominio conservan instalación base independiente. No añadir directamente Plotly, NetworkX, PyVis, otra base, API, autenticación o servicios. La ampliación CT-02 se resuelve con Vega-Lite integrado en Streamlit, layout circular determinista con biblioteca estándar y selector sincronizado; no se requiere otra dependencia directa, editor, motor de grafos o selección directa de nodos.
 
-Una aplicación Python local, un proceso y navegador, escuchando en `127.0.0.1`. Proponer telemetría desactivada (`browser.gatherUsageStats=false`) y evitar recursos/CDN/mapas externos; estos ajustes se comprobarán durante la implementación, sin crear configuración UI ahora. Sin publicación cloud, agentes, acciones comerciales ni cambios a red de Atlas. Offline significa ejecución sobre archivos después de instalar las dependencias; la instalación inicial puede necesitar PyPI o caché. No se publican enlaces de preview desde Codex Cloud.
+Una aplicación Python local, un proceso y navegador, escuchando en `127.0.0.1`. Telemetría desactivada (`browser.gatherUsageStats=false`) en `.streamlit/config.toml`, sin recursos/CDN/mapas externos en los gráficos. Sin publicación cloud, agentes, acciones comerciales ni cambios a red de Atlas. Offline significa ejecución sobre archivos después de instalar las dependencias; la instalación inicial puede necesitar PyPI o caché. No se publican enlaces de preview desde Codex Cloud.
 
 ## 3. Arquitectura propuesta y fuentes únicas
 
@@ -49,7 +49,7 @@ flowchart TD
 
 La flecha hacia el experimento es trabajo pendiente, no una conexión de datos ni causalidad demostrada. El calculador financiero no recibe empresas, sectores, scores ni cantidades filtradas. No hay camino desde el catálogo/oráculo hacia la UI.
 
-Archivos propuestos para una misión posterior, **no creados aquí**: `app/control_tower.py` para composición/estado y `src/economic_graph/tower_read_model.py` para adaptar salidas a tablas y conteos descriptivos. Funciones pequeñas, sin jerarquías ni una nueva capa de servicios. No copiar fórmulas de scoring/finanzas ni reglas de elegibilidad.
+Archivos implementados en 004B: `app/control_tower.py` para composición/estado y `src/economic_graph/tower_read_model.py` para adaptar salidas a tablas, red y conteos descriptivos. Funciones sin jerarquías ni nueva capa de servicios. No se copian fórmulas de scoring/finanzas ni reglas de elegibilidad.
 
 | Fuente existente | Consumo propuesto y responsabilidad |
 |---|---|
@@ -67,12 +67,12 @@ Para la primera versión se propone estado de sesión local, sin caché persiste
 
 ## 4. Arquitectura visual y navegación
 
-Propuesta CT-02: cinco vistas en un selector lateral, una sola aplicación, sin menús profundos:
+CT-02 aprobada: cinco vistas en un selector lateral, una sola aplicación, sin menús profundos. Inicio en Resumen, T2 y Offline:
 
 | Vista | Pregunta ejecutiva y contenido principal |
 |---|---|
 | **Resumen** | Qué conocemos, qué cambia en la decisión, qué falta medir y qué margen es solo una hipótesis. Cuatro tarjetas con sus etiquetas de naturaleza y vínculos a cada dimensión |
-| **Graph Health** | Conteos y evolución; tabla de afirmaciones, estados, fuentes, conflictos e identidades candidatas; evidencia desplegable |
+| **Graph Health** | Conteos y evolución; red observable con selector sincronizado y tabla de afirmaciones, estados, fuentes, conflictos e identidades candidatas; evidencia desplegable |
 | **AI Performance** | Subtítulo «Comparación de reglas, sin modelo entrenado»; baseline y grafo lado a lado, posiciones globales, contribuciones, cobertura y empates |
 | **Business Funnel** | Conocidas → elegibles → priorizadas por la política elegida; exclusiones como rama aparte; acción/resultado sin datos marcados No observado |
 | **Economic Impact** | Cinco plazas y 500 hipotéticas claramente separadas; cuatro escenarios, componentes, reserva, sensibilidad y equilibrio; protocolo futuro y límites |
@@ -119,7 +119,7 @@ Fondo neutro, tipografía predeterminada, jerarquía clara y tablas legibles en 
 
 Los estados de consolidación de `snapshot` y los diagnósticos de utilidad para scoring de `compare_rankings` tienen propósitos diferentes. Si un reporte adicional cambia `scoring_status` a CONFLICTED, la UI muestra ambos con su evidencia; no homogeneiza ni promociona estados. Una afirmación confirmada no se declara verdadera por consultar el simulador.
 
-La evolución muestra únicamente cortes **hasta el seleccionado**: T0 solo T0; T1 incluye T0/T1; T2 incluye los tres. En Atlas, cada corte exige su lectura temporal explícita y paridad de fuente; no completar puntos históricos con archivos de otro origen sin avisar. Los nombres/opciones tampoco incluyen empresas futuras. No se muestra «23 de 30» ni «7 desconocidas»: el denominador privado no pertenece al consumidor comercial.
+La evolución muestra únicamente cortes **hasta el seleccionado**: T0 solo T0; T1 incluye T0/T1; T2 incluye los tres. En Atlas se reconstruye del mismo lote público leído manualmente al corte principal, aplicando disponibilidad a cada punto, sin completar historia con archivos de otro origen. Cambiar el corte principal exige una nueva lectura explícita. Los nombres/opciones tampoco incluyen empresas futuras. No se muestra «23 de 30» ni «7 desconocidas»: el denominador privado no pertenece al consumidor comercial.
 
 ### AI Performance
 
@@ -187,7 +187,7 @@ Estado vacío, archivo ausente/inválido o contrato privado: error claro sin rec
 
 Panel de procedencia: fuente/corte/hash actuales, versión de políticas/finanzas, estado de evidencia y vínculo a `docs/11`. El reporte local de 002C no se renombra como ping cloud o éxito de la UI. El repositorio completo sigue siendo accesible al desarrollador; para una demo comercial se entrega solo ledger/configuración/módulos públicos o un acceso MongoDB restringido, sin montar el oráculo. No se promete seguridad multiusuario de producción.
 
-## 9. Criterios de aceptación para la implementación futura
+## 9. Criterios de aceptación aprobados
 
 Los valores siguientes se obtuvieron ejecutando módulos existentes sobre el ledger público en esta auditoría; **no son pruebas de una UI ya implementada**:
 
@@ -199,7 +199,7 @@ Los valores siguientes se obtuvieron ejecutando módulos existentes sobre el led
 
 Por afirmación, estados actuales sumando económicas y referencias: T0=2 CONFIRMED; T1=2 CONFIRMED+12 REPORTED+1 INFERRED; T2=4 CONFIRMED+24 REPORTED+1 INFERRED. No confundirlos con estados de las 83 observaciones ni con vínculos verdaderos del oráculo. En los tres cortes cada política selecciona cinco, con dos en común y tres sustituciones; estas cantidades no son conversión.
 
-Aceptación propuesta, con pruebas futuras de adaptador y de la app (por ejemplo AppTest de Streamlit), además de la suite actual:
+Aceptación aprobada, cubierta por pruebas del adaptador y AppTest de Streamlit además de la suite previa, con ejecución nativa Windows pendiente:
 
 1. CT-A01: cinco vistas, cuatro dimensiones explícitas, etiquetas de naturaleza en cada tarjeta/gráfico y detalle legible en portátil; sin contenido que dependa solo de color.
 2. CT-A02: paridad exacta de conteos, scores, contribuciones, posiciones, top-5, hashes y finanzas con API/CLI actuales. No implementar otras fórmulas ni modificar entradas aprobadas.
@@ -214,22 +214,24 @@ Aceptación propuesta, con pruebas futuras de adaptador y de la app (por ejemplo
 11. CT-A11: archivos ausentes/incorrectos y diferencias Atlas/offline fallan de forma visible; cambiar fuente invalida datos anteriores; no resultados mezclados ni fallback silencioso.
 12. CT-A12: instalar grupo UI bloqueado y ejecutar demo local en Python3.12, también con la red desconectada después de instalar; comprobar acentos, rutas con espacios y navegación en Windows11 además de pruebas Linux. No afirmar esa ejecución antes de realizarla. Medir tiempo de arranque/refresco en el equipo de demo sin prometer rendimiento de producción.
 
-No se requiere navegador automatizado externo, infraestructura de CI adicional o pruebas de escala para esta versión. Dependencias y AppTest se comprobarán solo después de CT-01. La documentación deberá incluir comandos PowerShell reales entonces; todavía no existe archivo ejecutable de la interfaz.
+CT-A13 (ampliación 004B): red con nodos/aristas públicos por corte y selección de conexiones directas; tipo/verificación/procedencia visibles; referencias sin puntuar, conflictos/candidatos sin fusión y nodos aislados identificados; selector no altera scores. Vega-Lite debe validar su esquema, usar datos embebidos sin URL externa y dibujarse realmente en navegador. Fixtures de prueba incluyen descarte y conflicto simultáneo sin alterar el ledger.
 
-## 10. Decisiones CT-01 a CT-05 por aprobar
+La suite UI usa AppTest, sin añadir navegador automatizado como dependencia del proyecto ni infraestructura de CI. Se hizo además una comprobación manual automatizada con Chromium disponible en el entorno Linux; no exige instalarlo para usar o probar la app. Comandos PowerShell y límites de validación en la guía 004B.
 
-| ID | Propuesta concreta | Aprobación requerida |
+## 10. Decisiones CT-01 a CT-05 aprobadas por el usuario en 004B
+
+| ID | Decisión concreta | Alcance de la aprobación |
 |---|---|---|
 | CT-01 | Streamlit local, grupo opcional `ui`, sin extras ni nuevas dependencias directas adicionales; un proceso, módulos actuales y adaptador fino | Tecnología y costo de dependencias; versión/lock solo en la implementación autorizada |
-| CT-02 | Cinco vistas, tarjetas/tablas/barras sencillas, panel de cuenta, paleta neutra con etiquetas; sin canvas de grafo interactivo inicial | Arquitectura visual y alcance de primera demo |
+| CT-02 | Cinco vistas, tarjetas/tablas/barras sencillas, panel de cuenta y red interactiva Vega-Lite con selector sincronizado; paleta neutra con etiquetas | Arquitectura visual y ampliación específica 004B; sin motor especializado |
 | CT-03 | Cortes exactos; industria/cuenta como segmentación descriptiva; score/fuente/estado como inspección; posiciones/top-5 globales intactos; filtros sin datos deshabilitados | Semántica de filtros y métricas del segmento |
 | CT-04 | Economía de solo lectura, cuadro completo cinco/500 y cuatro escenarios, sin editar supuestos ni asociar resultados a cuentas/sectores; etapas comerciales No observado | Separación visible entre evidencia, hipótesis y experimento futuro |
 | CT-05 | Offline por defecto; Atlas opcional/manual y solo lectura, hash de paridad, estados/error sin fallback silencioso; criterios CT-A01 a CT-A12 | Flujo de datos y alcance de validación antes de demostrar |
 
-Publicar el borrador no aprueba estas decisiones. La siguiente misión podrá programar la UI únicamente tras la respuesta explícita del usuario; no amplía autorizaciones de datos reales, contactos, presupuesto, piloto operativo o despliegue de 003B.
+La aprobación explícita de misión 004B autoriza esta implementación, sin ampliar autorizaciones de datos reales, contactos, presupuesto, piloto operativo o despliegue de 003B. El usuario revisará la experiencia y paridad en Windows antes de integrar; no se integra automáticamente.
 
-## 11. Verificación de este entregable documental
+## 11. Verificación histórica del entregable documental 004A
 
 Ejecutado en Codex Cloud/Linux sobre esta rama: `uv sync --locked` correcto; `uv run pytest` con integración real desactivada (`RUN_MONGODB_INTEGRATION=0`), **233 aprobadas y 1 omitida**; `uv run ruff check .` y `uv run ruff format --check .`, correctos. También se comprobaron enlaces Markdown locales y `git diff --check`.
 
-No cambian código, pruebas, dependencias, configuración financiera, ledger ni archivos restringidos respecto de la base auditada. No se instaló Streamlit, ejecutó interfaz ni consultó Atlas. Estas verificaciones acreditan la regresión de los módulos existentes y la coherencia documental; CT-A01 a CT-A12 y la ejecución nativa Windows de la nueva UI siguen pendientes.
+En aquella entrega 004A no cambiaron código, pruebas, dependencias, configuración financiera, ledger ni archivos restringidos; no se instaló Streamlit, ejecutó interfaz ni consultó Atlas. Esa evidencia es histórica. La implementación y comprobaciones 004B están documentadas en la guía; no sustituyen la revisión nativa Windows pendiente.

@@ -8,13 +8,36 @@ Este repositorio prepara una PoC pequeña, operada por personas, para explorar a
 
 Implementado y verificado offline: ingesta del diseño aprobado, auditoría de 30 empresas/48 relaciones/83 observaciones, proyección física e interfaces separadas, consultas a fecha de corte, historial, conflictos e identidad como candidatos. Las empresas conocidas son 12/17/23 en T0/T1/T2; no se exponen las 7 nunca descubiertas ni se completan perfiles desde el catálogo. La carga PyMongo está preparada con dry-run, protección de base dedicada e idempotencia probada con dobles.
 
-La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Cierre 002C:** el usuario reportó validación real de Atlas desde Windows con VS Code: ping exitoso, carga de 83 observaciones, segunda carga con 0 inserciones/83 sin cambios y consultas T0/T1/T2 con los conteos esperados. La evidencia y su procedencia están en [validación Atlas](docs/11-atlas-integration-validation.md); no son ejecuciones realizadas por Codex Cloud y su conectividad sigue sin verificarse. No hay modelos ML, eventos comerciales, ventas, conversiones ni Control Tower implementados. El cálculo financiero 003B usa solo supuestos; no acredita resultados económicos observados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
+La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Cierre 002C:** el usuario reportó validación real de Atlas desde Windows con VS Code: ping exitoso, carga de 83 observaciones, segunda carga con 0 inserciones/83 sin cambios y consultas T0/T1/T2 con los conteos esperados. La evidencia y su procedencia están en [validación Atlas](docs/11-atlas-integration-validation.md); no son ejecuciones realizadas por Codex Cloud y su conectividad sigue sin verificarse. No hay modelos ML, eventos comerciales, ventas ni conversiones implementados. El cálculo financiero 003B usa solo supuestos; no acredita resultados económicos observados.
 
 **Misión 003A:** rankings baseline y con grafo deterministas, con reglas aprobadas por el usuario, capacidad fija de cinco cuentas, cortes temporales, contribuciones y evidencia. La [auditoría y política](docs/12-commercial-ranking.md) explica señales y sesgos; la [comparación T0/T1/T2](docs/13-ranking-comparison.md) muestra selecciones reproducibles. No demuestra mayor conversión ni valor económico incremental.
 
 **Misión 003B:** ECO-01 a ECO-06 aprobadas provisionalmente solo como metodología educativa. Calculador determinista de escenarios, sensibilidad y equilibrio, con [fórmulas y límites](docs/14-incremental-economic-case.md), [resultados hipotéticos](docs/16-financial-calculation.md) y [protocolo futuro A/B](docs/15-incrementality-experiment.md). No valida finanzas de Totalplay ni autoriza datos reales, contactos, presupuesto, piloto o despliegue.
 
-**Misión 004A — solo diseño:** [propuesta de Control Tower](docs/17-control-tower-design.md), con cinco vistas, las cuatro dimensiones del reto, filtros respaldados por datos y trazabilidad por cuenta. Streamlit se propone como dependencia opcional; todavía no está instalado ni existe interfaz. CT-01 a CT-05 requieren aprobación visual/técnica antes de programar. Las CLI existentes siguen siendo el modo de ejecución disponible.
+**Misión 004B:** Control Tower Streamlit local, con CT-01 a CT-05 aprobadas y ampliación de red interactiva mediante selector sincronizado. Cinco vistas, trazabilidad por cuenta, filtros sin recalcular rankings y economía de solo lectura. Consulta [diseño e indicadores](docs/17-control-tower-design.md) y [guía de uso, límites y guion ejecutivo](docs/18-control-tower-demo.md). Validación visual nativa Windows pendiente del usuario; sin nueva lectura real de Atlas.
+
+## Iniciar la Control Tower en Windows PowerShell
+
+Desde la raíz del repositorio, con uv instalado:
+
+```powershell
+git fetch origin
+git switch mision-004a-control-tower-design
+git pull --ff-only origin mision-004a-control-tower-design
+uv sync --locked --group ui
+uv run --group ui streamlit run app/control_tower.py
+```
+
+Abre la dirección local que muestra Streamlit. Inicia en **Resumen / T2 / Offline**, sin `.env` ni MongoDB. Para detenerla, pulsa `Ctrl+C`. El grupo opcional `ui` añade Streamlit y sus dependencias transitivas; no hace falta instalar bibliotecas de grafos. Mantén `--group ui` en los comandos: `uv run` sin el grupo puede retirar esas dependencias del entorno.
+
+```powershell
+$env:RUN_MONGODB_INTEGRATION = "0"
+uv run --group ui pytest
+uv run --group ui ruff check .
+uv run --group ui ruff format --check .
+```
+
+Selecciona Graph Health y una **Empresa** para explorar conexiones directas y abrir su ficha. Industria y empresa conservan scores, posiciones y top-5 globales; las etapas sin datos dicen **No observado**. Atlas exige elegir su modo y pulsar **Leer Atlas al corte**; no hay escrituras ni respaldo offline silencioso. La economía no se recalcula por industria o cuenta. Las CLI siguen independientes y están documentadas en la guía como alternativa de demostración.
 
 ## Requisitos
 
@@ -32,7 +55,7 @@ git clone https://github.com/zeedher-aisuites/economic-graph-mvp.git
 Set-Location economic-graph-mvp
 ```
 
-Usa tu acceso GitHub habitual para repositorios privados. Para revisar la misión 003A antes de su integración, ejecuta `git switch mision-003a-comparable-rankings` después del clone. No vuelvas a clonar si ya estás en el checkout de Codex.
+Usa tu acceso GitHub habitual para repositorios privados. Para revisar el PR #6, usa la rama `mision-004a-control-tower-design` indicada arriba. No vuelvas a clonar si ya estás en el checkout de Codex.
 
 ### 2. Instalar uv y Python
 
@@ -299,7 +322,9 @@ La prueba hace ping, carga idempotente y lecturas observacionales T0/T1/T2. Cons
 | `docs/06` a `docs/10` | Diseño aprobado y auditoría de implementación |
 | `docs/11` a `docs/13` | Evidencia Atlas local, política de rankings y tablas comparativas |
 | `docs/14` a `docs/16` | Caso económico, protocolo futuro y resultados hipotéticos reproducidos |
-| `docs/17-control-tower-design.md` | Arquitectura visual/técnica, indicadores, filtros y aceptación propuestos; no UI implementada |
+| `docs/17-control-tower-design.md` | Arquitectura visual/técnica, indicadores, filtros y aceptación aprobados en 004B |
+| `docs/18-control-tower-demo.md` | Ejecución UI, límites, validación y guion de cinco minutos con alternativa CLI |
+| `app/control_tower.py`, `src/economic_graph/tower_read_model.py` | Interfaz local y adaptador público; sin nuevas fórmulas comerciales |
 | `docs/00` a `docs/04` | Contexto recibido, alcance, trazabilidad y arquitectura propuesta |
 | `docs/05-executive-communication.md` | Reglas para comunicar decisiones e impacto potencial |
 | `presentations/executive-deck.md` | Única presentación ejecutiva principal, todavía inicial |

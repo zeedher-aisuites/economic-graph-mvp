@@ -11,7 +11,7 @@
 | 3. AI/ML Approach | ¿Cómo usar las señales y demostrar que superan un baseline? | Baseline, ranking enriquecido, características, evaluación sin fuga; plan ML si escala | Elección justificada de regla/ML, métricas claras y límites reconocidos | Comparación determinista 003A implementada offline; sin evidencia de superioridad comercial ni predictiva |
 | 4. Architecture | ¿Cómo fluye y se gobierna la información desde fuentes hasta usuarios? | Diagrama PoC + arquitectura objetivo; ingestión, entity resolution, procesamiento, serving, escalabilidad, seguridad, gobernanza, MLOps condicional | Diferencia claramente lo implementado de lo propuesto para producción | Separación e ingesta implementadas; integración Atlas local reportada por el usuario en 002C; conectividad desde Codex Cloud y escala no verificadas |
 | 5. Economic Case | ¿Cuál es la rentabilidad incremental atribuible? | Modelo de unit economics, costos, escenarios, diseño A/B y fórmula de margen neto incremental | Identifica contrafactual, unidad de asignación, horizonte y costos de operación | Calculador 003B y metodología aprobados provisionalmente solo para PoC; escenarios y umbrales ejecutados, sin rentabilidad real ni efecto causal medido |
-| 6. Control Tower | ¿Cómo monitorear datos, método y negocio? | Indicadores Graph Health, AI Performance, Business Funnel y Economic Impact | Cada indicador tiene definición, frecuencia/fuente futura y limitaciones | Diseño visual/técnico 004A propuesto con fuentes y aceptación; CT-01 a CT-05 pendientes; interfaz no implementada |
+| 6. Control Tower | ¿Cómo monitorear datos, método y negocio? | Indicadores Graph Health, AI Performance, Business Funnel y Economic Impact | Cada indicador tiene definición, frecuencia/fuente futura y limitaciones | CT-01 a CT-05 aprobadas e interfaz local 004B implementada con red observable, fuentes y límites; validación Linux, revisión visual Windows pendiente |
 
 ## 1. Business Framing
 
@@ -177,3 +177,17 @@ Desde `main` en `8e39c8b`, con PR #5 ya integrado, se revisaron reto original (d
 | Filtros del reto | Período exacto, industria conocida/desconocida, empresa y rangos de score; fuente/tipo/estado para inspección | Geografía, cluster, producto y canal sin soporte deshabilitados o pendientes; source_type no es canal |
 
 Streamlit opcional, cinco vistas, semántica de filtros, economía de solo lectura y flujo offline/Atlas quedan propuestos en CT-01 a CT-05 y DEC-011. No reinterpretar la obligatoriedad del entregable como aprobación técnica/visual. La misión termina en PR borrador para decisión del usuario, no en tablero funcional ni evaluación causal.
+
+## Implementación 004B — aprobación posterior y evidencia de Control Tower
+
+El usuario aprobó CT-01 a CT-05 y amplió CT-02 con red económica interactiva sencilla. `app/control_tower.py` y `tower_read_model.py` implementan cinco vistas y adaptación pública; Streamlit opcional y Vega-Lite integrado no añaden motor de grafos. [Diseño actualizado](17-control-tower-design.md) y [guía/guion](18-control-tower-demo.md) documentan CT-A01 a CT-A13.
+
+| Dimensión | Evidencia implementada | Límite conservado |
+|---|---|---|
+| Graph Health | Red al corte, selector sincronizado, conexiones directas, tipos/estados/procedencia, evolución, conflictos y candidatos | Sin oráculo, fusión de alias, resolución fuerte ni exactitud inventada |
+| AI Performance | Paridad con 003A, posiciones globales, aportes, top-5/cambios, empates y cobertura | Sin probabilidades, métricas predictivas o superioridad comercial demostrada |
+| Business Funnel | Conocidas/elegibles/excluidas/priorizadas; segmento intersectado con selección global | Etapas comerciales No observado; sin ventas, contactos ni tasas fabricadas |
+| Economic Impact | Cuatro escenarios cinco/500, reserva, sensibilidad y equilibrio tomados de 003B | Hipótesis educativas de solo lectura, independientes de filtros; no efecto causal ni inversión autorizada |
+| Fuentes/filtros | Ledger offline predeterminado, Atlas manual solo `find` y hash de paridad; cortes exactos y segmentos descriptivos | Sin escrituras, respaldo silencioso, filtros sin soporte ni nueva lectura Atlas real verificada |
+
+Pruebas automáticas de adaptador/AppTest, regresión aislada sin red/env/simulador y revisión Chromium Linux. No equivalen a ejecución nativa Windows: el usuario validará visualmente y contrastará resultados antes de integrar PR #6. No cambian ledger, políticas ni supuestos aprobados; brief final y experimento real siguen pendientes.
