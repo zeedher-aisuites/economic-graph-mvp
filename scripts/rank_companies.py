@@ -16,6 +16,11 @@ from economic_graph.rankings import compare_rankings, render_comparison
 
 
 def main() -> int:
+    # En Windows, las tuberías pueden usar cp1252 aunque la consola admita Unicode.
+    # El contrato de salida es UTF-8 tanto en terminal como con redirección/captura.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     cuts = parser.add_mutually_exclusive_group(required=True)
     cuts.add_argument("--as-of", help="T0/T1/T2 o instante ISO 8601 con zona.")

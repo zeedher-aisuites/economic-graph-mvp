@@ -140,6 +140,12 @@ La política `003a-conservative-v1` compara las mismas cuentas elegibles con cin
 
 Markdown muestra posiciones, puntos, diferencia, selección y empates en el límite. JSON es la salida predeterminada e incluye reglas, fuentes, fechas y evidencia por característica. Por ejemplo:
 
+El CLI emite **UTF-8** en stdout y stderr, también al capturarlo desde otro proceso. Un consumidor Python debe decodificar ambos como UTF-8, sin depender de la página de códigos de Windows. Si Windows PowerShell 5 interpreta mal los acentos al canalizar la salida a `ConvertFrom-Json`, configura su lector de salida nativa en la sesión actual antes del ejemplo:
+
+```powershell
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+```
+
 ```powershell
 $ranking = uv run python scripts/rank_companies.py --as-of T2 | ConvertFrom-Json
 $ranking.policy

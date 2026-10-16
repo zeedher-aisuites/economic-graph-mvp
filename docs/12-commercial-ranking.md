@@ -94,9 +94,22 @@ Comprobaciones ejecutadas en Codex Cloud para esta implementación:
 | Comando | Resultado |
 |---|---|
 | `uv sync --locked` | Correcto; dependencias y lockfile sin cambios |
-| `uv run pytest` | 151 aprobadas, 1 integración omitida; incluye 54 pruebas nuevas de rankings |
+| `uv run pytest` | 160 aprobadas, 1 integración omitida; incluye 63 pruebas de rankings |
+| `uv run pytest -m "not integration"` | 160 aprobadas, 1 integración excluida |
 | `uv run ruff check .` | Correcto |
 | `uv run ruff format --check .` | Correcto |
 | `uv run python scripts/rank_companies.py --all-cuts --format markdown` | Comparación offline T0/T1/T2 reproducida en `13-ranking-comparison.md` |
 
-La ejecución de pytest fijó `RUN_MONGODB_INTEGRATION=0` en el proceso para impedir expresamente la integración histórica que escribe. Los dobles no sustituyen una lectura real de Atlas ni validación comercial. Los comandos de PowerShell del [README](../README.md) son instrucciones reproducibles; estas comprobaciones se ejecutaron en Linux, no en Windows.
+La ejecución completa de pytest fijó `RUN_MONGODB_INTEGRATION=0` en el proceso para impedir expresamente la integración histórica que escribe; el otro comando la excluye mediante su marcador. Los dobles no sustituyen una lectura real de Atlas ni validación comercial. Los comandos de PowerShell del [README](../README.md) son instrucciones reproducibles; estas comprobaciones se ejecutaron en Linux, no en Windows.
+
+### Corrección de portabilidad tras el reporte de Windows
+
+El usuario reportó en Windows 11 con Python 3.12.10: 150 aprobadas, 1 fallo y 1 integración excluida al ejecutar `uv run pytest -m "not integration"`. Falló el subprocess de `test_cli_runs_with_only_public_package_and_ledger`; no se proporcionó su stderr original.
+
+Codex reprodujo un fallo compatible en Linux con `PYTHONUTF8=0` y `PYTHONIOENCODING=cp1252:strict`: el CLI anterior termina con código 1 y `UnicodeEncodeError` al escribir `−` (U+2212) en JSON o `Δ` (U+0394) en Markdown. Esos caracteres no existen en cp1252. El ledger se lee ya con UTF-8 y las importaciones y dependencias cargan correctamente en esta reproducción; el fallo aparece al serializar la salida a la tubería. Además, el `text=True` original dejaba la decodificación del proceso padre a su configuración regional.
+
+La corrección fija UTF-8 en stdout y stderr del CLI. La prueba captura bytes y decodifica explícitamente UTF-8; no fuerza UTF-8 en el entorno del hijo para ocultar la causa. Mantiene el chequeo del código de salida y muestra stderr en los fallos, redactando URI `mongodb://` y `mongodb+srv://`. Usa `pytest.fail` sin traza para evitar que la introspección de un assert vuelva a imprimir el objeto con stderr sin redactar.
+
+La prueba aislada se conserva y amplía a JSON/Markdown con UTF-8, cp1252 y ASCII estrictos, rutas con espacios/acentos y solo el paquete público más `ledger.json`. No hay simulador, diseños ni `.env` en el directorio aislado; se eliminan las variables MONGODB del hijo sin depender de mayúsculas/minúsculas. Se añaden regresiones del diagnóstico, stderr Unicode y redacción de URI con credenciales ficticias. No cambia el scoring, sus pesos, el ledger ni sus tablas.
+
+Estas regresiones reproducen la condición de codificación en Linux con Python 3.12.14; **no constituyen una ejecución nativa en Windows 11/Python 3.12.10**. La confirmación posterior en ese equipo queda pendiente. No se ejecutaron operaciones Atlas.

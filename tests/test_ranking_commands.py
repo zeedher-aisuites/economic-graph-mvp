@@ -2,6 +2,7 @@
 
 import json
 import os
+import re
 import runpy
 import shutil
 import subprocess
@@ -50,9 +51,12 @@ def test_markdown_is_reproducible(monkeypatch, capsys):
     assert (ROOT / "docs/13-ranking-comparison.md").read_text(encoding="utf-8").endswith(expected)
 
 
-def test_cli_runs_with_only_public_package_and_ledger(tmp_path):
+@pytest.fixture
+def isolated_public_cli(tmp_path):
     # No existe el simulador en el paquete copiado, ni diseños ni .env en el cwd aislado.
-    package = tmp_path / "economic_graph"
+    directory = tmp_path / "paquete público con espacios"
+    directory.mkdir()
+    package = directory / "economic_graph"
     package.mkdir()
     for name in (
         "__init__",
@@ -64,29 +68,100 @@ def test_cli_runs_with_only_public_package_and_ledger(tmp_path):
         "mongo_observable",
     ):
         shutil.copyfile(ROOT / f"src/economic_graph/{name}.py", package / f"{name}.py")
-    shutil.copyfile(SCRIPT, tmp_path / "rank_companies.py")
-    shutil.copyfile(ROOT / "data/observable/observations.json", tmp_path / "ledger.json")
+    shutil.copyfile(SCRIPT, directory / "rank_companies.py")
+    shutil.copyfile(ROOT / "data/observable/observations.json", directory / "ledger.json")
+    return directory
+
+
+def public_cli_environment(directory):
     environment = {
-        key: value for key, value in os.environ.items() if not key.startswith("MONGODB_")
+        key: value for key, value in os.environ.items() if not key.upper().startswith("MONGODB_")
     }
-    environment["PYTHONPATH"] = str(tmp_path)
+    environment["PYTHONPATH"] = str(directory)
+    return environment
+
+
+def run_public_cli(directory, arguments, environment):
+    # Capturar bytes evita que la codificación del proceso padre oculte el error original.
     result = subprocess.run(
-        [
-            sys.executable,
-            str(tmp_path / "rank_companies.py"),
-            "--as-of",
-            "T2",
-            "--ledger",
-            "ledger.json",
-        ],
-        cwd=tmp_path,
+        [sys.executable, str(directory / "rank_companies.py"), *arguments],
+        cwd=directory,
         env=environment,
         capture_output=True,
-        text=True,
-        check=True,
+        check=False,
+        timeout=30,
     )
-    assert json.loads(result.stdout)["eligible_companies"] == 21
-    assert not (package / "simulator").exists()
+    stderr = result.stderr.decode("utf-8", errors="backslashreplace")
+    safe_stderr = re.sub(r"mongodb(?:\+srv)?://[^\s\"'<>]+", "[URI MongoDB omitida]", stderr)
+    if result.returncode != 0:
+        # La introspección de un assert podría volver a mostrar result.stderr sin redactar.
+        pytest.fail(
+            f"CLI público falló con código {result.returncode}. stderr:\n{safe_stderr}",
+            pytrace=False,
+        )
+    return result.stdout.decode("utf-8")
+
+
+@pytest.mark.parametrize("encoding", ["utf-8", "cp1252", "ascii"])
+@pytest.mark.parametrize("output_format", ["json", "markdown"])
+def test_cli_runs_with_only_public_package_and_ledger(isolated_public_cli, encoding, output_format):
+    directory = isolated_public_cli
+    environment = public_cli_environment(directory)
+    # Reproducir tuberías Windows sin depender del SO que ejecute pytest.
+    environment.update(PYTHONIOENCODING=f"{encoding}:strict", PYTHONUTF8="0")
+    output = run_public_cli(
+        directory,
+        ["--as-of", "T2", "--ledger", "ledger.json", "--format", output_format],
+        environment,
+    )
+    if output_format == "json":
+        report = json.loads(output)
+        assert report["eligible_companies"] == 21
+        assert "−" in report["policy"]["baseline_rule"]
+        assert "Café Jacaranda" in {row["display_name"] for row in report["companies"]}
+    else:
+        assert "Δ posición" in output and "Café Jacaranda" in output
+    assert not (directory / "economic_graph/simulator").exists()
+
+
+def test_subprocess_failure_shows_stderr(isolated_public_cli):
+    directory = isolated_public_cli
+    with pytest.raises(
+        pytest.fail.Exception, match="(?s)código 1.*stderr:.*No se puede leer el ledger"
+    ):
+        run_public_cli(
+            directory,
+            ["--as-of", "T2", "--ledger", "missing.json"],
+            public_cli_environment(directory),
+        )
+
+
+def test_subprocess_stderr_is_utf8_under_cp1252(isolated_public_cli):
+    directory = isolated_public_cli
+    environment = public_cli_environment(directory)
+    environment.update(PYTHONIOENCODING="cp1252:strict", PYTHONUTF8="0")
+    with pytest.raises(pytest.fail.Exception) as error:
+        run_public_cli(directory, ["--as-of", "T2", "--no-existe-Δ"], environment)
+    message = str(error.value)
+    assert "código 2" in message and "stderr:" in message and "--no-existe-Δ" in message
+
+
+@pytest.mark.parametrize("scheme", ["mongodb", "mongodb+srv"])
+def test_subprocess_diagnostics_redact_mongo_uri(monkeypatch, tmp_path, scheme):
+    failed = subprocess.CompletedProcess(
+        args=[],
+        returncode=1,
+        stdout=b"",
+        stderr=(
+            f"ImportError de prueba\n{scheme}://test-user:test-password@test.invalid/db?token=test-token"
+        ).encode(),
+    )
+    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: failed)
+    with pytest.raises(pytest.fail.Exception) as error:
+        run_public_cli(tmp_path, [], {})
+    message = str(error.value)
+    assert "ImportError de prueba" in message and "[URI MongoDB omitida]" in message
+    assert not any(value in message for value in ("test-user", "test-password", "test-token"))
 
 
 def test_mongo_read_only_parity_and_server_time_filters(monkeypatch, capsys):
