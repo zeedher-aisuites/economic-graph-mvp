@@ -46,9 +46,9 @@ Fuente: `../docs/02-challenge-traceability.md`, bloque 3; reto, diapositiva 9.
 
 Implementado: fuentes ficticias aprobadas y restringidas → auditoría de archivos → proyección unidireccional → ledger público → consultas T0/T1/T2, historia y conflictos. La interfaz comercial no lee el catálogo completo ni completa atributos ausentes.
 
-Carga PyMongo explícita en base dedicada, con dry-run e idempotencia probada offline. Integración Atlas, roles de acceso y rendimiento productivo no verificados. Extracción de señales y ranking siguen fuera de esta misión.
+Carga PyMongo explícita en base dedicada, con dry-run e idempotencia probada offline. En 002C el usuario reportó ping, carga de 83 observaciones, segunda carga sin inserciones y consultas temporales exitosos desde Windows con VS Code. No son ejecuciones de Codex Cloud; roles de acceso y rendimiento productivo siguen sin verificarse. Extracción de señales y ranking permanecen fuera de alcance.
 
-Fuente: `../docs/10-design-validation.md`; `decision-log.md`, DEC-005/007.
+Fuente: `../docs/10-design-validation.md`; `../docs/11-atlas-integration-validation.md` (reporte del usuario); `decision-log.md`, DEC-005/007/008.
 
 ## 7. Architecture — criterios para producción
 

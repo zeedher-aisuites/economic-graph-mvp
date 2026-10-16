@@ -8,7 +8,7 @@ Este repositorio prepara una PoC pequeña, operada por personas, para explorar a
 
 Implementado y verificado offline: ingesta del diseño aprobado, auditoría de 30 empresas/48 relaciones/83 observaciones, proyección física e interfaces separadas, consultas a fecha de corte, historial, conflictos e identidad como candidatos. Las empresas conocidas son 12/17/23 en T0/T1/T2; no se exponen las 7 nunca descubiertas ni se completan perfiles desde el catálogo. La carga PyMongo está preparada con dry-run, protección de base dedicada e idempotencia probada con dobles.
 
-La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Integración real no verificada:** no hay servidor/configuración Atlas disponible en esta ejecución. No hay scoring, modelos ML, eventos comerciales, ventas, conversiones, cálculo económico ni Control Tower implementados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
+La infraestructura de misión 001 se conserva: configuración, cliente y ping sin escrituras, uv, pytest y Ruff. **Cierre 002C:** el usuario reportó validación real de Atlas desde Windows con VS Code: ping exitoso, carga de 83 observaciones, segunda carga con 0 inserciones/83 sin cambios y consultas T0/T1/T2 con los conteos esperados. La evidencia y su procedencia están en [validación Atlas](docs/11-atlas-integration-validation.md); no son ejecuciones realizadas por Codex Cloud y su conectividad sigue sin verificarse. No hay scoring, modelos ML, eventos comerciales, ventas, conversiones, cálculo económico ni Control Tower implementados. La Control Tower sigue siendo un entregable obligatorio del reto para otra misión.
 
 ## Requisitos
 
