@@ -1,6 +1,6 @@
 # Experimento de incrementalidad — protocolo propuesto 003B
 
-**Estado: diseño no aprobado ni ejecutado.** Complementa las variables y fórmulas de [caso económico](14-incremental-economic-case.md). No autoriza contactos reales, recolección de datos comerciales ni cambios a la política `003a-conservative-v1`.
+**Estado: diseño futuro aprobado provisionalmente solo como metodología de la PoC educativa; no ejecutado.** ECO-03 a ECO-06 no autorizan contactos, datos reales, presupuesto, piloto ni despliegue. Complementa el [caso económico](14-incremental-economic-case.md); el calculador determinista no ejecuta este protocolo ni cambia `003a-conservative-v1`.
 
 ## 1. Qué efecto queremos estimar
 
@@ -10,13 +10,13 @@ El control propuesto es el baseline aprobado de sucursales; el tratamiento usa e
 
 ## 2. Población y asignación antes de seleccionar
 
-Para un ensayo real se requieren PyMEs identificadas de forma suficiente, sin servicio activo, con cobertura/producto ofrecible y permisos de contacto. Son comprobaciones previas de operación real pendientes de aprobación, no cambios al ledger ni a la elegibilidad del ranking sintético. Las cuentas conocidas de estado desconocido no se convierten automáticamente en prospectos verificados. Resolver o retirar una identidad ambigua se hará antes de asignar, con evidencia autorizada; nunca por un resultado posterior.
+Para un ensayo real se requieren PyMEs identificadas de forma suficiente, sin servicio activo, con cobertura/producto ofrecible y autorización de contacto. Esta población fue aprobada conceptualmente, sujeta a validaciones comerciales y legales y autorización operativa futura; no cambia el ledger ni la elegibilidad del ranking sintético. Las cuentas conocidas de estado desconocido no se convierten automáticamente en prospectos verificados. Resolver o retirar una identidad ambigua requeriría evidencia autorizada antes de asignar, nunca un resultado posterior.
 
 Registrar todas las cuentas elegibles y su bolsa antes de aleatorizar, incluidos sus IDs, criterios, fuentes, fecha de disponibilidad y exclusiones previas. No partir los dos top-5 globales como si fueran brazos aleatorios: comparten cuentas y su selección depende de las señales.
 
 **Unidad propuesta:** bolsa comercial indivisible —cartera/mercado y equipo responsable— construida para contener empresas conectadas y evitar que un vendedor opere ambos tratamientos. Una empresa pertenece a una sola bolsa y no se vuelve a inscribir como adquisición en otro corte. Emparejar bolsas por número de elegibles, sector, zona y capacidad cuando existan esos datos; aleatorizar bolsas completas 1:1 dentro de bloques, con probabilidades registradas. No se asignará tratamiento por score.
 
-Todas las empresas de la bolsa reciben su asignación, aunque solo cinco ocupen plazas. Propuesta de capacidad: una ola de cinco plazas por bolsa en cada brazo, con el mismo presupuesto de esfuerzo, canales, producto, precios y ventana de contacto. La extensión de K=5 a múltiples bolsas reales está pendiente (ECO-04); no modifica el código. Equilibrar tamaños y la razón plazas/elegibles antes de asignar; una bolsa grande no se considerará equivalente a una pequeña por tener el mismo número de contactos.
+Todas las empresas de la bolsa recibirían su asignación, aunque solo cinco ocupen plazas. ECO-04 aprueba como diseño futuro una ola de cinco plazas por bolsa en cada brazo, con capacidad comparable y controles de contaminación, no su ejecución real. Mantener presupuesto de esfuerzo, canales, producto, precios y ventana comparables; no se modifica el código de rankings. Equilibrar tamaños y la razón plazas/elegibles antes de asignar; una bolsa grande no se considerará equivalente a una pequeña por tener el mismo número de contactos.
 
 Si una bolsa no tiene al menos cinco elegibles, resolver antes de aleatorizar mediante exclusión o bloques de capacidad menor común, con aprobación previa. No incorporar rellenos ajenos ni reciclar cuentas para cumplir una cuota. Los rechazos/no contactos posteriores no autorizan reemplazos discrecionales: la propuesta inicial congela el top-5 y registra esas desviaciones como parte del desempeño de la política.
 
@@ -73,7 +73,7 @@ Registrar exposición y contaminación; el análisis principal conserva la asign
 
 ## 6. Potencia, métricas secundarias y decisión
 
-Propuestas pendientes: intervalo bilateral del 95%, potencia objetivo del 80% y tamaño muestral diseñado para superar el umbral económico, no solo para detectar un efecto distinto de cero. Se necesitan varianza del margen neto, correlación intrabolsa, distribución de tamaños, número de bolsas, ciclo de venta, faltantes y tasa de contaminación. Ninguno se conoce hoy; no se fija un número de empresas o duración total con falsa precisión.
+Aprobados metodológicamente para PoC: KPI neto comercial por cuenta elegible asignada, ITT, intervalo bilateral del 95% y potencia objetivo del 80%. El tamaño muestral debería permitir superar el umbral económico, no solo detectar un efecto distinto de cero. Se necesitan varianza del margen neto, correlación intrabolsa, distribución de tamaños, número de bolsas, ciclo de venta, faltantes y tasa de contaminación. No se conocen hoy; no se calcula una muestra ni duración total con falsa precisión. Cinco o 500 plazas del calculador financiero no acreditan unidades independientes para este ensayo.
 
 Definir `τ_min=(F_despliegue+ΔO_despliegue+B_reserva)/N_despliegue` y una alternativa económicamente relevante `τ_objetivo>τ_min`; dimensionar el ensayo para distinguir esa brecha usando el diseño por bolsas. No basta un cálculo de conversión binaria que ignore la dispersión del margen. La PoC de treinta empresas ficticias y los tres cortes no proporcionan esa potencia.
 
@@ -85,4 +85,4 @@ Aplicar la regla de inversión de `14-incremental-economic-case.md`, con costos 
 
 Contrato de medición futuro: ID de cuenta y bolsa, asignación/probabilidad/bloque, corte y versión de política, posición/selección, exposición/intentos, primer contrato/activación, cobros/ajustes, servicio/baja, costos y fechas de disponibilidad. Conservar origen y auditoría; no registrar credenciales. Esta es una lista de requisitos, **no** una nueva colección, ledger o generador de eventos implementado.
 
-ECO-03 a ECO-06 del caso económico requieren aprobación de población, operación, unidad de aleatorización, contaminación tolerable, ventanas, medición, tamaño muestral y regla de inversión. Las fuentes reales y sus permisos no existen como insumos autorizados de esta misión. Se publica únicamente este diseño; no se ejecuta ni se programa el ensayo o el simulador financiero.
+ECO-03 a ECO-06 están aprobadas provisionalmente para metodología educativa. Operación, fuentes reales/permisos, presupuesto y pilotaje siguen sin autorizarse; no hay varianza/ICC para fijar muestra ni datos para medir contaminación tolerable. Si no existen suficientes bolsas independientes, se debe declarar inviable la inferencia causal bajo este diseño. Se implementa únicamente el calculador agregado del caso económico; no se generan asignaciones, contactos ni eventos, ni se programa o ejecuta el ensayo.

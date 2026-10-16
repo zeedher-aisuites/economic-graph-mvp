@@ -23,6 +23,7 @@ Este documento separa decisiones ya aceptadas, propuestas de implementación y c
 | D-015 | Construir solo conocimiento observable en fechas explícitas, separado del simulador | 12/17/23 empresas; consultas por disponibilidad; sin scoring, eventos, economía ni Control Tower |
 | D-016 | Misión 003A: política `003a-conservative-v1`, elegibilidad y K=5 aprobados expresamente | Baseline y grafo comparables implementados; DEC-009 y `12-commercial-ranking.md`; no demuestra efecto económico |
 | D-017 | Misión 003B, primera fase: exclusivamente diseño económico y experimental en PR borrador | No autoriza supuestos financieros, simulador, eventos ni experimento real |
+| D-018 | 003B, aprobación provisional educativa ECO-01 a ECO-06 y calculador determinista | Escenarios, sensibilidad y equilibrio autorizados; metodología no calibrada, sin finanzas reales, datos/contactos, presupuesto, piloto ni despliegue |
 
 ## 2. Propuestas técnicas, no decisiones cerradas
 
@@ -55,7 +56,7 @@ La elección final se documentará cuando exista diseño de datos y tarea concre
 | P-005 | Baseline | Resuelto para 003A: regla aprobada e implementada; no cambiarla en 003B |
 | P-006 | Grafo enriquecido | Resuelto para 003A: vecinos económicos confirmados distintos; ver DEC-009 |
 | P-007 | Evaluación offline | Comparación temporal 003A implementada; efectividad comercial y causalidad no verificadas |
-| P-008 | Caso económico | Diseño 003B propuesto: horizonte, margen, costos, volumen, escenarios y experimento pendientes ECO-01 a ECO-06 |
+| P-008 | Caso económico | ECO-01 a ECO-06 aprobadas provisionalmente solo para metodología PoC; calculador implementado. Efecto causal, muestra y aplicación financiera/operativa real no verificados ni autorizados |
 | P-009 | Presentación | Estructura inicial de 12 diapositivas autorizada en misión 001; contenido final y brief de 2–3 páginas pendientes |
 
 ## 5. Condiciones de cambio
@@ -83,8 +84,16 @@ El usuario aprobó diseño y paquetes adjuntos, que sustituyen los pendientes de
 
 DV-002 y DV-003 registran ejemplos de fusión fuerte y transición/caducidad que no existen en los insumos: se detiene únicamente su generación. Una adenda de evidencia necesitará aprobación; no se cambia el plan de 83 registros para simular que esos ejemplos se ejecutaron.
 
-## 9. Alcance documental de misión 003B
+## 9. Primera fase documental de misión 003B — histórica
 
 La misión 003A ya está integrada en `main` y sus decisiones siguen vigentes. Esta fase de 003B desarrolla únicamente `14-incremental-economic-case.md` y `15-incrementality-experiment.md`, actualizando trazabilidad y comunicación. Las entradas numéricas son propuestas pedagógicas, no datos de mercado ni resultados del ranking. La aprobación requerida se registra por ECO-01 a ECO-06; el PR borrador no la sustituye.
 
 No se programan cálculos, simulaciones ni eventos financieros; no se modifican políticas, código, pruebas, dependencias, ledger o Atlas. La siguiente implementación solo podrá comenzar tras una revisión y aprobación explícita de los supuestos y alcance.
+
+## 10. Aprobación provisional y calculador 003B
+
+La respuesta posterior del usuario al PR #5 autoriza provisionalmente ECO-01 a ECO-06 y un calculador financiero determinista. La aprobación es metodológica y exclusivamente para la PoC educativa: MXN, 90 días, doce meses, descuento mensual 1%, escenarios no observados, nulo obligatorio, reserva 20%, población conceptual y A/B futuro por bolsas independientes con ITT/IC95%/potencia objetivo80%. No hay muestra fijada sin varianza, ICC y datos comerciales.
+
+`finance.py`, `calculate_finance.py` y `config/financial_assumptions.json` implementan aritmética agregada, sensibilidad y equilibrio. No generan ventas ni resultados de las 30 empresas. Separan cinco plazas y 500 plazas hipotéticas del protocolo futuro. No cambian rankings, ledger, oráculo, Atlas ni dependencias.
+
+ECO-03/04/05 son aprobación de diseño, no permiso de ejecutar el experimento; ECO-06 no autoriza presupuesto, piloto o despliegue. El detalle está en `14-incremental-economic-case.md`. La entrega actualiza el PR #5 para revisión, sin integrarlo automáticamente.
