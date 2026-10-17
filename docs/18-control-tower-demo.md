@@ -1,8 +1,8 @@
 # Control Tower ejecutiva — uso y demostración 004B/004C
 
-**Estado:** aplicación local implementada para revisión del PR #6; CT-01 a CT-05 aprobadas expresamente por el usuario, con red interactiva sencilla añadida a CT-02. No integrada automáticamente en `main`. Datos sintéticos, escenarios no calibrados y experimento futuro conservan etiquetas distintas. No hay operaciones comerciales ni resultados causales.
+**Estado actual:** aplicación local 004B/004C integrada en `main` mediante el PR #6, commit `c9194ed8425cc1f62eaac6174656a658810e6597`. CT-01 a CT-05 aprobadas expresamente por el usuario, con red interactiva sencilla añadida a CT-02. Datos sintéticos, escenarios no calibrados y experimento futuro conservan etiquetas distintas. No hay operaciones comerciales ni resultados causales.
 
-**Actualización 004C:** el usuario confirmó 271 pruebas aprobadas y funcionamiento de las cinco vistas en Windows antes de solicitar este pulido. Se registra como evidencia reportada por el usuario, sin inventar SHA, fecha, captura o ejecución Windows de Codex. La revisión nativa de los nuevos cambios visuales sigue pendiente.
+**Validación posterior al merge reportada por el usuario:** Windows 11 / PowerShell / VS Code, `main` en `c9194ed`, árbol limpio; instalación correcta, 284 pruebas aprobadas y una integración excluida, Ruff sin errores y 60 archivos con formato correcto. Confirmó las cinco vistas y reportó ping, lectura T2 y captura de la Control Tower en Atlas de solo lectura. Son ejecuciones locales suyas, no de Codex Cloud; detalle y límites en [validación Atlas](11-atlas-integration-validation.md). Las 271 pruebas de 004B son un antecedente histórico, superado por este reporte.
 
 ## Instalar y ejecutar
 
@@ -10,8 +10,8 @@ Desde la raíz del checkout, en Windows PowerShell:
 
 ```powershell
 git fetch origin
-git switch mision-004a-control-tower-design
-git pull --ff-only origin mision-004a-control-tower-design
+git switch main
+git pull --ff-only origin main
 uv sync --locked --group ui
 uv run --group ui streamlit run app/control_tower.py
 ```
@@ -60,12 +60,12 @@ Offline no carga configuración ni crea clientes MongoDB. Para Atlas, configura 
 
 Se valida la base antes de crear cliente y solo se llama a `read_observations`/`find` con filtro temporal; cierra el cliente. No hay ping, metadata, índices, cargas o escrituras. El hash visible debe coincidir con el ledger aprobado al mismo corte; discrepancia bloquea la demo comparable. Errores no muestran mensajes crudos del driver, credenciales ni cifras locales como si fueran Atlas. Volver a Offline requiere selección explícita.
 
-El estado de lectura y su instante UTC se conservan en sesión, sin URI. Cambiar corte/fuente invalida la lectura. No se verificó una nueva integración real en 004B: la evidencia Windows de [002C](11-atlas-integration-validation.md) sigue siendo reporte del usuario y no acredita funcionamiento actual de esta UI en Atlas.
+El estado de lectura y su instante UTC se conservan en sesión, sin URI. Cambiar corte/fuente invalida la lectura. Tras el merge, el usuario reportó ping exitoso, consulta T2 (23 empresas, 26 afirmaciones económicas, tres referencias, 83 observaciones, dos candidatos y dos atributos en conflicto) y una captura de la UI en Atlas de solo lectura con indicadores/rankings esperados. La [validación Atlas](11-atlas-integration-validation.md) registra esa procedencia local y la distingue del cierre histórico 002C. No es una lectura nueva de Codex, una ejecución independiente de la CLI de rankings en Atlas ni la suite de integración completa.
 
 ## Guion ejecutivo de aproximadamente cinco minutos
 
 1. **0:00–0:45 · Resumen/T2.** Empezar por «El grafo modifica tres de las cinco selecciones». Mostrar 23 conocidas, 26 afirmaciones económicas (no todas confirmadas), 21 elegibles y ambas selecciones. Las tarjetas financieras tienen signos, pero son hipótesis: «Cambiar la selección no demuestra mayores ventas».
-2. **0:45–2:00 · Graph Health.** Ya abre en Café Jacaranda y sus vecinos. Señalar líneas gruesas que respaldan su señal y trazos de evidencia incierta. Abrir la ficha: baseline posición 10/score 0 → grafo posición 3/score 10. Abrir dos observaciones con fechas y cerrar los paneles. Opcional: Hornos para explicar sucursales en conflicto, o red completa para contexto, sin interpretarla como potencial comercial.
+2. **0:45–2:00 · Graph Health.** Ya abre en Café Jacaranda y sus vecinos. Señalar líneas gruesas que respaldan su señal y trazos de evidencia incierta. Abrir la ficha: baseline posición 10/score 0 → grafo posición 3/score 10, por **dos vecinos económicos distintos confirmados utilizables**. El score no representa probabilidad de conversión. Abrir observaciones de respaldo con sus fechas y cerrar los paneles. Opcional: Hornos para explicar sucursales en conflicto, o red completa para contexto, sin interpretarla como potencial comercial.
 3. **2:00–2:45 · Tiempo y comparación.** Cambiar a T0: solo 12 conocidas/28 observaciones, sin futuro. Volver a T2 y AI Performance; pulsar **Mostrar todas las empresas**. La matriz muestra dos compartidas, tres entradas y tres salidas, con posiciones globales. Caso Café y empates auditables; pesos exploratorios, sin modelo entrenado ni probabilidades.
 4. **2:45–3:20 · Business Funnel.** Sin filtros, señalar la progresión 23 → 21 → 5 y la rama de dos exclusiones. Las etapas posteriores dicen No observado. «No son cero ventas: todavía no existen eventos que permitan medirlas». No hay autorización de contacto.
 5. **3:20–4:30 · Economic Impact.** Inicia en cinco plazas, con pérdidas en los cuatro escenarios. Cambiar explícitamente a 500 plazas hipotéticas: base +39 000 MXN antes de reserva y nulo −41 000 MXN, junto a conservador y optimista. El equilibrio base de 1.025 pp es mejora requerida, no obtenida. Abrir sensibilidad solo si preguntan; no asociar cifras a las PyMEs ni a Totalplay.
@@ -88,9 +88,9 @@ Son consultas/cálculos offline; no ejecutar cargas o pruebas de integración pa
 
 ## Validación y límites
 
-Pruebas nuevas: `test_tower_read_model.py` y `test_control_tower.py`. Comprueban paridad con módulos públicos, cortes/opciones/evolución, red y estados, alias/conflictos, filtros sin reordenar, funnel sin ventas inventadas, finanzas intactas, Atlas mediante doble `find` sin escrituras, fallos y ejecución aislada pública sin red/env/simulador. Esquema Vega-Lite validado con la transitiva Altair; navegador local Linux comprueba dibujo real. No hay pruebas de escala, inferencia o performance de producción.
+Pruebas nuevas: `test_tower_read_model.py` y `test_control_tower.py`. Comprueban paridad con módulos públicos, cortes/opciones/evolución, red y estados, alias/conflictos, filtros sin reordenar, funnel sin ventas inventadas, finanzas intactas, Atlas mediante doble `find` sin escrituras, fallos y ejecución aislada pública sin red/env/simulador. Esquema Vega-Lite validado con la transitiva Altair; las revisiones históricas 004B/004C en navegador local Linux comprobaron el dibujo real. No hay pruebas de escala, inferencia o performance de producción.
 
-La regresión aislada usa rutas con espacios/acentos y cp1252 estricto, sin forzar UTF-8 en el proceso hijo; Streamlit serializa la UI Unicode sin depender de stdout regional. Es una simulación en Linux, **no ejecución nativa Windows de Codex**. El usuario ya confirmó el funcionamiento y 271 pruebas de 004B en Windows. El nuevo pulido 004C requiere otra revisión visual en ese equipo; Atlas real de la UI sigue sin verificarse. Ninguna evidencia reportada por el usuario se atribuye a Codex Cloud.
+La regresión aislada usa rutas con espacios/acentos y cp1252 estricto, sin forzar UTF-8 en el proceso hijo; Streamlit serializa la UI Unicode sin depender de stdout regional. Es una simulación en Linux, **no ejecución nativa Windows de Codex**. El usuario confirmó después del merge las cinco vistas en Windows y 284 pruebas aprobadas, con una integración excluida. También reportó la lectura real Atlas T2 y la UI en modo solo lectura. Ninguna evidencia local suya se atribuye a Codex Cloud. En 005C no hubo una nueva revisión de navegador, ejecución Windows o consulta Atlas de Codex; la validación offline no sustituye estas evidencias locales.
 
 Resultados históricos 004B en Codex Cloud/Linux, Python 3.12.14:
 
@@ -104,11 +104,11 @@ Resultados históricos 004B en Codex Cloud/Linux, Python 3.12.14:
 | Chromium local, laptop virtual 1366×900 | Cinco vistas y selección Café Jacaranda correctas; red dibujada, 0 errores JavaScript y 0 peticiones externas durante el recorrido |
 | `git diff --check`, enlaces Markdown y comparación de archivos protegidos | Correctos; ledger, diseños, configuración financiera y módulos de dominio intactos |
 
-La única instalación adicional directa fue Streamlit; el navegador usado para inspección ya existía en el entorno, sin añadirlo al manifiesto. Los tiempos de la prueba Linux no son una medición de rendimiento del equipo Windows ni un SLA. Cronometrar arranque/refresco en la laptop de presentación y registrar esa evidencia durante la revisión pendiente.
+La única instalación adicional directa fue Streamlit; el navegador usado para inspección ya existía en el entorno, sin añadirlo al manifiesto. Los tiempos de la prueba Linux no son una medición de rendimiento del equipo Windows ni un SLA. No se dispone de tiempos de arranque/refresco de la laptop Windows; medirlos sigue siendo opcional y no condiciona el reporte de funcionamiento confirmado.
 
 ### Corrección de la suite tras el reporte Windows
 
-El usuario confirmó instalación en Windows 11, Python 3.12.10 y Streamlit 1.66.0 y reportó **269 aprobadas, una fallida, un error y una integración omitida**. Fallaron el primer fixture AppTest por timeout de 15 segundos y el subprocess público porque el bloqueo global de `socket.connect` impedía `socketpair()`. Ese reporte no incluye una pila del hilo en el instante del primer timeout.
+**Antecedente histórico 004B:** el usuario confirmó instalación en Windows 11, Python 3.12.10 y Streamlit 1.66.0 y reportó **269 aprobadas, una fallida, un error y una integración omitida**. Fallaron el primer fixture AppTest por timeout de 15 segundos y el subprocess público porque el bloqueo global de `socket.connect` impedía `socketpair()`. Ese reporte no incluye una pila del hilo en el instante del primer timeout.
 
 **Inicialización de AppTest.** Se inspeccionó Streamlit 1.66.0: crea el bucle de eventos antes del contador del script y lo conserva sin ejecutarlo durante el render. No hay trabajo asíncrono propio de la aplicación. Se instrumentó una ejecución fría Linux: NumPy, PyArrow y pandas se importaron en `ScriptRunner.scriptThread`, dentro del presupuesto funcional; render frío aproximado de 1.90 s y repetido de 0.07 s. La preparación separada de NumPy/pandas/PyArrow/Altair tardó aproximadamente 0.55 s en otra medición y el primer AppTest preparado tardó 0.54 s. Son mediciones puntuales, no comparativa de rendimiento ni evidencia de tiempos Windows.
 
@@ -122,12 +122,12 @@ La protección continúa activa antes de importar dependencias y ejecutar la UI:
 
 Se conservan **los 271 casos anteriores**, sin omitir ni borrar los dos casos reportados; las nuevas aserciones de regresión están dentro de la prueba aislada existente. Sigue copiando solo app, módulos públicos, ledger, configuración financiera aprobada y helper de pruebas a una ruta con espacios/acentos, sin simulador ni diseños privados. No cambia código de la aplicación, dependencias, ledger, rankings, finanzas ni Atlas.
 
-Reejecución Linux tras la corrección: **271 aprobadas y una integración Atlas omitida**; Ruff y formato correctos. La confirmación nativa Windows queda pendiente del usuario. Para repetir y mostrar las fases más lentas desde la raíz:
+Reejecución Linux tras la corrección: **271 aprobadas y una integración Atlas omitida**; Ruff y formato correctos. En aquel cierre se solicitó confirmación nativa Windows; posteriormente el usuario confirmó 271 pruebas y, tras el merge, 284. Para repetir offline y mostrar las fases más lentas desde la raíz:
 
 ```powershell
 $env:RUN_MONGODB_INTEGRATION = "0"
 uv sync --locked --group ui
-uv run --group ui pytest --durations=5
+uv run --group ui pytest -m "not integration" --durations=5
 uv run --group ui ruff check .
 uv run --group ui ruff format --check .
 ```
@@ -136,7 +136,7 @@ uv run --group ui ruff format --check .
 
 El usuario confirmó posteriormente el funcionamiento y las 271 pruebas en Windows. Este pulido conserva esa infraestructura de compatibilidad y añade 13 regresiones de presentación/interacción, sin retirar casos previos: red centrada/completa, foco temporal, resaltado basado en la feature, escalas/signos/umbral, paneles contraídos y regreso explícito al segmento global. El guion de arriba corresponde a la interfaz actual.
 
-| Comprobación actual 004C, Codex Cloud/Linux | Resultado |
+| Comprobación histórica 004C, Codex Cloud/Linux | Resultado |
 |---|---|
 | `uv sync --locked --group ui` | Correcto; manifiesto/lockfile intactos |
 | `RUN_MONGODB_INTEGRATION=0 uv run --group ui pytest --durations=5` | **284 aprobadas, una integración real Atlas omitida**, 14.70 s en esta ejecución |
@@ -145,4 +145,19 @@ El usuario confirmó posteriormente el funcionamiento y las 271 pruebas en Windo
 | Interacciones en navegador | Foco/red completa/restablecimiento de segmento y cambio cinco→500 correctos; +39 000/−41 000 y umbral 1.025 pp visibles, auditoría JSON accesible al expandir |
 | Archivos protegidos | Ledger, diseños, configuración, políticas, elegibilidad, scoring, finanzas, manifest/lock y acceso MongoDB sin cambios |
 
-Las tarjetas financieras redondean a pesos enteros para lectura; tablas técnicas y JSON conservan centavos/precisión de origen. No se midió beneficio comercial, causalidad, rendimiento a escala ni una nueva conexión Atlas. La comprobación nativa de los cambios visuales 004C queda pendiente del usuario; no se integra automáticamente.
+Las tarjetas financieras redondean a pesos enteros para lectura; tablas técnicas y JSON conservan centavos/precisión de origen. No se midió beneficio comercial, causalidad, rendimiento a escala ni una nueva conexión Atlas. En el cierre histórico 004C quedaron pendientes la comprobación nativa y la integración. El reporte posterior del usuario sobre `main`/`c9194ed` confirma funcionamiento en Windows y el merge del PR #6; el estado actual está al inicio de esta guía.
+
+### Auditoría documental 005C — validación offline de Codex Cloud
+
+Desde la base integrada `c9194ed`, en Linux/Python 3.12.14, se ejecutaron:
+
+```bash
+UV_CACHE_DIR=/workspace/.cache/uv uv sync --locked --group ui
+RUN_MONGODB_INTEGRATION=0 UV_CACHE_DIR=/workspace/.cache/uv uv run --group ui pytest -m "not integration"
+UV_CACHE_DIR=/workspace/.cache/uv uv run --group ui ruff check .
+UV_CACHE_DIR=/workspace/.cache/uv uv run --group ui ruff format --check .
+```
+
+Resultado: **284 aprobadas y una integración excluida**; Ruff correcto y 60 archivos con formato correcto. Las pruebas AppTest incluyen cinco vistas y sus interacciones, sin sustituir una revisión visual nativa. Las CLI de resúmenes T0/T1/T2, rankings y finanzas también se ejecutaron offline: conteos esperados, dos compartidas/tres sustituciones, caso Café T2 10→3 y 0→10 por dos vecinos utilizables, y escenarios coincidentes con los supuestos versionados.
+
+Esta misión solo actualiza cuatro documentos: no cambia interfaz, ledger, rankings, fórmulas, supuestos, dependencias ni Atlas. No se realizó nueva inspección en navegador, carga o suite de integración Atlas; tampoco se midieron resultados comerciales. Para el estado y pendientes de los seis entregables consulta la [matriz de trazabilidad](02-challenge-traceability.md).
