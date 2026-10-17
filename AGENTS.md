@@ -137,3 +137,22 @@ Priorizar la calidad del argumento empresarial sobre la cantidad de diapositivas
 - Mantener separados cinco plazas de demostración, 500 plazas hipotéticas y protocolo experimental futuro. Mostrar deterioro, efecto nulo obligatorio, casos positivos y referencia de saldo cero sin ajustar parámetros para favorecer al grafo. No generar ventas por empresa ni atribuir resultados a las 30 PyMEs o a Totalplay.
 - Etiquetar supuestos no calibrados, validar unidades/valoración temporal y evitar duplicar costos/reserva. Conservar rankings, ledger, oráculo, Atlas y dependencias. Probar matemáticas y CLI offline, incluido UTF-8 en Windows; no ejecutar integración que escribe en Atlas.
 - La aprobación es metodológica, no validación financiera ni autorización de datos reales, contactos, presupuesto, piloto operativo o despliegue. El experimento es solo diseño: no calcular muestra sin varianza/ICC ni afirmar inferencia causal si faltan bolsas independientes suficientes.
+
+## Alcance histórico — misión 004A, diseño de Control Tower
+
+- El usuario autorizó auditoría y propuesta documental de arquitectura visual/técnica, páginas, indicadores, filtros, fuentes y aceptación en PR borrador desde `main` actualizado. No implementar interfaz, instalar Streamlit ni modificar código, pruebas, dependencias o lockfile en esta fase.
+- Mantener CT-01 a CT-05 de `docs/17-control-tower-design.md` como propuestas hasta aprobación explícita. La Control Tower es obligatoria por el reto; eso no aprueba todavía su tecnología o diseño visual.
+- Reutilizar como fuentes autorizadas los módulos de observabilidad, rankings y finanzas, sin reinterpretar reglas ni alterar ledger, políticas, supuestos u operaciones Atlas. Filtros no redefinen cohortes, posiciones o finanzas. No observar una venta no equivale a venta cero.
+- Separar sintético observable, evidencia técnica con procedencia, hipótesis educativa y experimento futuro. Offline por defecto; Atlas solo diseño de lectura opcional. No avanzar a programar antes de revisar las decisiones CT.
+
+## Alcance vigente — misión 004B, Control Tower local
+
+- El usuario aprobó CT-01 a CT-05 y amplió CT-02 con red interactiva sencilla dentro de Graph Health. Implementar en la rama existente del PR #6, sin integrar en `main`. Streamlit en grupo opcional `ui`; usar Vega-Lite integrado y selector sincronizado, sin motor gráfico adicional ni nuevas fórmulas.
+- Mantener cinco vistas, Resumen/T2/Offline por defecto. Distinguir afirmaciones y confirmaciones, referencias, conflictos, candidatos no fusionados y nodos sin evidencia. Filtros de inspección conservan puntuaciones, posiciones, top-5 y supuestos agregados. No escribir en Atlas ni ejecutar integración histórica que carga datos.
+- Probar adaptador y UI con `uv run --group ui pytest`, además de Ruff y formato; mantener CLI base independiente. Registrar diferencias entre validación Linux, regresiones de codificación Windows y ejecución nativa Windows pendiente. Actualizar diseño, guía de demo, decisiones y trazabilidad con evidencia real.
+
+## Alcance vigente — misión 004C, pulido ejecutivo
+
+- Pulir la presentación en la misma rama del PR #6, sin cambios a ledger, Atlas, scoring, elegibilidad, rankings, fórmulas o supuestos. Cinco vistas y dependencia UI existentes; no añadir bibliotecas pesadas ni cambiar arquitectura.
+- Dar prioridad al hallazgo de tres sustituciones, red centrada, matriz de selección, funnel con exclusiones separadas y escenarios hipotéticos legibles. Mantener auditoría completa contraída, fuentes/fechas/versiones y filtros sin reordenar. Resaltar evidencia de la feature aprobada, no calcular un score desde el dibujo.
+- El usuario confirmó 271 pruebas y funcionamiento Windows de 004B. Conservar preparación de AppTest, límite de 15 s y guard de IPC/red. Pruebas nuevas y revisión Chromium/Linux a 1366×900 no sustituyen revisión nativa de los cambios 004C; no integrar automáticamente.

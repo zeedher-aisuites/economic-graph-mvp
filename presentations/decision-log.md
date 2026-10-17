@@ -22,15 +22,15 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Explicación al CEO:** dejamos lista la herramienta de trabajo antes de decidir qué información será válida para orientar una inversión comercial.
 - **Evidencia para validarla:** repositorio sin generadores ni scoring, pendientes explícitos y aprobación del modelo antes de la misión siguiente.
 
-## DEC-003 — Control Tower obligatoria; interfaz por decidir
+## DEC-003 — Control Tower obligatoria
 
 - **Estado:** aprobada por requisito comprobado del reto, diapositivas 10 y 12 y sus notas. Corrige la clasificación inicial del brief; no autoriza implementarla en misión 001.
 - **Problema:** una visualización opcional no puede volver opcional la conexión entre calidad técnica y efecto económico.
 - **Alternativas:** dashboard funcional; prototipo de Control Tower. Streamlit y una interfaz sofisticada siguen siendo opcionales.
 - **Justificación:** la fuente requiere enlazar Graph Health, AI Performance, Business Funnel y Economic Impact y admite un prototipo.
-- **Riesgos y compromisos:** las definiciones y el prototipo aún no existen; un tablero con cifras simuladas no prueba incremento causal.
+- **Riesgos y compromisos:** el prototipo incorporado en 004B no aporta eventos comerciales; un tablero con cifras simuladas no prueba incremento causal.
 - **Explicación al CEO:** debemos poder seguir cómo una señal termina en una acción y en un resultado, antes de decidir si conviene escalar.
-- **Evidencia para validarla:** prototipo trazable que conecte las cuatro dimensiones y distinga resultados de escenarios; formato concreto pendiente.
+- **Evidencia para validarla:** prototipo trazable que conecte las cuatro dimensiones y distinga resultados de escenarios; formato aprobado e implementado en DEC-011, revisión Windows pendiente.
 
 ## DEC-004 — Validación económica con contrafactual
 
@@ -101,3 +101,15 @@ Estados permitidos: **propuesta**, **aprobada**, **descartada**. Las aprobacione
 - **Riesgos y compromisos:** costos y tasas no calibrados, volumen sin validar, identidad/permisos pendientes, interferencia oculta y pocas bolsas independientes. No se calcula muestra sin varianza/ICC. La contabilidad semántica de facturas sigue requiriendo revisión humana; IDs únicos no prueban que dos costos sean distintos. Las reglas 003A permanecen intactas.
 - **Explicación al CEO:** cinco plazas no cubren el costo bajo ninguno de los cuatro casos aprobados. Quinientas pueden dar pérdidas o saldos positivos según hipótesis, pero no prueban que el beneficio sea alcanzable. Un saldo cero es el umbral matemático; cero mejora de conversión puede seguir perdiendo dinero. Ninguno autoriza invertir: faltan efecto atribuible, costos reales y autorización operativa.
 - **Evidencia:** aprobación explícita del usuario con límites ECO-01 a ECO-06; pruebas de identidades, regresiones, sensibilidad, valoración e aislamiento; resultados reproducibles en `../docs/16-financial-calculation.md`. El diseño futuro sigue en `../docs/15-incrementality-experiment.md`. Calculador implementado; sin ventas por empresa, ensayo, muestra, presupuesto ni despliegue.
+
+## DEC-011 — Control Tower que distingue evidencia y supuestos
+
+- **Estado:** aprobada expresamente en 004B, CT-01 a CT-05 con ampliación CT-02; pulido 004C autorizado. PR #6 sin integración automática. El usuario confirmó funcionamiento/271 pruebas Windows de 004B; nueva revisión visual 004C pendiente.
+- **Problema:** demostrar Graph Health → priorización → acción → resultado sin ocultar los eslabones comerciales no observados ni presentar hipótesis como desempeño medido.
+- **Alternativas:** CLI/Markdown actuales; HTML estático o web propia; Streamlit local con módulos existentes. Para la red: Vega-Lite integrado frente a bibliotecas especializadas; selección lateral sincronizada frente a callbacks de clic en nodos.
+- **Justificación:** cinco vistas y adaptación descriptiva conservan fuentes únicas de reglas/finanzas. Streamlit 1.66.0 en grupo opcional `ui` aporta controles y Vega-Lite; no hace falta otra dependencia directa de red. Layout circular determinista y selector evitan complejidad de motor gráfico. Los filtros mantienen posiciones/top-5 y economía independiente de empresas; Atlas manual solo lectura con paridad e invalidación de contexto.
+- **Riesgos y compromisos:** transitivas como pandas/PyArrow aumentan instalación; versión fijada, probada Linux y 004B Windows confirmada por el usuario. Nueva revisión visual 004C pendiente. Datos escasos, identidad sin resolver, ausencia de etiquetas/eventos y superposición en red completa. Foco, nombres por hover/tablas y detalle reducen complejidad; sin inferir distancia comercial ni confianza del oráculo. La red no acredita efecto económico.
+- **Explicación al CEO:** el tablero muestra qué cuentas se consideran y por qué, dónde falta evidencia y qué mejora hipotética pagaría la solución. Ventas no observadas y escenarios educativos se distinguen; una tarjeta positiva no autoriza invertir.
+- **Evidencia:** pruebas de paridad, aislamiento temporal/privado, filtros sin nuevas reglas, etapas No observado, finanzas intactas y lectura Atlas con doble `find`. AppTest y Chromium Linux ejercitan vistas/red; regresión pública aislada sin red/env/simulador. CT-A01 a CT-A13 en `../docs/17-control-tower-design.md`; resultados y guion en `../docs/18-control-tower-demo.md`. Windows 004B es reporte del usuario, no ejecución Codex; sin nueva validación real Atlas o rendimiento a escala.
+- **Seguimiento Windows:** el usuario confirmó instalación y reportó timeout del primer AppTest más bloqueo de IPC interno. Se separa carga fría de dependencias del presupuesto funcional y se admite únicamente `socketpair` local, sin abrir acceso a servicios. Se conservan 271 pruebas y timeout de 15 segundos; confirmación nativa pendiente. El diagnóstico detallado y la incertidumbre sobre la duración original están en la guía 004B; no cambia la arquitectura o política aprobada.
+- **Pulido 004C aprobado:** tras confirmar 271 pruebas y funcionamiento Windows, el usuario solicita jerarquía ejecutiva y red centrada. Se conserva Vega-Lite/Streamlit y se usan tarjetas, matriz y paneles contraídos en vez de agregar bibliotecas. El grosor de vínculos referencia evidencia de la feature ya calculada; evita otro scoring. Beneficio esperado: explicar la decisión en cinco minutos, sin equiparar selección o escenario con ventas. Compromiso: más detalle requiere expandir auditoría; puede restablecerse el segmento explícitamente. Se valida navegador a 1366×900, paridad, foco temporal y auditoría accesible; no es evidencia comercial. Guion actualizado en la guía, nueva revisión visual Windows pendiente; no hay merge.

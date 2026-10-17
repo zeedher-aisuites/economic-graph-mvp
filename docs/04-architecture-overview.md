@@ -111,3 +111,13 @@ Los agentes son una línea **posterior a la entrega**, no una dependencia ni con
 ## 9. Verificación de la PoC
 
 Antes de considerar la PoC lista: generación repetible, integridad referencial, consultas funcionando, rankings auditables, pruebas básicas y documentación de lo **implementado**, **simulado** y **propuesto**.
+
+## 10. Control Tower local — implementación 004B
+
+La infraestructura 002/003 permanece como fuente de dominio. `finance.py` implementa el calculador educativo 003B, independiente de datos empresariales. [El diseño 004A](17-control-tower-design.md) propone una UI Streamlit local con adaptador de presentación: ledger público o lectura MongoDB temporal → snapshot/informe de rankings; archivo de supuestos → informe financiero; ambos alimentan vistas y etiquetas sin copiar fórmulas.
+
+CT-01 a CT-05 aprobadas, con ampliación de red económica. `app/control_tower.py` implementa cinco vistas; `tower_read_model.py` adapta datos públicos sin importar Streamlit ni simulador. Grupo `ui` con Streamlit fijado en lockfile, grafo Vega-Lite integrado y selector sincronizado; no otra biblioteca directa de grafos. `.streamlit/config.toml` limita escucha a loopback y desactiva telemetría. Estado de sesión conserva solo contexto público y procedencia, sin URI ni cliente persistente.
+
+Atlas es opt-in manual, solo `find`, validación de base previa y hash visible igual al ledger, sin fallback silencioso. Cambiar corte/fuente invalida lecturas. La economía no recibe filtros de empresa/sector/período; no hay escrituras, eventos inventados, backend o API separados. Guía y límites reales de validación: [004B](18-control-tower-demo.md). Revisión visual Windows pendiente.
+
+004C conserva esa arquitectura. La presentación añade tarjetas y matriz de selección; el adaptador solo cambia layout de red y copia IDs de evidencia de la feature para resaltar vínculos. No calcula scoring desde aristas del dibujo ni modifica reglas. Foco inicial y paneles contraídos priorizan lectura ejecutiva sin perder auditoría. El usuario confirmó 271 pruebas y funcionamiento Windows de 004B; nueva revisión del pulido pendiente.
