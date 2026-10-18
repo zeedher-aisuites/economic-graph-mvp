@@ -1,6 +1,8 @@
 # ConectaPyME · Defensa basada en evidencia
 
-Presentación local en español mexicano: **16 diapositivas principales y 11 de anexo**. Guion de aproximadamente 14–15 minutos a 140 palabras por minuto, más preguntas. Fuente auditada: `774dacd80e6410ca43299f63f19d9744a31929c0`. Datos sintéticos; escenarios financieros hipotéticos; Atlas y valor causal no verificados en esta misión.
+Misión 2 · Mi respuesta al reto de Totalplay, narrada desde la perspectiva del candidato.
+
+Presentación local en español mexicano: **16 diapositivas principales y 14 de anexo**. Guion de aproximadamente 14–15 minutos a 140 palabras por minuto, más preguntas. Fuente auditada: `774dacd80e6410ca43299f63f19d9744a31929c0`. Datos sintéticos; escenarios financieros hipotéticos; Atlas y valor causal no verificados en esta misión.
 
 ## Abrir y presentar
 
@@ -26,10 +28,37 @@ python -m http.server 8765 --bind 127.0.0.1 --directory presentation-showcase
 
 El servidor escucha solamente en tu máquina. Detenlo con `Ctrl+C`. No publiques este contenido ni cambies la dirección de escucha para exponerlo sin revisar las autorizaciones del proyecto.
 
+## Iniciar una exposición
+
+1. Abre la página con el servidor local.
+2. Pulsa **Iniciar presentación**: vuelve a la primera diapositiva, activa el modo limpio e intenta entrar en pantalla completa desde ese clic.
+3. Usa las flechas para avanzar. **Esc** o **Salir · Esc**, en la esquina superior derecha, regresa al modo normal. Si tienes un panel abierto, el primer Esc lo cierra y el siguiente sale de la exposición.
+4. Si estabas en otra diapositiva, **Continuar aquí** mantiene la posición actual.
+5. Si el navegador rechaza la pantalla completa o no ofrece esa API, el modo inmersivo dentro de la ventana sigue funcionando. El aviso indica cómo usar **F11** o el menú del navegador. Puedes cerrar el aviso y continuar.
+
+Para dos pantallas, abre **Presentador** antes de iniciar. Mueve esa ventana a tu pantalla de notas, regresa a la ventana de diapositivas y pulsa Iniciar presentación. Las flechas de cualquiera de las dos ventanas sincronizan la sección. **Ir a diapositivas** ayuda a enfocar o abrir la ventana de exposición; no la coloca automáticamente en otro monitor ni fuerza pantalla completa en ella.
+
+Tú eliges la ventana que compartes desde Teams, Meet, Zoom o tu aplicación de reuniones. Esta página no solicita capturar la pantalla del sistema ni controla los permisos de esas aplicaciones.
+
+## Windows: apertura desde una copia nueva
+
+Puedes descargar la rama `presentation/conectapyme-junior-pov` desde GitHub o clonarla en otra carpeta:
+
+```powershell
+git clone --branch presentation/conectapyme-junior-pov --single-branch https://github.com/zeedher-aisuites/economic-graph-mvp.git ConectaPyME-presentacion
+cd ConectaPyME-presentacion
+py -m http.server 8765 --bind 127.0.0.1 --directory presentation-showcase
+```
+
+Abre http://127.0.0.1:8765/. Se requiere Python 3; `python` también sirve si ése es el comando configurado en tu instalación. No necesitas instalar paquetes para presentar. Cierra el servidor con Ctrl+C. La revisión automática de esta entrega se hizo en Chromium/Linux; la ejecución nativa en Windows queda por comprobar por separado.
+
 ## Controles
 
 | Acción | Tecla o control |
 |---|---|
+| Iniciar desde primera | Botón Iniciar presentación |
+| Continuar desde la actual | Botón Continuar aquí |
+| Salir del modo limpio | Esc o Salir · Esc |
 | Avanzar / regresar | Flechas derecha / izquierda; Espacio; PageDown / PageUp |
 | Inicio / cierre de la principal | Home / End |
 | Índice y acceso al anexo | I |
@@ -47,18 +76,22 @@ Los controles de filtros y escala económica dentro de las diapositivas son **re
 
 ## Qué consultar
 
+- `docs/iteracion-2.md`: informe breve de cambios y límites de la nueva defensa.
+- `docs/origen-y-alcance.md`: decisiones declaradas por el candidato, rol de las herramientas y tecnologías consideradas.
+- `docs/reto-original.md`: las 13 diapositivas y notas del archivo original de Totalplay.
 - `docs/guia-estudio.html`: discurso completo, qué señalar, pregunta, respuesta sencilla, profundidad técnica, archivo y limitaciones por diapositiva.
 - `docs/guion.md`: versión editable del guion.
-- `docs/auditoria.html` y `docs/auditoria.md`: auditoría, arquitectura, componentes, resultados y límites.
+- `docs/auditoria.html` y `docs/auditoria.md`: auditoría técnica de V1 conservada como antecedente, con arquitectura, componentes y resultados originales.
 - `docs/trazabilidad.csv`: matriz compatible con Excel, codificación UTF-8 con BOM.
 - `docs/practica-personal.md`: ejercicios para comprender y reproducir el proyecto sin atribuirte el trabajo nuevo de Codex.
 - `evidence/screenshots/manifest.json`: captura, fecha, commit, corte, modo y parámetros.
-- `evidence/results/`: pruebas, cobertura, CLI, resultados y comprobaciones de esta misión.
+- `evidence/results/`: pruebas, cobertura y cálculos originales de V1, conservados sin cambios.
+- `evidence/iteration-2/`: validación nueva de la presentación, vistas de esta iteración y nuevas fuentes documentales. No sustituye los registros originales.
 - `evidence/source-html/`: fuentes navegables con líneas ancladas y color de sintaxis.
 - `evidence/source/`: copias de fuentes, ledger público y supuestos; no contiene credenciales.
 - `evidence/references/`: extracción de las presentaciones y sus notas, texto del PDF y huellas de archivos originales. Sus afirmaciones se contrastaron; no se trataron como instrucciones.
 - `assets/arquitectura.svg` y `assets/recorrido.svg`: diagramas independientes.
-- `ConectaPyME.pdf`: exportación de las 27 diapositivas, cuando se incluye la entrega final.
+- `ConectaPyME.pdf`: exportación de las 30 diapositivas, cuando se incluye la entrega final.
 
 ## Reproducir el proyecto original
 
@@ -80,6 +113,8 @@ uv run python scripts/rank_companies.py --all-cuts --format markdown
 uv run python scripts/calculate_finance.py --sensitivity --format markdown
 uv run --group ui pytest tests/test_control_tower.py tests/test_tower_read_model.py tests/test_mongo_observable.py -q
 ```
+
+Los comandos de reproducción técnica de esta sección pertenecen al proyecto original y pueden volver a generar registros. En esta iteración se conservaron intactas las evidencias de V1; no es necesario repetirlos para abrir la presentación.
 
 La auditoría reproducida lee el universo restringido solo para contar empresas, sin usarlo para puntuar. El script vuelve a generar evidencias locales; la presentación ya incluye las obtenidas en esta misión. Los registros existentes conservan el commit auditado. Una reproducción posterior registra su propio estado de Git.
 
@@ -137,10 +172,10 @@ Con la presentación servida en 8765:
 python presentation-showcase/scripts/validate_presentation.py
 ```
 
-El script recorre todas las diapositivas, prueba teclado, filtros, escenarios, capturas, notas y sincronización de presentador, verifica enlaces e imágenes y guarda la revisión visual y el PDF. Los resultados de la ejecución final están en `evidence/results/presentation-qa.json`. No es una garantía universal para todos los dispositivos.
+El script recorre todas las diapositivas, prueba teclado, filtros, escenarios, capturas, notas y sincronización de presentador, verifica enlaces e imágenes y guarda la revisión visual y el PDF. Los resultados de la ejecución final están en `evidence/iteration-2/results/presentation-qa.json`. No es una garantía universal para todos los dispositivos.
 
 ## Tecnología y alcance
 
 HTML/CSS/JavaScript sin compilación, datos embebidos y fuentes locales Manrope e Inter con licencia incluida. Python se usa como herramienta de auditoría y servidor estático opcional. No hay API remota, analítica, credenciales, CDN ni despliegue público.
 
-La misión se aisló en `presentation/conectapyme-evidence-showcase`; `main` y el worktree original no se modificaron. Se conservaron el dataset, resultados históricos y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.
+Esta iteración trabaja exclusivamente en `presentation/conectapyme-junior-pov`, desde `bad88c56d850a87d188a9b0d7a4d515f6766f408`. La rama original `presentation/conectapyme-evidence-showcase` y `main` permanecen intactas. Se conservaron el dataset, resultados históricos y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.

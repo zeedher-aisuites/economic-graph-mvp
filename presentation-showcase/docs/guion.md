@@ -1,72 +1,124 @@
 # Guion de exposición y defensa técnica
 
-Fuente auditada: `774dacd80e6410ca43299f63f19d9744a31929c0`. Capturas offline; datos sintéticos. Investigación y verificación nuevas realizadas por Codex.
+Misión 2 · Mi respuesta al reto de Totalplay. Implementación de respaldo: `774dacd80e6410ca43299f63f19d9744a31929c0`. Capturas offline y datos sintéticos de la primera revisión, conservados.
 
-Las notas están en primera persona para facilitar el ensayo. No atribuyen al candidato las verificaciones de esta misión. Duraciones estimadas a 140 palabras por minuto; practicar en voz alta.
+El relato de alcance, hipótesis y decisiones corresponde a la declaración del candidato. La programación fue asistida por ChatGPT/GPT, Gemini y Codex según esa declaración. Las pruebas, capturas y el experimento de depuración de V1 fueron producidos por Codex y conservan su origen; no acreditan ejecución manual personal. Duraciones a 140 palabras por minuto; ensayar en voz alta.
 
-## 01. Elegir a quién investigar primero
+## 01. Mi respuesta al reto de Totalplay
 
-**Tipo:** Demostrado · sintético · **Duración orientativa:** 59 s
-
-### Discurso
-
-Presento ConectaPyME, un prototipo para decidir qué pequeñas empresas conviene investigar primero cuando un equipo comercial tiene tiempo limitado. El grafo representa empresas y sus relaciones económicas. Mi punto de partida es una pregunta sencilla: ¿conocer las relaciones entre negocios cambia la lista que revisaríamos? En este proyecto sí cambia. Con los mismos datos disponibles y cinco lugares, tres empresas son distintas al agregar relaciones confirmadas. Ese es el resultado técnico que voy a mostrar. Todavía no puedo decir que esas empresas compren más o que el proyecto genere ganancias. Para eso faltan resultados comerciales y una comparación controlada. Durante esta revisión, Codex volvió a ejecutar el código y las pruebas, y obtuvo las capturas que veremos. Yo puedo usar esa evidencia para explicar el funcionamiento, sin presentar el trabajo de esta revisión como una experiencia personal mía.
-
-### Qué señalar
-
-Señala tres lugares distintos de cinco y la etiqueta de datos sintéticos.
-
-### Pregunta del evaluador
-
-¿Qué resultado concreto demuestra el proyecto?
-
-**Respuesta sencilla:** Que agregar relaciones confirmadas cambia la priorización. Todavía no demuestra más ventas.
-
-**Si profundiza:** Se comparan dos políticas deterministas sobre la misma cohorte, corte y capacidad K=5; se reproducen tres entradas y tres salidas del Top 5.
-
-**Verificar en:** src/economic_graph/rankings.py:145–233; app/control_tower.py:283–313
-
-**Reproducción:** `uv run python scripts/rank_companies.py --as-of T2 --format markdown`
-
-**Límite:** Los datos son ficticios. Cambiar una selección no mide su calidad comercial.
-
-## 02. Hay más cuentas que tiempo
-
-**Tipo:** Hipótesis de negocio · **Duración orientativa:** 54 s
+**Tipo:** El reto · mi punto de partida · **Duración orientativa:** 59 s
 
 ### Discurso
 
-La idea es bastante sencilla: un equipo no puede investigar todas las cuentas al mismo tiempo. Necesita una lista con razones claras para empezar por algunas. En este ejercicio uso cinco lugares, y comparo dos maneras de llenarlos. La primera utiliza información individual de las empresas. La segunda agrega relaciones económicas confirmadas. Mantengo el mismo grupo y el mismo cupo para que la diferencia venga de la regla de prioridad. No estoy afirmando que este sea el principal problema actual de Totalplay; esa parte necesitaría entrevistas y datos del negocio. Tampoco significa que las cinco seleccionadas ya estén listas para recibir una llamada. Todavía faltaría comprobar cobertura, identidad, producto y permiso de contacto. Por ahora la decisión es a quién investigar, no a quién venderle automáticamente.
+Cuando recibí el reto, entendí que no se trataba solamente de dibujar conexiones o elegir una base de datos. La pregunta era cómo construir un Economic Graph de pequeñas empresas para una Telco y cómo demostrar que genera valor económico incremental. Para mí, eso significa conectar información con una decisión comercial y después medir si esa decisión deja un beneficio adicional frente a una referencia. ConectaPyME es mi respuesta a esa pregunta. El grafo representa empresas y sus relaciones económicas. Preparé una prueba de concepto pequeña, con datos sintéticos, para explorar una parte del problema. En esta presentación voy a explicar cómo elegí el alcance, cómo trabajé con asistencia de IA, qué hace el prototipo y qué resultados puedo defender. También voy a separar lo que funciona técnicamente de lo que todavía necesitaría medir con datos reales.
 
 ### Qué señalar
 
-Marca el cupo de cinco y las dos listas comparables.
+Señala la pregunta completa y la cadena información → decisión → valor medible.
 
 ### Pregunta del evaluador
 
-¿Por qué elegiste cinco cuentas?
+¿Qué te pidió Totalplay, más allá de una arquitectura?
 
-**Respuesta sencilla:** Es la capacidad aprobada para esta demostración. No viene de una medición del equipo de ventas.
+**Respuesta sencilla:** Conectar datos y relaciones con una decisión comercial y explicar cómo mediría un beneficio económico adicional. La arquitectura es parte del soporte.
 
-**Si profundiza:** POLICY fija capacity=5. El filtro de servicio activo es una elegibilidad sintética mínima, distinta de la elegibilidad operativa propuesta para un piloto.
+**Si profundiza:** Las diapositivas 4 y 5 del reto fijan la pregunta y su intención; 10 y 12 establecen Control Tower y seis entregables.
 
-**Verificar en:** docs/01-product-brief.md:1–87; src/economic_graph/rankings.py:12–22; src/economic_graph/tower_read_model.py:99–115
+**Verificar en:** presentation-showcase/docs/reto-original.md:1–190; presentation-showcase/docs/origen-y-alcance.md:1–59
+
+**Reproducción:** `Consultar el reto original, diapositivas 4, 5, 10 y 12; extracción completa en docs/reto-original.md.`
+
+**Límite:** El prototipo no acredita ventas, ROI ni un efecto económico real; las cifras ilustrativas del reto no son resultados de ConectaPyME.
+
+## 02. Primero definí qué decisión quería mejorar
+
+**Tipo:** Mi elección · caso ficticio · **Duración orientativa:** 56 s
+
+### Discurso
+
+Antes de elegir tecnologías, me hice varias preguntas. ¿Qué empresa usaría el grafo? ¿Qué decisión necesitaba mejorar? ¿Qué información tendría disponible? ¿Y cómo sabría si las conexiones servían para algo? El reto ofrecía varias posibilidades y elegí adquisición de clientes empresariales: investigar pequeñas empresas similares o conectadas con clientes actuales. Para aterrizarlo definí una Telco ficticia, ConectaPyME, y una decisión concreta: a quién investigar primero cuando hay más cuentas que tiempo. En la demostración uso cinco lugares. Eso me permite comparar dos listas sin cambiar la capacidad comercial. La empresa, su territorio y su contexto operativo son una simulación. No estoy describiendo ni diagnosticando los procesos reales de Totalplay. Tampoco significa que las seleccionadas ya estén listas para recibir una llamada; todavía faltaría validar cobertura, identidad y permiso de contacto.
+
+### Qué señalar
+
+Muestra el caso B2B Acquisition del reto y la decisión acotada de cinco lugares.
+
+### Pregunta del evaluador
+
+¿Estás afirmando que Totalplay tiene ese problema comercial?
+
+**Respuesta sencilla:** No. Elegí una posibilidad del reto y la desarrollé en una Telco ficticia. Tendría que validar el problema y el proceso real con la empresa.
+
+**Si profundiza:** La intención de adquisición está en la diapositiva 7 del reto. K=5 pertenece a la política de la PoC, no a una capacidad comercial medida en Totalplay.
+
+**Verificar en:** presentation-showcase/docs/reto-original.md:1–190; presentation-showcase/docs/origen-y-alcance.md:1–59; src/economic_graph/rankings.py:12–22
 
 **Reproducción:** `uv run python scripts/rank_companies.py --as-of T2`
 
-**Límite:** El problema comercial y los pesos necesitan validarse con personas y datos reales.
+**Límite:** El caso de uso elegido no implica que ya se haya implementado similitud aprendida o una política especial para vecinos de clientes actuales.
 
-## 03. Solo usamos lo que ya se sabía
+## 03. Mi hipótesis: las relaciones podrían ayudar
+
+**Tipo:** Hipótesis · todavía por validar · **Duración orientativa:** 56 s
+
+### Discurso
+
+Mi hipótesis fue que una empresa puede ser más interesante para investigar cuando entiendo cómo se relaciona con otros negocios, y no solamente sus atributos individuales. Por ejemplo, conocer un vínculo económico confirmado podría agregar contexto a una cuenta con poca información propia. Eso podría ayudar a seleccionar prospectos más útiles y, bajo ciertas condiciones, mejorar la adquisición y el margen. Pero no lo doy por hecho. Primero necesitaría datos confiables y autorizados, relaciones relevantes y bien verificadas, una comparación justa contra una referencia, un equipo que pueda actuar y resultados reales para medir. Por eso dividí la pregunta en dos partes. Con la PoC puedo comprobar si el grafo cambia la selección y explicar por qué. Para saber si ese cambio ayuda a vender mejor necesitaría una evaluación comercial posterior.
+
+### Qué señalar
+
+Sigue la cadena de hipótesis y las cinco condiciones; separa cambio de lista de mejora comercial.
+
+### Pregunta del evaluador
+
+¿Qué parte de tu hipótesis comprobaste?
+
+**Respuesta sencilla:** Que las relaciones confirmadas cambian la selección bajo las reglas del prototipo. Que esa selección genere mayor margen sigue pendiente.
+
+**Si profundiza:** El ranking compara atributos individuales frente a los mismos atributos más vecinos económicos confirmados; no estima probabilidades ni un efecto causal.
+
+**Verificar en:** presentation-showcase/docs/reto-original.md:1–190; presentation-showcase/docs/origen-y-alcance.md:1–59
+
+**Reproducción:** `Consultar docs/reto-original.md y docs/origen-y-alcance.md.`
+
+**Límite:** Una señal relevante para describir una relación no necesariamente predice una compra.
+
+## 04. Dirigí una PoC con apoyo de IA
+
+**Tipo:** Mi forma de trabajo · asistencia de IA · **Duración orientativa:** 56 s
+
+### Discurso
+
+Con el plazo del reto y sin datos reales de una Telco, decidí construir una prueba de concepto controlada. Utilicé ChatGPT o GPT, Gemini y Codex para avanzar más rápido en investigación, programación y documentación. Mi participación fue plantear el alcance y las hipótesis, revisar propuestas y avances, decidir qué tenía sentido y solicitar o autorizar cambios. No quiero presentar todo el código como si lo hubiera escrito manualmente. También distingo dirigir el desarrollo, comprender el resultado y ejecutar personalmente una validación: son cosas diferentes. Las pruebas y capturas automatizadas tienen sus registros y su origen en la trazabilidad. Durante la exposición me apoyaré en esa evidencia sin atribuirme ejecuciones que no hice. Mi responsabilidad es poder explicar la solución, reconocer sus límites y practicar cómo reproducir sus partes importantes.
+
+### Qué señalar
+
+Señala tu papel, el apoyo de GPT/Gemini/Codex y la diferencia entre dirigir, comprender y validar.
+
+### Pregunta del evaluador
+
+¿Qué hiciste tú y qué hicieron las herramientas?
+
+**Respuesta sencilla:** Yo definí el enfoque, revisé avances y tomé decisiones. Usé IA para apoyar investigación, implementación y documentación. Los registros identifican las comprobaciones automatizadas; no las presento como ejecuciones manuales mías.
+
+**Si profundiza:** El uso de las tres herramientas y el papel de dirección corresponden a la declaración del candidato. No hay base para atribuir un porcentaje de código o una tarea específica a cada herramienta. Las evidencias nuevas de V1 fueron producidas por Codex.
+
+**Verificar en:** presentation-showcase/docs/reto-original.md:1–190; presentation-showcase/docs/origen-y-alcance.md:1–59
+
+**Reproducción:** `Consultar docs/reto-original.md y docs/origen-y-alcance.md.`
+
+**Límite:** El apoyo de IA no acredita por sí solo que yo domine cada archivo o haya ejecutado todas las validaciones.
+
+## 05. Construí un laboratorio de 30 PyMEs
 
 **Tipo:** Demostrado · sintético · **Duración orientativa:** 54 s
 
 ### Discurso
 
-En el diseño sintético existen treinta empresas, pero el sistema no conoce a todas desde el principio. En enero conoce doce; en mayo, diecisiete; y en septiembre, veintitrés. Las observaciones acumuladas son veintiocho, cincuenta y cuatro y ochenta y tres. La regla importante usa available_at, que significa cuándo estuvo disponible cada dato. No basta con que un hecho haya ocurrido antes: si todavía no se había registrado y puesto a disposición, no debe aparecer en un ranking histórico. Cada corte usa un instante exacto, con zona horaria. Esto me permite volver a una fecha y explicar con qué información se tomó la decisión. Las treinta empresas son una referencia del diseño, mientras que la interfaz solo trabaja con las que realmente conoce dentro de la simulación.
+Para poner a prueba la idea sin inventar datos de una Telco real, decidí trabajar con treinta empresas sintéticas, sus atributos y sus relaciones. Pero no quería que el sistema conociera todo desde el principio. Separé el universo completo del simulador de la información que estaría disponible para una decisión. En enero, T0, se conocen doce empresas; en mayo, T1, diecisiete; y en septiembre, T2, veintitrés. Las observaciones acumuladas son veintiocho, cincuenta y cuatro y ochenta y tres. Las otras siete empresas siguen fuera de la información observable al último corte. Esto me permite explorar una idea sencilla: una decisión histórica debe usar lo que se sabía en ese momento. No completo el ranking con información del universo privado solo porque el simulador conoce la respuesta.
 
 ### Qué señalar
 
-Recorre los tres cortes; distingue universo de diseño y conocimiento observable.
+Distingue las 30 del diseño de las 12/17/23 conocidas; señala las siete que siguen fuera.
 
 ### Pregunta del evaluador
 
@@ -82,13 +134,13 @@ Recorre los tres cortes; distingue universo de diseño y conocimiento observable
 
 **Límite:** Los tres cortes no son tres experimentos ni mediciones independientes de ventas.
 
-## 04. Cada dato conserva su respaldo
+## 06. Quise conservar las fuentes y las dudas
 
-**Tipo:** Demostrado · sintético · **Duración orientativa:** 54 s
+**Tipo:** Demostrado · sintético · **Duración orientativa:** 55 s
 
 ### Discurso
 
-Un dato no es solamente un valor. También necesito saber de qué fuente vino, cuándo lo conocí y si está confirmado. Por eso cada observación conserva su identificador, fuente, fechas y estado. En Hornos del Centro hay valores distintos para el número de sucursales. El código conserva las alternativas y no elige una por ser más reciente. Para el ranking, esa señal en conflicto aporta cero puntos. Eso no significa que la empresa tenga cero sucursales; significa que no tengo una señal utilizable con esa regla. Con los nombres pasa algo parecido: una coincidencia genera un candidato de identidad, pero no fusiona negocios automáticamente. En T2 se conservan dos atributos en conflicto y dos registros candidatos. Así puedo reconocer una duda sin convertirla en una certeza inventada.
+Al trabajar con información incompleta me pareció importante conservar de dónde viene cada dato y cuándo puedo usarlo. El prototipo guarda observaciones con fuente, fechas y estado de verificación. Utiliza available_at, que indica desde cuándo estuvo disponible el dato, para evitar usar información del futuro. También conserva dudas. En Hornos del Centro hay registros que dicen dos sucursales y otros que dicen tres. No quise elegir una versión solo porque era más reciente sin una regla válida para resolverlo. El código mantiene el conflicto y esa señal aporta cero puntos. Eso no significa que la empresa tenga cero sucursales. Con los nombres pasa algo parecido: una coincidencia produce un candidato de identidad, pero no fusiona negocios. Así puedo explicar qué sé, qué no sé y qué tendría que revisar.
 
 ### Qué señalar
 
@@ -102,19 +154,19 @@ Señala las observaciones OBS-028, OBS-047 y OBS-075 y su contribución cero por
 
 **Si profundiza:** _attribute marca CONFLICTED si hay valores distintos en el historial visible. Las relaciones conservan historia de estados; las candidaturas usan normalización de nombres, sin identificación fuerte.
 
-**Verificar en:** src/economic_graph/contracts.py:22–36; src/economic_graph/observable.py:61–70; src/economic_graph/observable.py:82–176; tests/test_tower_read_model.py:105–120
+**Verificar en:** src/economic_graph/contracts.py:22–36; src/economic_graph/observable.py:61–70; src/economic_graph/observable.py:82–176; tests/test_tower_read_model.py:105–120; src/economic_graph/observable.py:38–45
 
 **Reproducción:** `uv run pytest tests/test_observable.py tests/test_tower_read_model.py -q`
 
 **Límite:** CONFLICTED y UNKNOWN no significan que se haya demostrado un valor cero.
 
-## 05. Dos reglas que puedo explicar
+## 07. Empecé con reglas que pudiera explicar
 
-**Tipo:** Demostrado · reglas · **Duración orientativa:** 60 s
+**Tipo:** Demostrado · reglas · **Duración orientativa:** 56 s
 
 ### Discurso
 
-Para esta primera versión uso reglas, no un modelo entrenado. El baseline, que es la regla de referencia, da diez puntos por cada sucursal adicional válida, hasta cinco sucursales adicionales. La política con grafo conserva esos puntos y suma cinco por cada vecino económico confirmado y distinto, hasta cuatro vecinos. Aquí llamo vecino a otra empresa conectada por suministro o alianza. Si dos observaciones hablan del mismo vecino, no cuento dos vecinos. Tampoco sumo puntos por una referencia comercial, una inferencia o una relación solamente reportada. Elegir reglas permite seguir el cálculo hasta sus evidencias. Con datos sintéticos y sin resultados de conversión, no tendría una evaluación honesta de un modelo predictivo. Los puntos sirven para ordenar cuentas: diez puntos no significan diez por ciento de probabilidad de compra. Los pesos siguen siendo exploratorios y necesitarían evaluación con datos reales.
+No quise empezar entrenando un modelo complejo. Primero necesitaba entender los datos y tener una referencia que pudiera comprobar. Por eso comparé dos políticas. El baseline, o regla de referencia, usa información individual: diez puntos por cada sucursal adicional válida, con un tope de cinco adicionales. La segunda política conserva esa base y suma cinco puntos por vecino económico confirmado y distinto, hasta cuatro vecinos. Aquí vecino significa otra empresa conectada por suministro o alianza. Las referencias comerciales y las relaciones solamente reportadas o inferidas no suman puntos. Tampoco cuento dos veces al mismo vecino. Así puedo explicar de dónde sale cada cambio. Son reglas exploratorias, no probabilidades de compra. Más adelante evaluaría un modelo aprendido solo si tengo información real y una forma de comprobar que mejora esta referencia.
 
 ### Qué señalar
 
@@ -134,13 +186,13 @@ Explica cada sumando y los dos topes; aclara que son puntos.
 
 **Límite:** Los pesos no están calibrados con intención de compra ni ventas.
 
-## 06. Cambian tres de las cinco cuentas
+## 08. Las relaciones cambian tres de cinco lugares
 
-**Tipo:** Demostrado · T2 · **Duración orientativa:** 53 s
+**Tipo:** Demostrado · T2 · **Duración orientativa:** 54 s
 
 ### Discurso
 
-Aquí comparo las listas completas de cinco lugares. Dos cuentas se mantienen en ambas: Panificadora Valle Claro y Carga Urbana del Centro. Con el grafo entran Café Jacaranda, Hornos del Centro y Papelería Horizonte. Salen Comedor del Andén, Mesa de Barrio y Mapa Digital Studio. Esto se obtiene con las mismas veintiuna empresas elegibles del corte T2. La capacidad no crece y no agrego empresas que el sistema todavía desconoce. También hay empates, por eso el código usa el identificador público como desempate y los declara en la auditoría. Puedo afirmar que las relaciones modifican la priorización, pero todavía no que la lista nueva sea mejor para vender. Esa diferencia tendría que medirse con resultados de negocio y un grupo de comparación válido.
+Con las dos políticas definidas, el resultado técnico que puedo mostrar es un cambio en tres de las cinco cuentas priorizadas. En T2 ambas usan las mismas veintiuna empresas elegibles y el mismo cupo. Panificadora Valle Claro y Carga Urbana del Centro permanecen en ambas listas. Con el grafo entran Café Jacaranda, Hornos del Centro y Papelería Horizonte. Salen Comedor del Andén, Mesa de Barrio y Mapa Digital Studio. El ranking completo, sus puntos y sus evidencias están registrados para poder reproducirlos. También hay empates y el código los resuelve de manera estable por identificador público. Lo que defiendo aquí es que agregar relaciones sí modifica la selección. Todavía no puedo decir que las nuevas cuentas sean mejores clientes ni que tres sustituciones equivalgan a tres ventas.
 
 ### Qué señalar
 
@@ -160,13 +212,13 @@ Sigue las tres entradas y tres salidas; evita interpretar tres cambios como tres
 
 **Límite:** Los empates y la baja cobertura de atributos pueden influir en el orden.
 
-## 07. Café Jacaranda: del lugar 10 al 3
+## 09. Jacaranda me permite explicar el cambio
 
 **Tipo:** Demostrado · T2 · **Duración orientativa:** 54 s
 
 ### Discurso
 
-Café Jacaranda es el ejemplo que usaría para explicar una cuenta sin quedarme en cifras generales. En el baseline tiene cero puntos y aparece en el lugar diez. Con el grafo suma diez puntos y queda en el tercero. Los diez puntos vienen de dos vecinos confirmados utilizables: Hornos del Centro y Enlace Punto POS. En la captura real las líneas gruesas señalan ese respaldo. Las otras conexiones se conservan como contexto, pero no todas suman puntos. Si quiero revisar el origen puedo llegar a las observaciones OBS-026 y OBS-063, ambas del CRM sintético. No estoy infiriendo que Jacaranda quiera contratar ni que esos vecinos le hayan recomendado el servicio. Estoy mostrando cómo una regla explícita usa evidencia disponible para cambiar su posición de investigación.
+Para explicar el resultado usaría Café Jacaranda, porque permite seguir una cuenta de principio a fin. Con la regla individual tiene cero puntos y está en el lugar diez. Al agregar relaciones confirmadas obtiene diez puntos y pasa al tercer lugar. Esos puntos vienen de dos vecinos utilizables: Hornos del Centro y Enlace Punto POS. En la captura real las líneas gruesas señalan ese respaldo. Las otras conexiones permanecen como contexto, pero no todas suman. Puedo seguir las dos que sí cuentan hasta las observaciones OBS-026 y OBS-063 del CRM sintético. Eso me permite explicar por qué cambió su prioridad. No significa que Jacaranda tenga intención de comprar o que esos negocios hayan recomendado contratar. La evidencia respalda la regla de investigación, no una venta.
 
 ### Qué señalar
 
@@ -186,13 +238,13 @@ Amplía la captura; señala líneas gruesas y las dos observaciones que sí punt
 
 **Límite:** El dibujo no demuestra centralidad comercial, intención de compra ni causalidad.
 
-## 08. Así llega la información a la pantalla
+## 10. Así pasa mi información del archivo a la pantalla
 
 **Tipo:** Demostrado · implementación · **Duración orientativa:** 54 s
 
 ### Discurso
 
-Esta es la organización que encontré en el código. La aplicación lee observations.json y valida su contrato con load_observations. Después build_context prepara lo que mostrarán las vistas. Dentro de esa función hay dos llamadas separadas: snapshot reconstruye lo que se sabe y compare_rankings calcula las dos políticas. A su vez, compare_rankings llama a snapshot para reconstruir su propia vista. Por eso no lo dibujo como si el resultado de snapshot se pasara directamente al ranking. Build_context también calcula resúmenes y evolución histórica. Al final, la interfaz aplica filtros para inspeccionar resultados. El cálculo financiero entra por otra ruta, desde su archivo de supuestos. Esa separación explica por qué cambiar una empresa en pantalla no debería modificar un escenario económico agregado ni las posiciones generales del ranking.
+Para entender el funcionamiento sigo la ruta desde observations.json. Load_observations lee ese registro y valida sus campos. Después build_context prepara la información de las vistas. Dentro hace dos llamadas separadas: snapshot reconstruye lo que se sabe al corte y compare_rankings calcula las dos políticas. Esta segunda función llama a su propio snapshot; no recibe la primera vista como entrada. También se reconstruyen los cortes pasados para mostrar la evolución. Al final puedo filtrar industria o empresa sin recalcular posiciones: si Jacaranda es tercera en el ranking general, sigue siendo tercera aunque vea una sola fila. El cálculo financiero tiene una entrada distinta, el archivo de supuestos, y no lee las empresas para inventar ventas. Esta separación me ayuda a explicar qué responsabilidad tiene cada parte.
 
 ### Qué señalar
 
@@ -212,39 +264,13 @@ Recorre las dos ramas de build_context y la fuente financiera separada.
 
 **Límite:** La separación de módulos no acredita una arquitectura de producción ni aislamiento por roles.
 
-## 09. Filtrar no cambia el lugar global
+## 11. La Control Tower reúne lo que puedo revisar
 
-**Tipo:** Demostrado · reconstrucción interactiva · **Duración orientativa:** 54 s
-
-### Discurso
-
-Esta función prepara primero el ranking general. Después puedo filtrar por industria o por empresa sin volver a calcular sus posiciones. Si Café Jacaranda estaba en el tercer lugar general, debe seguir mostrando tres aunque sea la única fila visible. En esta demostración puedo cambiar entre todas las cuentas, restaurantes y cafeterías, o solo Jacaranda. Los datos vienen de la ejecución del repositorio; este pequeño control es una reconstrucción para explicar el resultado, no una captura de Streamlit. También guardé capturas de la aplicación original con esos filtros. La razón de conservar el lugar es poder comparar sin cambiar silenciosamente la pregunta. Un filtro para inspeccionar no es una nueva competencia entre las cuentas visibles. Tampoco lleno los cinco lugares con otras empresas del sector.
-
-### Qué señalar
-
-Activa los tres filtros y observa que #10 y #3 permanecen iguales.
-
-### Pregunta del evaluador
-
-¿Por qué no aparece como lugar uno cuando solo queda una empresa?
-
-**Respuesta sencilla:** Porque muestro su posición en el ranking completo. La selección de pantalla solo decide qué filas ver.
-
-**Si profundiza:** segment_ids devuelve IDs del contexto; ranking_table copia baseline_position, graph_position y banderas selected ya calculadas. Las pruebas comparan las filas filtradas con el subconjunto original.
-
-**Verificar en:** src/economic_graph/tower_read_model.py:41–66; src/economic_graph/tower_read_model.py:69–75; src/economic_graph/tower_read_model.py:78–96; tests/test_control_tower.py:122–136; tests/test_tower_read_model.py:123–136
-
-**Reproducción:** `uv run python presentation-showcase/scripts/reproduce.py`
-
-**Límite:** La interacción de esta diapositiva usa resultados congelados; la captura y el script permiten verificar la aplicación original.
-
-## 10. Cinco vistas para revisar la misma evidencia
-
-**Tipo:** Demostrado · navegador offline · **Duración orientativa:** 52 s
+**Tipo:** Demostrado · navegador offline · **Duración orientativa:** 54 s
 
 ### Discurso
 
-La Control Tower permite revisar el proyecto sin depender de una explicación del código en cada momento. Resumen muestra la selección; Graph Health permite revisar fuentes, conflictos y conexiones; AI Performance compara las reglas; Business Funnel separa conocidas, elegibles y priorizadas; Economic Impact muestra escenarios hipotéticos. Durante esta misión, Codex abrió la aplicación real en Chromium, recorrió las cinco vistas y cambió períodos, industria, empresa, política y escala económica. Las imágenes son capturas de esa ejecución offline. Puedo ampliarlas para revisar el estado y consultar sus parámetros. No necesito una conexión a Atlas para mostrar esta evidencia. Sin embargo, que las pantallas funcionen con estos datos no significa que la aplicación esté lista para producción o que ya hayamos validado ventas.
+La Control Tower es la forma de recorrer el prototipo sin abrir todos los archivos durante la exposición. Resumen muestra la selección general. Graph Health permite revisar conexiones, fuentes y conflictos. AI Performance compara las dos reglas, aunque el nombre de la vista no significa que haya un modelo entrenado. Business Funnel muestra conocidas, elegibles y priorizadas. Economic Impact reúne los escenarios financieros. Estas capturas corresponden a la aplicación real en modo offline y conservan sus parámetros para revisar cada estado. Puedo ampliar una imagen o consultar su respaldo. Después de priorizar, contactos, oportunidades, activaciones y ventas aparecen como no observados. Quise mantener visible ese límite: el tablero reúne evidencia y supuestos, pero no ejecuta campañas ni convierte por sí mismo una recomendación en un resultado comercial.
 
 ### Qué señalar
 
@@ -264,13 +290,13 @@ Cambia entre las cinco capturas; amplía una y muestra sus parámetros.
 
 **Límite:** La revisión se hizo en Linux; no sustituye una revisión nativa en Windows ni una prueba de carga.
 
-## 11. Cada prueba responde algo distinto
+## 12. Puedo revisar cómo se comprobó el comportamiento
 
-**Tipo:** Demostrado · ejecución de Codex · **Duración orientativa:** 54 s
+**Tipo:** Evidencia técnica · registros conservados · **Duración orientativa:** 54 s
 
 ### Discurso
 
-No todas las pruebas demuestran lo mismo. Las pruebas de funciones revisan reglas, fechas y cálculos. Los dobles de MongoDB guardan documentos en memoria para comprobar consultas, idempotencia y protecciones sin conectarse a Atlas. AppTest ejecuta Streamlit y permite cambiar controles y revisar tablas, pero no dibuja la página en un navegador real. Por eso la revisión también incluyó Chromium para observar las pantallas. La suite original pasó doscientas ochenta y cuatro pruebas y una integración remota quedó excluida. La medición de cobertura se limita al paquete economic_graph: no incluye toda la interfaz ni los scripts. Estos resultados los ejecutó Codex en esta misión. No los presento como pruebas realizadas personalmente por mí, ni como una conexión real a Atlas o una garantía de ausencia de errores.
+Para defender el prototipo necesito algo más que una pantalla que se vea bien. Cuento con un registro de doscientas ochenta y cuatro pruebas originales aprobadas y una integración remota excluida. Las pruebas de funciones revisan fechas, reglas y cálculos. Los dobles de MongoDB permiten comprobar consultas e idempotencia en memoria; no prueban una conexión real a Atlas. AppTest ejecuta Streamlit y revisa controles y tablas, mientras que el navegador permite observar cómo se muestra la aplicación. En el anexo también conservo un caso aislado de fechas equivalentes y su corrección experimental, separados del motor original. Estos registros respaldan comportamientos concretos y conservan quién los produjo. No los uso como garantía de ausencia de errores, preparación para producción o capacidad personal de repetirlos sin practicar.
 
 ### Qué señalar
 
@@ -278,11 +304,11 @@ Distingue funciones, dobles, AppTest, navegador e integración real.
 
 ### Pregunta del evaluador
 
-¿Pasar las pruebas de MongoDB significa que Atlas funciona?
+¿Tú ejecutaste personalmente todas estas pruebas y la depuración?
 
-**Respuesta sencilla:** No. Los dobles prueban nuestra lógica. Atlas requiere una conexión y una lectura reales verificadas aparte.
+**Respuesta sencilla:** Las ejecuciones automatizadas de la primera revisión fueron realizadas por Codex y conservan sus registros. Yo dirigí y revisé el desarrollo; no atribuyo esas ejecuciones a una validación manual mía. Puedo preparar y demostrar mi reproducción por separado.
 
-**Si profundiza:** Cobertura con pytest-cov y ramas: 904/943 líneas y 362/396 ramas. El 94.55% combinado no debe confundirse con cobertura de líneas. Se excluyó integration porque su roundtrip carga datos.
+**Si profundiza:** Cobertura con pytest-cov y ramas: 904/943 líneas y 362/396 ramas. El 94.55% combinado no debe confundirse con cobertura de líneas. Se excluyó integration porque su roundtrip carga datos. Los resultados originales se conservan sin volver a etiquetarlos como ejecuciones de esta iteración.
 
 **Verificar en:** tests/test_mongo_observable.py:20–55; tests/test_mongo_observable.py:58–67; tests/test_control_tower.py:43–51; src/economic_graph/tower_read_model.py:374–402
 
@@ -290,65 +316,13 @@ Distingue funciones, dobles, AppTest, navegador e integración real.
 
 **Límite:** Cobertura alta no mide calidad comercial, producción, seguridad integral ni corrección de todos los casos.
 
-## 12. Un caso límite al comparar fechas
+## 13. Calculé qué tendría que pasar para cubrir costos
 
-**Tipo:** Demostrado · caso aislado · **Duración orientativa:** 54 s
-
-### Discurso
-
-Quiero mostrar también una limitación concreta. En la auditoría, Codex construyó un caso aislado con dos observaciones opuestas que llegaron en el mismo instante. Una fecha terminaba en Z y la otra en más cero cero dos puntos cero cero. Ambas representan la misma hora. El ranking las interpreta como un conflicto, pero snapshot compara el texto de las fechas y puede mostrar solamente descartada. La causa está en esa comparación, no en MongoDB. La corrección experimental compara instantes ya convertidos, y las dos pruebas de regresión pasan. El motor original no fue modificado. Este problema no aparece en el ledger aprobado, cuyas fechas están normalizadas. Puedo explicar cómo se reproduce y cómo lo investigaría, pero el hallazgo y el cambio experimental fueron realizados por Codex.
-
-### Qué señalar
-
-Señala mismo instante, resultado distinto y comparación propuesta; reconoce el origen del trabajo.
-
-### Pregunta del evaluador
-
-¿Encontraste un error en los resultados presentados?
-
-**Respuesta sencilla:** No en el ledger aprobado. Es un defecto reproducible con una entrada válida aislada que usa otra forma de escribir la misma hora.
-
-**Si profundiza:** snapshot agrupa latest_states con igualdad de cadenas; _latest en rankings usa parse_time. La prueba introduce una observación DISCARDED simultánea y válida. El original falla dos veces y la copia modificada en memoria pasa dos veces.
-
-**Verificar en:** src/economic_graph/observable.py:82–176; src/economic_graph/rankings.py:27–29; presentation-showcase/experiments/test_timezone_conflict.py:1–55
-
-**Reproducción:** `uv run pytest presentation-showcase/experiments/test_timezone_conflict.py -q`
-
-**Límite:** La corrección es experimental; no se integró al proyecto ni se atribuye como competencia personal ya demostrada.
-
-## 13. Priorizar todavía no es vender
-
-**Tipo:** Demostrado · sintético · **Duración orientativa:** 53 s
+**Tipo:** Hipótesis · cálculo reproducido · **Duración orientativa:** 56 s
 
 ### Discurso
 
-El embudo ayuda a ver exactamente dónde termina la evidencia. En T2 hay veintitrés empresas conocidas. Dos quedan fuera por servicio activo confirmado y veintiuna participan en el ranking. De ahí selecciono cinco para investigar. Las dos exclusiones son una rama aparte, no una etapa que se reste después de priorizar. Más adelante la pantalla dice no observado para contactos, oportunidades, activaciones y ventas. Es distinto de poner cero. No tengo eventos que permitan saber cuántos intentos hubo o cuántos contratos se activaron. Tampoco sumaría las dos listas de cinco como si fueran diez contactos, porque son políticas alternativas y comparten cuentas. Esta separación me permite presentar lo construido sin convertir una decisión de prioridad en un resultado comercial que todavía no existe.
-
-### Qué señalar
-
-Recorre 23 → 21 → 5 y detente antes de contactos.
-
-### Pregunta del evaluador
-
-¿Cuál fue tu tasa de conversión?
-
-**Respuesta sencilla:** No puedo calcularla: no hay contactos y activaciones verificadas en este conjunto de datos.
-
-**Si profundiza:** funnel devuelve None y Estado=No observado para etapas sin datos. Las pruebas exigen texto explícito y evitan reemplazar faltantes por ceros.
-
-**Verificar en:** src/economic_graph/tower_read_model.py:99–115; tests/test_control_tower.py:139–143; app/control_tower.py:541–593
-
-**Reproducción:** `uv run --group ui pytest tests/test_control_tower.py -k funnel -q`
-
-**Límite:** Sin eventos comerciales no hay tasas observadas de conversión ni embudo comercial completo.
-
-## 14. El saldo depende de lo que supongamos
-
-**Tipo:** Hipótesis · cálculo reproducido · **Duración orientativa:** 52 s
-
-### Discurso
-
-El calculador responde qué tendría que pasar para cubrir los costos, no cuánto dinero gané. En el caso base de quinientas plazas supongo que la activación pasa de diez a doce por ciento: dos puntos porcentuales más. Con ocho mil pesos de margen por activación y los costos declarados, el saldo es más treinta y nueve mil pesos antes de reserva. Si mantengo los costos pero quito esa mejora, el escenario nulo pierde cuarenta y un mil. Con solo cinco plazas, incluso el caso base pierde quince mil cuatrocientos cincuenta. Puedo cambiar la escala para mostrarlo. Las cifras se reproducen con el código, pero los supuestos no están calibrados. Quinientas plazas tampoco significa quinientas empresas observadas ni una muestra experimental ya definida.
+Después del resultado técnico me pregunté qué tendría que pasar para que la idea cubriera sus costos. El calculador sirve para explorar esa condición, no para reportar dinero ganado. En el caso base de quinientas plazas supongo que la activación pasa de diez a doce por ciento. Con ocho mil pesos de margen por activación y los costos declarados, el saldo calculado es más treinta y nueve mil pesos antes de reserva. Si mantengo esos costos pero quito la mejora de activación, el escenario nulo pierde cuarenta y un mil. Con cinco plazas, el caso base también es negativo. Por eso muestro ambas escalas y las pérdidas. Las cuentas están comprobadas aritméticamente, pero los supuestos todavía no están calibrados. No son ventas de las treinta empresas ni un ROI observado.
 
 ### Qué señalar
 
@@ -368,13 +342,13 @@ Alterna cinco y 500; compara base con nulo y señala que la reserva va aparte.
 
 **Límite:** No interpretar tasas supuestas, sensibilidad o equilibrio como efectos alcanzados ni intervalos de confianza.
 
-## 15. Cómo comprobaríamos si genera valor
+## 14. Así intentaría medir el valor económico real
 
-**Tipo:** Diseño · no ejecutado · **Duración orientativa:** 54 s
+**Tipo:** Diseño · no ejecutado · **Duración orientativa:** 57 s
 
 ### Discurso
 
-Para medir valor real necesitaría un experimento distinto del calculador. La propuesta agrupa cuentas y equipos en bolsas que reduzcan el intercambio de información entre grupos. Asignaría al azar bolsas completas: unas usan baseline y otras el ranking con grafo, con esfuerzo y capacidad comparables. Mediría margen neto por todas las cuentas elegibles asignadas, incluso las que nadie contactó. Eso evita evaluar solamente los éxitos. El seguimiento propuesto considera noventa días para activar y doce meses desde la asignación para margen y costos. Todavía faltan datos autorizados, costos reales y suficientes bolsas independientes. Sin conocer la variación del margen y qué tan parecidas son las cuentas dentro de cada bolsa, no puedo dar un tamaño de muestra serio. Es un diseño futuro, no un experimento realizado.
+Para saber si usar el grafo realmente ayuda necesitaría una comparación controlada, distinta del calculador. La propuesta es agrupar cuentas y equipos en bolsas que reduzcan el intercambio de información entre grupos. Asignaría al azar bolsas completas: unas usarían el baseline y otras el ranking con grafo, con capacidad y esfuerzo comparables. Mediría margen neto por todas las cuentas elegibles asignadas, incluso las que no se contactaron. Esa es la idea de intención de tratar: no evaluar solamente los éxitos. El seguimiento propuesto considera noventa días para activar y doce meses desde la asignación para margen y costos. Todavía necesito datos autorizados y suficientes bolsas independientes. Sin conocer la variación del margen y la relación entre cuentas de una misma bolsa, no daría un tamaño de muestra preciso. Este experimento todavía no se ejecuta.
 
 ### Qué señalar
 
@@ -394,13 +368,39 @@ Señala que se asignan bolsas antes de seleccionar, y el denominador incluye tod
 
 **Límite:** Si no hay suficientes bolsas independientes, este diseño no permite atribuir causalidad.
 
-## 16. El ranking cambia. El valor falta medirlo.
+## 15. Elegiría el modelo después de tener datos
 
-**Tipo:** Conclusión con límites · **Duración orientativa:** 55 s
+**Tipo:** Evolución propuesta · según el objetivo · **Duración orientativa:** 52 s
 
 ### Discurso
 
-Lo que puedo defender es un prototipo que conserva fuentes y fechas, mantiene visibles las dudas y compara dos formas de priorizar. Las relaciones confirmadas cambian tres de cinco lugares, y puedo seguir el caso de Café Jacaranda hasta sus observaciones. La Control Tower permite revisar esos resultados, y hay pruebas y capturas nuevas de la ejecución offline. Al mismo tiempo, no puedo afirmar que mejoró la conversión, que hubo ventas adicionales o que se recuperó una inversión. La lectura real de Atlas quedó pendiente en esta misión, y tampoco medimos escala o preparación para producción. Mi siguiente paso sería comprender y practicar esta defensa, revisar los casos del anexo y después conseguir los datos y permisos para una evaluación real. Prefiero reconocer esos límites y explicar cómo comprobarlos.
+Mi siguiente paso empezaría por datos reales, identidad suficiente, permisos y resultados comerciales confiables. Después evaluaría qué herramienta responde al objetivo. Si quisiera estudiar similitud entre empresas y tuviera atributos apropiados, consideraría KNN. Si tuviera etiquetas reales de activación o conversión, podría comparar clasificación o ranking supervisado contra las reglas. Las técnicas de grafos podrían servir para estudiar comunidades o relaciones relevantes. Reinforcement Learning sería otra posibilidad, pero solo ante decisiones secuenciales, acciones y recompensas observables y una forma adecuada de evaluarlo. No lo considero equivalente a KNN ni un siguiente paso obligatorio. También podría combinar reglas y modelos si aporta algo comprobable. La idea que mantendría es empezar por datos y reglas que entienda, y exigir evidencia antes de añadir complejidad.
+
+### Qué señalar
+
+Distingue lo utilizado de las opciones consideradas y la condición que necesitaría cada una.
+
+### Pregunta del evaluador
+
+¿KNN o RL serían tus siguientes modelos?
+
+**Respuesta sencilla:** No necesariamente. KNN podría ayudar con similitud si tengo atributos adecuados. RL requiere decisiones secuenciales y recompensas observables. Primero definiría el objetivo y cómo evaluar, y después elegiría.
+
+**Si profundiza:** No hay KNN, clasificación aprendida, ranking supervisado, comunidades calculadas ni RL implementados en esta PoC. Un enfoque híbrido debe mejorar una referencia bajo una evaluación pertinente, sin fuga temporal.
+
+**Verificar en:** presentation-showcase/docs/origen-y-alcance.md:1–59; presentation-showcase/docs/reto-original.md:1–190; docs/12-commercial-ranking.md:1–115
+
+**Reproducción:** `Consultar docs/reto-original.md y docs/origen-y-alcance.md.`
+
+**Límite:** Mencionar una técnica no equivale a implementarla o demostrar competencia para operarla en producción.
+
+## 16. Construí una PoC; el valor real falta medirlo
+
+**Tipo:** Conclusión con límites · **Duración orientativa:** 57 s
+
+### Discurso
+
+Mi respuesta al reto es una PoC controlada que conecta datos disponibles, relaciones, reglas de priorización y una forma de pensar el valor económico. Elegí adquisición B2B, acoté el problema a investigar cuentas y utilicé herramientas de IA para construir y documentar más rápido mientras revisaba y decidía el rumbo. Puedo mostrar treinta empresas en el diseño, tres cortes de conocimiento, dos políticas explicables y un cambio de tres lugares del Top 5. También puedo seguir el ejemplo de Jacaranda y revisar la Control Tower con su evidencia. Eso no demuestra más ventas, ROI o causalidad. La lectura real de Atlas y la escala siguen pendientes en estas revisiones. Mi siguiente paso sería profundizar mi comprensión del código y validar datos, operación y un experimento con una empresa real antes de recomendar un despliegue.
 
 ### Qué señalar
 
@@ -498,7 +498,33 @@ Muestra cobertura 3/21 individual y 5/21 relacional; explica por qué cero punto
 
 **Límite:** ID ascendente es un desempate técnico; no es señal de valor ni regla comercial calibrada.
 
-## 20. MongoDB en memoria no es Atlas
+## 20. Filtrar no cambia el lugar global
+
+**Tipo:** Demostrado · reconstrucción interactiva · **Duración orientativa:** 54 s
+
+### Discurso
+
+Esta función prepara primero el ranking general. Después puedo filtrar por industria o por empresa sin volver a calcular sus posiciones. Si Café Jacaranda estaba en el tercer lugar general, debe seguir mostrando tres aunque sea la única fila visible. En esta demostración puedo cambiar entre todas las cuentas, restaurantes y cafeterías, o solo Jacaranda. Los datos vienen de la ejecución del repositorio; este pequeño control es una reconstrucción para explicar el resultado, no una captura de Streamlit. También guardé capturas de la aplicación original con esos filtros. La razón de conservar el lugar es poder comparar sin cambiar silenciosamente la pregunta. Un filtro para inspeccionar no es una nueva competencia entre las cuentas visibles. Tampoco lleno los cinco lugares con otras empresas del sector.
+
+### Qué señalar
+
+Activa los tres filtros y observa que #10 y #3 permanecen iguales.
+
+### Pregunta del evaluador
+
+¿Por qué no aparece como lugar uno cuando solo queda una empresa?
+
+**Respuesta sencilla:** Porque muestro su posición en el ranking completo. La selección de pantalla solo decide qué filas ver.
+
+**Si profundiza:** segment_ids devuelve IDs del contexto; ranking_table copia baseline_position, graph_position y banderas selected ya calculadas. Las pruebas comparan las filas filtradas con el subconjunto original.
+
+**Verificar en:** src/economic_graph/tower_read_model.py:41–66; src/economic_graph/tower_read_model.py:69–75; src/economic_graph/tower_read_model.py:78–96; tests/test_control_tower.py:122–136; tests/test_tower_read_model.py:123–136
+
+**Reproducción:** `uv run python presentation-showcase/scripts/reproduce.py`
+
+**Límite:** La interacción de esta diapositiva usa resultados congelados; la captura y el script permiten verificar la aplicación original.
+
+## 21. MongoDB en memoria no es Atlas
 
 **Tipo:** Demostrado · pruebas offline · **Duración orientativa:** 51 s
 
@@ -524,7 +550,7 @@ Señala 83 insertadas en memoria → 0 nuevas y el diccionario de consultas.
 
 **Límite:** Una carga idempotente con dobles no acredita una carga real exitosa en Atlas.
 
-## 21. AppTest comprueba lógica; Chromium, la pantalla
+## 22. AppTest comprueba lógica; Chromium, la pantalla
 
 **Tipo:** Demostrado · Linux · **Duración orientativa:** 52 s
 
@@ -550,7 +576,7 @@ Contrasta una aserción de la prueba con una captura auténtica.
 
 **Límite:** Las capturas no prueban todas las combinaciones, dispositivos, accesibilidad o ejecución Windows.
 
-## 22. La lectura real de Atlas queda pendiente
+## 23. La lectura real de Atlas queda pendiente
 
 **Tipo:** Pendiente · sin conexión intentada · **Duración orientativa:** 57 s
 
@@ -576,7 +602,7 @@ Señala base dedicada, filtro temporal y comparación de SHA-256; diferencia pin
 
 **Límite:** Una lectura exitosa no valida escrituras, rendimiento, seguridad completa ni todo el historial de Atlas.
 
-## 23. De dónde salen +$39,000 y −$41,000
+## 24. De dónde salen +$39,000 y −$41,000
 
 **Tipo:** Hipótesis · aritmética probada · **Duración orientativa:** 54 s
 
@@ -602,7 +628,33 @@ Recorre cada renglón de la cuenta y distingue saldo antes y después de reserva
 
 **Límite:** Los costos fijos constantes al cambiar escala sirven para explorar; no son cotizaciones reales a volumen.
 
-## 24. Medir a todas las cuentas asignadas
+## 25. Priorizar todavía no es vender
+
+**Tipo:** Demostrado · sintético · **Duración orientativa:** 53 s
+
+### Discurso
+
+El embudo ayuda a ver exactamente dónde termina la evidencia. En T2 hay veintitrés empresas conocidas. Dos quedan fuera por servicio activo confirmado y veintiuna participan en el ranking. De ahí selecciono cinco para investigar. Las dos exclusiones son una rama aparte, no una etapa que se reste después de priorizar. Más adelante la pantalla dice no observado para contactos, oportunidades, activaciones y ventas. Es distinto de poner cero. No tengo eventos que permitan saber cuántos intentos hubo o cuántos contratos se activaron. Tampoco sumaría las dos listas de cinco como si fueran diez contactos, porque son políticas alternativas y comparten cuentas. Esta separación me permite presentar lo construido sin convertir una decisión de prioridad en un resultado comercial que todavía no existe.
+
+### Qué señalar
+
+Recorre 23 → 21 → 5 y detente antes de contactos.
+
+### Pregunta del evaluador
+
+¿Cuál fue tu tasa de conversión?
+
+**Respuesta sencilla:** No puedo calcularla: no hay contactos y activaciones verificadas en este conjunto de datos.
+
+**Si profundiza:** funnel devuelve None y Estado=No observado para etapas sin datos. Las pruebas exigen texto explícito y evitan reemplazar faltantes por ceros.
+
+**Verificar en:** src/economic_graph/tower_read_model.py:99–115; tests/test_control_tower.py:139–143; app/control_tower.py:541–593
+
+**Reproducción:** `uv run --group ui pytest tests/test_control_tower.py -k funnel -q`
+
+**Límite:** Sin eventos comerciales no hay tasas observadas de conversión ni embudo comercial completo.
+
+## 26. Medir a todas las cuentas asignadas
 
 **Tipo:** Diseño · no ejecutado · **Duración orientativa:** 52 s
 
@@ -628,7 +680,33 @@ Señala todo el denominador y la contaminación entre bolsas.
 
 **Límite:** No significancia no prueba equivalencia; un intervalo válido tampoco elimina contaminación o faltantes.
 
-## 25. Un cambio pequeño, con una comprobación clara
+## 27. Un caso límite al comparar fechas
+
+**Tipo:** Demostrado · caso aislado · **Duración orientativa:** 54 s
+
+### Discurso
+
+Quiero mostrar también una limitación concreta. En la auditoría, Codex construyó un caso aislado con dos observaciones opuestas que llegaron en el mismo instante. Una fecha terminaba en Z y la otra en más cero cero dos puntos cero cero. Ambas representan la misma hora. El ranking las interpreta como un conflicto, pero snapshot compara el texto de las fechas y puede mostrar solamente descartada. La causa está en esa comparación, no en MongoDB. La corrección experimental compara instantes ya convertidos, y las dos pruebas de regresión pasan. El motor original no fue modificado. Este problema no aparece en el ledger aprobado, cuyas fechas están normalizadas. Puedo explicar cómo se reproduce y cómo lo investigaría, pero el hallazgo y el cambio experimental fueron realizados por Codex.
+
+### Qué señalar
+
+Señala mismo instante, resultado distinto y comparación propuesta; reconoce el origen del trabajo.
+
+### Pregunta del evaluador
+
+¿Encontraste un error en los resultados presentados?
+
+**Respuesta sencilla:** No en el ledger aprobado. Es un defecto reproducible con una entrada válida aislada que usa otra forma de escribir la misma hora.
+
+**Si profundiza:** snapshot agrupa latest_states con igualdad de cadenas; _latest en rankings usa parse_time. La prueba introduce una observación DISCARDED simultánea y válida. El original falla dos veces y la copia modificada en memoria pasa dos veces.
+
+**Verificar en:** src/economic_graph/observable.py:82–176; src/economic_graph/rankings.py:27–29; presentation-showcase/experiments/test_timezone_conflict.py:1–55
+
+**Reproducción:** `uv run pytest presentation-showcase/experiments/test_timezone_conflict.py -q`
+
+**Límite:** La corrección es experimental; no se integró al proyecto ni se atribuye como competencia personal ya demostrada.
+
+## 28. Un cambio pequeño, con una comprobación clara
 
 **Tipo:** Experimental · realizado por Codex · **Duración orientativa:** 52 s
 
@@ -654,13 +732,13 @@ Abre el archivo experimental y los dos registros de pruebas.
 
 **Límite:** La práctica aislada no sustituye revisión de una corrección productiva y pruebas más amplias.
 
-## 26. Qué necesitaría para dar el siguiente paso
+## 29. Cada técnica necesita una pregunta y datos
 
-**Tipo:** Diseño · pendiente · **Duración orientativa:** 53 s
+**Tipo:** Consideradas · no implementadas · **Duración orientativa:** 51 s
 
 ### Discurso
 
-Separaría el siguiente paso en necesidades concretas. Para datos, hacen falta fuentes autorizadas, identidad suficiente, permisos y eventos comerciales confiables. Para evaluación, necesito un baseline real, costos y márgenes medidos, y un experimento viable. Para ingeniería, mediría tiempos y memoria con datos de prueba aislados antes de prometer miles de empresas. Solo después consideraría un modelo aprendido, con etiquetas reales, separación temporal y comparación contra estas reglas. MongoDB es una opción de persistencia útil para este prototipo, pero no la única; SQL también podría guardar un historial de observaciones. No necesito agregar agentes o tecnología por sí misma. Como candidato junior, mi responsabilidad sería explicar lo que existe, medir lo que falta y pedir revisión cuando la decisión requiera experiencia que todavía estoy desarrollando.
+Si me preguntan por modelos, empezaría por la pregunta que quiero responder. KNN puede ayudar a estudiar similitud si tengo atributos adecuados y una distancia razonable. Una clasificación o un ranking aprendido requieren etiquetas reales y una evaluación que respete el tiempo. Las comunidades de grafos describen estructura, pero no prueban que un grupo compre mejor. RL corresponde a decisiones secuenciales con acciones y recompensas observables; necesitaría condiciones para evaluarlo y no es una continuación obligatoria del prototipo. También puedo considerar híbridos, pero solo si mejoran una referencia verificable. Hoy lo implementado son las reglas, el historial observable, el calculador y la interfaz. Las herramientas generativas que utilicé para desarrollar no son un modelo predictivo incorporado al ranking.
 
 ### Qué señalar
 
@@ -668,19 +746,19 @@ Conecta cada propuesta con una evidencia faltante, sin prometer una escala.
 
 ### Pregunta del evaluador
 
-¿Por qué MongoDB y no SQL?
+¿Cómo evitarías elegir herramientas solo por estar de moda?
 
-**Respuesta sencilla:** Es una elección válida para este prototipo de documentos e historial. No he demostrado que sea superior; SQL también podría resolverlo.
+**Respuesta sencilla:** Definiría la decisión, los datos y la evaluación antes del modelo. Si una técnica no responde una necesidad comprobable, mantendría la solución más sencilla.
 
-**Si profundiza:** Una comparación exigiría cargas equivalentes, índices, costos, latencias y controles. Graph features y modelos supervisados necesitan etiquetas y evaluación temporal; no hay MLOps implementado.
+**Si profundiza:** Similarity, predicción supervisada, estructura de comunidades y control secuencial son objetivos distintos. El reto ofrece libertad tecnológica y pide justificar las decisiones; no exige GNN, GraphRAG o RL.
 
-**Verificar en:** docs/04-architecture-overview.md:1–123; docs/15-incrementality-experiment.md:1–88; docs/12-commercial-ranking.md:1–115
+**Verificar en:** presentation-showcase/docs/origen-y-alcance.md:1–59; presentation-showcase/docs/reto-original.md:1–190; docs/12-commercial-ranking.md:1–115
 
 **Reproducción:** `Sin benchmark ejecutado; propuesta de validación futura.`
 
-**Límite:** La hoja de ruta es propuesta, no capacidad actual ni experiencia personal acreditada.
+**Límite:** Las opciones descritas no están implementadas, entrenadas o evaluadas en este proyecto.
 
-## 27. Dónde comprobar cada parte del reto
+## 30. Dónde comprobar cada parte del reto
 
 **Tipo:** Trazabilidad de la entrega · **Duración orientativa:** 54 s
 

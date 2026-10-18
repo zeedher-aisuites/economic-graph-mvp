@@ -1,0 +1,898 @@
+{
+  "run_at": "2026-10-18T14:06:56.714864-06:00",
+  "origin": "Validación de la presentación, misión 2, realizada por Codex. Las pruebas y capturas originales se conservan sin repetir ni atribuir al candidato.",
+  "base_commit": "bad88c56d850a87d188a9b0d7a4d515f6766f408",
+  "javascript_errors": [],
+  "failed_requests": [],
+  "layouts": [
+    {
+      "slide": 1,
+      "id": "inicio",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 2,
+      "id": "problema",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 3,
+      "id": "hipotesis",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 4,
+      "id": "estrategia",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 5,
+      "id": "tiempo",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 6,
+      "id": "procedencia",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 7,
+      "id": "reglas",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 8,
+      "id": "cambio",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 9,
+      "id": "cafe",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [
+        {
+          "file": "evidence/screenshots/02-graph-cafe-chart.png",
+          "loaded": true,
+          "width": 1140,
+          "height": 351
+        }
+      ],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 10,
+      "id": "arquitectura",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 11,
+      "id": "torre",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [
+        {
+          "file": "evidence/screenshots/01-resumen-t2-viewport.png",
+          "loaded": true,
+          "width": 1600,
+          "height": 1050
+        }
+      ],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 12,
+      "id": "pruebas",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 13,
+      "id": "economia",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 14,
+      "id": "experimento",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 15,
+      "id": "evolucion",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 16,
+      "id": "cierre",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 17,
+      "id": "a-flujo",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 18,
+      "id": "a-datos",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 19,
+      "id": "a-politica",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 20,
+      "id": "filtros",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 21,
+      "id": "a-dobles",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 22,
+      "id": "a-apptest",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 23,
+      "id": "a-atlas",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 24,
+      "id": "a-finanzas",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 25,
+      "id": "embudo",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 26,
+      "id": "a-causal",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 27,
+      "id": "depuracion",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 28,
+      "id": "a-cambio",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 29,
+      "id": "a-futuro",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 30,
+      "id": "a-mapa",
+      "viewport": "1600×1030",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 1,
+      "id": "inicio",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 2,
+      "id": "problema",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 3,
+      "id": "hipotesis",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 4,
+      "id": "estrategia",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 5,
+      "id": "tiempo",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 6,
+      "id": "procedencia",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 7,
+      "id": "reglas",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 8,
+      "id": "cambio",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 9,
+      "id": "cafe",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [
+        {
+          "file": "evidence/screenshots/02-graph-cafe-chart.png",
+          "loaded": true,
+          "width": 1140,
+          "height": 351
+        }
+      ],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 10,
+      "id": "arquitectura",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 11,
+      "id": "torre",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [
+        {
+          "file": "evidence/screenshots/01-resumen-t2-viewport.png",
+          "loaded": true,
+          "width": 1600,
+          "height": 1050
+        }
+      ],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 12,
+      "id": "pruebas",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 13,
+      "id": "economia",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 14,
+      "id": "experimento",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 15,
+      "id": "evolucion",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 16,
+      "id": "cierre",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 17,
+      "id": "a-flujo",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 18,
+      "id": "a-datos",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 19,
+      "id": "a-politica",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 20,
+      "id": "filtros",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 21,
+      "id": "a-dobles",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 22,
+      "id": "a-apptest",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 23,
+      "id": "a-atlas",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 24,
+      "id": "a-finanzas",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 25,
+      "id": "embudo",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 26,
+      "id": "a-causal",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 27,
+      "id": "depuracion",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 28,
+      "id": "a-cambio",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 29,
+      "id": "a-futuro",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 30,
+      "id": "a-mapa",
+      "viewport": "1366×768",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 1,
+      "id": "inicio",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 2,
+      "id": "problema",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 3,
+      "id": "hipotesis",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 4,
+      "id": "estrategia",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 5,
+      "id": "tiempo",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 6,
+      "id": "procedencia",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 7,
+      "id": "reglas",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 8,
+      "id": "cambio",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 9,
+      "id": "cafe",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [
+        {
+          "loaded": true
+        }
+      ],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 10,
+      "id": "arquitectura",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 11,
+      "id": "torre",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [
+        {
+          "loaded": true
+        }
+      ],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 12,
+      "id": "pruebas",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 13,
+      "id": "economia",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 14,
+      "id": "experimento",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 15,
+      "id": "evolucion",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 16,
+      "id": "cierre",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 17,
+      "id": "a-flujo",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 18,
+      "id": "a-datos",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 19,
+      "id": "a-politica",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 20,
+      "id": "filtros",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 21,
+      "id": "a-dobles",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 22,
+      "id": "a-apptest",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 23,
+      "id": "a-atlas",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 24,
+      "id": "a-finanzas",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 25,
+      "id": "embudo",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 26,
+      "id": "a-causal",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 27,
+      "id": "depuracion",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 28,
+      "id": "a-cambio",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 29,
+      "id": "a-futuro",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    },
+    {
+      "slide": 30,
+      "id": "a-mapa",
+      "viewport": "1920×1080 inmersivo",
+      "issues": [],
+      "images": [],
+      "stage_fits": true,
+      "body_horizontal_scroll": false
+    }
+  ],
+  "checks": [
+    "Teclado: flechas, Home, End, índice, anexo, notas y Escape.",
+    "Reconstrucción de filtros: #10 y #3 se conservan en los tres estados.",
+    "Escalas y cuatro escenarios: resultados y umbrales iguales a los JSON reproducidos.",
+    "Cinco capturas de la torre cargadas; ampliación y cierre funcionan.",
+    "Guion de las 30 diapositivas idéntico a la fuente regenerada; pregunta del reto y datos técnicos conservados.",
+    "Los 30 paneles de evidencia abren y todas las fuentes resuelven con anclas de línea.",
+    "Presentador: notas e iframe, sincronización bidireccional con ventana principal.",
+    "Iniciar desde primera, continuar en actual, teclado, cierre de notas, Esc, botón Salir y salida nativa de pantalla completa.",
+    "Fallos controlados de fullscreen: rechazo y API ausente mantienen modo inmersivo, mensaje manual y salida funcional.",
+    "Móvil 390×844: escenario ajustado sin scroll horizontal y notas consultables. No revisión de legibilidad de proyección en móvil.",
+    "Copia independiente verificada con servidor del README, sin instalar dependencias. Apertura file:// se registra aparte según política del navegador."
+  ],
+  "source_links_checked": 59,
+  "fullscreen": {
+    "native_api_accepted": true,
+    "clean_mode": true,
+    "starts_at_first_slide": true,
+    "browser_exit_restores_normal": true,
+    "controlled_denial_fallback": "PASS; API rejection fixture, not a natural denial",
+    "controlled_unsupported_fallback": "PASS; API unavailable fixture"
+  },
+  "original_diagram_reused": true,
+  "pdf": {
+    "file": "ConectaPyME.pdf",
+    "pages": 30,
+    "format": "16:9, 1440×810 CSS px",
+    "speaker_notes": "docs/guia-estudio.html, no incluidas en diapositivas PDF"
+  },
+  "clean_install": {
+    "standalone_copy": true,
+    "http_server_as_readme": true,
+    "all_30_slides_traversed": true,
+    "file_url_with_network_offline": "NOT_VERIFIED: file:// blocked by managed browser policy; use the verified local HTTP server.",
+    "requires_original_server": false,
+    "runtime_packages_installed": 0
+  },
+  "preserved_original_files": {
+    "count": 240,
+    "changed": []
+  },
+  "layout_failures": [],
+  "result": "PASS"
+}
