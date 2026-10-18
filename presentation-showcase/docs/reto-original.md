@@ -162,25 +162,25 @@ Entrega: brief de 2 a 3 páginas con contexto, reto, restricciones y entregables
 ## Diapositiva 13
 
 Learn, understand, anticipate, activate, measure
-El Economic Graph no es un fin 
+El Economic Graph no es un fin
 tecnológico
-: es la 
+: es la
 capacidad
- de 
+ de
 convertir
- la 
+ la
 posición
- de la 
+ de la
 Data
- 
+
 en
- el 
+ el
 ecosistema
- 
+
 PyME
- 
+
 en
- valor 
+ valor
 económico
  incremental
 .
