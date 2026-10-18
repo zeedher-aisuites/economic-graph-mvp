@@ -1,0 +1,1442 @@
+{
+  "src/economic_graph/mongo_observable.py:require_dedicated_database": {
+    "path": "src/economic_graph/mongo_observable.py",
+    "start": 14,
+    "end": 16
+  },
+  "src/economic_graph/mongo_observable.py:_to_document": {
+    "path": "src/economic_graph/mongo_observable.py",
+    "start": 19,
+    "end": 24
+  },
+  "src/economic_graph/mongo_observable.py:_from_document": {
+    "path": "src/economic_graph/mongo_observable.py",
+    "start": 27,
+    "end": 36
+  },
+  "src/economic_graph/mongo_observable.py:load_observable": {
+    "path": "src/economic_graph/mongo_observable.py",
+    "start": 39,
+    "end": 75
+  },
+  "src/economic_graph/mongo_observable.py:read_observations": {
+    "path": "src/economic_graph/mongo_observable.py",
+    "start": 78,
+    "end": 89
+  },
+  "src/economic_graph/rankings.py:_latest": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 27,
+    "end": 29
+  },
+  "src/economic_graph/rankings.py:_attribute_status": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 32,
+    "end": 39
+  },
+  "src/economic_graph/rankings.py:_branch_feature": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 42,
+    "end": 56
+  },
+  "src/economic_graph/rankings.py:_relationship_context": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 59,
+    "end": 94
+  },
+  "src/economic_graph/rankings.py:_neighbor_feature": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 97,
+    "end": 129
+  },
+  "src/economic_graph/rankings.py:_boundary": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 132,
+    "end": 142
+  },
+  "src/economic_graph/rankings.py:compare_rankings": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 145,
+    "end": 233
+  },
+  "src/economic_graph/rankings.py:render_comparison": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 236,
+    "end": 312
+  },
+  "src/economic_graph/rankings.py:label": {
+    "path": "src/economic_graph/rankings.py",
+    "start": 239,
+    "end": 240
+  },
+  "src/economic_graph/database.py:create_client": {
+    "path": "src/economic_graph/database.py",
+    "start": 11,
+    "end": 26
+  },
+  "src/economic_graph/database.py:check_connection": {
+    "path": "src/economic_graph/database.py",
+    "start": 29,
+    "end": 52
+  },
+  "src/economic_graph/contracts.py:parse_time": {
+    "path": "src/economic_graph/contracts.py",
+    "start": 39,
+    "end": 53
+  },
+  "src/economic_graph/contracts.py:iso_time": {
+    "path": "src/economic_graph/contracts.py",
+    "start": 56,
+    "end": 57
+  },
+  "src/economic_graph/contracts.py:assert_no_private_fields": {
+    "path": "src/economic_graph/contracts.py",
+    "start": 60,
+    "end": 71
+  },
+  "src/economic_graph/contracts.py:validate_observations": {
+    "path": "src/economic_graph/contracts.py",
+    "start": 74,
+    "end": 154
+  },
+  "src/economic_graph/tower_read_model.py:sector": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 34,
+    "end": 38
+  },
+  "src/economic_graph/tower_read_model.py:build_context": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 41,
+    "end": 66
+  },
+  "src/economic_graph/tower_read_model.py:segment_ids": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 69,
+    "end": 75
+  },
+  "src/economic_graph/tower_read_model.py:ranking_table": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 78,
+    "end": 96
+  },
+  "src/economic_graph/tower_read_model.py:funnel": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 99,
+    "end": 115
+  },
+  "src/economic_graph/tower_read_model.py:account_detail": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 118,
+    "end": 146
+  },
+  "src/economic_graph/tower_read_model.py:network_data": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 149,
+    "end": 243
+  },
+  "src/economic_graph/tower_read_model.py:network_spec": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 246,
+    "end": 371
+  },
+  "src/economic_graph/tower_read_model.py:atlas_context": {
+    "path": "src/economic_graph/tower_read_model.py",
+    "start": 374,
+    "end": 402
+  },
+  "src/economic_graph/finance.py:_fields": {
+    "path": "src/economic_graph/finance.py",
+    "start": 20,
+    "end": 22
+  },
+  "src/economic_graph/finance.py:_decimal": {
+    "path": "src/economic_graph/finance.py",
+    "start": 25,
+    "end": 35
+  },
+  "src/economic_graph/finance.py:_positive_integer": {
+    "path": "src/economic_graph/finance.py",
+    "start": 38,
+    "end": 41
+  },
+  "src/economic_graph/finance.py:_settings": {
+    "path": "src/economic_graph/finance.py",
+    "start": 44,
+    "end": 66
+  },
+  "src/economic_graph/finance.py:_money": {
+    "path": "src/economic_graph/finance.py",
+    "start": 69,
+    "end": 96
+  },
+  "src/economic_graph/finance.py:_scenario": {
+    "path": "src/economic_graph/finance.py",
+    "start": 99,
+    "end": 171
+  },
+  "src/economic_graph/finance.py:_threshold": {
+    "path": "src/economic_graph/finance.py",
+    "start": 174,
+    "end": 183
+  },
+  "src/economic_graph/finance.py:_evaluate": {
+    "path": "src/economic_graph/finance.py",
+    "start": 186,
+    "end": 227
+  },
+  "src/economic_graph/finance.py:_plain": {
+    "path": "src/economic_graph/finance.py",
+    "start": 230,
+    "end": 240
+  },
+  "src/economic_graph/finance.py:evaluate_scenario": {
+    "path": "src/economic_graph/finance.py",
+    "start": 243,
+    "end": 248
+  },
+  "src/economic_graph/finance.py:load_financial_config": {
+    "path": "src/economic_graph/finance.py",
+    "start": 251,
+    "end": 266
+  },
+  "src/economic_graph/finance.py:_sensitivity": {
+    "path": "src/economic_graph/finance.py",
+    "start": 269,
+    "end": 334
+  },
+  "src/economic_graph/finance.py:financial_report": {
+    "path": "src/economic_graph/finance.py",
+    "start": 337,
+    "end": 405
+  },
+  "src/economic_graph/finance.py:render_financial_report": {
+    "path": "src/economic_graph/finance.py",
+    "start": 408,
+    "end": 523
+  },
+  "src/economic_graph/finance.py:unique_fields": {
+    "path": "src/economic_graph/finance.py",
+    "start": 252,
+    "end": 258
+  },
+  "src/economic_graph/finance.py:money": {
+    "path": "src/economic_graph/finance.py",
+    "start": 409,
+    "end": 410
+  },
+  "src/economic_graph/config.py:load_config": {
+    "path": "src/economic_graph/config.py",
+    "start": 9,
+    "end": 36
+  },
+  "src/economic_graph/observable.py:load_observations": {
+    "path": "src/economic_graph/observable.py",
+    "start": 17,
+    "end": 35
+  },
+  "src/economic_graph/observable.py:visible_observations": {
+    "path": "src/economic_graph/observable.py",
+    "start": 38,
+    "end": 45
+  },
+  "src/economic_graph/observable.py:attribute_history": {
+    "path": "src/economic_graph/observable.py",
+    "start": 48,
+    "end": 58
+  },
+  "src/economic_graph/observable.py:_attribute": {
+    "path": "src/economic_graph/observable.py",
+    "start": 61,
+    "end": 70
+  },
+  "src/economic_graph/observable.py:_name_key": {
+    "path": "src/economic_graph/observable.py",
+    "start": 73,
+    "end": 79
+  },
+  "src/economic_graph/observable.py:snapshot": {
+    "path": "src/economic_graph/observable.py",
+    "start": 82,
+    "end": 176
+  },
+  "src/economic_graph/observable.py:summarize": {
+    "path": "src/economic_graph/observable.py",
+    "start": 179,
+    "end": 191
+  },
+  "tests/test_config.py:clean_mongodb_environment": {
+    "path": "tests/test_config.py",
+    "start": 11,
+    "end": 13
+  },
+  "tests/test_config.py:test_loads_dotenv_without_modifying_process_environment": {
+    "path": "tests/test_config.py",
+    "start": 16,
+    "end": 25
+  },
+  "tests/test_config.py:test_process_environment_takes_precedence": {
+    "path": "tests/test_config.py",
+    "start": 28,
+    "end": 36
+  },
+  "tests/test_config.py:test_empty_environment_value_does_not_fall_back_to_file": {
+    "path": "tests/test_config.py",
+    "start": 39,
+    "end": 47
+  },
+  "tests/test_config.py:test_rejects_missing_configuration": {
+    "path": "tests/test_config.py",
+    "start": 52,
+    "end": 64
+  },
+  "tests/test_config.py:test_rejects_invalid_uri_without_echoing_it": {
+    "path": "tests/test_config.py",
+    "start": 70,
+    "end": 77
+  },
+  "tests/test_config.py:test_rejects_invalid_database_names": {
+    "path": "tests/test_config.py",
+    "start": 83,
+    "end": 88
+  },
+  "tests/test_config.py:test_preserves_literal_credentials_without_interpolation": {
+    "path": "tests/test_config.py",
+    "start": 91,
+    "end": 96
+  },
+  "tests/test_config.py:test_accepts_srv_without_making_a_dns_request": {
+    "path": "tests/test_config.py",
+    "start": 99,
+    "end": 103
+  },
+  "tests/test_config.py:test_reports_unreadable_encoding_without_exposing_contents": {
+    "path": "tests/test_config.py",
+    "start": 106,
+    "end": 114
+  },
+  "tests/test_ranking_commands.py:run": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 26,
+    "end": 31
+  },
+  "tests/test_ranking_commands.py:test_offline_never_loads_credentials_or_connects": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 34,
+    "end": 43
+  },
+  "tests/test_ranking_commands.py:test_markdown_is_reproducible": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 46,
+    "end": 51
+  },
+  "tests/test_ranking_commands.py:isolated_public_cli": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 55,
+    "end": 73
+  },
+  "tests/test_ranking_commands.py:public_cli_environment": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 76,
+    "end": 81
+  },
+  "tests/test_ranking_commands.py:run_public_cli": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 84,
+    "end": 102
+  },
+  "tests/test_ranking_commands.py:test_cli_runs_with_only_public_package_and_ledger": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 107,
+    "end": 124
+  },
+  "tests/test_ranking_commands.py:test_subprocess_failure_shows_stderr": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 127,
+    "end": 136
+  },
+  "tests/test_ranking_commands.py:test_subprocess_stderr_is_utf8_under_cp1252": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 139,
+    "end": 146
+  },
+  "tests/test_ranking_commands.py:test_subprocess_diagnostics_redact_mongo_uri": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 150,
+    "end": 164
+  },
+  "tests/test_ranking_commands.py:test_mongo_read_only_parity_and_server_time_filters": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 167,
+    "end": 194
+  },
+  "tests/test_ranking_commands.py:test_wrong_database_rejected_before_connecting": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 197,
+    "end": 203
+  },
+  "tests/test_ranking_commands.py:test_mongo_driver_error_does_not_leak_credentials": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 206,
+    "end": 213
+  },
+  "tests/test_ranking_commands.py:test_invalid_cut_rejected_before_network": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 216,
+    "end": 221
+  },
+  "tests/test_ranking_commands.py:test_raw_design_contract_rejected_without_loading_private_files": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 224,
+    "end": 228
+  },
+  "tests/test_ranking_commands.py:test_missing_input_does_not_silently_build_from_simulator": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 231,
+    "end": 233
+  },
+  "tests/test_ranking_commands.py:ReadOnlyCollection": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 171,
+    "end": 175
+  },
+  "tests/test_ranking_commands.py:ReadOnlyDatabase": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 177,
+    "end": 182
+  },
+  "tests/test_ranking_commands.py:find": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 172,
+    "end": 175
+  },
+  "tests/test_ranking_commands.py:__getitem__": {
+    "path": "tests/test_ranking_commands.py",
+    "start": 180,
+    "end": 182
+  },
+  "tests/test_mongo_observable.py:MemoryCollection": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 20,
+    "end": 55
+  },
+  "tests/test_mongo_observable.py:MemoryDatabase": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 58,
+    "end": 67
+  },
+  "tests/test_mongo_observable.py:test_repeated_load_is_idempotent_for_observations_companies_and_edges": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 70,
+    "end": 91
+  },
+  "tests/test_mongo_observable.py:test_wrong_database_is_rejected_before_any_access": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 97,
+    "end": 104
+  },
+  "tests/test_mongo_observable.py:test_unowned_collections_are_left_untouched": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 108,
+    "end": 116
+  },
+  "tests/test_mongo_observable.py:test_changed_existing_document_is_rejected_before_any_new_write": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 119,
+    "end": 130
+  },
+  "tests/test_mongo_observable.py:test_naive_bson_utc_dates_are_normalized_on_read": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 133,
+    "end": 146
+  },
+  "tests/test_mongo_observable.py:test_company_history_filters_by_subject_and_availability_in_mongo": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 149,
+    "end": 165
+  },
+  "tests/test_mongo_observable.py:__init__": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 59,
+    "end": 61
+  },
+  "tests/test_mongo_observable.py:find_one": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 30,
+    "end": 31
+  },
+  "tests/test_mongo_observable.py:update_one": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 33,
+    "end": 41
+  },
+  "tests/test_mongo_observable.py:create_index": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 43,
+    "end": 45
+  },
+  "tests/test_mongo_observable.py:find": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 47,
+    "end": 55
+  },
+  "tests/test_mongo_observable.py:__getitem__": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 63,
+    "end": 64
+  },
+  "tests/test_mongo_observable.py:list_collection_names": {
+    "path": "tests/test_mongo_observable.py",
+    "start": 66,
+    "end": 67
+  },
+  "tests/test_control_tower.py:select": {
+    "path": "tests/test_control_tower.py",
+    "start": 25,
+    "end": 26
+  },
+  "tests/test_control_tower.py:view": {
+    "path": "tests/test_control_tower.py",
+    "start": 29,
+    "end": 30
+  },
+  "tests/test_control_tower.py:assert_ok": {
+    "path": "tests/test_control_tower.py",
+    "start": 33,
+    "end": 34
+  },
+  "tests/test_control_tower.py:ui_runtime": {
+    "path": "tests/test_control_tower.py",
+    "start": 38,
+    "end": 39
+  },
+  "tests/test_control_tower.py:app": {
+    "path": "tests/test_control_tower.py",
+    "start": 43,
+    "end": 51
+  },
+  "tests/test_control_tower.py:test_default_is_executive_summary_t2_offline": {
+    "path": "tests/test_control_tower.py",
+    "start": 54,
+    "end": 67
+  },
+  "tests/test_control_tower.py:test_five_pages_render_and_unsupported_filters_disabled": {
+    "path": "tests/test_control_tower.py",
+    "start": 71,
+    "end": 80
+  },
+  "tests/test_control_tower.py:test_cut_controls_options_and_no_future_evolution": {
+    "path": "tests/test_control_tower.py",
+    "start": 84,
+    "end": 92
+  },
+  "tests/test_control_tower.py:test_company_selector_updates_network_and_detail_without_rescoring": {
+    "path": "tests/test_control_tower.py",
+    "start": 95,
+    "end": 119
+  },
+  "tests/test_control_tower.py:test_industry_and_score_filters_preserve_global_rankings": {
+    "path": "tests/test_control_tower.py",
+    "start": 122,
+    "end": 136
+  },
+  "tests/test_control_tower.py:test_funnel_missing_stages_are_text_not_zero": {
+    "path": "tests/test_control_tower.py",
+    "start": 139,
+    "end": 143
+  },
+  "tests/test_control_tower.py:test_finance_tables_match_module_and_do_not_depend_on_company_filters": {
+    "path": "tests/test_control_tower.py",
+    "start": 146,
+    "end": 165
+  },
+  "tests/test_control_tower.py:test_atlas_requires_button_and_context_changes_invalidate_old_rows": {
+    "path": "tests/test_control_tower.py",
+    "start": 168,
+    "end": 188
+  },
+  "tests/test_control_tower.py:test_invalid_ledger_is_visible_and_finance_still_available": {
+    "path": "tests/test_control_tower.py",
+    "start": 191,
+    "end": 204
+  },
+  "tests/test_control_tower.py:test_atlas_error_does_not_reuse_previous_success": {
+    "path": "tests/test_control_tower.py",
+    "start": 207,
+    "end": 217
+  },
+  "tests/test_control_tower.py:test_empty_eligible_population_has_no_percentage_with_zero_denominator": {
+    "path": "tests/test_control_tower.py",
+    "start": 220,
+    "end": 228
+  },
+  "tests/test_control_tower.py:test_public_only_ui_utf8_and_paths_with_spaces_without_network_or_env": {
+    "path": "tests/test_control_tower.py",
+    "start": 231,
+    "end": 351
+  },
+  "tests/test_control_tower.py:test_graph_opens_focused_and_full_network_is_secondary": {
+    "path": "tests/test_control_tower.py",
+    "start": 354,
+    "end": 374
+  },
+  "tests/test_control_tower.py:test_focus_drops_future_account_when_cut_changes": {
+    "path": "tests/test_control_tower.py",
+    "start": 377,
+    "end": 387
+  },
+  "tests/test_control_tower.py:test_all_technical_panels_are_collapsed_initially": {
+    "path": "tests/test_control_tower.py",
+    "start": 391,
+    "end": 395
+  },
+  "tests/test_control_tower.py:test_economic_scale_switch_keeps_four_signed_scenarios_and_baseline_threshold": {
+    "path": "tests/test_control_tower.py",
+    "start": 398,
+    "end": 416
+  },
+  "tests/test_control_tower.py:test_returning_to_global_view_restores_funnel_without_changing_rankings": {
+    "path": "tests/test_control_tower.py",
+    "start": 419,
+    "end": 435
+  },
+  "tests/test_control_tower.py:fake": {
+    "path": "tests/test_control_tower.py",
+    "start": 171,
+    "end": 173
+  },
+  "tests/test_control_tower.py:invalid": {
+    "path": "tests/test_control_tower.py",
+    "start": 194,
+    "end": 195
+  },
+  "tests/test_control_tower.py:failed": {
+    "path": "tests/test_control_tower.py",
+    "start": 208,
+    "end": 209
+  },
+  "tests/test_check_connection.py:test_command_reports_success_after_ping": {
+    "path": "tests/test_check_connection.py",
+    "start": 14,
+    "end": 26
+  },
+  "tests/test_check_connection.py:test_command_reports_controlled_failure_without_traceback": {
+    "path": "tests/test_check_connection.py",
+    "start": 30,
+    "end": 51
+  },
+  "tests/test_tower_read_model.py:public_rows": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 23,
+    "end": 24
+  },
+  "tests/test_tower_read_model.py:test_context_and_network_match_public_api": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 35,
+    "end": 49
+  },
+  "tests/test_tower_read_model.py:test_no_future_nodes_edges_options_or_evolution": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 53,
+    "end": 65
+  },
+  "tests/test_tower_read_model.py:test_selecting_company_keeps_global_scores_and_adds_only_known_direct_neighbors": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 68,
+    "end": 86
+  },
+  "tests/test_tower_read_model.py:test_referrals_reported_inferred_and_isolated_are_not_presented_as_confirmed": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 89,
+    "end": 102
+  },
+  "tests/test_tower_read_model.py:test_conflicts_candidates_and_duplicate_evidence_survive": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 105,
+    "end": 120
+  },
+  "tests/test_tower_read_model.py:test_industry_filters_do_not_refill_funnel_or_rankings": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 123,
+    "end": 136
+  },
+  "tests/test_tower_read_model.py:test_empty_context_has_no_fabricated_coverage_or_stages": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 139,
+    "end": 144
+  },
+  "tests/test_tower_read_model.py:test_network_preserves_simultaneous_verification_conflict": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 147,
+    "end": 167
+  },
+  "tests/test_tower_read_model.py:test_discarded_link_is_visible_as_discarded_not_confirmed": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 170,
+    "end": 185
+  },
+  "tests/test_tower_read_model.py:test_vega_spec_uses_embedded_data_no_remote_resources": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 188,
+    "end": 199
+  },
+  "tests/test_tower_read_model.py:install_read_only_client": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 202,
+    "end": 236
+  },
+  "tests/test_tower_read_model.py:test_atlas_is_find_only_parity_and_closes_client": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 239,
+    "end": 245
+  },
+  "tests/test_tower_read_model.py:test_atlas_mismatch_is_blocked_without_fallback": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 248,
+    "end": 254
+  },
+  "tests/test_tower_read_model.py:test_atlas_invalid_database_rejected_before_client": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 257,
+    "end": 261
+  },
+  "tests/test_tower_read_model.py:test_atlas_failure_never_exposes_driver_text": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 264,
+    "end": 274
+  },
+  "tests/test_tower_read_model.py:test_focused_network_only_highlights_approved_feature_evidence": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 278,
+    "end": 304
+  },
+  "tests/test_tower_read_model.py:test_focus_cannot_refer_to_company_outside_selection": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 307,
+    "end": 310
+  },
+  "tests/test_tower_read_model.py:test_context_has_exact_parity_with_ranking_cli": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 314,
+    "end": 330
+  },
+  "tests/test_tower_read_model.py:Collection": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 206,
+    "end": 213
+  },
+  "tests/test_tower_read_model.py:Database": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 215,
+    "end": 220
+  },
+  "tests/test_tower_read_model.py:Client": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 222,
+    "end": 232
+  },
+  "tests/test_tower_read_model.py:failed": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 267,
+    "end": 268
+  },
+  "tests/test_tower_read_model.py:find": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 207,
+    "end": 213
+  },
+  "tests/test_tower_read_model.py:__getitem__": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 230,
+    "end": 232
+  },
+  "tests/test_tower_read_model.py:__enter__": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 223,
+    "end": 225
+  },
+  "tests/test_tower_read_model.py:__exit__": {
+    "path": "tests/test_tower_read_model.py",
+    "start": 227,
+    "end": 228
+  },
+  "tests/test_finance_commands.py:run": {
+    "path": "tests/test_finance_commands.py",
+    "start": 19,
+    "end": 24
+  },
+  "tests/test_finance_commands.py:test_scope_keeps_three_cases_and_null_separate_from_experiment": {
+    "path": "tests/test_finance_commands.py",
+    "start": 28,
+    "end": 36
+  },
+  "tests/test_finance_commands.py:test_sensitivity_command_has_all_matrices": {
+    "path": "tests/test_finance_commands.py",
+    "start": 39,
+    "end": 44
+  },
+  "tests/test_finance_commands.py:test_markdown_example_reproducible_and_shows_infeasibility": {
+    "path": "tests/test_finance_commands.py",
+    "start": 47,
+    "end": 55
+  },
+  "tests/test_finance_commands.py:test_finance_only_public_module_config_and_no_mongo": {
+    "path": "tests/test_finance_commands.py",
+    "start": 60,
+    "end": 102
+  },
+  "tests/test_finance_commands.py:test_missing_config_is_an_error_without_fallback": {
+    "path": "tests/test_finance_commands.py",
+    "start": 105,
+    "end": 107
+  },
+  "tests/test_finance_commands.py:test_bad_config_does_not_echo_sensitive_value": {
+    "path": "tests/test_finance_commands.py",
+    "start": 110,
+    "end": 119
+  },
+  "tests/test_finance_commands.py:test_utf8_bom_config_accepted": {
+    "path": "tests/test_finance_commands.py",
+    "start": 122,
+    "end": 128
+  },
+  "tests/test_finance_commands.py:test_duplicate_json_keys_not_silently_overwritten": {
+    "path": "tests/test_finance_commands.py",
+    "start": 131,
+    "end": 135
+  },
+  "tests/test_finance_commands.py:test_deterministic_config_key_order_and_input_hash": {
+    "path": "tests/test_finance_commands.py",
+    "start": 138,
+    "end": 143
+  },
+  "tests/test_graph_commands.py:run_script": {
+    "path": "tests/test_graph_commands.py",
+    "start": 17,
+    "end": 22
+  },
+  "tests/test_graph_commands.py:test_default_and_explicit_dry_run_never_read_credentials_or_create_client": {
+    "path": "tests/test_graph_commands.py",
+    "start": 25,
+    "end": 35
+  },
+  "tests/test_graph_commands.py:test_apply_requires_literal_database_confirmation": {
+    "path": "tests/test_graph_commands.py",
+    "start": 38,
+    "end": 40
+  },
+  "tests/test_graph_commands.py:test_apply_rejects_wrong_environment_database_before_connecting": {
+    "path": "tests/test_graph_commands.py",
+    "start": 43,
+    "end": 57
+  },
+  "tests/test_graph_commands.py:test_inspection_command_runs_without_design_access_or_mongo": {
+    "path": "tests/test_graph_commands.py",
+    "start": 61,
+    "end": 66
+  },
+  "tests/test_graph_commands.py:test_inspection_rejects_date_without_time_or_timezone": {
+    "path": "tests/test_graph_commands.py",
+    "start": 69,
+    "end": 71
+  },
+  "tests/test_graph_commands.py:test_build_dry_run_does_not_invoke_writer": {
+    "path": "tests/test_graph_commands.py",
+    "start": 74,
+    "end": 81
+  },
+  "tests/conftest.py:approved_design": {
+    "path": "tests/conftest.py",
+    "start": 14,
+    "end": 15
+  },
+  "tests/conftest.py:projection": {
+    "path": "tests/conftest.py",
+    "start": 19,
+    "end": 20
+  },
+  "tests/test_rankings.py:public_ledger": {
+    "path": "tests/test_rankings.py",
+    "start": 19,
+    "end": 20
+  },
+  "tests/test_rankings.py:observation": {
+    "path": "tests/test_rankings.py",
+    "start": 23,
+    "end": 41
+  },
+  "tests/test_rankings.py:claim": {
+    "path": "tests/test_rankings.py",
+    "start": 44,
+    "end": 65
+  },
+  "tests/test_rankings.py:small_ledger": {
+    "path": "tests/test_rankings.py",
+    "start": 69,
+    "end": 73
+  },
+  "tests/test_rankings.py:company": {
+    "path": "tests/test_rankings.py",
+    "start": 76,
+    "end": 77
+  },
+  "tests/test_rankings.py:test_same_cohort_capacity_and_explanations": {
+    "path": "tests/test_rankings.py",
+    "start": 88,
+    "end": 118
+  },
+  "tests/test_rankings.py:test_regression_approved_policy_top_five": {
+    "path": "tests/test_rankings.py",
+    "start": 177,
+    "end": 181
+  },
+  "tests/test_rankings.py:test_future_data_cannot_change_any_historical_output": {
+    "path": "tests/test_rankings.py",
+    "start": 185,
+    "end": 203
+  },
+  "tests/test_rankings.py:test_exact_boundary_and_timezone": {
+    "path": "tests/test_rankings.py",
+    "start": 207,
+    "end": 211
+  },
+  "tests/test_rankings.py:test_input_not_mutated_and_order_not_significant": {
+    "path": "tests/test_rankings.py",
+    "start": 214,
+    "end": 219
+  },
+  "tests/test_rankings.py:test_missing_not_zero_and_single_branch_not_missing": {
+    "path": "tests/test_rankings.py",
+    "start": 222,
+    "end": 228
+  },
+  "tests/test_rankings.py:test_caps_and_distinct_neighbors": {
+    "path": "tests/test_rankings.py",
+    "start": 231,
+    "end": 237
+  },
+  "tests/test_rankings.py:test_conflicting_branches_remain_unscored_even_after_confirmation": {
+    "path": "tests/test_rankings.py",
+    "start": 240,
+    "end": 250
+  },
+  "tests/test_rankings.py:test_unusable_branch_verification_does_not_score": {
+    "path": "tests/test_rankings.py",
+    "start": 254,
+    "end": 258
+  },
+  "tests/test_rankings.py:test_later_discarded_branch_does_not_reuse_earlier_report": {
+    "path": "tests/test_rankings.py",
+    "start": 261,
+    "end": 267
+  },
+  "tests/test_rankings.py:test_simultaneous_attribute_verification_conflict": {
+    "path": "tests/test_rankings.py",
+    "start": 270,
+    "end": 276
+  },
+  "tests/test_rankings.py:test_relationship_states_preserved_not_promoted": {
+    "path": "tests/test_rankings.py",
+    "start": 288,
+    "end": 293
+  },
+  "tests/test_rankings.py:test_referral_is_context_even_when_confirmed": {
+    "path": "tests/test_rankings.py",
+    "start": 296,
+    "end": 300
+  },
+  "tests/test_rankings.py:test_discarded_relationship_only_changes_available_cut": {
+    "path": "tests/test_rankings.py",
+    "start": 303,
+    "end": 308
+  },
+  "tests/test_rankings.py:test_contradictory_relationships_not_arbitrarily_chosen": {
+    "path": "tests/test_rankings.py",
+    "start": 312,
+    "end": 321
+  },
+  "tests/test_rankings.py:test_relationship_endpoint_change_is_not_arbitrated": {
+    "path": "tests/test_rankings.py",
+    "start": 324,
+    "end": 328
+  },
+  "tests/test_rankings.py:test_duplicate_claims_and_directions_do_not_inflate_neighbors": {
+    "path": "tests/test_rankings.py",
+    "start": 331,
+    "end": 343
+  },
+  "tests/test_rankings.py:test_alias_candidates_not_fused_or_added_to_cohort": {
+    "path": "tests/test_rankings.py",
+    "start": 346,
+    "end": 355
+  },
+  "tests/test_rankings.py:test_service_eligibility_is_same_for_both_policies": {
+    "path": "tests/test_rankings.py",
+    "start": 368,
+    "end": 373
+  },
+  "tests/test_rankings.py:test_conflicting_service_does_not_claim_known_noncustomer": {
+    "path": "tests/test_rankings.py",
+    "start": 376,
+    "end": 385
+  },
+  "tests/test_rankings.py:test_excluded_clients_remain_known_neighbor_context": {
+    "path": "tests/test_rankings.py",
+    "start": 388,
+    "end": 396
+  },
+  "tests/test_rankings.py:test_ties_empty_and_insufficient_cohort": {
+    "path": "tests/test_rankings.py",
+    "start": 399,
+    "end": 407
+  },
+  "tests/test_rankings.py:test_cutoff_tie_is_explicit": {
+    "path": "tests/test_rankings.py",
+    "start": 410,
+    "end": 417
+  },
+  "tests/test_rankings.py:test_calculation_has_no_filesystem_access": {
+    "path": "tests/test_rankings.py",
+    "start": 420,
+    "end": 426
+  },
+  "tests/test_rankings.py:test_all_output_ids_are_known_at_cut_and_no_private_metadata": {
+    "path": "tests/test_rankings.py",
+    "start": 430,
+    "end": 447
+  },
+  "tests/test_rankings.py:test_restricted_fields_and_duplicate_observation_ids_rejected": {
+    "path": "tests/test_rankings.py",
+    "start": 450,
+    "end": 456
+  },
+  "tests/test_rankings.py:check": {
+    "path": "tests/test_rankings.py",
+    "start": 437,
+    "end": 445
+  },
+  "tests/test_observable.py:test_cut_coverage_and_truth_only_reconciliation": {
+    "path": "tests/test_observable.py",
+    "start": 23,
+    "end": 49
+  },
+  "tests/test_observable.py:test_exact_boundary_and_observed_date_do_not_leak_future": {
+    "path": "tests/test_observable.py",
+    "start": 53,
+    "end": 59
+  },
+  "tests/test_observable.py:test_ambiguous_or_invalid_cut_rejected": {
+    "path": "tests/test_observable.py",
+    "start": 65,
+    "end": 67
+  },
+  "tests/test_observable.py:test_explicit_timezone_is_equivalent": {
+    "path": "tests/test_observable.py",
+    "start": 70,
+    "end": 71
+  },
+  "tests/test_observable.py:test_all_commercial_outputs_exclude_private_fields_names_and_ids": {
+    "path": "tests/test_observable.py",
+    "start": 74,
+    "end": 88
+  },
+  "tests/test_observable.py:test_profile_is_not_enriched_from_catalog_and_conflicts_survive": {
+    "path": "tests/test_observable.py",
+    "start": 91,
+    "end": 114
+  },
+  "tests/test_observable.py:test_aliases_stay_candidates_without_using_private_mapping": {
+    "path": "tests/test_observable.py",
+    "start": 117,
+    "end": 125
+  },
+  "tests/test_observable.py:test_reported_and_inferred_claims_are_not_promoted": {
+    "path": "tests/test_observable.py",
+    "start": 128,
+    "end": 141
+  },
+  "tests/test_observable.py:test_duplicate_evidence_and_explicit_status_change_are_preserved_in_test_fixture": {
+    "path": "tests/test_observable.py",
+    "start": 144,
+    "end": 183
+  },
+  "tests/test_observable.py:test_public_contract_rejects_invalid_records": {
+    "path": "tests/test_observable.py",
+    "start": 201,
+    "end": 225
+  },
+  "tests/test_observable.py:test_projection_is_deterministic_and_reader_works_without_restricted_directory": {
+    "path": "tests/test_observable.py",
+    "start": 228,
+    "end": 240
+  },
+  "tests/test_observable.py:test_reader_rejects_raw_design_file": {
+    "path": "tests/test_observable.py",
+    "start": 243,
+    "end": 246
+  },
+  "tests/test_observable.py:test_committed_ledger_matches_projection_and_has_no_commercial_events": {
+    "path": "tests/test_observable.py",
+    "start": 249,
+    "end": 257
+  },
+  "tests/test_design.py:test_approved_sources_are_structurally_consistent": {
+    "path": "tests/test_design.py",
+    "start": 13,
+    "end": 18
+  },
+  "tests/test_design.py:test_exact_world_counts_and_ids": {
+    "path": "tests/test_design.py",
+    "start": 21,
+    "end": 32
+  },
+  "tests/test_design.py:test_observations_sources_and_closed_world_coverage": {
+    "path": "tests/test_design.py",
+    "start": 35,
+    "end": 53
+  },
+  "tests/test_design.py:test_audit_reports_bad_data_without_repairing_it": {
+    "path": "tests/test_design.py",
+    "start": 70,
+    "end": 92
+  },
+  "tests/test_design.py:test_missing_input_identifies_file": {
+    "path": "tests/test_design.py",
+    "start": 95,
+    "end": 97
+  },
+  "tests/test_design.py:test_modified_csv_and_fingerprint_are_detected": {
+    "path": "tests/test_design.py",
+    "start": 100,
+    "end": 110
+  },
+  "tests/test_database.py:client_factory": {
+    "path": "tests/test_database.py",
+    "start": 18,
+    "end": 24
+  },
+  "tests/test_database.py:test_client_is_lazy_and_has_bounded_timeouts": {
+    "path": "tests/test_database.py",
+    "start": 27,
+    "end": 38
+  },
+  "tests/test_database.py:test_ping_targets_selected_database_without_writing": {
+    "path": "tests/test_database.py",
+    "start": 41,
+    "end": 50
+  },
+  "tests/test_database.py:test_rejects_unconfirmed_ping_and_releases_client": {
+    "path": "tests/test_database.py",
+    "start": 54,
+    "end": 61
+  },
+  "tests/test_database.py:test_driver_errors_are_sanitized_and_client_released": {
+    "path": "tests/test_database.py",
+    "start": 75,
+    "end": 86
+  },
+  "tests/test_database.py:test_client_creation_errors_do_not_expose_uri": {
+    "path": "tests/test_database.py",
+    "start": 90,
+    "end": 97
+  },
+  "tests/test_finance.py:assumptions": {
+    "path": "tests/test_finance.py",
+    "start": 16,
+    "end": 17
+  },
+  "tests/test_finance.py:base": {
+    "path": "tests/test_finance.py",
+    "start": 20,
+    "end": 21
+  },
+  "tests/test_finance.py:set_amount": {
+    "path": "tests/test_finance.py",
+    "start": 24,
+    "end": 25
+  },
+  "tests/test_finance.py:test_manual_arithmetic_regression_all_scenarios": {
+    "path": "tests/test_finance.py",
+    "start": 38,
+    "end": 42
+  },
+  "tests/test_finance.py:test_accounting_identity_no_double_cost_or_reserve": {
+    "path": "tests/test_finance.py",
+    "start": 45,
+    "end": 55
+  },
+  "tests/test_finance.py:test_shared_commercial_cost_cancels": {
+    "path": "tests/test_finance.py",
+    "start": 58,
+    "end": 63
+  },
+  "tests/test_finance.py:test_unique_cost_splitting_preserves_totals": {
+    "path": "tests/test_finance.py",
+    "start": 66,
+    "end": 74
+  },
+  "tests/test_finance.py:test_reserve_not_expensed_twice": {
+    "path": "tests/test_finance.py",
+    "start": 77,
+    "end": 83
+  },
+  "tests/test_finance.py:test_break_even_and_strict_reserve_boundary": {
+    "path": "tests/test_finance.py",
+    "start": 89,
+    "end": 102
+  },
+  "tests/test_finance.py:test_negative_zero_positive_without_cherry_picking": {
+    "path": "tests/test_finance.py",
+    "start": 105,
+    "end": 110
+  },
+  "tests/test_finance.py:test_mandatory_null_preserves_costs_and_is_not_zero_profit": {
+    "path": "tests/test_finance.py",
+    "start": 113,
+    "end": 127
+  },
+  "tests/test_finance.py:test_nonpositive_margin_has_no_conversion_threshold": {
+    "path": "tests/test_finance.py",
+    "start": 131,
+    "end": 135
+  },
+  "tests/test_finance.py:test_unattainable_threshold_reported_not_clipped": {
+    "path": "tests/test_finance.py",
+    "start": 138,
+    "end": 141
+  },
+  "tests/test_finance.py:test_settings_reject_invalid_units_and_values": {
+    "path": "tests/test_finance.py",
+    "start": 159,
+    "end": 162
+  },
+  "tests/test_finance.py:test_invalid_probabilities_and_float_inputs_rejected": {
+    "path": "tests/test_finance.py",
+    "start": 175,
+    "end": 178
+  },
+  "tests/test_finance.py:test_invalid_money_rejected": {
+    "path": "tests/test_finance.py",
+    "start": 182,
+    "end": 185
+  },
+  "tests/test_finance.py:test_invalid_volumes_cannot_divide_by_zero": {
+    "path": "tests/test_finance.py",
+    "start": 189,
+    "end": 191
+  },
+  "tests/test_finance.py:test_prevalued_money_cannot_silently_change_horizon_or_discount": {
+    "path": "tests/test_finance.py",
+    "start": 195,
+    "end": 198
+  },
+  "tests/test_finance.py:test_activation_window_requires_consistent_source": {
+    "path": "tests/test_finance.py",
+    "start": 201,
+    "end": 204
+  },
+  "tests/test_finance.py:test_monetary_unit_cannot_mix_total_and_per_slot": {
+    "path": "tests/test_finance.py",
+    "start": 207,
+    "end": 210
+  },
+  "tests/test_finance.py:test_cost_scope_and_duplicates_fail_closed": {
+    "path": "tests/test_finance.py",
+    "start": 223,
+    "end": 236
+  },
+  "tests/test_finance.py:test_commercial_savings_cannot_make_total_cost_negative": {
+    "path": "tests/test_finance.py",
+    "start": 239,
+    "end": 242
+  },
+  "tests/test_finance.py:test_flows_revalue_configurable_horizon_discount_and_window": {
+    "path": "tests/test_finance.py",
+    "start": 245,
+    "end": 269
+  },
+  "tests/test_finance.py:test_present_values_not_discounted_twice": {
+    "path": "tests/test_finance.py",
+    "start": 272,
+    "end": 275
+  },
+  "tests/test_finance.py:test_precision_independent_of_callers_decimal_context": {
+    "path": "tests/test_finance.py",
+    "start": 278,
+    "end": 282
+  },
+  "tests/test_finance.py:test_sensitivity_covers_all_ranges_and_keeps_losses": {
+    "path": "tests/test_finance.py",
+    "start": 285,
+    "end": 299
+  },
+  "tests/test_finance.py:test_infeasible_sensitivity_cells_explicit_not_silently_omitted": {
+    "path": "tests/test_finance.py",
+    "start": 302,
+    "end": 307
+  },
+  "tests/test_finance.py:test_contract_requires_all_scenarios_and_hypothetical_label": {
+    "path": "tests/test_finance.py",
+    "start": 314,
+    "end": 326
+  },
+  "tests/test_finance.py:test_no_mutation_no_files_no_experiment_claim": {
+    "path": "tests/test_finance.py",
+    "start": 329,
+    "end": 339
+  },
+  "tests/ui_test_support.py:prepare_ui_runtime": {
+    "path": "tests/ui_test_support.py",
+    "start": 11,
+    "end": 18
+  },
+  "tests/ui_test_support.py:run_app": {
+    "path": "tests/ui_test_support.py",
+    "start": 21,
+    "end": 53
+  },
+  "tests/ui_test_support.py:install_network_guard": {
+    "path": "tests/ui_test_support.py",
+    "start": 56,
+    "end": 120
+  },
+  "tests/ui_test_support.py:capture": {
+    "path": "tests/ui_test_support.py",
+    "start": 25,
+    "end": 36
+  },
+  "tests/ui_test_support.py:blocked": {
+    "path": "tests/ui_test_support.py",
+    "start": 69,
+    "end": 70
+  },
+  "tests/ui_test_support.py:bind": {
+    "path": "tests/ui_test_support.py",
+    "start": 72,
+    "end": 81
+  },
+  "tests/ui_test_support.py:listen": {
+    "path": "tests/ui_test_support.py",
+    "start": 83,
+    "end": 87
+  },
+  "tests/ui_test_support.py:connect": {
+    "path": "tests/ui_test_support.py",
+    "start": 89,
+    "end": 97
+  },
+  "tests/ui_test_support.py:pair": {
+    "path": "tests/ui_test_support.py",
+    "start": 99,
+    "end": 105
+  },
+  "app/control_tower.py:table": {
+    "path": "app/control_tower.py",
+    "start": 38,
+    "end": 42
+  },
+  "app/control_tower.py:money": {
+    "path": "app/control_tower.py",
+    "start": 45,
+    "end": 46
+  },
+  "app/control_tower.py:signed_money": {
+    "path": "app/control_tower.py",
+    "start": 49,
+    "end": 51
+  },
+  "app/control_tower.py:scenario_cards": {
+    "path": "app/control_tower.py",
+    "start": 54,
+    "end": 62
+  },
+  "app/control_tower.py:selection_headline": {
+    "path": "app/control_tower.py",
+    "start": 65,
+    "end": 73
+  },
+  "app/control_tower.py:reset_segment": {
+    "path": "app/control_tower.py",
+    "start": 76,
+    "end": 78
+  },
+  "app/control_tower.py:comparison_chart": {
+    "path": "app/control_tower.py",
+    "start": 81,
+    "end": 178
+  },
+  "app/control_tower.py:evidence_table": {
+    "path": "app/control_tower.py",
+    "start": 181,
+    "end": 187
+  },
+  "app/control_tower.py:company_detail": {
+    "path": "app/control_tower.py",
+    "start": 190,
+    "end": 251
+  },
+  "app/control_tower.py:top_tables": {
+    "path": "app/control_tower.py",
+    "start": 254,
+    "end": 280
+  },
+  "app/control_tower.py:summary_page": {
+    "path": "app/control_tower.py",
+    "start": 283,
+    "end": 313
+  },
+  "app/control_tower.py:health_page": {
+    "path": "app/control_tower.py",
+    "start": 316,
+    "end": 462
+  },
+  "app/control_tower.py:performance_page": {
+    "path": "app/control_tower.py",
+    "start": 465,
+    "end": 538
+  },
+  "app/control_tower.py:funnel_page": {
+    "path": "app/control_tower.py",
+    "start": 541,
+    "end": 593
+  },
+  "app/control_tower.py:economic_page": {
+    "path": "app/control_tower.py",
+    "start": 596,
+    "end": 703
+  },
+  "app/control_tower.py:main": {
+    "path": "app/control_tower.py",
+    "start": 706,
+    "end": 841
+  },
+  "src/economic_graph/simulator/project.py:public_id": {
+    "path": "src/economic_graph/simulator/project.py",
+    "start": 22,
+    "end": 24
+  },
+  "src/economic_graph/simulator/project.py:project_observations": {
+    "path": "src/economic_graph/simulator/project.py",
+    "start": 27,
+    "end": 97
+  },
+  "src/economic_graph/simulator/project.py:write_projection": {
+    "path": "src/economic_graph/simulator/project.py",
+    "start": 100,
+    "end": 120
+  },
+  "src/economic_graph/simulator/design.py:load_design": {
+    "path": "src/economic_graph/simulator/design.py",
+    "start": 51,
+    "end": 104
+  },
+  "src/economic_graph/simulator/design.py:audit_design": {
+    "path": "src/economic_graph/simulator/design.py",
+    "start": 107,
+    "end": 453
+  },
+  "src/economic_graph/simulator/design.py:check": {
+    "path": "src/economic_graph/simulator/design.py",
+    "start": 117,
+    "end": 119
+  }
+}

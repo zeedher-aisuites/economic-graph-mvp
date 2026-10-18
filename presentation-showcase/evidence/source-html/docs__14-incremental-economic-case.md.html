@@ -1,0 +1,180 @@
+<!doctype html><html lang="es-MX"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>docs/14-incremental-economic-case.md</title><style>
+body{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace}header{position:sticky;top:0;background:#102d43;padding:16px 25px;border-bottom:1px solid #34536a;z-index:2;font:13px/1.6 system-ui}header a{color:#58dfc6}main{padding:22px 0}.line{display:flex;gap:20px;min-width:max-content;padding-right:30px;scroll-margin-top:90px}.line>a{text-align:right;min-width:65px;color:#6f94a8;text-decoration:none;border-right:1px solid #30495c;padding-right:15px}code{white-space:pre}.line:target{background:#1f4f50;color:white}.k,.kn,.kd{color:#59e3c9}.s1,.s2,.sa{color:#ffc181}.nf,.nc{color:#a4cbff}.c1,.sd{color:#86a6b6}.mi{color:#ffc181}
+</style><header><a href="../../index.html">← Presentación</a> · <strong>docs/14-incremental-economic-case.md</strong><br>Fuente auditada: 774dacd80e6410ca43299f63f19d9744a31929c0</header><main><div class="line" id="L1"><a href="#L1">1</a><code># Caso económico incremental — misión 003B</code></div>
+<div class="line" id="L2"><a href="#L2">2</a><code> </code></div>
+<div class="line" id="L3"><a href="#L3">3</a><code>**Estado: ECO-01 a ECO-06 aprobadas provisionalmente y exclusivamente como metodología para la PoC educativa**, por respuesta explícita del usuario al PR #5. Calculador determinista `003b-finance-v1` implementado; supuestos no calibrados y resultados solo hipotéticos. La aprobación no valida finanzas de Totalplay, acceso a datos reales, contactos, presupuesto, piloto operativo ni despliegue. El experimento sigue siendo diseño futuro, no ejecutado.</code></div>
+<div class="line" id="L4"><a href="#L4">4</a><code> </code></div>
+<div class="line" id="L5"><a href="#L5">5</a><code>## 1. Auditoría y pregunta de inversión</code></div>
+<div class="line" id="L6"><a href="#L6">6</a><code> </code></div>
+<div class="line" id="L7"><a href="#L7">7</a><code>Base: `main` en `0e1088c233f4b49eaf22deab8161d6d610748656`, con el PR #4 integrado, incluida su corrección de portabilidad. Se revisaron las 13 diapositivas y notas del [reto original](../presentations/references/Reto-AI-Engineering-SME-Economic-Graph.pptx), la [trazabilidad](02-challenge-traceability.md), el alcance, DEC-004/009 y los [rankings aprobados](12-commercial-ranking.md).</code></div>
+<div class="line" id="L8"><a href="#L8">8</a><code> </code></div>
+<div class="line" id="L9"><a href="#L9">9</a><code>Las diapositivas 4, 5 y 8 exigen conectar la señal con decisión e impacto; la 10 pide margen, CAC, LTV, ROI y payback dentro de la Control Tower; la 12 exige caso económico y brief final. Estas son métricas que debemos justificar según los datos disponibles, no resultados existentes. El score 87 de la diapositiva 8 y el funnel de la 11 son ilustraciones del reto, no parámetros financieros de esta PoC.</code></div>
+<div class="line" id="L10"><a href="#L10">10</a><code> </code></div>
+<div class="line" id="L11"><a href="#L11">11</a><code>La pregunta es: **a igual capacidad comercial, ¿el margen adicional generado por cambiar la priorización cubre los costos incrementales de construir y operar el grafo?** La comparación se refiere a las dos reglas aprobadas, no a una política actual de Totalplay observada. La revisión posterior del usuario aprueba provisionalmente la metodología de DEC-004/010 para uso educativo; su aplicación operativa no está autorizada.</code></div>
+<div class="line" id="L12"><a href="#L12">12</a><code> </code></div>
+<div class="line" id="L13"><a href="#L13">13</a><code>| Categoría | Evidencia disponible | Qué permite concluir |</code></div>
+<div class="line" id="L14"><a href="#L14">14</a><code>|---|---|---|</code></div>
+<div class="line" id="L15"><a href="#L15">15</a><code>| Observación técnica real reportada por el usuario | Ping, carga idempotente y consultas Atlas desde Windows; [002C](11-atlas-integration-validation.md) | Funcionamiento técnico local reportado; sin ventas ni costos medidos |</code></div>
+<div class="line" id="L16"><a href="#L16">16</a><code>| Datos y resultados sintéticos reproducidos offline | Ledger público de 83 observaciones; conocidas 12/17/23; elegibles 12/17/21; K=5; dos seleccionadas en común y tres sustituciones por corte | Cambian las selecciones; no se deriva una tasa de conversión de esos cambios |</code></div>
+<div class="line" id="L17"><a href="#L17">17</a><code>| Supuestos financieros propuestos | Conversiones esperadas, márgenes, costos, volumen y horizonte de las secciones siguientes | Explorar condiciones de rentabilidad; no describir desempeño observado |</code></div>
+<div class="line" id="L18"><a href="#L18">18</a><code>| Resultados medibles solo con datos comerciales autorizados y experimento | Activaciones, margen por cuenta asignada, costos y efecto con incertidumbre | Estimar incrementalidad bajo el protocolo y sus limitaciones |</code></div>
+<div class="line" id="L19"><a href="#L19">19</a><code> </code></div>
+<div class="line" id="L20"><a href="#L20">20</a><code>Se auditó únicamente el ledger observable: sus atributos son nombre, sector, tamaño, sucursales, calificación, reseñas, servicio activo, afirmaciones relacionales y alias. No hay conversiones, precios, facturación, costos ni eventos comerciales. **Desconocido no significa cero ventas.** No se consultó el oráculo para proponer resultados económicos.</code></div>
+<div class="line" id="L21"><a href="#L21">21</a><code> </code></div>
+<div class="line" id="L22"><a href="#L22">22</a><code>Las reglas `003a-conservative-v1`, sus pesos, elegibilidad, desempate y capacidad de cinco cuentas permanecen intactos. T0/T1/T2 son instantáneas superpuestas: no son tres cohortes independientes, quince clientes contactados ni tres brazos experimentales.</code></div>
+<div class="line" id="L23"><a href="#L23">23</a><code> </code></div>
+<div class="line" id="L24"><a href="#L24">24</a><code>## 2. Variables y datos que faltan</code></div>
+<div class="line" id="L25"><a href="#L25">25</a><code> </code></div>
+<div class="line" id="L26"><a href="#L26">26</a><code>Unidad monetaria de la PoC: MXN nominales, sin IVA recuperable, antes de financiamiento e impuesto sobre la renta; cualquier uso real requeriría confirmar el criterio con Finanzas. Cada entrada conserva unidad, base de valoración, período y condición de supuesto. El archivo versionado fija su origen educativo y su SHA-256 permite reproducir la configuración.</code></div>
+<div class="line" id="L27"><a href="#L27">27</a><code> </code></div>
+<div class="line" id="L28"><a href="#L28">28</a><code>| Variable | Definición y unidad | Estado y fuente futura requerida |</code></div>
+<div class="line" id="L29"><a href="#L29">29</a><code>|---|---|---|</code></div>
+<div class="line" id="L30"><a href="#L30">30</a><code>| `K` | Capacidad por bolsa comercial y corte: cinco cuentas | Aprobada para 003A y conceptualmente para el futuro diseño por bolsas; sin operación real autorizada |</code></div>
+<div class="line" id="L31"><a href="#L31">31</a><code>| `J` / `S=K×J` | Bolsas distintas a desplegar / plazas comerciales totales de una campaña | Volumen hipotético, sin mercado ni personal acreditados; validar con Comercial |</code></div>
+<div class="line" id="L32"><a href="#L32">32</a><code>| `N` | Todas las cuentas elegibles de esas bolsas, incluidas no seleccionadas | La PoC conoce 12/17/21 elegibles por corte; no acredita una población real desplegable |</code></div>
+<div class="line" id="L33"><a href="#L33">33</a><code>| `p_B`, `p_G` | Probabilidad de primera activación de adquisición antes de `W`, por plaza seleccionada bajo cada política | Desconocida; CRM/facturación/activación autorizados. Una plaza sin contacto o sin cierre no se retira del denominador |</code></div>
+<div class="line" id="L34"><a href="#L34">34</a><code>| `Δp=p_G−p_B` | Diferencia absoluta de probabilidades | Supuesto de escenario o estimación futura; nunca derivada del score, vecinos o cambios del top-5 |</code></div>
+<div class="line" id="L35"><a href="#L35">35</a><code>| `R_im`, `V_im` | Ingreso neto cobrable y costo variable de prestar servicio a cuenta `i` en mes `m` | Desconocidos; Finanzas, facturación, ajustes y operación. Incluir impago/reembolsos sin descontarlos dos veces |</code></div>
+<div class="line" id="L36"><a href="#L36">36</a><code>| `I_i`, `t_i` | Instalación, equipo subsidiado y comisión por alta; momento de activación | Desconocidos; evitar duplicarlos en otros costos |</code></div>
+<div class="line" id="L37"><a href="#L37">37</a><code>| `M_a(H)` | Margen por primer contrato activado bajo brazo `a`, en valor presente hasta el horizonte común `H` | Supuesto; en producción derivado de ingreso, servicio, fecha de activación, permanencia y alta |</code></div>
+<div class="line" id="L38"><a href="#L38">38</a><code>| `c_a`, `Δc=c_G−c_B` | Costo comercial por plaza / diferencia entre políticas, en valor presente | Desconocido; tiempo de prospección y validación, viajes e intentos fallidos. Comisión de alta ya está en `I_i` |</code></div>
+<div class="line" id="L39"><a href="#L39">39</a><code>| `F` | Costo fijo futuro incremental frente al baseline | Cotizar construcción/adaptación, integración, evaluación/piloto y puesta en operación; no recontar gastos ya incurridos |</code></div>
+<div class="line" id="L40"><a href="#L40">40</a><code>| `ΔO(H)` | Operación incremental durante `H`, en valor presente | Adquisición/licencias de datos, infraestructura, almacenamiento, actualización, revisión de identidad, soporte y gobierno; restar costos equivalentes del baseline |</code></div>
+<div class="line" id="L41"><a href="#L41">41</a><code>| `ΔU(H)` | Diferencia de margen de cuentas no seleccionadas y otros canales dentro de la población | Desconocida; contempla sustitución/canibalización y spillovers internos. Cero es un supuesto, no una comprobación |</code></div>
+<div class="line" id="L42"><a href="#L42">42</a><code>| `W`, `H`, `d` | Ventana de activación, horizonte desde asignación y descuento mensual | 90 días, 12 meses y 1% mensual; aprobados solo para PoC, configurables y no calibrados |</code></div>
+<div class="line" id="L43"><a href="#L43">43</a><code>| `B_reserva` | Colchón de inversión adicional al punto de equilibrio | 20% de `F+ΔO`, aceptación provisional educativa; no autoriza presupuesto |</code></div>
+<div class="line" id="L44"><a href="#L44">44</a><code> </code></div>
+<div class="line" id="L45"><a href="#L45">45</a><code>Una bolsa es una cartera comercial sin cuentas repetidas en la campaña, no una réplica de los 30 negocios ficticios. `J` de despliegue no es el número de unidades que necesita el A/B. La capacidad total, el personal y el número de cuentas disponibles deben verificarse antes de proyectar escala.</code></div>
+<div class="line" id="L46"><a href="#L46">46</a><code> </code></div>
+<div class="line" id="L47"><a href="#L47">47</a><code>Costos comunes que no cambian entre políticas cancelan en la diferencia, pero deben constar en el presupuesto total. No se presenta capacidad liberada como ahorro de caja si la nómina no disminuye; su costo de oportunidad se registra aparte, sin sumarlo otra vez. Un servicio cloud gratuito hoy tampoco garantiza costo cero de producción. No se han solicitado precios ni modificado infraestructura.</code></div>
+<div class="line" id="L48"><a href="#L48">48</a><code> </code></div>
+<div class="line" id="L49"><a href="#L49">49</a><code>El costo comercial total de campaña se distribuye entre las plazas para obtener `c_a`, incluyendo la validación de candidatos que luego no se seleccionan. `U_a` recoge su margen de contratos, sin restar otra vez esos costos comerciales. La revisión técnica de identidad del grafo pertenece a operación; la calificación comercial pertenece a prospección: una misma hora o factura solo puede aparecer en una categoría.</code></div>
+<div class="line" id="L50"><a href="#L50">50</a><code> </code></div>
+<div class="line" id="L51"><a href="#L51">51</a><code>## 3. Modelo financiero propuesto</code></div>
+<div class="line" id="L52"><a href="#L52">52</a><code> </code></div>
+<div class="line" id="L53"><a href="#L53">53</a><code>`a=B` es baseline y `a=G` es la misma base con grafo. Se propone una sola campaña por cuenta, una primera alta de adquisición como máximo y seguimiento común desde la asignación. Todos los importes se llevan a valor presente en esa fecha.</code></div>
+<div class="line" id="L54"><a href="#L54">54</a><code> </code></div>
+<div class="line" id="L55"><a href="#L55">55</a><code>Para un contrato activado antes de `W`:</code></div>
+<div class="line" id="L56"><a href="#L56">56</a><code> </code></div>
+<div class="line" id="L57"><a href="#L57">57</a><code>```text</code></div>
+<div class="line" id="L58"><a href="#L58">58</a><code>M_a(H) = E[ Σ(m=1..H) activo_im × (R_im − V_im)/(1+d)^m</code></div>
+<div class="line" id="L59"><a href="#L59">59</a><code>            − I_i/(1+d)^t_i | activación antes de W, política a ]</code></div>
+<div class="line" id="L60"><a href="#L60">60</a><code>```</code></div>
+<div class="line" id="L61"><a href="#L61">61</a><code> </code></div>
+<div class="line" id="L62"><a href="#L62">62</a><code>`activo_im` incorpora activación tardía y baja: no se asignan doce mensualidades completas a alguien que activa en el mes tres. El costo de alta incluye instalación y comisión; costos de intentos sin alta se registran en `c_a`. La fórmula es una definición propuesta, no una estimación de permanencia. En la tabla de escenarios `M` se introduce directamente como un supuesto ya descontado; no se vuelve a descontar.</code></div>
+<div class="line" id="L63"><a href="#L63">63</a><code> </code></div>
+<div class="line" id="L64"><a href="#L64">64</a><code>```text</code></div>
+<div class="line" id="L65"><a href="#L65">65</a><code>V_a = S × p_a × M_a(H) − S × c_a + U_a(H) − F_a − O_a(H)</code></div>
+<div class="line" id="L66"><a href="#L66">66</a><code> </code></div>
+<div class="line" id="L67"><a href="#L67">67</a><code>ΔV = S × [p_G × M_G − p_B × M_B − Δc] + ΔU − F − ΔO</code></div>
+<div class="line" id="L68"><a href="#L68">68</a><code>```</code></div>
+<div class="line" id="L69"><a href="#L69">69</a><code> </code></div>
+<div class="line" id="L70"><a href="#L70">70</a><code>`F` y `ΔO` ya son diferencias frente al baseline, no costos de ambos brazos sumados. Gastos futuros de piloto/medición se incluyen una sola vez en `F`; gastos pasados se revelan aparte como costos hundidos para la decisión prospectiva. No se mezclan márgenes de doce meses con un costo de operación de un solo mes.</code></div>
+<div class="line" id="L71"><a href="#L71">71</a><code> </code></div>
+<div class="line" id="L72"><a href="#L72">72</a><code>Para aislar inicialmente la hipótesis de priorización se propone **igual margen condicional por contrato en ambos brazos**, `M_G=M_B=M`:</code></div>
+<div class="line" id="L73"><a href="#L73">73</a><code> </code></div>
+<div class="line" id="L74"><a href="#L74">74</a><code>```text</code></div>
+<div class="line" id="L75"><a href="#L75">75</a><code>ΔV = S × (Δp × M − Δc) + ΔU − F − ΔO</code></div>
+<div class="line" id="L76"><a href="#L76">76</a><code>```</code></div>
+<div class="line" id="L77"><a href="#L77">77</a><code> </code></div>
+<div class="line" id="L78"><a href="#L78">78</a><code>No se supone que las activaciones de las cuentas seleccionadas sean todas causadas por el contacto. `p_a` describe el resultado esperado bajo cada política; `ΔU` evita ocultar efectos en el resto de la población. El experimento mide ambas partes por intención de tratar, sin seleccionar solo los cierres. El supuesto de margen igual debe relajarse si cambia la mezcla de contratos; entonces se usa la fórmula general.</code></div>
+<div class="line" id="L79"><a href="#L79">79</a><code> </code></div>
+<div class="line" id="L80"><a href="#L80">80</a><code>ROI, CAC y payback son secundarios: no se calculan aquí. Un ROI de escenario, si se autoriza después, deberá definir inversión y costos sin duplicarlos, y marcarse como hipotético. CAC incremental carece de interpretación útil si las altas incrementales son nulas o negativas. El payback necesita flujos temporales, no solo el saldo a doce meses; el LTV requiere permanencia más allá de `H` que hoy se desconoce.</code></div>
+<div class="line" id="L81"><a href="#L81">81</a><code> </code></div>
+<div class="line" id="L82"><a href="#L82">82</a><code>## 4. Escenarios aprobados solo como ejercicios hipotéticos</code></div>
+<div class="line" id="L83"><a href="#L83">83</a><code> </code></div>
+<div class="line" id="L84"><a href="#L84">84</a><code>**Todos los números económicos de esta tabla son supuestos pedagógicos aprobados provisionalmente, sin cotización ni evidencia de mercado.** No son datos observados de Totalplay, metas operativas, pronósticos calibrados ni salidas del ranking. No se asignan probabilidades a los escenarios. Sus entradas están en [configuración reproducible](../config/financial_assumptions.json).</code></div>
+<div class="line" id="L85"><a href="#L85">85</a><code> </code></div>
+<div class="line" id="L86"><a href="#L86">86</a><code>| Entrada | Conservador / deterioro | Base hipotética | Optimista hipotético |</code></div>
+<div class="line" id="L87"><a href="#L87">87</a><code>|---|---:|---:|---:|</code></div>
+<div class="line" id="L88"><a href="#L88">88</a><code>| `J` bolsas distintas de despliegue | 100 | 100 | 100 |</code></div>
+<div class="line" id="L89"><a href="#L89">89</a><code>| `K` / `S` plazas por política | 5 / 500 | 5 / 500 | 5 / 500 |</code></div>
+<div class="line" id="L90"><a href="#L90">90</a><code>| `p_B` | 10% | 10% | 10% |</code></div>
+<div class="line" id="L91"><a href="#L91">91</a><code>| `Δp`, puntos porcentuales absolutos | −2 pp | +2 pp | +5 pp |</code></div>
+<div class="line" id="L92"><a href="#L92">92</a><code>| `p_G=p_B+Δp` | 8% | 12% | 15% |</code></div>
+<div class="line" id="L93"><a href="#L93">93</a><code>| `M`, MXN por contrato, mismo valor B/G | 4 000 | 8 000 | 12 000 |</code></div>
+<div class="line" id="L94"><a href="#L94">94</a><code>| `c_B`, MXN por plaza | 300 | 300 | 300 |</code></div>
+<div class="line" id="L95"><a href="#L95">95</a><code>| `Δc`, MXN por plaza | 100 | 50 | 25 |</code></div>
+<div class="line" id="L96"><a href="#L96">96</a><code>| `F`, MXN incrementales | 20 000 | 10 000 | 5 000 |</code></div>
+<div class="line" id="L97"><a href="#L97">97</a><code>| `ΔO`, MXN incrementales en 12 meses | 12 000 | 6 000 | 3 000 |</code></div>
+<div class="line" id="L98"><a href="#L98">98</a><code>| `ΔU`, MXN en población no seleccionada | −1 000 | 0 | 0 |</code></div>
+<div class="line" id="L99"><a href="#L99">99</a><code>| `W` / `H` / `d` | 90 días / 12 meses / 1% mensual | Igual | Igual |</code></div>
+<div class="line" id="L100"><a href="#L100">100</a><code> </code></div>
+<div class="line" id="L101"><a href="#L101">101</a><code>El volumen de 100 bolsas es una hipótesis educativa, no autorización de despliegue ni evidencia de que existan 500 oportunidades. El calculador separa `demo` (`J=1`, cinco plazas) de `hypothetical` (`J=100`, 500 plazas); ningún modo lee empresas ni cambia la capacidad del ranking. El protocolo A/B futuro constituye un tercer nivel, separado de ambos volúmenes financieros. No se suman T0/T1/T2 ni se reutiliza una cuenta como adquisición nueva.</code></div>
+<div class="line" id="L102"><a href="#L102">102</a><code> </code></div>
+<div class="line" id="L103"><a href="#L103">103</a><code>Se incluye obligatoriamente el escenario **nulo**: `Δp=0`, `ΔU=0`, con los costos del caso base, derivado automáticamente para que no se pueda omitir al elegir escenarios. Un nulo de conversión no equivale a saldo cero: con las entradas aprobadas pierde dinero. La referencia de saldo cero se muestra aparte como el punto de equilibrio algebraico. No se generan ventas ni conversiones por empresa.</code></div>
+<div class="line" id="L104"><a href="#L104">104</a><code> </code></div>
+<div class="line" id="L105"><a href="#L105">105</a><code>## 5. Sensibilidad y umbral mínimo</code></div>
+<div class="line" id="L106"><a href="#L106">106</a><code> </code></div>
+<div class="line" id="L107"><a href="#L107">107</a><code>Con `S&gt;0`, `M&gt;0` y margen igual, el punto de equilibrio es:</code></div>
+<div class="line" id="L108"><a href="#L108">108</a><code> </code></div>
+<div class="line" id="L109"><a href="#L109">109</a><code>```text</code></div>
+<div class="line" id="L110"><a href="#L110">110</a><code>Δp_BE = [Δc + (F + ΔO − ΔU)/S] / M</code></div>
+<div class="line" id="L111"><a href="#L111">111</a><code>Δp_requerida = [Δc + (F + ΔO + B_reserva − ΔU)/S] / M</code></div>
+<div class="line" id="L112"><a href="#L112">112</a><code>```</code></div>
+<div class="line" id="L113"><a href="#L113">113</a><code> </code></div>
+<div class="line" id="L114"><a href="#L114">114</a><code>Igualar el umbral produce saldo cero o el colchón, respectivamente; recomendar inversión exige superarlo. Comprobar `0 ≤ p_B+Δp ≤ 1`; si `Δp_BE &gt; 1−p_B`, el escenario no puede ser rentable por mejora de conversión solamente. `S=0` o `M≤0` impiden usar este umbral simplificado. El presupuesto incremental máximo soportable sin colchón es `S×(Δp×M−Δc)+ΔU`; un resultado negativo no financia el proyecto.</code></div>
+<div class="line" id="L115"><a href="#L115">115</a><code> </code></div>
+<div class="line" id="L116"><a href="#L116">116</a><code>Ejemplo puramente algebraico con entradas base propuestas: con `S=500`, el equilibrio requiere `(50+16 000/500)/8 000 = 0,01025`, es decir **1,025 pp** de diferencia absoluta, antes del colchón. Con solo cinco plazas y los mismos costos, requiere **40,625 pp**. Estos umbrales no demuestran que se pueda alcanzar ninguno: muestran cuánto depende el caso del volumen y del costo. No se ha calculado un ROI ni una venta observada.</code></div>
+<div class="line" id="L117"><a href="#L117">117</a><code> </code></div>
+<div class="line" id="L118"><a href="#L118">118</a><code>Análisis implementado mediante `--sensitivity`:</code></div>
+<div class="line" id="L119"><a href="#L119">119</a><code> </code></div>
+<div class="line" id="L120"><a href="#L120">120</a><code>1. Variar una entrada manteniendo las demás en base: `Δp` en −2/0/+1/+2/+5 pp; `M` en 4 000/8 000/12 000; `Δc` en 25/50/100; `F` en 5 000/10 000/20 000; `ΔO` en 3 000/6 000/12 000; `J` en 1/10/100; `ΔU` en −1 000/0/+1 000; reserva en 0/20/50%. Son 26 variaciones por modo, siempre etiquetadas exploratorias. No sustituyen los valores aprobados predeterminados.</code></div>
+<div class="line" id="L121"><a href="#L121">121</a><code>2. Cruzar `Δp × M` (15 celdas) y `J × (F+ΔO)` (9 celdas, con costos base multiplicados por 0,5/1/2). Las tasas inviables se señalan, no se omiten silenciosamente. Los costos constantes al variar volumen aíslan su efecto matemático; no son cotizaciones a escala ni evidencia de economías reales.</code></div>
+<div class="line" id="L122"><a href="#L122">122</a><code>3. Activación tardía, bajas e impago requerirían entradas de flujos agregados o nuevas valoraciones explícitas; no se inventan trayectorias. Al variar `H` o `d`, la CLI rechaza valores presentes etiquetados con otro horizonte/descuento. Los flujos mensuales proporcionados por el usuario se revaloran según la configuración. No hay una matriz temporal automática sin esos insumos.</code></div>
+<div class="line" id="L123"><a href="#L123">123</a><code>4. No tratar estos rangos como intervalos de confianza. La incertidumbre causal solo se estimará con el [experimento propuesto](15-incrementality-experiment.md). No se asignarán distribuciones ni se implementará Monte Carlo en esta fase.</code></div>
+<div class="line" id="L124"><a href="#L124">124</a><code> </code></div>
+<div class="line" id="L125"><a href="#L125">125</a><code>**Regla metodológica aprobada provisionalmente:** un escenario favorable no autoriza financiar un piloto ni desplegar. Una decisión real exigiría aprobación operativa adicional, evidencia experimental válida y que el límite inferior del intervalo de confianza del margen ITT por cuenta, transportado a una población/capacidad comparable, cubra costos incrementales y reserva. Con `τ_ITT` neto de costo comercial variable:</code></div>
+<div class="line" id="L126"><a href="#L126">126</a><code> </code></div>
+<div class="line" id="L127"><a href="#L127">127</a><code>```text</code></div>
+<div class="line" id="L128"><a href="#L128">128</a><code>N_despliegue × límite_inferior_95%(τ_ITT) − F_despliegue − ΔO_despliegue &gt; B_reserva</code></div>
+<div class="line" id="L129"><a href="#L129">129</a><code>```</code></div>
+<div class="line" id="L130"><a href="#L130">130</a><code> </code></div>
+<div class="line" id="L131"><a href="#L131">131</a><code>No descontar dos veces `c_a`, ya incluido en el KPI ITT. Esta extrapolación exige misma mezcla, proporción de capacidad `S/N` y supuestos de costos válidos; fuera de ese soporte no se recomienda escalar. Un efecto incierto o datos incompletos no se convierten en aprobación. No hay base actual para afirmar que la inversión es rentable.</code></div>
+<div class="line" id="L132"><a href="#L132">132</a><code> </code></div>
+<div class="line" id="L133"><a href="#L133">133</a><code>## 6. Registro de aprobación provisional y límites</code></div>
+<div class="line" id="L134"><a href="#L134">134</a><code> </code></div>
+<div class="line" id="L135"><a href="#L135">135</a><code>| ID | Aprobación explícita del usuario, limitada a metodología PoC |</code></div>
+<div class="line" id="L136"><a href="#L136">136</a><code>|---|---|</code></div>
+<div class="line" id="L137"><a href="#L137">137</a><code>| ECO-01 | MXN nominales, 90 días, 12 meses y descuento mensual del 1%; configurables como supuestos no calibrados |</code></div>
+<div class="line" id="L138"><a href="#L138">138</a><code>| ECO-02 | Tres escenarios financieros como hipótesis, con nulo obligatorio; ningún importe o conversión es un dato observado de Totalplay |</code></div>
+<div class="line" id="L139"><a href="#L139">139</a><code>| ECO-03 | Población conceptual sujeta a cobertura, identidad, ausencia de servicio activo, autorización de contacto y validaciones comerciales/legales; sin datos reales ni contactos autorizados |</code></div>
+<div class="line" id="L140"><a href="#L140">140</a><code>| ECO-04 | Diseño futuro 1:1 por bolsas independientes y capacidad comparable de cinco plazas; inferencia causal inviable si faltan unidades independientes suficientes |</code></div>
+<div class="line" id="L141"><a href="#L141">141</a><code>| ECO-05 | KPI de margen neto comercial por cuenta elegible asignada, ITT, IC bilateral 95% y potencia objetivo 80%; muestra sin determinar hasta disponer de varianza, ICC y datos comerciales |</code></div>
+<div class="line" id="L142"><a href="#L142">142</a><code>| ECO-06 | Reserva provisional del 20% de costos fijos/operativos; inversión exige evidencia experimental válida y rentabilidad suficiente. Sin presupuesto real, piloto operativo ni despliegue autorizados |</code></div>
+<div class="line" id="L143"><a href="#L143">143</a><code> </code></div>
+<div class="line" id="L144"><a href="#L144">144</a><code>La fuente es la respuesta del usuario tras revisar el PR #5, no una aprobación inferida por publicar el PR. Se autorizó únicamente un calculador financiero determinista con escenarios, sensibilidad y equilibrio. No se ejecuta el experimento, calcula muestra, genera ventas por empresa, accede a datos reales, modifica rankings/ledger ni opera Atlas.</code></div>
+<div class="line" id="L145"><a href="#L145">145</a><code> </code></div>
+<div class="line" id="L146"><a href="#L146">146</a><code>## 7. Uso y contrato del calculador</code></div>
+<div class="line" id="L147"><a href="#L147">147</a><code> </code></div>
+<div class="line" id="L148"><a href="#L148">148</a><code>La CLI y sus comandos PowerShell están en el [README](../README.md). [`finance.py`](../src/economic_graph/finance.py) es cálculo puro con biblioteca estándar; [`calculate_finance.py`](../scripts/calculate_finance.py) solo lee el JSON de supuestos y emite UTF-8. No necesita `.env`, PyMongo, Atlas, catálogo, ledger ni oráculo. No utiliza aleatoriedad. El JSON versiona entradas y resultados y devuelve una huella SHA-256; los importes se serializan como cadenas decimales con precisión interna de 50 cifras. Las tasas son fracciones: `0.02` significa dos puntos porcentuales absolutos para `Δp`, no 2% relativo.</code></div>
+<div class="line" id="L149"><a href="#L149">149</a><code> </code></div>
+<div class="line" id="L150"><a href="#L150">150</a><code>Contrato en `config/financial_assumptions.json`:</code></div>
+<div class="line" id="L151"><a href="#L151">151</a><code> </code></div>
+<div class="line" id="L152"><a href="#L152">152</a><code>- `settings`: MXN, capacidad fija cinco, ventana, horizonte, descuento mensual y reserva. Ventana/horizonte/tasas son configurables sin convertirlos en datos calibrados. La ventana de cada escenario debe coincidir con la de sus supuestos de tasas/margen; no se infieren fechas ni ventas.</code></div>
+<div class="line" id="L153"><a href="#L153">153</a><code>- Tres escenarios obligatorios, con márgenes netos de servicio/instalación/comisión y prospección separada. El nulo se deriva de base manteniendo sus costos, con `Δp=ΔU=0`.</code></div>
+<div class="line" id="L154"><a href="#L154">154</a><code>- Cada importe declara `unit`: `MXN_per_activation`, `MXN_per_slot` o `MXN_total`. No se admiten importes flotantes JSON, porcentajes con `%`, probabilidades fuera de rango ni valores no finitos.</code></div>
+<div class="line" id="L155"><a href="#L155">155</a><code>- Base `present_value`: `value` decimal, `horizon_months` y `monthly_discount_rate` compatibles con settings. No se vuelve a descontar. Cambiar solo la cabecera H/d se rechaza: hacen falta importes revalorados y etiquetados explícitamente.</code></div>
+<div class="line" id="L156"><a href="#L156">156</a><code>- Base `monthly_cashflows`: `values` contiene exactamente H+1 cadenas, del mes 0 al H, con la misma unidad; el calculador suma `flujo_m/(1+d)^m`. Son flujos agregados aportados, no eventos de empresas generados. Al cambiar H deben cambiar las longitudes; no se truncan meses silenciosamente. Los valores de margen siguen condicionados a la ventana declarada.</code></div>
+<div class="line" id="L157"><a href="#L157">157</a><code>- `costs` contiene categorías `fixed` y `operating`, con importes totales explícitos, incluso cero, y `cost_id` único por escenario. Se rechazan IDs repetidos, claves JSON duplicadas y categorías que reintroduzcan prospección/comisión. La identificación semántica de una misma factura con IDs diferentes todavía requiere revisión humana: la validación de contrato no audita facturas reales.</code></div>
+<div class="line" id="L158"><a href="#L158">158</a><code> </code></div>
+<div class="line" id="L159"><a href="#L159">159</a><code>La salida separa componentes del saldo neto, reserva y saldo tras reserva. `clears_reserve_mathematically` es solo una desigualdad aritmética; `operational_authorization` siempre es falso. La reserva no se descuenta del saldo neto dos veces ni equivale a gasto realizado. Los umbrales no se recortan a probabilidades viables: se informa cuando son inalcanzables; con margen no positivo no se define un umbral de mejora de conversión.</code></div>
+<div class="line" id="L160"><a href="#L160">160</a><code> </code></div>
+<div class="line" id="L161"><a href="#L161">161</a><code>La [tabla reproducida](16-financial-calculation.md) muestra pérdidas, ganancias hipotéticas y el punto de saldo nulo. El nulo de conversión puede perder dinero por los costos. No hay ROI, payback, LTV, etiquetas de entrenamiento ni intervalos de confianza calculados. El IC/potencia del reporte identifican exclusivamente el protocolo futuro; no son resultados estadísticos.</code></div>
+<div class="line" id="L162"><a href="#L162">162</a><code> </code></div>
+<div class="line" id="L163"><a href="#L163">163</a><code>## 8. Verificación</code></div>
+<div class="line" id="L164"><a href="#L164">164</a><code> </code></div>
+<div class="line" id="L165"><a href="#L165">165</a><code>La fase documental inicial pasó 160 pruebas existentes. La implementación añade 73 pruebas de identidades contables, regresiones numéricas, saldo cero, reserva estricta, costos compartidos, duplicados, unidades, probabilidades, ventanas, valoración temporal, sensibilidad, precisión y aislamiento de I/O. La CLI se prueba con solo su módulo público y supuestos, rutas con espacios/acentos y tuberías cp1252/UTF-8.</code></div>
+<div class="line" id="L166"><a href="#L166">166</a><code> </code></div>
+<div class="line" id="L167"><a href="#L167">167</a><code>Comprobaciones ejecutadas en Codex Cloud, Linux/Python 3.12.14:</code></div>
+<div class="line" id="L168"><a href="#L168">168</a><code> </code></div>
+<div class="line" id="L169"><a href="#L169">169</a><code>| Comando | Resultado |</code></div>
+<div class="line" id="L170"><a href="#L170">170</a><code>|---|---|</code></div>
+<div class="line" id="L171"><a href="#L171">171</a><code>| `uv sync --locked` | Correcto; dependencias sin cambios |</code></div>
+<div class="line" id="L172"><a href="#L172">172</a><code>| `uv run pytest` | 233 aprobadas, 1 integración omitida; proceso con `RUN_MONGODB_INTEGRATION=0` |</code></div>
+<div class="line" id="L173"><a href="#L173">173</a><code>| `uv run pytest -m &quot;not integration&quot;` | 233 aprobadas, 1 integración excluida |</code></div>
+<div class="line" id="L174"><a href="#L174">174</a><code>| `uv run ruff check .` | Correcto |</code></div>
+<div class="line" id="L175"><a href="#L175">175</a><code>| `uv run ruff format --check .` | Correcto |</code></div>
+<div class="line" id="L176"><a href="#L176">176</a><code>| `uv run python scripts/calculate_finance.py --format markdown` | Tabla de cinco/500 plazas reproducida en `16-financial-calculation.md` |</code></div>
+<div class="line" id="L177"><a href="#L177">177</a><code> </code></div>
+<div class="line" id="L178"><a href="#L178">178</a><code>Las comprobaciones no validan finanzas reales, un experimento, Atlas ni ejecución nativa de Windows. La regresión de codificación reproduce tuberías cp1252 en Linux. Rankings, ledger y componentes MongoDB permanecen intactos.</code></div></main></html>

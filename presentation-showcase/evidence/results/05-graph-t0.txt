@@ -1,0 +1,120 @@
+3 options available.
+Skip to main content
+
+Vista
+
+Resumen
+
+Graph Health
+
+AI Performance
+
+Business Funnel
+
+Economic Impact
+
+Período
+
+Fuente de datos
+
+Industria
+
+Exploración de red
+
+Empresa y vecinos
+
+Red completa del segmento
+
+Empresa
+
+keyboard_arrow_right
+
+Filtros sin soporte real
+
+Deploy
+ConectaPyME · Control Tower
+
+CONTROL TOWER · PoC educativa · Sintético observable · Sin acciones comerciales
+
+Offline · T0: 2026-01-15T12:00:00Z · Segmento: 12/12 conocidas. Totales globales rotulados.
+
+Graph Health
+
+Observaciones · global
+
+28
+
+Atributos en conflicto · global
+
+0
+
+Registros candidatos · global
+
+0
+
+Sintético observable · Los candidatos no son duplicados confirmados ni se fusionan.
+
+Red económica al corte
+Confirmada
+Reportada
+Inferida
+Descartada
+En conflicto
+Verificación
+Suministra a
+Alianza
+Referencia (no puntúa)
+Vínculo
+Selección
+Vecino de contexto
+Cuenta
+
+Red completa del segmento. Selecciona Empresa y vecinos para ver qué vínculos respaldan el score de una cuenta.
+
+keyboard_arrow_right
+
+Cómo interpretar la red
+
+keyboard_arrow_right
+
+Conexiones observadas de la red completa
+
+keyboard_arrow_right
+
+Ficha de cuenta y respaldo completo
+
+keyboard_arrow_right
+
+Auditar vínculos y filtrar evidencia
+
+keyboard_arrow_right
+
+Nodos aislados y evidencia insuficiente
+
+keyboard_arrow_down
+
+Evolución global al corte
+
+Evolución global · solo cortes ya disponibles
+T0
+Corte
+0
+2
+4
+6
+8
+10
+12
+Afirmaciones económicas
+Empresas
+keyboard_arrow_right
+
+Estados, fuentes y frescura globales
+
+keyboard_arrow_right
+
+Conflictos e identidades candidatas · global
+
+keyboard_arrow_right
+
+Procedencia técnica y reglas

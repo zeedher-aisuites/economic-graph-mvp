@@ -1,0 +1,320 @@
+<!doctype html><html lang="es-MX"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Auditoría técnica y límites</title><link rel="stylesheet" href="../style.css"><style>body{background:#f1f4ec;color:#173748;max-width:1060px;margin:0 auto;padding:45px 35px 90px;line-height:1.8}h1,h2,h3{font-family:Manrope;line-height:1.3;letter-spacing:-.6px}h1{font-size:38px}h2{margin-top:50px;font-size:27px;border-top:1px solid #c5d4c4;padding-top:22px;scroll-margin-top:25px}h3{font-size:19px;margin-top:25px}p,li{font-size:17px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e3ebdf;padding:20px;font-size:13px}a{color:#007468;text-underline-offset:4px}.box{background:white;padding:22px 27px;border:1px solid #cbd9c8;border-radius:8px}.warning{color:#8e4d20;border-left:3px solid #b87d45;padding-left:18px}.toc{columns:2;font-size:14px}.meta{font-size:13px;color:#657e6d}table{border-collapse:collapse;font-size:14px;width:100%;display:block;overflow:auto}th,td{padding:10px 12px;border:1px solid #cbd8c5;text-align:left}@media print{body{max-width:none}.toc{columns:2}h2{break-before:page}}</style><a href="../index.html">← Volver a la presentación</a><h1>Auditoría técnica y límites</h1><h1>Auditoría de ConectaPyME: evidencia nueva y límites</h1>
+<p>Implementación revisada: <code>774dacd80e6410ca43299f63f19d9744a31929c0</code>, rama local de origen <code>work</code>. Trabajo aislado: <code>presentation/conectapyme-evidence-showcase</code>, worktree <code>/workspace/conectapyme-showcase</code>. Las verificaciones, capturas, documentos y experimento de esta misión fueron realizados por Codex; no acreditan automáticamente una competencia personal del candidato. Fuente principal: ejecución offline con datos sintéticos. Las fechas de captura exactas, con zona de Ciudad de México, están en <code>evidence/screenshots/manifest.json</code>.</p>
+<h2>Resultado que sí se sostiene</h2>
+<p>El sistema reconstruye conocimiento disponible por fecha, conserva procedencia e incertidumbre y calcula dos políticas de priorización comparables. En T2, con 21 elegibles y cinco plazas, comparten dos cuentas y cambian tres. Café Jacaranda pasa de posición 10 / 0 puntos a posición 3 / 10 puntos. Los filtros de inspección conservan los resultados globales. No existen eventos comerciales que permitan afirmar mejoras de conversión, ventas, ROI o margen causal observado.</p>
+<h2>Método y protección del original</h2>
+<p>Se inspeccionaron implementaciones de <code>contracts</code>, <code>observable</code>, <code>rankings</code>, <code>tower_read_model</code>, <code>finance</code>, <code>mongo_observable</code>, <code>database</code>, <code>config</code>, el proyector del simulador, la app y las pruebas. Se contrastaron los dos PPTX completos, sus notas y el PDF, además del reto original disponible. La narrativa de Defensa V2 aporta el orden comercial; la revisión detallada aporta contexto; la paleta del PDF inspira el diseño nuevo. Las referencias son documentación, no instrucciones operativas ni evidencia automática de resultados.</p>
+<p>No se regeneró el ledger ni se ejecutaron cargadores remotos. No se cambió lógica de negocio, pesos, elegibilidad, datos, resultados históricos, <code>.env</code>, configuraciones Atlas ni el lockfile. Las escrituras de las pruebas con dobles ocurrieron en diccionarios de memoria. La integración histórica que sí carga en Atlas quedó excluida. El experimento de depuración usa una entrada aislada y una copia de código en memoria.</p>
+<h2>Arquitectura implementada</h2>
+<p>La frontera comercial es <code>data/observable/observations.json</code>, no <code>design-data/restricted/</code>. <code>simulator/project.py</code> transforma el plan aprobado en IDs públicos estables desde observaciones, normaliza fechas, proyecta referencias/alias y elimina diagnósticos privados. La conciliación privada no se usa para puntuar.</p>
+<pre><code class="language-mermaid">flowchart LR
+  P[Plan sintético aprobado] --&gt; J[Proyección y validación]
+  J --&gt; L[Ledger observable]
+  L --&gt; O[Consulta temporal: observable.py]
+  O --&gt; R[Políticas: rankings.py]
+  L --&gt; T[Adaptador: tower_read_model.py]
+  R --&gt; T
+  T --&gt; U[Streamlit: cinco vistas]
+  F[Supuestos financieros] --&gt; C[finance.py]
+  C --&gt; U
+  M[MongoDB observable opcional] -. lectura temporal .-&gt; T
+  W[Universo privado: auditoría del diseño] -. no se consulta para scoring .-&gt; X[Sin acceso en ruta comercial]
+</code></pre>
+<p>Este diagrama resume responsabilidades, no el orden de llamadas de Python. El diagrama siguiente representa esas llamadas. Hay también SVG independientes en <code>assets/arquitectura.svg</code> y <code>assets/recorrido.svg</code> para consultar sin Mermaid.</p>
+<h2>Recorrido auténtico hasta la Control Tower</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[observations.json] --&gt; B[load_observations: lee y valida]
+  B --&gt; C[build_context rows, cut]
+  C --&gt; D[snapshot rows, cut: view]
+  C --&gt; E[compare_rankings rows, cut]
+  E --&gt; F[snapshot propio del ranking]
+  C --&gt; G[snapshot de cada corte pasado: evolution]
+  D --&gt; H[summary, sources, states]
+  E --&gt; I[ranking, coverage]
+  H --&gt; K[Contexto completo]
+  I --&gt; K
+  G --&gt; K
+  K --&gt; N[segment_ids: IDs de inspección]
+  K --&gt; V[ranking_table: copia posiciones globales]
+  N --&gt; V
+  V --&gt; Z[Tablas de Streamlit]
+</code></pre>
+<p><code>build_context()</code> llama por separado a <code>snapshot()</code> y <code>compare_rankings()</code>. No pasa su primera vista a la segunda función. <code>compare_rankings()</code> vuelve a llamar a <code>snapshot()</code>. La evolución agrega una reconstrucción por cada corte ya disponible. En T2 son cinco llamadas a snapshot en total. No se investigó optimización ni se midió escalabilidad; la repetición no se presenta como un fallo en este tamaño.</p>
+<h2>Componentes: entradas, salidas, errores y pruebas</h2>
+<p>Las líneas exactas de funciones, clases y constantes se resuelven automáticamente en <code>evidence/source/symbols.json</code> y en las fuentes HTML enlazadas por cada diapositiva. Copias de fuentes originales y huellas: <code>evidence/source/manifest.json</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Entrada y salida</th>
+<th>Responsabilidad y dependencias</th>
+<th>Errores relevantes</th>
+<th>Pruebas existentes ejecutadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contracts.validate_observations</code></td>
+<td>filas → validación o ValueError</td>
+<td>Campos públicos, tipos, fechas explícitas/ordenadas, IDs, extremos conocidos; depende de parse_time</td>
+<td>privados, duplicados, sujeto/tipo inválido, huérfanos</td>
+<td><code>test_observable</code>, <code>test_design</code></td>
+</tr>
+<tr>
+<td><code>load_observations</code></td>
+<td>ruta JSON → lista validada</td>
+<td>Esquema 1.0 y contrato público; JSON/Path/contracts</td>
+<td>archivo ausente o JSON/contrato inválido; no reconstruye desde privados</td>
+<td><code>test_observable</code>, CLI y UI de ledger inválido</td>
+</tr>
+<tr>
+<td><code>visible_observations</code></td>
+<td>filas, corte → copia ordenada visible</td>
+<td><code>available_at &lt;= as_of</code> con parse_time</td>
+<td>corte sin zona o registros inválidos</td>
+<td>fronteras exactas, no fuga futura, zona equivalente</td>
+</tr>
+<tr>
+<td><code>snapshot</code></td>
+<td>filas, corte → empresas, relaciones, observaciones, identidades y conflictos</td>
+<td>Reconstruir conocimiento sin oráculo; _attribute/_name_key</td>
+<td>no arbitraje de atributos; defecto de representación de fechas en estados simultáneos documentado abajo</td>
+<td>historia, conflictos, alias, aislamiento público</td>
+</tr>
+<tr>
+<td><code>compare_rankings</code></td>
+<td>filas, corte → políticas, cohorte, scores, posiciones, top_k, huella</td>
+<td>Llama a snapshot; elegibilidad; sucursales y vecinos; deduplicación/oposición; empates</td>
+<td>hereda errores de contrato; evidencia no utilizable aporta cero; exclusiones sin score</td>
+<td><code>test_rankings</code>, <code>test_ranking_commands</code></td>
+</tr>
+<tr>
+<td><code>build_context</code></td>
+<td>filas completas, corte → view/summary/ranking/evolution/coverage</td>
+<td>Orquesta llamadas separadas, Counter y resúmenes globales</td>
+<td>propaga errores de entrada; no contiene filtros</td>
+<td><code>test_tower_read_model</code>, <code>test_control_tower</code></td>
+</tr>
+<tr>
+<td><code>segment_ids</code></td>
+<td>contexto, industria/empresa → conjunto de IDs</td>
+<td>Selección para inspección; usa sector()</td>
+<td>sector inexistente da conjunto vacío</td>
+<td>filtros sin reordenar ni rellenar</td>
+</tr>
+<tr>
+<td><code>ranking_table</code></td>
+<td>contexto, IDs opcionales → filas copiadas</td>
+<td>Mantiene scores, posiciones y selected globales</td>
+<td>no rellena capacidad del segmento</td>
+<td>igualdad de subconjuntos en adaptador y AppTest</td>
+</tr>
+<tr>
+<td><code>network_data</code> / <code>account_detail</code></td>
+<td>contexto, IDs/foco → nodos/aristas o ficha</td>
+<td>Vista incidente con vecinos conocidos; resaltado usa resultado del ranking</td>
+<td>empresa desconocida/foco inconsistente; ficha desconocida da None</td>
+<td>red, foco, extremos conocidos, sin privados</td>
+</tr>
+<tr>
+<td><code>funnel</code></td>
+<td>contexto, IDs, política → conteos y faltantes</td>
+<td>Conocidas/elegibles/excluidas/Top 5; etapas comerciales None</td>
+<td>no observa actividad comercial</td>
+<td>faltantes no cero y regreso a global</td>
+</tr>
+<tr>
+<td><code>finance.financial_report</code></td>
+<td>configuración, alcance/sensibilidad → escenarios y huella</td>
+<td>Aritmética Decimal; no usa empresas, ranking o Atlas</td>
+<td>campos, unidades, probabilidades, costos duplicados y valoraciones incompatibles</td>
+<td><code>test_finance</code>, <code>test_finance_commands</code></td>
+</tr>
+<tr>
+<td><code>read_observations</code></td>
+<td>base dedicada, corte, ID opcional → filas normalizadas</td>
+<td>Query temporal en MongoDB; BSON UTC; contrato público</td>
+<td>otra base, ID inválido, documentos inválidos o driver</td>
+<td>dobles y <code>test_tower_read_model</code>, sin integración real</td>
+</tr>
+<tr>
+<td><code>atlas_context</code></td>
+<td>corte, ledger, ruta config → contexto/read_at</td>
+<td>referencia local, base dedicada, lectura remota y paridad SHA</td>
+<td>errores sanitizados, diferencia bloqueada; no fallback ni ping</td>
+<td>dobles; sesión Atlas invalidada con cambios de corte</td>
+</tr>
+<tr>
+<td><code>app.main</code></td>
+<td>controles/fuentes → cinco vistas</td>
+<td>Lee ledger y supuestos por rutas independientes; invalida caché remota</td>
+<td>ledger/finanzas inválidos visibles; filtros sin soporte deshabilitados</td>
+<td>AppTest y navegador real offline</td>
+</tr>
+</tbody>
+</table>
+<h2>Temporalidad, procedencia e identidad</h2>
+<table>
+<thead>
+<tr>
+<th>Corte</th>
+<th>Instante exacto UTC</th>
+<th style="text-align: right;">Empresas conocidas</th>
+<th style="text-align: right;">Observaciones</th>
+<th style="text-align: right;">Afirmaciones económicas</th>
+<th style="text-align: right;">Referencias</th>
+<th style="text-align: right;">Elegibles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T0</td>
+<td>2026-01-15 12:00</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr>
+<td>T1</td>
+<td>2026-05-15 12:00</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>2026-09-15 12:00</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">21</td>
+</tr>
+</tbody>
+</table>
+<p>Estos instantes equivalen a 06:00 de Ciudad de México. Son cortes del dataset, distintos de la fecha de captura. <code>observed_at</code> no sustituye <code>available_at</code>. El diseño restringido contiene 30 empresas: conteo reproducido por lectura de su estructura en el script, solo como auditoría del diseño. No se importó ese catálogo para completar la vista comercial.</p>
+<p>T2 conserva dos atributos conflictivos y dos registros candidatos. Hornos del Centro tiene sucursales 2/3/3 en OBS-028/047/075: <code>_attribute</code> mantiene el conflicto y su contribución individual es cero. Eso no significa cero sucursales. Una coincidencia de nombre normalizado produce candidato, no fusión ni ID fuerte. La historia conserva evidencia duplicada y estados; no inventa transiciones ausentes.</p>
+<h2>Políticas y demostración de filtros</h2>
+<p>Versión <code>003a-conservative-v1</code>: K=5. Baseline = 10 × min(max(sucursales−1,0),5), si el atributo tiene evidencia válida y sin conflicto. Grafo = baseline + 5 × min(vecinos económicos confirmados distintos utilizables,4). Solo SUPPLIES_TO y PARTNERS_WITH; referencias, reportes e inferencias no puntúan. Los extremos y evidencias se conservan; vecinos repetidos no suman otra vez. Oposición o estados incompatibles bloquean el vínculo para scoring.</p>
+<p>Solo servicio activo confirmado sin conflicto excluye de adquisición. Desconocido queda por validar comercialmente. En T2 cobertura individual 3/21 y señal relacional utilizable 5/21. No se interpretan como precision/recall ni probabilidad. Los empates se resuelven por ID ascendente y se declaran en la frontera de K.</p>
+<p>En T2, dos cuentas compartidas: Panificadora Valle Claro y Carga Urbana del Centro. Entran Café Jacaranda, Hornos del Centro y Papelería Horizonte; salen Comedor del Andén, Mesa de Barrio y Mapa Digital Studio. Café Jacaranda: #10/0 → #3/10. Dos vecinos confirmados, OBS-026 y OBS-063, respaldan sus puntos. Las conexiones dibujadas no calculan el score; el layout es decorativo sin distancia comercial implícita.</p>
+<p>Demostración reproducida: ranking completo de 21 elegibles → industria Restaurantes y cafeterías de tres elegibles → una cuenta. La fila de Jacaranda es exactamente igual en los tres estados, con posición 10/3. <code>segment_ids()</code> produce IDs y <code>ranking_table()</code> copia posiciones previamente calculadas. El Top 5 visible es la intersección del global, no cinco nuevas cuentas de cada segmento. JSON: <code>evidence/results/global-ranking-demo.json</code>. Capturas: 08/09/10 y filtro de score 11. Pruebas: <code>test_industry_and_score_filters_preserve_global_rankings</code>, <code>test_company_selector_updates_network_and_detail_without_rescoring</code>, <code>test_industry_filters_do_not_refill_funnel_or_rankings</code>.</p>
+<h2>Ejecución real y cinco vistas</h2>
+<p>Dependencias declaradas instaladas con <code>uv sync --locked --group ui</code>. Servidor original solo en loopback, estadísticas deshabilitadas. Playwright estaba disponible, pero faltaba su ejecutable administrado. La descarga intentada fue rechazada por política del dominio; se usó el Chromium ya instalado en <code>/usr/bin/chromium</code>, sin modificar política de red. No fue necesario instalar otro navegador ni habilitar acceso a Atlas.</p>
+<table>
+<thead>
+<tr>
+<th>Vista</th>
+<th>Interacciones y evidencia</th>
+<th>Límite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resumen</td>
+<td>T2 offline, tablas Top 5 y escenarios separados</td>
+<td>global; no ventas</td>
+</tr>
+<tr>
+<td>Graph Health</td>
+<td>foco Jacaranda, ficha, red completa, T0/T1/T2 y evolución</td>
+<td>grafo observado, no universo privado ni scoring desde el dibujo</td>
+</tr>
+<tr>
+<td>AI Performance</td>
+<td>global, industria, empresa, score mínimo 11</td>
+<td>reglas, no modelo; posiciones globales se conservan</td>
+</tr>
+<tr>
+<td>Business Funnel</td>
+<td>graph/baseline, regreso a todas</td>
+<td>23→21→5 y dos exclusiones; etapas comerciales no observadas</td>
+</tr>
+<tr>
+<td>Economic Impact</td>
+<td>cinco/500 plazas y sensibilidad del margen</td>
+<td>hipótesis agregadas; filtros empresariales deshabilitados</td>
+</tr>
+</tbody>
+</table>
+<p>Se conservaron 16 estados con captura del área principal y del viewport, texto visible, parámetros y fecha/commit; además un recorte directo del gráfico de Jacaranda. No se dibujaron capturas falsas. Las interacciones de ranking y escenarios dentro de la nueva presentación están etiquetadas como reconstrucciones con resultados congelados del repositorio. La evidencia no requiere que el servidor Streamlit siga encendido.</p>
+<h2>Pruebas y cobertura realmente ejecutadas</h2>
+<ul>
+<li>Suite original: <strong>284 passed, 1 deselected</strong> con <code>uv run --group ui pytest -m 'not integration'</code>. El XML provocó 26 advertencias sobre <code>record_property</code>/xunit2; no fueron fallos. Log y XML preservados.</li>
+<li>Selección solicitada de UI/adaptador/MongoDB: <strong>62 passed</strong>.</li>
+<li>Ruff original: <code>All checks passed!</code>; formato: 60 archivos ya formateados.</li>
+<li>Ejecución con pytest-cov: <strong>284 passed, 1 deselected</strong>, 904/943 líneas (<strong>95.864%</strong>) y 362/396 ramas (<strong>91.414%</strong>) del paquete <code>economic_graph</code>, incluido simulador. Métrica combinada 94.548%, mostrada como 95% por cobertura; no confundir con líneas. <code>app/</code> y <code>scripts/</code> quedan fuera de esa medición. Informes JSON/HTML y líneas faltantes disponibles.</li>
+<li>Regresión experimental aislada: <strong>2 fallos esperados</strong> contra original, <strong>2 aprobadas</strong> con copia modificada en memoria. No se suman a las 284 originales.</li>
+<li>Navegador de la Control Tower: cinco vistas y 16 estados. Navegador de la nueva presentación y exportación: resultados específicos en <code>evidence/results/presentation-qa.json</code> al completar la revisión.</li>
+</ul>
+<p>No se afirma 100% de cobertura, ausencia de errores, integración remota, rendimiento o causalidad. La cobertura no es un resultado comercial.</p>
+<h2>Qué demuestran MemoryCollection y MemoryDatabase</h2>
+<p><code>MemoryCollection</code> mantiene documentos, índices, número de escrituras y consultas. <code>find_one</code> y <code>find</code> devuelven copias. <code>update_one</code> permite únicamente <code>$setOnInsert</code> con upsert; la primera carga inserta 83 y repetir inserta cero. El doble aplica consulta temporal y, si corresponde, subject_id. <code>MemoryDatabase</code> ofrece colecciones con nombre y lista solo las creadas.</p>
+<p>Pruebas ejercitan el cargador sin servidor: idempotencia, base dedicada, propiedad, rechazo de contenido distinto antes de cualquier nueva escritura, normalización UTC BSON e historial de empresa. Es un subconjunto del driver; no valida red, TLS, autenticación, permisos reales, índices reales, transacciones, latencia o concurrencia del servidor. Ejecutar estos tests no valida Atlas.</p>
+<h2>Qué comprueba AppTest</h2>
+<p>Ejecuta Streamlit, cambia widgets y revisa métricas, tablas, avisos, excepciones y session_state. Las pruebas bloquean <code>load_config</code>/<code>create_client</code> offline, verifican períodos sin futuro, posiciones, estados de datos faltantes, fuente económica independiente y limpieza de resultados Atlas anteriores. La preparación de dependencias nativas ocurre antes del timeout funcional. El guard de red distingue IPC local y tráfico externo.</p>
+<p>AppTest no renderiza Chromium ni comprueba CSS, legibilidad, resolución o solapamientos. La automatización en Chromium aporta esa evidencia visual e interacción real. La prueba de codificación Windows en Linux no equivale a ejecutar nativamente en Windows. La ejecución histórica Windows reportada por el usuario se mantiene como antecedente, sin atribuirla a esta misión.</p>
+<h2>Atlas: implementado y pendiente de verificar</h2>
+<p><code>atlas_context()</code> construye contexto local, carga configuración, exige la base dedicada, usa <code>read_observations()</code> al corte, reconstruye contexto y compara <code>visible_input_sha256</code> con el local. La colección pública es <code>m002b_observations</code>. El adaptador bloquea datos distintos y errores sin fallback. No ejecuta ping ni escribe. <code>check_connection()</code> es otra función, que sí hace ping; la prueba <code>tests/integration/test_atlas_observable.py</code> hace ping y cargas y se excluyó.</p>
+<p>En la verificación preliminar había variables con formato válido, pero la base configurada no coincidía con la requerida y la política TCP no autorizaba destinos. Por instrucción del usuario no se intentó resolverlo: cero conexiones, lecturas o escrituras remotas, sin cambios a credenciales/configuración. El éxito histórico de Atlas en referencias no se presenta como reproducción actual. Una validación futura requeriría conexión y lectura autorizadas, verificadas por separado de los dobles.</p>
+<h2>Defecto auténtico reproducido con un fixture aislado</h2>
+<p><strong>Esperado:</strong> dos evidencias opuestas simultáneas representan un conflicto, independientemente de escribir la zona como <code>Z</code>, <code>+00:00</code> o <code>+0000</code>.</p>
+<p><strong>Observado:</strong> una entrada válida aislada añade una observación descartada opuesta en el mismo instante que una confirmada. <code>snapshot()</code> agrupa estados por igualdad textual de <code>available_at</code> y termina mostrando DISCARDED. <code>_latest()</code> de rankings usa parse_time y detecta CONFLICTED. El ledger original normaliza fechas con iso_time, por lo que el defecto no aparece en las cifras de esta presentación.</p>
+<p><strong>Causa:</strong> en <code>observable.py:135–139</code>, el criterio de simultaneidad compara cadenas; no instantes. Las pruebas existentes de zona equivalente cubrían el corte, no dos representaciones simultáneas dentro de las evidencias.</p>
+<p><strong>Experimento de corrección:</strong> <code>experiments/test_timezone_conflict.py</code> sustituye esa única comparación en una copia de fuente compilada en memoria. Dos variantes fallan contra original y pasan en la copia. No se parcheó src, el módulo comercial instalado ni el ledger. Logs rojo/verde guardados, diff experimental en <code>experiments/timezone-comparison.patch</code>. La corrección requiere revisión adicional antes de proponer integración en otra misión.</p>
+<p><strong>Alcance personal:</strong> hallazgo, prueba y cambio hechos por Codex. La práctica de que el candidato los reproduzca y defienda está documentada como pendiente, sin inventar experiencia personal.</p>
+<h2>Aritmética financiera y causalidad</h2>
+<p>La configuración <code>003b-finance-v1</code>, estado <code>educational_uncalibrated</code>, define 90 días para activar, 12 meses, descuento mensual 1% y reserva 20% sobre fijos y operación. Los importes del ejemplo ya son valor presente; el código valida unidades, alcance temporal y costos únicos, y no descuenta dos veces esos valores. <code>Decimal</code> con precisión interna de 50 evita depender del contexto decimal externo. No lee empresas ni crea ventas por cuenta.</p>
+<p>Fórmula: <code>ΔV = N_plazas × Δp × m − N_plazas × Δc + ΔU − F − ΔO</code>. Base: p=0.10, Δp=0.02, m=8,000, Δc=50, ΔU=0, F=10,000 y ΔO=6,000. Con 500: 80,000−25,000−10,000−6,000 = <strong>+39,000</strong>; con cinco: 800−250−10,000−6,000 = <strong>−15,450</strong>. Nulo conserva costos base y pone Δp/ΔU=0: <strong>−41,000</strong> con 500 y <strong>−16,250</strong> con cinco. Reserva base 3,200 separada; base 500 después de reserva +35,800. Equilibrio sin reserva 1.025 pp a 500 y 40.625 pp a cinco; con reserva a 500, 1.105 pp. Son requisitos matemáticos, no mejoras conseguidas.</p>
+<p>Se reproducen también conservador y optimista, sin ocultar pérdidas, escenario de saldo cero algebraico y sensibilidad. Costos constantes al cambiar escala aíslan su efecto, no son cotizaciones a volumen. Rangos de sensibilidad no son intervalos de confianza. Quinientas plazas no son quinientas empresas del dataset ni tamaño de muestra del ensayo.</p>
+<p>El protocolo de <code>docs/15</code> es diseño no ejecutado: asignar bolsas comerciales completas 1:1 dentro de bloques antes de seleccionar, capacidad comparable de cinco por bolsa, controlar interferencia y transferencia de listas, congelar política/entrada y registrar probabilidades. KPI: contribución neta comercial por toda cuenta elegible originalmente asignada (ITT), incluidas no seleccionadas/no contactadas y altas por otros canales. Faltante no es cero; no borrar cruces tras ver resultados. Costos de plataforma se evalúan aparte sin doble deducción. Inferencia respeta bolsas/bloques y pondera cuentas. IC95% y potencia80% son objetivos; faltan varianza, ICC, tamaños/número de bolsas y contaminación para calcular muestra. Sin unidades independientes suficientes, no atribuir causalidad. Comparar directamente los Top 5 no resuelve selección ni solapamiento.</p>
+<h2>Cifras históricas y afirmaciones no reproducidas</h2>
+<table>
+<thead>
+<tr>
+<th>Referencia</th>
+<th>Clasificación en esta misión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 universo; 12/17/23 conocidas; 28/54/83 observaciones</td>
+<td>Reproducido por código y/o lectura del diseño, con separación de fuentes</td>
+</tr>
+<tr>
+<td>K=5; tres sustituciones; Jacaranda #10→#3</td>
+<td>Reproducido por API, CLI, pruebas y UI</td>
+</tr>
+<tr>
+<td>−41,000 / +39,000 MXN</td>
+<td>Aritmética reproducida; supuestos hipotéticos, no valor observado</td>
+</tr>
+<tr>
+<td>Ping y lectura Atlas histórica de 83</td>
+<td>Antecedente documental; no reproducido en esta misión</td>
+</tr>
+<tr>
+<td>CRM de 240 leads / 181 contactos / 16 cierres en referencias</td>
+<td>Laboratorio distinto sin reproducción aquí; excluido de la narrativa principal y cálculos</td>
+</tr>
+<tr>
+<td>Mayor conversión, ventas incrementales o ROI real</td>
+<td>No demostrado</td>
+</tr>
+<tr>
+<td>50,000 empresas, latencias/SLA, seguridad productiva, ML predictivo</td>
+<td>No probado o no implementado</td>
+</tr>
+<tr>
+<td>Depuración o verificaciones realizadas personalmente por el candidato</td>
+<td>No acreditadas por el trabajo de Codex; práctica pendiente</td>
+</tr>
+</tbody>
+</table>
+<h2>Decisiones de presentación</h2>
+<p>HTML/CSS/JavaScript sin compilación ni dependencias de ejecución: reduce instalación y permite servir todos los archivos con un servidor estático local, sin el servidor del proyecto. La apertura directa file:// no se verificó porque el navegador administrado la bloquea; no se intentó evadir esa política. Datos y fuentes se incorporan localmente; no hay CDN, fuentes remotas, analítica ni llamadas a Atlas. Manrope para títulos e Inter para texto, archivos locales con licencias. Formato 16:9, paleta azul profundo/turquesa/verde/naranja, composiciones de distinta densidad, recortes reales ampliables, diagramas y código con color. 16 diapositivas principales y 11 de anexo. Índice, teclado, swipe, pantalla completa, notas y presentador en ventana separada. PDF conserva las diapositivas; el guion es otro documento.</p>
+<p>Los resultados interactivos están congelados y etiquetados; no simulan una sesión original. La presentación no depende del servidor Streamlit. La integración de fuentes permite pasar de cada afirmación a código con línea anclada y comando de reproducción. La validación final y sus límites se registran en el resultado de QA, sin afirmar revisión de dispositivos no usados.</p></html>

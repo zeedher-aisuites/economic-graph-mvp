@@ -1,0 +1,94 @@
+Skip to main content
+
+Vista
+
+Resumen
+
+Graph Health
+
+AI Performance
+
+Business Funnel
+
+Economic Impact
+
+Período
+
+Fuente de datos
+
+Industria
+
+Empresa
+
+keyboard_arrow_right
+
+Filtros sin soporte real
+
+Deploy
+ConectaPyME · Control Tower
+
+CONTROL TOWER · PoC educativa · Sintético observable · Sin acciones comerciales
+
+Offline · T2: 2026-09-15T12:00:00Z · Segmento: 23/23 conocidas. Totales globales rotulados.
+
+Business Funnel
+
+Política mostrada
+
+Conocidas
+
+23
+
+→
+
+Elegibles para ranking
+
+21
+
+→
+
+Priorizadas del top-5 global
+
+5
+
+Rama separada: 2 excluidas por servicio activo confirmado. No consumen las plazas de adquisición.
+
+Acción y resultado comercial
+
+Contactos
+
+No observado
+
+Contactos activados
+
+No observado
+
+Oportunidades
+
+No observado
+
+Activaciones
+
+No observado
+
+Ventas
+
+No observado
+
+Sintético observable · Segmento: 23 / 23 conocidas globales.
+
+keyboard_arrow_right
+
+Auditoría del embudo
+
+Excluidas son una rama aparte. No se suman los dos top-5 como contactos; el grafo no autoriza acciones. Sin eventos no hay tasas de conversión.
+
+keyboard_arrow_right
+
+Exclusiones del segmento
+
+Selecciona una empresa en la barra lateral para abrir su ficha y conexiones.
+
+keyboard_arrow_right
+
+Procedencia técnica y reglas

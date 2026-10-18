@@ -1,0 +1,125 @@
+<!doctype html><html lang="es-MX"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>docs/04-architecture-overview.md</title><style>
+body{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace}header{position:sticky;top:0;background:#102d43;padding:16px 25px;border-bottom:1px solid #34536a;z-index:2;font:13px/1.6 system-ui}header a{color:#58dfc6}main{padding:22px 0}.line{display:flex;gap:20px;min-width:max-content;padding-right:30px;scroll-margin-top:90px}.line>a{text-align:right;min-width:65px;color:#6f94a8;text-decoration:none;border-right:1px solid #30495c;padding-right:15px}code{white-space:pre}.line:target{background:#1f4f50;color:white}.k,.kn,.kd{color:#59e3c9}.s1,.s2,.sa{color:#ffc181}.nf,.nc{color:#a4cbff}.c1,.sd{color:#86a6b6}.mi{color:#ffc181}
+</style><header><a href="../../index.html">← Presentación</a> · <strong>docs/04-architecture-overview.md</strong><br>Fuente auditada: 774dacd80e6410ca43299f63f19d9744a31929c0</header><main><div class="line" id="L1"><a href="#L1">1</a><code># Arquitectura propuesta — v0.1</code></div>
+<div class="line" id="L2"><a href="#L2">2</a><code> </code></div>
+<div class="line" id="L3"><a href="#L3">3</a><code>&gt; **Estado:** diseño preliminar para orientar el MVP, **no** descripción de funcionalidades ya implementadas. El modelo de datos, índices y estrategia de consulta se decidirán después de definir el grafo conceptual.</code></div>
+<div class="line" id="L4"><a href="#L4">4</a><code> </code></div>
+<div class="line" id="L5"><a href="#L5">5</a><code>**Base implementada en misión 001:** `src/economic_graph/config.py` lee y valida configuración; `database.py` crea un cliente PyMongo con tiempos de espera de cinco segundos y ofrece `ping`; `scripts/check_connection.py` presenta un resultado seguro y cierra la conexión. `ping` se dirige a la base configurada, no crea colecciones ni inserta datos. La instancia MongoDB debe existir previamente, local o administrada por el usuario; no se instala en esta misión. Crear el cliente no confirma conectividad y un `ping` exitoso no demuestra permisos de lectura/escritura, disponibilidad del grafo ni rendimiento.</code></div>
+<div class="line" id="L6"><a href="#L6">6</a><code> </code></div>
+<div class="line" id="L7"><a href="#L7">7</a><code>**Ampliación 002B implementada:** archivos aprobados restringidos → auditoría → proyección de 83 observaciones → ledger público → consultas temporales, conflictos e identidad candidata. PyMongo permite cargar explícitamente solo el ledger en una base dedicada; idempotencia probada con dobles. En 002C el usuario reportó integración real exitosa desde Windows con VS Code, registrada en `11-atlas-integration-validation.md`; no fue ejecutada por Codex Cloud. El contrato físico y sus límites se detallan en `10-design-validation.md`.</code></div>
+<div class="line" id="L8"><a href="#L8">8</a><code> </code></div>
+<div class="line" id="L9"><a href="#L9">9</a><code>**Ampliación 003A implementada:** ledger público o lectura MongoDB temporal → `snapshot` → `rankings.compare_rankings` → JSON explicable o tabla Markdown. `rank_companies.py` separa I/O del cálculo puro. Ambas políticas usan una sola vista por corte, la misma elegibilidad y capacidad fija de cinco cuentas. No hay nuevos servicios, dependencias, colecciones, índices ni escrituras en Atlas. La paridad de lectura se prueba con un doble; rankings en Atlas real no verificados. Reglas y límites en `12-commercial-ranking.md`.</code></div>
+<div class="line" id="L10"><a href="#L10">10</a><code> </code></div>
+<div class="line" id="L11"><a href="#L11">11</a><code>El siguiente diagrama describe el flujo objetivo del MVP completo. Extracción de señales y rankings ya tienen una implementación mínima 003A; gráficos, historial comercial y Control Tower siguen **pendientes**. No se agregan hechos al ledger ni eventos comerciales en 003A.</code></div>
+<div class="line" id="L12"><a href="#L12">12</a><code> </code></div>
+<div class="line" id="L13"><a href="#L13">13</a><code>## 1. Arquitectura mínima de demostración</code></div>
+<div class="line" id="L14"><a href="#L14">14</a><code> </code></div>
+<div class="line" id="L15"><a href="#L15">15</a><code>```text</code></div>
+<div class="line" id="L16"><a href="#L16">16</a><code>Generador sintético reproducible</code></div>
+<div class="line" id="L17"><a href="#L17">17</a><code>  ├─ 30 PyMEs + atributos</code></div>
+<div class="line" id="L18"><a href="#L18">18</a><code>  ├─ relaciones + procedencia + fechas</code></div>
+<div class="line" id="L19"><a href="#L19">19</a><code>  └─ historial comercial observable</code></div>
+<div class="line" id="L20"><a href="#L20">20</a><code>                 │</code></div>
+<div class="line" id="L21"><a href="#L21">21</a><code>                 ▼</code></div>
+<div class="line" id="L22"><a href="#L22">22</a><code>           MongoDB / PyMongo</code></div>
+<div class="line" id="L23"><a href="#L23">23</a><code>                 │</code></div>
+<div class="line" id="L24"><a href="#L24">24</a><code>                 ▼</code></div>
+<div class="line" id="L25"><a href="#L25">25</a><code>        Consultas y validaciones</code></div>
+<div class="line" id="L26"><a href="#L26">26</a><code>                 │</code></div>
+<div class="line" id="L27"><a href="#L27">27</a><code>                 ▼</code></div>
+<div class="line" id="L28"><a href="#L28">28</a><code>     Python: extracción de señales</code></div>
+<div class="line" id="L29"><a href="#L29">29</a><code>          ├─ ranking baseline</code></div>
+<div class="line" id="L30"><a href="#L30">30</a><code>          └─ ranking con grafo</code></div>
+<div class="line" id="L31"><a href="#L31">31</a><code>                 │</code></div>
+<div class="line" id="L32"><a href="#L32">32</a><code>                 ▼</code></div>
+<div class="line" id="L33"><a href="#L33">33</a><code>      Evidencia para la defensa</code></div>
+<div class="line" id="L34"><a href="#L34">34</a><code>    (tablas, gráficos y, si conviene,</code></div>
+<div class="line" id="L35"><a href="#L35">35</a><code>        visualización sencilla)</code></div>
+<div class="line" id="L36"><a href="#L36">36</a><code>```</code></div>
+<div class="line" id="L37"><a href="#L37">37</a><code> </code></div>
+<div class="line" id="L38"><a href="#L38">38</a><code>**Interacción:** el usuario ejecuta consultas y revisa resultados. No existen agentes, acciones autónomas ni generación de mensajes comerciales.</code></div>
+<div class="line" id="L39"><a href="#L39">39</a><code> </code></div>
+<div class="line" id="L40"><a href="#L40">40</a><code>## 2. Componentes y responsabilidades</code></div>
+<div class="line" id="L41"><a href="#L41">41</a><code> </code></div>
+<div class="line" id="L42"><a href="#L42">42</a><code>| Componente | Responsabilidad | Criterio de sencillez |</code></div>
+<div class="line" id="L43"><a href="#L43">43</a><code>|---|---|---|</code></div>
+<div class="line" id="L44"><a href="#L44">44</a><code>| Generación de datos | Producir un mundo sintético coherente, con semilla y reglas documentadas | Un script reproducible; no sistema de simulación extenso |</code></div>
+<div class="line" id="L45"><a href="#L45">45</a><code>| MongoDB | Persistencia y consulta de empresas, relaciones y eventos | Colecciones mínimas, índices justificados por consultas reales |</code></div>
+<div class="line" id="L46"><a href="#L46">46</a><code>| Acceso a datos | Encapsular conexión y consultas repetidas | PyMongo directamente; evitar ORM abstracto |</code></div>
+<div class="line" id="L47"><a href="#L47">47</a><code>| Validación de datos | Detectar duplicados, referencias rotas, rangos y fechas inválidas | Funciones pequeñas y pruebas |</code></div>
+<div class="line" id="L48"><a href="#L48">48</a><code>| Análisis | Obtener señales empresariales y relacionales con corte temporal | Lógica separada de I/O; evitar ML si una regla basta |</code></div>
+<div class="line" id="L49"><a href="#L49">49</a><code>| Presentación | Explicar el grafo, comparar rankings y ofrecer métricas | Tablas/gráficos; Streamlit solo si agrega valor demostrable |</code></div>
+<div class="line" id="L50"><a href="#L50">50</a><code> </code></div>
+<div class="line" id="L51"><a href="#L51">51</a><code>## 3. Modelo lógico: temas obligatorios</code></div>
+<div class="line" id="L52"><a href="#L52">52</a><code> </code></div>
+<div class="line" id="L53"><a href="#L53">53</a><code>**Nodos iniciales:** empresas PyME. Evaluar otros nodos solo si existe un caso de uso concreto.\</code></div>
+<div class="line" id="L54"><a href="#L54">54</a><code>**Aristas:** relaciones económicas dirigidas cuando aplique, con tipo definido, fuente, fecha de vigencia y fecha de observación.\</code></div>
+<div class="line" id="L55"><a href="#L55">55</a><code>**Identidad:** identificadores estables y estrategia de deduplicación; no asumir coincidencia por nombre.\</code></div>
+<div class="line" id="L56"><a href="#L56">56</a><code>**Confianza:** distinguir hecho verificado, inferencia y ausencia de evidencia.\</code></div>
+<div class="line" id="L57"><a href="#L57">57</a><code>**Trazabilidad:** poder explicar qué fuente justificó una relación o feature.</code></div>
+<div class="line" id="L58"><a href="#L58">58</a><code> </code></div>
+<div class="line" id="L59"><a href="#L59">59</a><code>**Separación de dos capas:**</code></div>
+<div class="line" id="L60"><a href="#L60">60</a><code> </code></div>
+<div class="line" id="L61"><a href="#L61">61</a><code>1. **Verdad sintética** del generador: sirve para comprobar coherencia de la simulación.</code></div>
+<div class="line" id="L62"><a href="#L62">62</a><code>2. **Vista observable** de la Telco: única entrada permitida para rankings y decisiones de negocio.</code></div>
+<div class="line" id="L63"><a href="#L63">63</a><code> </code></div>
+<div class="line" id="L64"><a href="#L64">64</a><code>La persistencia mínima implementada guarda observaciones, no colecciones de perfiles o eventos; sus índices y límites están en `10-design-validation.md`. La evolución del esquema objetivo sigue pendiente. El ranking 003A cuenta vecinos a un salto en Python sobre la vista pequeña disponible; no requiere recorridos profundos ni demuestra rendimiento a escala. No asumir que MongoDB es una base de datos de grafos especializada.</code></div>
+<div class="line" id="L65"><a href="#L65">65</a><code> </code></div>
+<div class="line" id="L66"><a href="#L66">66</a><code>## 4. Flujo temporal y prevención de fuga</code></div>
+<div class="line" id="L67"><a href="#L67">67</a><code> </code></div>
+<div class="line" id="L68"><a href="#L68">68</a><code>Para cada análisis histórico fijar un instante `t`. Solo utilizar atributos y relaciones disponibles/observados hasta `t`. El resultado de un contacto o cierre posterior no puede influir en la puntuación calculada en `t`. Documentar las diferencias entre *fecha del hecho* y *fecha de conocimiento*.</code></div>
+<div class="line" id="L69"><a href="#L69">69</a><code> </code></div>
+<div class="line" id="L70"><a href="#L70">70</a><code>## 5. Comparación analítica</code></div>
+<div class="line" id="L71"><a href="#L71">71</a><code> </code></div>
+<div class="line" id="L72"><a href="#L72">72</a><code>- **Baseline** con información empresarial individual disponible.</code></div>
+<div class="line" id="L73"><a href="#L73">73</a><code>- **Variante enriquecida** con las mismas variables más features de relaciones económicas observadas.</code></div>
+<div class="line" id="L74"><a href="#L74">74</a><code>- Registrar fecha de corte, entradas, versión de reglas y razones del ranking.</code></div>
+<div class="line" id="L75"><a href="#L75">75</a><code>- No entrenar ni atribuir métricas predictivas a un modelo inexistente.</code></div>
+<div class="line" id="L76"><a href="#L76">76</a><code>- Para una Telco real: proponer validación temporal, monitoreo de calidad, deriva, calibración y ciclo de vida de ML solo si se elige un modelo entrenado.</code></div>
+<div class="line" id="L77"><a href="#L77">77</a><code> </code></div>
+<div class="line" id="L78"><a href="#L78">78</a><code>## 6. Arquitectura objetivo de producción (solo propuesta)</code></div>
+<div class="line" id="L79"><a href="#L79">79</a><code> </code></div>
+<div class="line" id="L80"><a href="#L80">80</a><code>```text</code></div>
+<div class="line" id="L81"><a href="#L81">81</a><code>Fuentes autorizadas (CRM, cobertura, registros consentidos, fuentes públicas permitidas)</code></div>
+<div class="line" id="L82"><a href="#L82">82</a><code>      ↓ ingestión + contratos de datos + controles de privacidad</code></div>
+<div class="line" id="L83"><a href="#L83">83</a><code>Normalización + entity resolution + deduplicación + evidencia/procedencia</code></div>
+<div class="line" id="L84"><a href="#L84">84</a><code>      ↓</code></div>
+<div class="line" id="L85"><a href="#L85">85</a><code>Repositorio de entidades y relaciones con historial temporal</code></div>
+<div class="line" id="L86"><a href="#L86">86</a><code>      ↓</code></div>
+<div class="line" id="L87"><a href="#L87">87</a><code>Cálculo versionado de features y puntuaciones</code></div>
+<div class="line" id="L88"><a href="#L88">88</a><code>      ↓</code></div>
+<div class="line" id="L89"><a href="#L89">89</a><code>Serving para analista comercial / CRM (con controles de acceso)</code></div>
+<div class="line" id="L90"><a href="#L90">90</a><code>      ↓</code></div>
+<div class="line" id="L91"><a href="#L91">91</a><code>Medición experimental + Control Tower + auditoría</code></div>
+<div class="line" id="L92"><a href="#L92">92</a><code>```</code></div>
+<div class="line" id="L93"><a href="#L93">93</a><code> </code></div>
+<div class="line" id="L94"><a href="#L94">94</a><code>**Aspectos a explicar en la defensa, no implementar ahora:** seguridad y acceso por rol, privacidad, calidad de datos, actualización incremental, desempeño de consultas, manejo de fallas, costos, observabilidad, gobernanza y MLOps si existe un modelo ML.</code></div>
+<div class="line" id="L95"><a href="#L95">95</a><code> </code></div>
+<div class="line" id="L96"><a href="#L96">96</a><code>## 7. Criterios de evolución</code></div>
+<div class="line" id="L97"><a href="#L97">97</a><code> </code></div>
+<div class="line" id="L98"><a href="#L98">98</a><code>Aumentar componentes **solo** cuando un requisito medido lo exija: más fuentes, mayor volumen, menor latencia, consultas de varios saltos, necesidades regulatorias o carga de usuarios. Considerar la conveniencia de tecnología especializada en grafos según consultas y costo total, no por preferencia estética.</code></div>
+<div class="line" id="L99"><a href="#L99">99</a><code> </code></div>
+<div class="line" id="L100"><a href="#L100">100</a><code>Los agentes son una línea **posterior a la entrega**, no una dependencia ni condicionante de este diseño.</code></div>
+<div class="line" id="L101"><a href="#L101">101</a><code> </code></div>
+<div class="line" id="L102"><a href="#L102">102</a><code>## 8. Riesgos técnicos principales</code></div>
+<div class="line" id="L103"><a href="#L103">103</a><code> </code></div>
+<div class="line" id="L104"><a href="#L104">104</a><code>- Aristas inventadas sin procedencia plausible o datos confidenciales que una Telco no podría conocer.</code></div>
+<div class="line" id="L105"><a href="#L105">105</a><code>- Mezclar verdad del simulador con información comercial observada.</code></div>
+<div class="line" id="L106"><a href="#L106">106</a><code>- Fuga temporal al evaluar resultados.</code></div>
+<div class="line" id="L107"><a href="#L107">107</a><code>- Overfitting o conclusiones estadísticas a partir de 30 empresas.</code></div>
+<div class="line" id="L108"><a href="#L108">108</a><code>- Tratar la representación visual del grafo como prueba de valor económico.</code></div>
+<div class="line" id="L109"><a href="#L109">109</a><code>- Añadir plataforma web/agentes antes de resolver preguntas de negocio.</code></div>
+<div class="line" id="L110"><a href="#L110">110</a><code> </code></div>
+<div class="line" id="L111"><a href="#L111">111</a><code>## 9. Verificación de la PoC</code></div>
+<div class="line" id="L112"><a href="#L112">112</a><code> </code></div>
+<div class="line" id="L113"><a href="#L113">113</a><code>Antes de considerar la PoC lista: generación repetible, integridad referencial, consultas funcionando, rankings auditables, pruebas básicas y documentación de lo **implementado**, **simulado** y **propuesto**.</code></div>
+<div class="line" id="L114"><a href="#L114">114</a><code> </code></div>
+<div class="line" id="L115"><a href="#L115">115</a><code>## 10. Control Tower local — implementación 004B</code></div>
+<div class="line" id="L116"><a href="#L116">116</a><code> </code></div>
+<div class="line" id="L117"><a href="#L117">117</a><code>La infraestructura 002/003 permanece como fuente de dominio. `finance.py` implementa el calculador educativo 003B, independiente de datos empresariales. [El diseño 004A](17-control-tower-design.md) propone una UI Streamlit local con adaptador de presentación: ledger público o lectura MongoDB temporal → snapshot/informe de rankings; archivo de supuestos → informe financiero; ambos alimentan vistas y etiquetas sin copiar fórmulas.</code></div>
+<div class="line" id="L118"><a href="#L118">118</a><code> </code></div>
+<div class="line" id="L119"><a href="#L119">119</a><code>CT-01 a CT-05 aprobadas, con ampliación de red económica. `app/control_tower.py` implementa cinco vistas; `tower_read_model.py` adapta datos públicos sin importar Streamlit ni simulador. Grupo `ui` con Streamlit fijado en lockfile, grafo Vega-Lite integrado y selector sincronizado; no otra biblioteca directa de grafos. `.streamlit/config.toml` limita escucha a loopback y desactiva telemetría. Estado de sesión conserva solo contexto público y procedencia, sin URI ni cliente persistente.</code></div>
+<div class="line" id="L120"><a href="#L120">120</a><code> </code></div>
+<div class="line" id="L121"><a href="#L121">121</a><code>Atlas es opt-in manual, solo `find`, validación de base previa y hash visible igual al ledger, sin fallback silencioso. Cambiar corte/fuente invalida lecturas. La economía no recibe filtros de empresa/sector/período; no hay escrituras, eventos inventados, backend o API separados. Guía y límites reales de validación: [004B](18-control-tower-demo.md). Revisión visual Windows pendiente.</code></div>
+<div class="line" id="L122"><a href="#L122">122</a><code> </code></div>
+<div class="line" id="L123"><a href="#L123">123</a><code>004C conserva esa arquitectura. La presentación añade tarjetas y matriz de selección; el adaptador solo cambia layout de red y copia IDs de evidencia de la feature para resaltar vínculos. No calcula scoring desde aristas del dibujo ni modifica reglas. Foco inicial y paneles contraídos priorizan lectura ejecutiva sin perder auditoría. El usuario confirmó 271 pruebas y funcionamiento Windows de 004B; nueva revisión del pulido pendiente.</code></div></main></html>

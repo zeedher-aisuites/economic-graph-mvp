@@ -1,0 +1,46 @@
+Installed 7 packages in 12ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /workspace/conectapyme-showcase
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0, anyio-4.15.1
+collected 285 items / 1 deselected / 284 selected
+
+tests/test_check_connection.py ...                                       [  1%]
+tests/test_config.py ...................                                 [  7%]
+tests/test_control_tower.py ...........................                  [ 17%]
+tests/test_database.py .............                                     [ 21%]
+tests/test_design.py ..............                                      [ 26%]
+tests/test_finance.py .................................................. [ 44%]
+.........                                                                [ 47%]
+tests/test_finance_commands.py ..............                            [ 52%]
+tests/test_graph_commands.py ........                                    [ 55%]
+tests/test_mongo_observable.py ...........                               [ 59%]
+tests/test_observable.py .............................                   [ 69%]
+tests/test_ranking_commands.py ..................                        [ 75%]
+tests/test_rankings.py .............................................     [ 91%]
+tests/test_tower_read_model.py ........................                  [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.14-final-0 _______________
+
+Name                                       Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------------
+src/economic_graph/__init__.py                 0      0      0      0   100%
+src/economic_graph/config.py                  22      0      8      0   100%
+src/economic_graph/contracts.py               89      8     68      8    90%   89, 106, 114, 123, 125, 128, 130-132
+src/economic_graph/database.py                23      0      4      0   100%
+src/economic_graph/finance.py                232     13    116     10    93%   96, 121, 140, 151, 182, 343, 348, 435, 470->479, 489-510
+src/economic_graph/mongo_observable.py        61      2     24      2    95%   70, 84
+src/economic_graph/observable.py              63      1     18      1    98%   33
+src/economic_graph/rankings.py               118      0     44      1    99%   92->91
+src/economic_graph/simulator/__init__.py       0      0      0      0   100%
+src/economic_graph/simulator/design.py       185     11     80      8    93%   60, 68-69, 72, 75-76, 85-86, 93, 260, 272->281, 310->323, 359
+src/economic_graph/simulator/project.py       55      2     14      0    97%   79-80
+src/economic_graph/tower_read_model.py        95      2     20      2    97%   37, 163
+--------------------------------------------------------------------------------------
+TOTAL                                        943     39    396     32    95%
+Coverage HTML written to dir presentation-showcase/evidence/results/coverage-html
+Coverage JSON written to file presentation-showcase/evidence/results/coverage.json
+====================== 284 passed, 1 deselected in 39.73s ======================

@@ -1,0 +1,194 @@
+{
+  "cuts": [
+    {
+      "cut": "T0",
+      "as_of": "2026-01-15T12:00:00Z",
+      "companies": 12,
+      "relationship_claims": 2,
+      "referrals": 0,
+      "observations": 28,
+      "identity_candidates": 0,
+      "conflicted_attributes": 0,
+      "eligible": 12,
+      "substitutions": 3,
+      "coverage": {
+        "branches": 2,
+        "neighbors": 4,
+        "denominator": 12
+      },
+      "input_sha256": "7ec89be2b800bef4818828a767506ac52829f63c1cfc3c1ffe29bcf9ed778a49"
+    },
+    {
+      "cut": "T1",
+      "as_of": "2026-05-15T12:00:00Z",
+      "companies": 17,
+      "relationship_claims": 13,
+      "referrals": 2,
+      "observations": 54,
+      "identity_candidates": 1,
+      "conflicted_attributes": 1,
+      "eligible": 17,
+      "substitutions": 3,
+      "coverage": {
+        "branches": 3,
+        "neighbors": 4,
+        "denominator": 17
+      },
+      "input_sha256": "354fbeaf8072e91a6c9179d8c343727382d21d2629711e5ffafa7c9f21cc31a0"
+    },
+    {
+      "cut": "T2",
+      "as_of": "2026-09-15T12:00:00Z",
+      "companies": 23,
+      "relationship_claims": 26,
+      "referrals": 3,
+      "observations": 83,
+      "identity_candidates": 2,
+      "conflicted_attributes": 2,
+      "eligible": 21,
+      "substitutions": 3,
+      "coverage": {
+        "branches": 3,
+        "neighbors": 5,
+        "denominator": 21
+      },
+      "input_sha256": "eec342c3310480c788977e8382c7271dd0da24dc6a2d1b2e19ab1414dd5bb0ba"
+    }
+  ],
+  "cafe": {
+    "ID": "CO-69660e4b09e557f0a5fde83e6273145b",
+    "Empresa": "Café Jacaranda",
+    "Posición baseline": 10,
+    "Posición grafo": 3,
+    "Cambio de posición": 7,
+    "Score baseline": 0,
+    "Score grafo": 10,
+    "Aporte individual": 0,
+    "Aporte relacional": 10,
+    "Top-5 baseline": false,
+    "Top-5 grafo": true
+  },
+  "universe": 30,
+  "financial_results": [
+    {
+      "scenario": "conservative",
+      "scope": "demo",
+      "slots": 5,
+      "activation_rate_increment": "-0.02",
+      "contract_margin_per_activation_mxn": "4000",
+      "net_present_value_mxn": "-33900",
+      "reserve_mxn": "6400",
+      "net_after_reserve_mxn": "-40300",
+      "break_even": {
+        "delta_rate": "1.675",
+        "delta_pp": "167.5",
+        "feasibility": "UNATTAINABLE"
+      }
+    },
+    {
+      "scenario": "base",
+      "scope": "demo",
+      "slots": 5,
+      "activation_rate_increment": "0.02",
+      "contract_margin_per_activation_mxn": "8000",
+      "net_present_value_mxn": "-15450",
+      "reserve_mxn": "3200",
+      "net_after_reserve_mxn": "-18650",
+      "break_even": {
+        "delta_rate": "0.40625",
+        "delta_pp": "40.625",
+        "feasibility": "ATTAINABLE"
+      }
+    },
+    {
+      "scenario": "optimistic",
+      "scope": "demo",
+      "slots": 5,
+      "activation_rate_increment": "0.05",
+      "contract_margin_per_activation_mxn": "12000",
+      "net_present_value_mxn": "-5125",
+      "reserve_mxn": "1600",
+      "net_after_reserve_mxn": "-6725",
+      "break_even": {
+        "delta_rate": "0.13541666666666666666666666666666666666666666666667",
+        "delta_pp": "13.541666666666666666666666666666666666666666666667",
+        "feasibility": "ATTAINABLE"
+      }
+    },
+    {
+      "scenario": "null",
+      "scope": "demo",
+      "slots": 5,
+      "activation_rate_increment": "0",
+      "contract_margin_per_activation_mxn": "8000",
+      "net_present_value_mxn": "-16250",
+      "reserve_mxn": "3200",
+      "net_after_reserve_mxn": "-19450",
+      "break_even": {
+        "delta_rate": "0.40625",
+        "delta_pp": "40.625",
+        "feasibility": "ATTAINABLE"
+      }
+    },
+    {
+      "scenario": "conservative",
+      "scope": "hypothetical",
+      "slots": 500,
+      "activation_rate_increment": "-0.02",
+      "contract_margin_per_activation_mxn": "4000",
+      "net_present_value_mxn": "-123000",
+      "reserve_mxn": "6400",
+      "net_after_reserve_mxn": "-129400",
+      "break_even": {
+        "delta_rate": "0.0415",
+        "delta_pp": "4.15",
+        "feasibility": "ATTAINABLE"
+      }
+    },
+    {
+      "scenario": "base",
+      "scope": "hypothetical",
+      "slots": 500,
+      "activation_rate_increment": "0.02",
+      "contract_margin_per_activation_mxn": "8000",
+      "net_present_value_mxn": "39000",
+      "reserve_mxn": "3200",
+      "net_after_reserve_mxn": "35800",
+      "break_even": {
+        "delta_rate": "0.01025",
+        "delta_pp": "1.025",
+        "feasibility": "ATTAINABLE"
+      }
+    },
+    {
+      "scenario": "optimistic",
+      "scope": "hypothetical",
+      "slots": 500,
+      "activation_rate_increment": "0.05",
+      "contract_margin_per_activation_mxn": "12000",
+      "net_present_value_mxn": "279500",
+      "reserve_mxn": "1600",
+      "net_after_reserve_mxn": "277900",
+      "break_even": {
+        "delta_rate": "0.0034166666666666666666666666666666666666666666666667",
+        "delta_pp": "0.34166666666666666666666666666666666666666666666667",
+        "feasibility": "ATTAINABLE"
+      }
+    },
+    {
+      "scenario": "null",
+      "scope": "hypothetical",
+      "slots": 500,
+      "activation_rate_increment": "0",
+      "contract_margin_per_activation_mxn": "8000",
+      "net_present_value_mxn": "-41000",
+      "reserve_mxn": "3200",
+      "net_after_reserve_mxn": "-44200",
+      "break_even": {
+        "delta_rate": "0.01025",
+        "delta_pp": "1.025",
+        "feasibility": "ATTAINABLE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+Skip to main content
+
+Vista
+
+Resumen
+
+Graph Health
+
+AI Performance
+
+Business Funnel
+
+Economic Impact
+
+Período
+
+Fuente de datos
+
+Industria
+
+Exploración de red
+
+Empresa y vecinos
+
+Red completa del segmento
+
+Empresa
+
+keyboard_arrow_right
+
+Filtros sin soporte real
+
+Deploy
+ConectaPyME · Control Tower
+
+CONTROL TOWER · PoC educativa · Sintético observable · Sin acciones comerciales
+
+Offline · T2: 2026-09-15T12:00:00Z · Segmento: 1/23 conocidas. Totales globales rotulados.
+
+Graph Health
+
+Observaciones · global
+
+83
+
+Atributos en conflicto · global
+
+2
+
+Registros candidatos · global
+
+2
+
+Sintético observable · Los candidatos no son duplicados confirmados ni se fusionan.
+
+Red económica al corte
+Mesa de Barrio
+Ruta CortaMensajería
+PapeleríaHorizonte
+Café Jacaranda
+Enlace Punto POS
+Hornos del Centro
+Caja VecinaDigital
+Confirmada
+Reportada
+Inferida
+Descartada
+En conflicto
+Verificación
+Suministra a
+Alianza
+Referencia (no puntúa)
+Vínculo
+Selección
+Vecino de contexto
+Cuenta
+
+Gruesa: respalda vecinos confirmados de la cuenta; fina: evidencia de contexto. Continua: confirmada; trazos: reportada; puntos: inferida. Referencias no puntúan.
+
+keyboard_arrow_right
+
+Cómo interpretar la red
+
+Empresa vinculada
+
+	
+
+Vínculo · verificación
+
+	
+
+Señal de la cuenta
+
+
+
+
+Hornos del Centro
+
+	
+
+Suministra a · Confirmada
+
+	
+
+Respalda vecinos confirmados
+
+
+
+
+Mesa de Barrio
+
+	
+
+Alianza · Reportada
+
+	
+
+Contexto · no suma puntos
+
+
+
+
+Enlace Punto POS
+
+	
+
+Suministra a · Confirmada
+
+	
+
+Respalda vecinos confirmados
+
+
+
+
+Ruta Corta Mensajería
+
+	
+
+Referencia (no puntúa) · Reportada
+
+	
+
+Contexto · no suma puntos
+
+
+
+
+Ruta Corta Mensajería
+
+	
+
+Suministra a · Reportada
+
+	
+
+Contexto · no suma puntos
+
+
+
+
+Caja Vecina Digital
+
+	
+
+Suministra a · Reportada
+
+	
+
+Contexto · no suma puntos
+
+
+
+
+Papelería Horizonte
+
+	
+
+Alianza · Inferida
+
+	
+
+Contexto · no suma puntos
+
+keyboard_arrow_down
+
+Ficha de cuenta y respaldo completo
+
+Ficha · Café Jacaranda
+
+Restaurantes y cafeterías · Identidad pendiente de revisión, sin fusión automática
+
+Elegibilidad: Por validar comercialmente
+
+Score baseline
+
+0
+
+Score grafo
+
+10
+
+Posición baseline global
+
+10
+
+Posición grafo global
+
+3
+
+keyboard_arrow_right
+
+Auditar contribuciones, reglas y evidencias
+
+keyboard_arrow_right
+
+Atributos y conflictos sin arbitraje
+
+keyboard_arrow_right
+
+Identidades candidatas · sin fusión
+
+keyboard_arrow_right
+
+Procedencia e historia de la cuenta y sus vínculos
+
+keyboard_arrow_right
+
+Auditar vínculos y filtrar evidencia
+
+keyboard_arrow_right
+
+Nodos aislados y evidencia insuficiente
+
+keyboard_arrow_right
+
+Evolución global al corte
+
+keyboard_arrow_right
+
+Estados, fuentes y frescura globales
+
+keyboard_arrow_right
+
+Conflictos e identidades candidatas · global
+
+keyboard_arrow_right
+
+Procedencia técnica y reglas

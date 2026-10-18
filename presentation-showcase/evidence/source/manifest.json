@@ -1,0 +1,308 @@
+[
+  {
+    "path": "app/control_tower.py",
+    "sha256": "ed3d89fa90d6f9e71b28494c6b4018b9b85a6bbf95068f99e97cf68e66d453e1",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "config/financial_assumptions.json",
+    "sha256": "01b30684e5af6b8ad41ea8064d70c6edab69cfd5e77947eea431e1743d650653",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "data/observable/observations.json",
+    "sha256": "104d262e6a60a62b639b5305564c31914b723ef50c76c2bd8ea8a276086cd5b1",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/00-project-context.md",
+    "sha256": "158f7b2abdef6679225de0c37f3b9148ea198da4442d72f866316fe5ec71a33e",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/01-product-brief.md",
+    "sha256": "7e29552542dcb79dcd9af17561909ff00f3f058983aff3513438bf541d1af417",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/02-challenge-traceability.md",
+    "sha256": "404ee01aa8bfb830c37a1cc5e524e7ab45f90aca09823a3d28161d1e1151d573",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/03-scope-and-decisions.md",
+    "sha256": "26b1b488eaa83f4627ad8fa873f5a776cbd7dffefe5b497a88c363f6c3948cdd",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/04-architecture-overview.md",
+    "sha256": "17696a90c44153100ac5371a2134acc7e0efba87915488eb6f2e7bd6c874fe53",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/05-executive-communication.md",
+    "sha256": "2a05915235fceccb8a3c5155a627435838427af92953f8edc8ea627eb56cffcc",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/06-economic-graph-design.md",
+    "sha256": "826f96898df6bceb39da15c5bc30da589fca03d73674e90f657f8e010972790a",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/07-company-catalog.md",
+    "sha256": "0272cbc42ef178b6b32ddf976264d8e926c15a222ff0a8f69784f1dc25cb0536",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/08-relationship-matrix.md",
+    "sha256": "52d44be5bd691167eff2b1505df22c31b0ace581bde4b43ef890559d1c12c5f9",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/09-observability-plan.md",
+    "sha256": "c8238b12a2556ab6dd213b26ff104af0f84bb51f03e5d6bffb6bbec5b3e97d93",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/10-design-validation.md",
+    "sha256": "625a915ed6e77955d1bd222129f35c0acff0e951ac14165577ef8288aa184f48",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/11-atlas-integration-validation.md",
+    "sha256": "01934628970ad9702d3cbacae5c65cfa569df8ffe6b26a12c8c3e8e75ac9a11c",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/12-commercial-ranking.md",
+    "sha256": "8d54e84005111c3c9eaf381d1efb3d916bbad7a2f5ecb5ae589428340cbb3d9a",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/13-ranking-comparison.md",
+    "sha256": "18d3e89e3aed555b29b4e07a7ea286cd85b8ce58d399f2f2d02104197801e11f",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/14-incremental-economic-case.md",
+    "sha256": "dbbf9455c0caf11e247b5c1881131e6cfce8ee1332a89742101973566261d4f0",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/15-incrementality-experiment.md",
+    "sha256": "b54ae979843f5cfc1b64120e0ad9f8bf50c55b364140112f6629762274f32d98",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/16-financial-calculation.md",
+    "sha256": "4d0f4247955c909e629cbf99906613e195de6d2155e8445eec11dbd8ec19a842",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/17-control-tower-design.md",
+    "sha256": "8b17a2923046450e5d56406374e28c1b44c7bbd16d6b272dd7e28f596ab52488",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "docs/18-control-tower-demo.md",
+    "sha256": "d19c3581a4df157ca08158f015c81109ab2ff6a9f317de3f14c2dd1715ce24f2",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "presentation-showcase/docs/auditoria.md",
+    "sha256": "ee8adb46da69468d4f4e066fa2b4ca174e3ceb5160bd38d22e129cd06fe4348e",
+    "source_commit": null,
+    "origin": "Codex en esta misión"
+  },
+  {
+    "path": "presentation-showcase/experiments/test_timezone_conflict.py",
+    "sha256": "8c6e948e02e0c2c9b71bbe2a3f7e029c945000bd0abc815147419c0d34ac92cb",
+    "source_commit": null,
+    "origin": "Codex en esta misión"
+  },
+  {
+    "path": "src/economic_graph/__init__.py",
+    "sha256": "2f886f6c383428e3ab8abff661cef17fce2b8f9f4a8d4bd96f772832cc7c650f",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/config.py",
+    "sha256": "50d6ebc23a33df53bf5b406be451bfa2a6f07a853a9350a3ecb683c379dfde3c",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/contracts.py",
+    "sha256": "38c07077873ef0697a0ee1e07853875007d3f4b2cdd11486f241442d8826670d",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/database.py",
+    "sha256": "69c333d6d8534536dc793053340c1e827b4ee6d6f756ba2cf8369304fe9bd124",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/finance.py",
+    "sha256": "a883cfabfb1681f9cca4162fa43eaf8b1a69e846cc9f301178de4e22b0c60a88",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/mongo_observable.py",
+    "sha256": "074935fd6969dcc87294728086915d8641ea11e9ede2eacaec813ed48fdf33b6",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/observable.py",
+    "sha256": "2710ca529460114322ce3e60fed7c4a1fd2cfb3f3b577a9b636895eba5d3bb40",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/rankings.py",
+    "sha256": "bad7f95c771bac3fa3a7ca7779232ddef1ba57f07bae4569485b40d7f51e612b",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/simulator/design.py",
+    "sha256": "428939d3b7e12ab4317eb65f957b79358d1015856ebc92669eff5cbe1bf5c875",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/simulator/project.py",
+    "sha256": "3c210da9b5d988172de105641cc6b23b8e86ee0a213496d60099eea5dd8ee379",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "src/economic_graph/tower_read_model.py",
+    "sha256": "b94585d429e40a35cad74b76517abace026e0cbba713c05c0ee5f78cb7bbe659",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/conftest.py",
+    "sha256": "a2ae21f49613615e9123968abab3bb120aa22c8e935f1eea78d40531902701b8",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/integration/test_atlas_observable.py",
+    "sha256": "a0a9ceea713b851453dd3b742c776c6f573faa38244934d442a094af8d7b974c",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_check_connection.py",
+    "sha256": "89632b514af53df74ec4c4c63ab86aa06eab86ed8df83bd6149f1c2568d88116",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_config.py",
+    "sha256": "6d77135506b7c0deecd97e65082591c7c6ac9f4186011ece7819ed02d8c96117",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_control_tower.py",
+    "sha256": "63a5dcc4dc6677f47c2da8e21c6a77beb3d4c7469bdd7ddaa3159d3306b3e9af",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_database.py",
+    "sha256": "fe20d67e7012883dcfc0bda459c42bfbb989e93fbc5ef2f6378c2471c878701d",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_design.py",
+    "sha256": "be04edba3d119054183fdb67c7345f46725d1951db697760f00177cb3f1d997b",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_finance.py",
+    "sha256": "cc35ab647104a3784a118816a1513bdf807f7b6326a42f06de0eb49ced3b5072",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_finance_commands.py",
+    "sha256": "c80e66b28f35e328f2517e0267ad19193bcd8349e8c9935fef24d66bf3375d32",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_graph_commands.py",
+    "sha256": "5f00dd8fa389ef57ae17ef3647d003bdeabf66ddc0ec0de72ab64e06bdf8424e",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_mongo_observable.py",
+    "sha256": "f6966a3279b4369387fd64372c3d3ee8df0121a6bfb6a7bc320db1219a9ccd4b",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_observable.py",
+    "sha256": "091a00755ab827a8e0768289024e9b3e6c395700b2c1c65fcfb579f815f6864e",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_ranking_commands.py",
+    "sha256": "f5261c32b3c34be0fb87448461b9acacf184a6ff1db63edf72f4b90939fe58d0",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_rankings.py",
+    "sha256": "f97f8b3422f7bd67f4a65a70da9647424384e7beb097d2d09b2b114ac6941836",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/test_tower_read_model.py",
+    "sha256": "a01ece2086c01d6ad9a9b59ac576e1c32d292e54978f6a226a2f94a68225d565",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  },
+  {
+    "path": "tests/ui_test_support.py",
+    "sha256": "1540942e1d536e855afb5905fd0e012f4b4ab5305df5729ac59f01a1562ca41a",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "origin": "original"
+  }
+]

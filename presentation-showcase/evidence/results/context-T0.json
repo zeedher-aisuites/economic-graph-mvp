@@ -1,0 +1,2106 @@
+{
+  "view": {
+    "as_of": "2026-01-15T12:00:00Z",
+    "companies": [
+      {
+        "company_id": "CO-0588444eb4885deda97dfaa4f9cf294d",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Comedor del Andén",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-017"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Restaurantes y cafeterías",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-018"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-473a8b24a5ae57bdaf8c7151a1dbe73a",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Ruta Corta Mensajería",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-005"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Logística",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-006"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Papelería Horizonte",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-021"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Comercio minorista",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-022"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-4a0f849e77eb54c8a07cf5b26b0a904c",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Ferretería Cinco Calles",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-023"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Comercio minorista",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-024"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-4f8d13d468c25f93aad2f07259809e6e",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Cobro Ágil Pagos",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-013"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Fintech",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-014"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-5a05a766f11551469406a48c4c522243",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Bitácora Software",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-009"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Tecnología",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-010"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Café Jacaranda",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-015"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Restaurantes y cafeterías",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-016"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Enlace Punto POS",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-011"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Tecnología",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-012"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-96d84dff4df35c7ab89428a4d05cbb83",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": 1,
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-027"
+            ]
+          },
+          "display_name": {
+            "value": "La Espiga del Barrio",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-001"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Panaderías",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-002"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-b47d150617e553ad8421d7b140516737",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": 2,
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-028"
+            ]
+          },
+          "display_name": {
+            "value": "Hornos del Centro",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-003"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Panaderías",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-004"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-c482650632955b75acaee493c6104db8",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Brasa y Huerto",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-019"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Restaurantes y cafeterías",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-020"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      },
+      {
+        "company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "identity_status": "NEEDS_REVIEW",
+        "attributes": {
+          "branch_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "display_name": {
+            "value": "Nodo Azul Soporte TI",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-007"
+            ]
+          },
+          "public_rating": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "review_count": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "sector": {
+            "value": "Tecnología",
+            "status": "OBSERVED",
+            "observation_ids": [
+              "OBS-008"
+            ]
+          },
+          "service_active": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          },
+          "size": {
+            "value": null,
+            "status": "UNKNOWN",
+            "observation_ids": []
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "relationship_id": "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8",
+        "from_company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+        "to_company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+        "relationship_type": "SUPPLIES_TO",
+        "verification_status": "CONFIRMED",
+        "active_claim": true,
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "status_history": [
+          {
+            "observation_id": "OBS-026",
+            "attribute": "relationship_claim",
+            "value": {
+              "from_company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+              "to_company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+              "relationship_type": "SUPPLIES_TO"
+            },
+            "source_type": "CRM",
+            "verification_status": "CONFIRMED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Servicio asentado en CRM de cliente",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-026",
+            "subject_type": "RELATIONSHIP",
+            "subject_id": "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+          }
+        ]
+      },
+      {
+        "relationship_id": "LINK-928437aa497d51019e216aa9b27c65ba",
+        "from_company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+        "to_company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+        "relationship_type": "SUPPLIES_TO",
+        "verification_status": "CONFIRMED",
+        "active_claim": true,
+        "first_known_at": "2026-01-15T12:00:00Z",
+        "status_history": [
+          {
+            "observation_id": "OBS-025",
+            "attribute": "relationship_claim",
+            "value": {
+              "from_company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+              "to_company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+              "relationship_type": "SUPPLIES_TO"
+            },
+            "source_type": "CRM",
+            "verification_status": "CONFIRMED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Cliente y servicio anotado",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-025",
+            "subject_type": "RELATIONSHIP",
+            "subject_id": "LINK-928437aa497d51019e216aa9b27c65ba"
+          }
+        ]
+      }
+    ],
+    "observations": [
+      {
+        "observation_id": "OBS-001",
+        "attribute": "display_name",
+        "value": "La Espiga del Barrio",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-001",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-96d84dff4df35c7ab89428a4d05cbb83"
+      },
+      {
+        "observation_id": "OBS-002",
+        "attribute": "sector",
+        "value": "Panaderías",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-002",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-96d84dff4df35c7ab89428a4d05cbb83"
+      },
+      {
+        "observation_id": "OBS-003",
+        "attribute": "display_name",
+        "value": "Hornos del Centro",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-003",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-b47d150617e553ad8421d7b140516737"
+      },
+      {
+        "observation_id": "OBS-004",
+        "attribute": "sector",
+        "value": "Panaderías",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-004",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-b47d150617e553ad8421d7b140516737"
+      },
+      {
+        "observation_id": "OBS-005",
+        "attribute": "display_name",
+        "value": "Ruta Corta Mensajería",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-005",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-473a8b24a5ae57bdaf8c7151a1dbe73a"
+      },
+      {
+        "observation_id": "OBS-006",
+        "attribute": "sector",
+        "value": "Logística",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-006",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-473a8b24a5ae57bdaf8c7151a1dbe73a"
+      },
+      {
+        "observation_id": "OBS-007",
+        "attribute": "display_name",
+        "value": "Nodo Azul Soporte TI",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-007",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-ebc7acf24cf1526394e0942b600b910e"
+      },
+      {
+        "observation_id": "OBS-008",
+        "attribute": "sector",
+        "value": "Tecnología",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-008",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-ebc7acf24cf1526394e0942b600b910e"
+      },
+      {
+        "observation_id": "OBS-009",
+        "attribute": "display_name",
+        "value": "Bitácora Software",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-009",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-5a05a766f11551469406a48c4c522243"
+      },
+      {
+        "observation_id": "OBS-010",
+        "attribute": "sector",
+        "value": "Tecnología",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-010",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-5a05a766f11551469406a48c4c522243"
+      },
+      {
+        "observation_id": "OBS-011",
+        "attribute": "display_name",
+        "value": "Enlace Punto POS",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-011",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-8da2884031885e7aae71d7293009ea2a"
+      },
+      {
+        "observation_id": "OBS-012",
+        "attribute": "sector",
+        "value": "Tecnología",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-012",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-8da2884031885e7aae71d7293009ea2a"
+      },
+      {
+        "observation_id": "OBS-013",
+        "attribute": "display_name",
+        "value": "Cobro Ágil Pagos",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-013",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-4f8d13d468c25f93aad2f07259809e6e"
+      },
+      {
+        "observation_id": "OBS-014",
+        "attribute": "sector",
+        "value": "Fintech",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-014",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-4f8d13d468c25f93aad2f07259809e6e"
+      },
+      {
+        "observation_id": "OBS-015",
+        "attribute": "display_name",
+        "value": "Café Jacaranda",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-015",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-69660e4b09e557f0a5fde83e6273145b"
+      },
+      {
+        "observation_id": "OBS-016",
+        "attribute": "sector",
+        "value": "Restaurantes y cafeterías",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-016",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-69660e4b09e557f0a5fde83e6273145b"
+      },
+      {
+        "observation_id": "OBS-017",
+        "attribute": "display_name",
+        "value": "Comedor del Andén",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-017",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-0588444eb4885deda97dfaa4f9cf294d"
+      },
+      {
+        "observation_id": "OBS-018",
+        "attribute": "sector",
+        "value": "Restaurantes y cafeterías",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-018",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-0588444eb4885deda97dfaa4f9cf294d"
+      },
+      {
+        "observation_id": "OBS-019",
+        "attribute": "display_name",
+        "value": "Brasa y Huerto",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-019",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-c482650632955b75acaee493c6104db8"
+      },
+      {
+        "observation_id": "OBS-020",
+        "attribute": "sector",
+        "value": "Restaurantes y cafeterías",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-020",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-c482650632955b75acaee493c6104db8"
+      },
+      {
+        "observation_id": "OBS-021",
+        "attribute": "display_name",
+        "value": "Papelería Horizonte",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-021",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f"
+      },
+      {
+        "observation_id": "OBS-022",
+        "attribute": "sector",
+        "value": "Comercio minorista",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-022",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f"
+      },
+      {
+        "observation_id": "OBS-023",
+        "attribute": "display_name",
+        "value": "Ferretería Cinco Calles",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-023",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-4a0f849e77eb54c8a07cf5b26b0a904c"
+      },
+      {
+        "observation_id": "OBS-024",
+        "attribute": "sector",
+        "value": "Comercio minorista",
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Sector declarado en CRM; puede estar desactualizado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-024",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-4a0f849e77eb54c8a07cf5b26b0a904c"
+      },
+      {
+        "observation_id": "OBS-025",
+        "attribute": "relationship_claim",
+        "value": {
+          "from_company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+          "to_company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+          "relationship_type": "SUPPLIES_TO"
+        },
+        "source_type": "CRM",
+        "verification_status": "CONFIRMED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Cliente y servicio anotado",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-025",
+        "subject_type": "RELATIONSHIP",
+        "subject_id": "LINK-928437aa497d51019e216aa9b27c65ba"
+      },
+      {
+        "observation_id": "OBS-026",
+        "attribute": "relationship_claim",
+        "value": {
+          "from_company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+          "to_company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+          "relationship_type": "SUPPLIES_TO"
+        },
+        "source_type": "CRM",
+        "verification_status": "CONFIRMED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Servicio asentado en CRM de cliente",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-026",
+        "subject_type": "RELATIONSHIP",
+        "subject_id": "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+      },
+      {
+        "observation_id": "OBS-027",
+        "attribute": "branch_count",
+        "value": 1,
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Atributo sintético observado; no implica resultado comercial",
+        "conflict_group": "",
+        "source_record_id": "SRC-CRM-OBS-027",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-96d84dff4df35c7ab89428a4d05cbb83"
+      },
+      {
+        "observation_id": "OBS-028",
+        "attribute": "branch_count",
+        "value": 2,
+        "source_type": "CRM",
+        "verification_status": "REPORTED",
+        "observed_at": "2026-01-13T12:00:00Z",
+        "recorded_at": "2026-01-15T12:00:00Z",
+        "available_at": "2026-01-15T12:00:00Z",
+        "evidence_note": "Atributo sintético observado; no implica resultado comercial",
+        "conflict_group": "CG-001",
+        "source_record_id": "SRC-CRM-OBS-028",
+        "subject_type": "COMPANY",
+        "subject_id": "CO-b47d150617e553ad8421d7b140516737"
+      }
+    ],
+    "identities": [],
+    "conflicts": []
+  },
+  "summary": {
+    "as_of": "2026-01-15T12:00:00Z",
+    "companies": 12,
+    "relationship_claims": 2,
+    "referrals": 0,
+    "observations": 28,
+    "identity_candidates": 0,
+    "conflicted_attributes": 0
+  },
+  "ranking": {
+    "policy": {
+      "version": "003a-conservative-v1",
+      "capacity": 5,
+      "additional_branches": {
+        "weight": 10,
+        "cap": 5
+      },
+      "confirmed_neighbors": {
+        "weight": 5,
+        "cap": 4
+      },
+      "baseline_rule": "10 × min(max(branch_count − 1, 0), 5)",
+      "graph_rule": "baseline + 5 × min(distinct_confirmed_economic_neighbors, 4)",
+      "eligibility_rule": "Conocidas salvo servicio activo confirmado sin conflicto.",
+      "tie_break": "Puntuación descendente, company_id público ascendente.",
+      "interpretation": "Puntos exploratorios; no probabilidades ni efecto económico medido."
+    },
+    "as_of": "2026-01-15T12:00:00Z",
+    "visible_input_sha256": "7ec89be2b800bef4818828a767506ac52829f63c1cfc3c1ffe29bcf9ed778a49",
+    "known_companies": 12,
+    "eligible_companies": 12,
+    "visible_observations": 28,
+    "companies": [
+      {
+        "company_id": "CO-b47d150617e553ad8421d7b140516737",
+        "display_name": "Hornos del Centro",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-003",
+            "attribute": "display_name",
+            "value": "Hornos del Centro",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-003",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-b47d150617e553ad8421d7b140516737"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "OBSERVED",
+            "observed_branch_count": 2,
+            "value": 1,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 10,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": [
+              {
+                "observation_id": "OBS-028",
+                "attribute": "branch_count",
+                "value": 2,
+                "source_type": "CRM",
+                "verification_status": "REPORTED",
+                "observed_at": "2026-01-13T12:00:00Z",
+                "recorded_at": "2026-01-15T12:00:00Z",
+                "available_at": "2026-01-15T12:00:00Z",
+                "evidence_note": "Atributo sintético observado; no implica resultado comercial",
+                "conflict_group": "CG-001",
+                "source_record_id": "SRC-CRM-OBS-028",
+                "subject_type": "COMPANY",
+                "subject_id": "CO-b47d150617e553ad8421d7b140516737"
+              }
+            ]
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 10,
+        "graph_score": 10,
+        "baseline_position": 1,
+        "baseline_selected": true,
+        "graph_position": 1,
+        "graph_selected": true,
+        "position_change": 0,
+        "selection_change": "BOTH"
+      },
+      {
+        "company_id": "CO-0588444eb4885deda97dfaa4f9cf294d",
+        "display_name": "Comedor del Andén",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-017",
+            "attribute": "display_name",
+            "value": "Comedor del Andén",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-017",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-0588444eb4885deda97dfaa4f9cf294d"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 0,
+        "baseline_position": 2,
+        "baseline_selected": true,
+        "graph_position": 6,
+        "graph_selected": false,
+        "position_change": -4,
+        "selection_change": "BASELINE_ONLY"
+      },
+      {
+        "company_id": "CO-473a8b24a5ae57bdaf8c7151a1dbe73a",
+        "display_name": "Ruta Corta Mensajería",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-005",
+            "attribute": "display_name",
+            "value": "Ruta Corta Mensajería",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-005",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-473a8b24a5ae57bdaf8c7151a1dbe73a"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 0,
+        "baseline_position": 3,
+        "baseline_selected": true,
+        "graph_position": 7,
+        "graph_selected": false,
+        "position_change": -4,
+        "selection_change": "BASELINE_ONLY"
+      },
+      {
+        "company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+        "display_name": "Papelería Horizonte",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-021",
+            "attribute": "display_name",
+            "value": "Papelería Horizonte",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-021",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "OBSERVED",
+            "value": 1,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 5,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [
+              {
+                "company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+                "relationship_ids": [
+                  "LINK-928437aa497d51019e216aa9b27c65ba"
+                ]
+              }
+            ],
+            "relationship_ids": [
+              "LINK-928437aa497d51019e216aa9b27c65ba"
+            ],
+            "evidence": [
+              {
+                "observation_id": "OBS-025",
+                "attribute": "relationship_claim",
+                "value": {
+                  "from_company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+                  "to_company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+                  "relationship_type": "SUPPLIES_TO"
+                },
+                "source_type": "CRM",
+                "verification_status": "CONFIRMED",
+                "observed_at": "2026-01-13T12:00:00Z",
+                "recorded_at": "2026-01-15T12:00:00Z",
+                "available_at": "2026-01-15T12:00:00Z",
+                "evidence_note": "Cliente y servicio anotado",
+                "conflict_group": "",
+                "source_record_id": "SRC-CRM-OBS-025",
+                "subject_type": "RELATIONSHIP",
+                "subject_id": "LINK-928437aa497d51019e216aa9b27c65ba"
+              }
+            ]
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 5,
+        "baseline_position": 4,
+        "baseline_selected": true,
+        "graph_position": 2,
+        "graph_selected": true,
+        "position_change": 2,
+        "selection_change": "BOTH"
+      },
+      {
+        "company_id": "CO-4a0f849e77eb54c8a07cf5b26b0a904c",
+        "display_name": "Ferretería Cinco Calles",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-023",
+            "attribute": "display_name",
+            "value": "Ferretería Cinco Calles",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-023",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-4a0f849e77eb54c8a07cf5b26b0a904c"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 0,
+        "baseline_position": 5,
+        "baseline_selected": true,
+        "graph_position": 8,
+        "graph_selected": false,
+        "position_change": -3,
+        "selection_change": "BASELINE_ONLY"
+      },
+      {
+        "company_id": "CO-4f8d13d468c25f93aad2f07259809e6e",
+        "display_name": "Cobro Ágil Pagos",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-013",
+            "attribute": "display_name",
+            "value": "Cobro Ágil Pagos",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-013",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-4f8d13d468c25f93aad2f07259809e6e"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 0,
+        "baseline_position": 6,
+        "baseline_selected": false,
+        "graph_position": 9,
+        "graph_selected": false,
+        "position_change": -3,
+        "selection_change": "NEITHER"
+      },
+      {
+        "company_id": "CO-5a05a766f11551469406a48c4c522243",
+        "display_name": "Bitácora Software",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-009",
+            "attribute": "display_name",
+            "value": "Bitácora Software",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-009",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-5a05a766f11551469406a48c4c522243"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 0,
+        "baseline_position": 7,
+        "baseline_selected": false,
+        "graph_position": 10,
+        "graph_selected": false,
+        "position_change": -3,
+        "selection_change": "NEITHER"
+      },
+      {
+        "company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+        "display_name": "Café Jacaranda",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-015",
+            "attribute": "display_name",
+            "value": "Café Jacaranda",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-015",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-69660e4b09e557f0a5fde83e6273145b"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "OBSERVED",
+            "value": 1,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 5,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [
+              {
+                "company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+                "relationship_ids": [
+                  "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+                ]
+              }
+            ],
+            "relationship_ids": [
+              "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+            ],
+            "evidence": [
+              {
+                "observation_id": "OBS-026",
+                "attribute": "relationship_claim",
+                "value": {
+                  "from_company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+                  "to_company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+                  "relationship_type": "SUPPLIES_TO"
+                },
+                "source_type": "CRM",
+                "verification_status": "CONFIRMED",
+                "observed_at": "2026-01-13T12:00:00Z",
+                "recorded_at": "2026-01-15T12:00:00Z",
+                "available_at": "2026-01-15T12:00:00Z",
+                "evidence_note": "Servicio asentado en CRM de cliente",
+                "conflict_group": "",
+                "source_record_id": "SRC-CRM-OBS-026",
+                "subject_type": "RELATIONSHIP",
+                "subject_id": "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+              }
+            ]
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 5,
+        "baseline_position": 8,
+        "baseline_selected": false,
+        "graph_position": 3,
+        "graph_selected": true,
+        "position_change": 5,
+        "selection_change": "GRAPH_ONLY"
+      },
+      {
+        "company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+        "display_name": "Enlace Punto POS",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-011",
+            "attribute": "display_name",
+            "value": "Enlace Punto POS",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-011",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-8da2884031885e7aae71d7293009ea2a"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "OBSERVED",
+            "value": 1,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 5,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [
+              {
+                "company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+                "relationship_ids": [
+                  "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+                ]
+              }
+            ],
+            "relationship_ids": [
+              "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+            ],
+            "evidence": [
+              {
+                "observation_id": "OBS-026",
+                "attribute": "relationship_claim",
+                "value": {
+                  "from_company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+                  "to_company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+                  "relationship_type": "SUPPLIES_TO"
+                },
+                "source_type": "CRM",
+                "verification_status": "CONFIRMED",
+                "observed_at": "2026-01-13T12:00:00Z",
+                "recorded_at": "2026-01-15T12:00:00Z",
+                "available_at": "2026-01-15T12:00:00Z",
+                "evidence_note": "Servicio asentado en CRM de cliente",
+                "conflict_group": "",
+                "source_record_id": "SRC-CRM-OBS-026",
+                "subject_type": "RELATIONSHIP",
+                "subject_id": "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+              }
+            ]
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 5,
+        "baseline_position": 9,
+        "baseline_selected": false,
+        "graph_position": 4,
+        "graph_selected": true,
+        "position_change": 5,
+        "selection_change": "GRAPH_ONLY"
+      },
+      {
+        "company_id": "CO-96d84dff4df35c7ab89428a4d05cbb83",
+        "display_name": "La Espiga del Barrio",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-001",
+            "attribute": "display_name",
+            "value": "La Espiga del Barrio",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-001",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-96d84dff4df35c7ab89428a4d05cbb83"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "OBSERVED",
+            "observed_branch_count": 1,
+            "value": 0,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": [
+              {
+                "observation_id": "OBS-027",
+                "attribute": "branch_count",
+                "value": 1,
+                "source_type": "CRM",
+                "verification_status": "REPORTED",
+                "observed_at": "2026-01-13T12:00:00Z",
+                "recorded_at": "2026-01-15T12:00:00Z",
+                "available_at": "2026-01-15T12:00:00Z",
+                "evidence_note": "Atributo sintético observado; no implica resultado comercial",
+                "conflict_group": "",
+                "source_record_id": "SRC-CRM-OBS-027",
+                "subject_type": "COMPANY",
+                "subject_id": "CO-96d84dff4df35c7ab89428a4d05cbb83"
+              }
+            ]
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 0,
+        "baseline_position": 10,
+        "baseline_selected": false,
+        "graph_position": 11,
+        "graph_selected": false,
+        "position_change": -1,
+        "selection_change": "NEITHER"
+      },
+      {
+        "company_id": "CO-c482650632955b75acaee493c6104db8",
+        "display_name": "Brasa y Huerto",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-019",
+            "attribute": "display_name",
+            "value": "Brasa y Huerto",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-019",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-c482650632955b75acaee493c6104db8"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "value": 0,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 0,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [],
+            "relationship_ids": [],
+            "evidence": []
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 0,
+        "baseline_position": 11,
+        "baseline_selected": false,
+        "graph_position": 12,
+        "graph_selected": false,
+        "position_change": -1,
+        "selection_change": "NEITHER"
+      },
+      {
+        "company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+        "display_name": "Nodo Azul Soporte TI",
+        "name_evidence": [
+          {
+            "observation_id": "OBS-007",
+            "attribute": "display_name",
+            "value": "Nodo Azul Soporte TI",
+            "source_type": "CRM",
+            "verification_status": "REPORTED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Primera mención; identidad canónica provisional para el simulador",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-007",
+            "subject_type": "COMPANY",
+            "subject_id": "CO-ebc7acf24cf1526394e0942b600b910e"
+          }
+        ],
+        "identity_status": "NEEDS_REVIEW",
+        "eligibility": {
+          "eligible": true,
+          "status": "PENDING_COMMERCIAL_VALIDATION",
+          "service_status": "UNKNOWN",
+          "observed_service_active": null,
+          "evidence": []
+        },
+        "features": {
+          "additional_branches": {
+            "status": "UNKNOWN",
+            "observed_branch_count": null,
+            "value": null,
+            "weight": 10,
+            "cap": 5,
+            "contribution": 0,
+            "rule": "10 × min(max(branch_count − 1, 0), 5)",
+            "evidence": []
+          },
+          "confirmed_neighbors": {
+            "status": "OBSERVED",
+            "value": 1,
+            "weight": 5,
+            "cap": 4,
+            "contribution": 5,
+            "rule": "Vecinos distintos en SUPPLIES_TO/PARTNERS_WITH CONFIRMED; sin fusión de alias.",
+            "neighbors": [
+              {
+                "company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+                "relationship_ids": [
+                  "LINK-928437aa497d51019e216aa9b27c65ba"
+                ]
+              }
+            ],
+            "relationship_ids": [
+              "LINK-928437aa497d51019e216aa9b27c65ba"
+            ],
+            "evidence": [
+              {
+                "observation_id": "OBS-025",
+                "attribute": "relationship_claim",
+                "value": {
+                  "from_company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+                  "to_company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+                  "relationship_type": "SUPPLIES_TO"
+                },
+                "source_type": "CRM",
+                "verification_status": "CONFIRMED",
+                "observed_at": "2026-01-13T12:00:00Z",
+                "recorded_at": "2026-01-15T12:00:00Z",
+                "available_at": "2026-01-15T12:00:00Z",
+                "evidence_note": "Cliente y servicio anotado",
+                "conflict_group": "",
+                "source_record_id": "SRC-CRM-OBS-025",
+                "subject_type": "RELATIONSHIP",
+                "subject_id": "LINK-928437aa497d51019e216aa9b27c65ba"
+              }
+            ]
+          }
+        },
+        "baseline_score": 0,
+        "graph_score": 5,
+        "baseline_position": 12,
+        "baseline_selected": false,
+        "graph_position": 5,
+        "graph_selected": true,
+        "position_change": 7,
+        "selection_change": "GRAPH_ONLY"
+      }
+    ],
+    "excluded": [],
+    "top_k": {
+      "baseline": [
+        "CO-b47d150617e553ad8421d7b140516737",
+        "CO-0588444eb4885deda97dfaa4f9cf294d",
+        "CO-473a8b24a5ae57bdaf8c7151a1dbe73a",
+        "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+        "CO-4a0f849e77eb54c8a07cf5b26b0a904c"
+      ],
+      "graph": [
+        "CO-b47d150617e553ad8421d7b140516737",
+        "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+        "CO-69660e4b09e557f0a5fde83e6273145b",
+        "CO-8da2884031885e7aae71d7293009ea2a",
+        "CO-ebc7acf24cf1526394e0942b600b910e"
+      ]
+    },
+    "comparison": {
+      "shared": [
+        "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+        "CO-b47d150617e553ad8421d7b140516737"
+      ],
+      "entered_graph": [
+        "CO-69660e4b09e557f0a5fde83e6273145b",
+        "CO-8da2884031885e7aae71d7293009ea2a",
+        "CO-ebc7acf24cf1526394e0942b600b910e"
+      ],
+      "left_baseline": [
+        "CO-0588444eb4885deda97dfaa4f9cf294d",
+        "CO-473a8b24a5ae57bdaf8c7151a1dbe73a",
+        "CO-4a0f849e77eb54c8a07cf5b26b0a904c"
+      ],
+      "baseline_boundary": {
+        "crosses_tie": true,
+        "score": 0,
+        "tied_company_ids": [
+          "CO-0588444eb4885deda97dfaa4f9cf294d",
+          "CO-473a8b24a5ae57bdaf8c7151a1dbe73a",
+          "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+          "CO-4a0f849e77eb54c8a07cf5b26b0a904c",
+          "CO-4f8d13d468c25f93aad2f07259809e6e",
+          "CO-5a05a766f11551469406a48c4c522243",
+          "CO-69660e4b09e557f0a5fde83e6273145b",
+          "CO-8da2884031885e7aae71d7293009ea2a",
+          "CO-96d84dff4df35c7ab89428a4d05cbb83",
+          "CO-c482650632955b75acaee493c6104db8",
+          "CO-ebc7acf24cf1526394e0942b600b910e"
+        ]
+      },
+      "graph_boundary": {
+        "crosses_tie": false,
+        "score": 5,
+        "tied_company_ids": [
+          "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+          "CO-69660e4b09e557f0a5fde83e6273145b",
+          "CO-8da2884031885e7aae71d7293009ea2a",
+          "CO-ebc7acf24cf1526394e0942b600b910e"
+        ]
+      },
+      "unfilled_capacity": 0
+    },
+    "relationship_context": [
+      {
+        "relationship_id": "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8",
+        "from_company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+        "to_company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+        "relationship_type": "SUPPLIES_TO",
+        "verification_status": "CONFIRMED",
+        "scoring_status": "CONFIRMED",
+        "evidence": [
+          {
+            "observation_id": "OBS-026",
+            "attribute": "relationship_claim",
+            "value": {
+              "from_company_id": "CO-8da2884031885e7aae71d7293009ea2a",
+              "to_company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+              "relationship_type": "SUPPLIES_TO"
+            },
+            "source_type": "CRM",
+            "verification_status": "CONFIRMED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Servicio asentado en CRM de cliente",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-026",
+            "subject_type": "RELATIONSHIP",
+            "subject_id": "LINK-3bdc3cfa4aa15a14a993c82a6d2336d8"
+          }
+        ]
+      },
+      {
+        "relationship_id": "LINK-928437aa497d51019e216aa9b27c65ba",
+        "from_company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+        "to_company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+        "relationship_type": "SUPPLIES_TO",
+        "verification_status": "CONFIRMED",
+        "scoring_status": "CONFIRMED",
+        "evidence": [
+          {
+            "observation_id": "OBS-025",
+            "attribute": "relationship_claim",
+            "value": {
+              "from_company_id": "CO-ebc7acf24cf1526394e0942b600b910e",
+              "to_company_id": "CO-47a3f99d256d5f6aa3eb75c6dd3c2d1f",
+              "relationship_type": "SUPPLIES_TO"
+            },
+            "source_type": "CRM",
+            "verification_status": "CONFIRMED",
+            "observed_at": "2026-01-13T12:00:00Z",
+            "recorded_at": "2026-01-15T12:00:00Z",
+            "available_at": "2026-01-15T12:00:00Z",
+            "evidence_note": "Cliente y servicio anotado",
+            "conflict_group": "",
+            "source_record_id": "SRC-CRM-OBS-025",
+            "subject_type": "RELATIONSHIP",
+            "subject_id": "LINK-928437aa497d51019e216aa9b27c65ba"
+          }
+        ]
+      }
+    ],
+    "identity_candidates": [],
+    "conflicts": []
+  },
+  "evolution": [
+    {
+      "Corte": "T0",
+      "as_of": "2026-01-15T12:00:00Z",
+      "companies": 12,
+      "relationship_claims": 2,
+      "referrals": 0,
+      "observations": 28,
+      "identity_candidates": 0,
+      "conflicted_attributes": 0
+    }
+  ],
+  "sources": {
+    "CRM": 28
+  },
+  "states": {
+    "CONFIRMED": 2
+  },
+  "coverage": {
+    "branches": 2,
+    "neighbors": 4,
+    "denominator": 12
+  }
+}

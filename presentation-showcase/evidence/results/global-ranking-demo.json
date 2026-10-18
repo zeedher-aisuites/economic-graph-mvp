@@ -1,0 +1,49 @@
+{
+  "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+  "cut": "T2",
+  "industry": "Restaurantes y cafeterías",
+  "company_id": "CO-69660e4b09e557f0a5fde83e6273145b",
+  "global_count": 21,
+  "industry_count": 3,
+  "global": {
+    "ID": "CO-69660e4b09e557f0a5fde83e6273145b",
+    "Empresa": "Café Jacaranda",
+    "Posición baseline": 10,
+    "Posición grafo": 3,
+    "Cambio de posición": 7,
+    "Score baseline": 0,
+    "Score grafo": 10,
+    "Aporte individual": 0,
+    "Aporte relacional": 10,
+    "Top-5 baseline": false,
+    "Top-5 grafo": true
+  },
+  "industry_filtered": {
+    "ID": "CO-69660e4b09e557f0a5fde83e6273145b",
+    "Empresa": "Café Jacaranda",
+    "Posición baseline": 10,
+    "Posición grafo": 3,
+    "Cambio de posición": 7,
+    "Score baseline": 0,
+    "Score grafo": 10,
+    "Aporte individual": 0,
+    "Aporte relacional": 10,
+    "Top-5 baseline": false,
+    "Top-5 grafo": true
+  },
+  "company_filtered": {
+    "ID": "CO-69660e4b09e557f0a5fde83e6273145b",
+    "Empresa": "Café Jacaranda",
+    "Posición baseline": 10,
+    "Posición grafo": 3,
+    "Cambio de posición": 7,
+    "Score baseline": 0,
+    "Score grafo": 10,
+    "Aporte individual": 0,
+    "Aporte relacional": 10,
+    "Top-5 baseline": false,
+    "Top-5 grafo": true
+  },
+  "assertion": "Las tres filas son idénticas; #10 → #3 se conserva.",
+  "limitation": "Prueba sintética de consistencia; no calidad comercial ni causalidad."
+}

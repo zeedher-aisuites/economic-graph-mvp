@@ -1,0 +1,331 @@
+[
+  {
+    "id": "01-resumen-t2",
+    "file": "screenshots/01-resumen-t2.png",
+    "screen": "Resumen",
+    "demonstrates": "23 conocidas, 21 elegibles, tres sustituciones y escenarios etiquetados.",
+    "captured_at": "2026-10-18T12:38:56.518833-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {},
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/01-resumen-t2-viewport.png"
+  },
+  {
+    "id": "02-graph-cafe",
+    "file": "screenshots/02-graph-cafe.png",
+    "screen": "Graph Health",
+    "demonstrates": "Red focal de Café Jacaranda con dos vínculos confirmados.",
+    "captured_at": "2026-10-18T12:38:59.656093-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "company": "Café Jacaranda",
+      "network": "Empresa y vecinos"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/02-graph-cafe-viewport.png",
+    "additional_captures": [
+      {
+        "file": "screenshots/02-graph-cafe-chart.png",
+        "captured_at": "2026-10-18T12:43:55.932113-06:00",
+        "region": "stVegaLiteChart; captura directa de Chromium",
+        "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+        "mode": "offline",
+        "cut": "T2",
+        "company": "Café Jacaranda",
+        "dimensions": "1140×351"
+      }
+    ]
+  },
+  {
+    "id": "03-graph-ficha",
+    "file": "screenshots/03-graph-ficha.png",
+    "screen": "Graph Health · ficha",
+    "demonstrates": "Posiciones globales #10 → #3, puntos y respaldo de la cuenta.",
+    "captured_at": "2026-10-18T12:39:02.821942-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "company": "Café Jacaranda",
+      "expanded": "Ficha de cuenta y respaldo completo"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/03-graph-ficha-viewport.png"
+  },
+  {
+    "id": "04-graph-completa",
+    "file": "screenshots/04-graph-completa.png",
+    "screen": "Graph Health · red completa",
+    "demonstrates": "Red observable completa; no usa la verdad privada.",
+    "captured_at": "2026-10-18T12:39:07.268493-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "network": "Red completa del segmento"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/04-graph-completa-viewport.png"
+  },
+  {
+    "id": "05-graph-t0",
+    "file": "screenshots/05-graph-t0.png",
+    "screen": "Graph Health · T0",
+    "demonstrates": "28 observaciones y evolución sin cortes futuros.",
+    "captured_at": "2026-10-18T12:39:11.845430-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T0",
+    "parameters": {
+      "network": "Red completa del segmento",
+      "expanded": "Evolución global al corte"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/05-graph-t0-viewport.png"
+  },
+  {
+    "id": "06-graph-t1",
+    "file": "screenshots/06-graph-t1.png",
+    "screen": "Graph Health · T1",
+    "demonstrates": "54 observaciones y 17 empresas conocidas.",
+    "captured_at": "2026-10-18T12:39:15.015646-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T1",
+    "parameters": {
+      "network": "Red completa del segmento",
+      "expanded": "Evolución global al corte"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/06-graph-t1-viewport.png"
+  },
+  {
+    "id": "07-ai-global",
+    "file": "screenshots/07-ai-global.png",
+    "screen": "AI Performance · global",
+    "demonstrates": "Dos rankings y tres sustituciones bajo K=5.",
+    "captured_at": "2026-10-18T12:39:19.428190-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {},
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/07-ai-global-viewport.png"
+  },
+  {
+    "id": "08-ranking-global",
+    "file": "screenshots/08-ranking-global.png",
+    "screen": "AI Performance · tabla global",
+    "demonstrates": "Ranking completo antes de filtrar.",
+    "captured_at": "2026-10-18T12:39:22.419157-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "industry": "Todas",
+      "company": "Todas",
+      "score_minimum": 0
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/08-ranking-global-viewport.png"
+  },
+  {
+    "id": "09-ranking-industria",
+    "file": "screenshots/09-ranking-industria.png",
+    "screen": "AI Performance · industria",
+    "demonstrates": "Café Jacaranda conserva #10 → #3 al filtrar industria.",
+    "captured_at": "2026-10-18T12:39:26.872882-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "industry": "Restaurantes y cafeterías",
+      "company": "Todas",
+      "score_minimum": 0
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/09-ranking-industria-viewport.png"
+  },
+  {
+    "id": "10-ranking-cafe",
+    "file": "screenshots/10-ranking-cafe.png",
+    "screen": "AI Performance · empresa",
+    "demonstrates": "Una sola empresa visible conserva posición global 3.",
+    "captured_at": "2026-10-18T12:39:30.052160-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "industry": "Restaurantes y cafeterías",
+      "company": "Café Jacaranda",
+      "score_minimum": 0
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/10-ranking-cafe-viewport.png"
+  },
+  {
+    "id": "11-ranking-score",
+    "file": "screenshots/11-ranking-score.png",
+    "screen": "AI Performance · score",
+    "demonstrates": "El filtro de tabla oculta la fila sin recalcular la ficha global.",
+    "captured_at": "2026-10-18T12:39:33.049424-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "industry": "Restaurantes y cafeterías",
+      "company": "Café Jacaranda",
+      "score_minimum": 11
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/11-ranking-score-viewport.png"
+  },
+  {
+    "id": "12-business-funnel",
+    "file": "screenshots/12-business-funnel.png",
+    "screen": "Business Funnel",
+    "demonstrates": "23 → 21 → 5; dos exclusiones aparte y ventas no observadas.",
+    "captured_at": "2026-10-18T12:39:37.358167-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "policy": "graph",
+      "industry": "Todas",
+      "company": "Todas"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/12-business-funnel-viewport.png"
+  },
+  {
+    "id": "13-business-baseline",
+    "file": "screenshots/13-business-baseline.png",
+    "screen": "Business Funnel · baseline",
+    "demonstrates": "Cambiar política no inventa contactos ni ventas.",
+    "captured_at": "2026-10-18T12:39:40.382792-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "T2",
+    "parameters": {
+      "policy": "baseline",
+      "industry": "Todas",
+      "company": "Todas"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/13-business-baseline-viewport.png"
+  },
+  {
+    "id": "14-economic-five",
+    "file": "screenshots/14-economic-five.png",
+    "screen": "Economic Impact · cinco plazas",
+    "demonstrates": "Cuatro escenarios, incluido caso base negativo a cinco plazas.",
+    "captured_at": "2026-10-18T12:39:43.408439-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "Independiente",
+    "parameters": {
+      "scope": "demo"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/14-economic-five-viewport.png"
+  },
+  {
+    "id": "15-economic-500",
+    "file": "screenshots/15-economic-500.png",
+    "screen": "Economic Impact · 500 plazas",
+    "demonstrates": "+39,000 base frente a −41,000 nulo; hipótesis, no ventas.",
+    "captured_at": "2026-10-18T12:39:46.500471-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "Independiente",
+    "parameters": {
+      "scope": "hypothetical"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/15-economic-500-viewport.png"
+  },
+  {
+    "id": "16-economic-sensitivity",
+    "file": "screenshots/16-economic-sensitivity.png",
+    "screen": "Economic Impact · sensibilidad",
+    "demonstrates": "Exploración sin modificar los supuestos originales.",
+    "captured_at": "2026-10-18T12:39:51.958290-06:00",
+    "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+    "mode": "offline",
+    "cut": "Independiente",
+    "parameters": {
+      "scope": "hypothetical",
+      "parameter": "contract_margin_per_activation"
+    },
+    "source": "app/control_tower.py",
+    "limitations": "Datos sintéticos; no acredita resultados de negocio ni integración Atlas.",
+    "browser": "154.0.8037.57",
+    "viewport": "1600×1050",
+    "authentic": true,
+    "viewport_file": "screenshots/16-economic-sensitivity-viewport.png"
+  }
+]
