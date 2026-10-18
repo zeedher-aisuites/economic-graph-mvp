@@ -1,6 +1,6 @@
 # Guion de exposición y defensa técnica
 
-Misión 2 · Mi respuesta al reto de Totalplay. Implementación de respaldo: `774dacd80e6410ca43299f63f19d9744a31929c0`. Capturas offline y datos sintéticos de la primera revisión, conservados.
+Misión 3 · Mi respuesta al reto de Totalplay con evidencias opcionales. Implementación de respaldo: `774dacd80e6410ca43299f63f19d9744a31929c0`. Capturas offline y datos sintéticos de la primera revisión, conservados.
 
 El relato de alcance, hipótesis y decisiones corresponde a la declaración del candidato. La programación fue asistida por ChatGPT/GPT, Gemini y Codex según esa declaración. Las pruebas, capturas y el experimento de depuración de V1 fueron producidos por Codex y conservan su origen; no acreditan ejecución manual personal. Duraciones a 140 palabras por minuto; ensayar en voz alta.
 
@@ -160,6 +160,12 @@ Señala las observaciones OBS-028, OBS-047 y OBS-075 y su contribución cero por
 
 **Límite:** CONFLICTED y UNKNOWN no significan que se haya demostrado un valor cero.
 
+### Evidencias para mostrar (opcionales)
+
+Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.
+
+- Ver las 3 observaciones originales · `hornos`
+
 ## 07. Empecé con reglas que pudiera explicar
 
 **Tipo:** Demostrado · reglas · **Duración orientativa:** 56 s
@@ -212,6 +218,12 @@ Sigue las tres entradas y tres salidas; evita interpretar tres cambios como tres
 
 **Límite:** Los empates y la baja cobertura de atributos pueden influir en el orden.
 
+### Evidencias para mostrar (opcionales)
+
+Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.
+
+- ¿Por qué se mantienen las primeras dos empresas? · `leaders`
+
 ## 09. Jacaranda me permite explicar el cambio
 
 **Tipo:** Demostrado · T2 · **Duración orientativa:** 54 s
@@ -238,6 +250,13 @@ Amplía la captura; señala líneas gruesas y las dos observaciones que sí punt
 
 **Límite:** El dibujo no demuestra centralidad comercial, intención de compra ni causalidad.
 
+### Evidencias para mostrar (opcionales)
+
+Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.
+
+- Ver las 2 relaciones confirmadas (+10 puntos) · `confirmed`
+- Ver las 5 observaciones de contexto (0 puntos) · `context`
+
 ## 10. Así pasa mi información del archivo a la pantalla
 
 **Tipo:** Demostrado · implementación · **Duración orientativa:** 54 s
@@ -263,6 +282,14 @@ Recorre las dos ramas de build_context y la fuente financiera separada.
 **Reproducción:** `uv run python presentation-showcase/scripts/reproduce.py`
 
 **Límite:** La separación de módulos no acredita una arquitectura de producción ni aislamiento por roles.
+
+### Evidencias para mostrar (opcionales)
+
+Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.
+
+- Ver datos de observations.json · `ledger`
+- Ver supuestos financieros · `finance`
+- Ver filtros reales de Streamlit · `filters`
 
 ## 11. La Control Tower reúne lo que puedo revisar
 

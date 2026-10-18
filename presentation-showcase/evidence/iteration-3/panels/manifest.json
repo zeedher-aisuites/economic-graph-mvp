@@ -1,0 +1,165 @@
+{
+  "base_commit": "23a8efac164f8631dae57e9c9e8e3bcf9efe66ae",
+  "product_source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+  "mode": "offline, datos sintéticos; árbol de trabajo validado antes del commit",
+  "frontend_sha256": {
+    "index.html": "2d01ed6235fd294a94001154fb4ce5278468a263f0fdd1fb43235492323c0e1b",
+    "app.js": "236ff25019759ec32764e69fafa793c6db974f7f5d95beb92c9f621b4cd55cfc",
+    "evidence-panels.js": "7504377aad4e368143649e444a8e8dc88d1c449d46b2b2cf7239166a12742fe1",
+    "style.css": "264f8cfc2015c9298c184c7f52d94e2865a45b1320cd26b9f4f1828f3a719366",
+    "data.js": "f8e5b2f615e4ea699e952bdaf3a6207cf6d3323d1f1b8d070bc84f07c81f58ec"
+  },
+  "captures": [
+    {
+      "file": "evidence/iteration-3/panels/confirmed.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:30.202700+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "c66911393292d9d51590379ef5d669b519f56744d724a7ed09230169004160e1"
+    },
+    {
+      "file": "evidence/iteration-3/panels/context.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:30.698101+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "3d7eb8c8f0fc1a446ddded6448b86b9da0e20100080d1aa654e62244f8eb5746"
+    },
+    {
+      "file": "evidence/iteration-3/panels/controlled-channel-unavailable-fallback.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:52.211475+00:00",
+      "dimensions_px": [
+        1366,
+        900
+      ],
+      "sha256": "069af94708134491dd71fba6f5ca5db25df121309a7edf9fb0f175fcc429be56"
+    },
+    {
+      "file": "evidence/iteration-3/panels/filters-capture-expanded.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:48.071747+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "20d8981c4bec767effedaf116f8cf399a277f21752cadde1ce80611ba9e07873"
+    },
+    {
+      "file": "evidence/iteration-3/panels/filters-company-remote.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:47.415071+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "eb53ade0e3338ac7ec903c4e9213a7ee9c917549ef2d7dfcf4048a30f130fa43"
+    },
+    {
+      "file": "evidence/iteration-3/panels/filters-global-remote.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:46.733634+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "7176236451a0161aff661859132f0ceaf8a44cfac4096ea5d1172ce1d7d52e16"
+    },
+    {
+      "file": "evidence/iteration-3/panels/filters-industry-remote.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:47.092049+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "993eef3269a7c854e5167ba2630de882a809e07cbdbf049c70922f35ce81963e"
+    },
+    {
+      "file": "evidence/iteration-3/panels/filters.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:32.209722+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "348fd9924e077d63c541f1988874414afbbcbeaf59d36bcfeced59f8ca12d698"
+    },
+    {
+      "file": "evidence/iteration-3/panels/finance.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:31.735974+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "0c3c408ace39dc2faf72fe2acdc6f9af05dc6f0ab8c6526406a54ea4f9226980"
+    },
+    {
+      "file": "evidence/iteration-3/panels/hornos-technical.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:29.190179+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "19538f9bdc2f8be51232842c273a55d3d20d9674cdce50ff0772b7c7d1b670d1"
+    },
+    {
+      "file": "evidence/iteration-3/panels/hornos.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:28.925501+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "4ffc68156d0227a320da10bbca4b1b5d91c10afb42cc452ff8227618c26adcd7"
+    },
+    {
+      "file": "evidence/iteration-3/panels/leaders-carga-remote.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:43.778309+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "6f61b396a88681d70ea3a3b3b0ed1fecbff9b65344bd01e054722ec538131152"
+    },
+    {
+      "file": "evidence/iteration-3/panels/leaders.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:29.554664+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "73421fba4e62b49173355f5079a9a37f8f105cf9b56e64e290ad576e96bfa134"
+    },
+    {
+      "file": "evidence/iteration-3/panels/ledger.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:31.255726+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "0a1e228698ff7dea11089eb77aab8c3b6666ed2584f45f1e9f4bbbe5ff20547a"
+    },
+    {
+      "file": "evidence/iteration-3/panels/presenter-controls.png",
+      "kind": "Captura de panel o controles de la presentación; no nueva ejecución de Streamlit",
+      "captured_at_utc": "2026-10-18T21:26:47.621553+00:00",
+      "dimensions_px": [
+        1600,
+        1030
+      ],
+      "sha256": "d09db816f9257f5ddffd52d3ca471e5bae6721e0ee2ae952ed4e451fa0f62891"
+    }
+  ],
+  "streamlit_captures_reused": "evidence/screenshots/manifest.json: 08-ranking-global, 09-ranking-industria, 10-ranking-cafe; originales sin cambios"
+}

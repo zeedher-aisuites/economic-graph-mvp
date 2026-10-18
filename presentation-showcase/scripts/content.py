@@ -1245,3 +1245,73 @@ SLIDES = [
         "al candidato.",
     },
 ]
+
+# Apoyos opcionales; no añaden tablas ni tiempo obligatorio al discurso principal.
+CONTEXTUAL_EVIDENCES = {
+    "procedencia": [
+        {"id": "hornos", "label": "Ver las 3 observaciones originales"},
+    ],
+    "cambio": [
+        {"id": "leaders", "label": "¿Por qué se mantienen las primeras dos empresas?"},
+    ],
+    "cafe": [
+        {"id": "confirmed", "label": "Ver las 2 relaciones confirmadas (+10 puntos)"},
+        {"id": "context", "label": "Ver las 5 observaciones de contexto (0 puntos)"},
+    ],
+    "arquitectura": [
+        {"id": "ledger", "label": "Ver datos de observations.json"},
+        {"id": "finance", "label": "Ver supuestos financieros"},
+        {"id": "filters", "label": "Ver filtros reales de Streamlit"},
+    ],
+}
+for slide in SLIDES:
+    if slide["id"] in CONTEXTUAL_EVIDENCES:
+        slide["evidences"] = CONTEXTUAL_EVIDENCES[slide["id"]]
+        slide["evidence_note"] = (
+            "Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir "
+            "su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas "
+            "y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados "
+            "reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. "
+            "Este apoyo es opcional y no forma parte del tiempo del discurso principal."
+        )
+
+CONTEXTUAL_CLAIMS = {
+    "procedencia": [
+        (
+            "OBS-028 y OBS-047 son REPORTED; OBS-075 es CONFIRMED. Sus valores 2/3/3 mantienen el conflicto de sucursales.",
+            "demostrado",
+        ),
+    ],
+    "cambio": [
+        (
+            "Panificadora conserva 50 puntos y #1; Carga Urbana conserva 10 y #2. Ambas tienen cero vecinos confirmados utilizables en T2.",
+            "demostrado",
+        ),
+        (
+            "El empate de 10 puntos se resuelve por company_id público ascendente, sin interpretación comercial del desempate.",
+            "demostrado",
+        ),
+    ],
+    "cafe": [
+        (
+            "OBS-026 y OBS-063 confirman dos vecinos económicos distintos que aportan 10 puntos a Jacaranda.",
+            "demostrado",
+        ),
+        (
+            "OBS-044/037/045/043/072 conservan contexto y aportan cero puntos a Jacaranda; las dos de Ruta Corta son afirmaciones distintas.",
+            "demostrado",
+        ),
+    ],
+    "arquitectura": [
+        (
+            "El JSON observable local tiene 83 registros; alimenta la ruta offline, sin consulta en vivo a Atlas.",
+            "demostrado",
+        ),
+        (
+            "La configuración financiera declara cinco plazas por bolsa y tres escenarios; el código deriva la escala de 500 y el escenario nulo.",
+            "demostrado",
+        ),
+    ],
+}
+for slide in SLIDES:
+    slide["claims"].extend(CONTEXTUAL_CLAIMS.get(slide["id"], []))

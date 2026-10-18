@@ -1,0 +1,74 @@
+{
+  "run_at": "2026-10-18T21:28:04.832088+00:00",
+  "origin": "Comprobaciones finales de misión 3 por Codex",
+  "base": "23a8efac164f8631dae57e9c9e8e3bcf9efe66ae",
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "132 files already formatted\n"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "presentation-showcase/app.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "presentation-showcase/evidence-panels.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "23a8efac164f8631dae57e9c9e8e3bcf9efe66ae"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "regeneration_deterministic": true,
+  "browser_qa_sha256": "a142e3dd3b7a27ffe8124d9845a7a3f3059ba46a6afd3603a8185d7c58b276a3",
+  "new_original_test_run": "284 passed, 1 skipped; evidence/iteration-3/results/pytest.txt",
+  "original_test_files_modified": false,
+  "changed_files_limited_to": "presentation-showcase/",
+  "result": "PASS"
+}

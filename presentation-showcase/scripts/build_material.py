@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 
 from content import SLIDES
+from contextual_data import build_contextual
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import PythonLexer
@@ -143,8 +144,9 @@ def main():
     )
     data = {
         "sourceCommit": COMMIT,
-        "presentationBaseCommit": "bad88c56d850a87d188a9b0d7a4d515f6766f408",
-        "iteration": 2,
+        "presentationBaseCommit": "23a8efac164f8631dae57e9c9e8e3bcf9efe66ae",
+        "iteration": 3,
+        "contextualEvidence": build_contextual(source_ref),
         "challengeQuestion": "¿Cómo construirías un Economic Graph de PyMEs para una Telco y cómo demostrarías que genera valor económico incremental?",
         "slides": SLIDES,
         "summary": SUMMARY,
@@ -170,7 +172,7 @@ def main():
     lines = [
         "# Guion de exposición y defensa técnica",
         "",
-        f"Misión 2 · Mi respuesta al reto de Totalplay. Implementación de respaldo: `{COMMIT}`. Capturas offline y datos sintéticos de la primera revisión, conservados.",
+        f"Misión 3 · Mi respuesta al reto de Totalplay con evidencias opcionales. Implementación de respaldo: `{COMMIT}`. Capturas offline y datos sintéticos de la primera revisión, conservados.",
         "",
         "El relato de alcance, hipótesis y decisiones corresponde a la declaración del candidato. La programación fue asistida por ChatGPT/GPT, Gemini y Codex según esa declaración. Las pruebas, capturas y el experimento de depuración de V1 fueron producidos por Codex y conservan su origen; no acreditan ejecución manual personal. Duraciones a 140 palabras por minuto; ensayar en voz alta.",
         "",
@@ -216,6 +218,10 @@ def main():
             "**Límite:** " + s["warning"],
             "",
         ]
+        if s.get("evidences"):
+            lines += ["### Evidencias para mostrar (opcionales)", "", s["evidence_note"], ""]
+            lines += [f"- {e['label']} · `{e['id']}`" for e in s["evidences"]]
+            lines += [""]
         guide += [
             f'<section><h2 id="{s["id"]}">{i:02d}. {html.escape(s["title"])}</h2><p class="meta">{html.escape(s["status"])} · ~{seconds} segundos</p><div class="box"><p>{html.escape(s["speech"])}</p></div><h3>Qué señalar</h3><p>{html.escape(s["point"])}</p><h3>Pregunta posible</h3><p><strong>{html.escape(s["question"])}</strong></p><p>{html.escape(s["answer"])}</p><h3>Si profundizan</h3><p>{html.escape(s["deep"])}</p><h3>Dónde verificar</h3><ul>'
         ]
@@ -224,8 +230,19 @@ def main():
             for r in s["sources"]
         )
         guide += [
-            f'</ul><pre>{html.escape(s["command"])}</pre><p class="warning">{html.escape(s["warning"])}</p></section>'
+            f'</ul><pre>{html.escape(s["command"])}</pre><p class="warning">{html.escape(s["warning"])}</p>'
         ]
+        if s.get("evidences"):
+            guide += [
+                "<h3>Evidencias para mostrar (opcionales)</h3>",
+                f"<p>{html.escape(s['evidence_note'])}</p><ul>",
+            ]
+            guide += [
+                f'<li><a href="../index.html?evidence={e["id"]}#{s["id"]}">{html.escape(e["label"])}</a></li>'
+                for e in s["evidences"]
+            ]
+            guide += ["</ul>"]
+        guide += ["</section>"]
     (DOCS / "guion.md").write_text("\n".join(lines), encoding="utf-8")
     (DOCS / "guia-estudio.html").write_text(
         doc_page("Guion y guía de defensa", "".join(guide)), encoding="utf-8"
@@ -244,6 +261,8 @@ def main():
                 "Captura",
                 "Limitaciones",
                 "Origen de verificación",
+                "Paneles contextuales opcionales",
+                "JSON original del panel",
             ]
         )
         for i, s in enumerate(SLIDES, 1):
@@ -264,6 +283,10 @@ def main():
                         s.get(
                             "origin", "Evidencia técnica de V1, producida por Codex y conservada"
                         ),
+                        "; ".join(e["id"] for e in s.get("evidences", [])),
+                        "data/observable/observations.json; config/financial_assumptions.json si corresponde"
+                        if s.get("evidences")
+                        else "",
                     ]
                 )
     brief = [

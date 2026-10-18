@@ -1,6 +1,6 @@
 # ConectaPyME · Defensa basada en evidencia
 
-Misión 2 · Mi respuesta al reto de Totalplay, narrada desde la perspectiva del candidato.
+Misión 3 · Mi respuesta al reto de Totalplay, con siete evidencias contextuales opcionales.
 
 Presentación local en español mexicano: **16 diapositivas principales y 14 de anexo**. Guion de aproximadamente 14–15 minutos a 140 palabras por minuto, más preguntas. Fuente auditada: `774dacd80e6410ca43299f63f19d9744a31929c0`. Datos sintéticos; escenarios financieros hipotéticos; Atlas y valor causal no verificados en esta misión.
 
@@ -40,12 +40,31 @@ Para dos pantallas, abre **Presentador** antes de iniciar. Mueve esa ventana a t
 
 Tú eliges la ventana que compartes desde Teams, Meet, Zoom o tu aplicación de reuniones. Esta página no solicita capturar la pantalla del sistema ni controla los permisos de esas aplicaciones.
 
+## Evidencias opcionales durante la exposición
+
+Las diapositivas mantienen su composición. En **Fuentes, reproducción y límites** (o E) y en las notas (N), las cuatro secciones muestran **Evidencias para mostrar**:
+
+| Diapositiva | Paneles disponibles |
+|---|---|
+| Fuentes y dudas | Las tres observaciones de Hornos: 2/3/3, estados y conflicto |
+| Cambio del Top 5 | Panificadora y Carga Urbana, cálculo y desempate por ID |
+| Jacaranda | Dos relaciones que suman; cinco observaciones que no suman |
+| Del archivo a la pantalla | Ledger observable, supuestos financieros y tres capturas de filtros |
+
+En la ventana **Presentador**, pulsa el botón de una evidencia: el panel aparece en la ventana de diapositivas. El mensaje confirma cuando esa ventana lo recibe. Puedes elegir Carga Urbana o los tres filtros desde los controles secundarios del presentador. **Cerrar evidencia en diapositivas** cierra el panel remoto sin mover la sección. Esc o la X en la audiencia también lo cierran. El reloj continúa.
+
+Abre una sola ventana de audiencia y una de presentador en el mismo navegador y origen (`http://127.0.0.1:8765`); no mezcles `localhost` y `127.0.0.1`. La vista previa del presentador no recibe los paneles. Si no llega confirmación en 900 ms, se abre una copia local con un aviso; también puedes abrir la misma evidencia desde E en la ventana que compartes. No se abren pestañas externas automáticamente. Los enlaces al código solo abren una fuente si tú haces clic.
+
+Cada panel empieza con datos explicados. **Nivel técnico** despliega los registros completos, ruta, identificadores o líneas, commit, huella del archivo, descarga de la copia exacta y funciones/pruebas. Las capturas de filtros se amplían dentro del panel; **Volver a la explicación** conserva el filtro elegido.
+
+Los paneles son exclusivos de la web y no forman parte de las 30 páginas obligatorias del PDF. Los discursos principales conservan su duración; las demostraciones son opcionales.
+
 ## Windows: apertura desde una copia nueva
 
-Puedes descargar la rama `presentation/conectapyme-junior-pov` desde GitHub o clonarla en otra carpeta:
+Puedes descargar la rama `presentation/conectapyme-contextual-evidence` desde GitHub o clonarla en otra carpeta:
 
 ```powershell
-git clone --branch presentation/conectapyme-junior-pov --single-branch https://github.com/zeedher-aisuites/economic-graph-mvp.git ConectaPyME-presentacion
+git clone --branch presentation/conectapyme-contextual-evidence --single-branch https://github.com/zeedher-aisuites/economic-graph-mvp.git ConectaPyME-presentacion
 cd ConectaPyME-presentacion
 py -m http.server 8765 --bind 127.0.0.1 --directory presentation-showcase
 ```
@@ -76,6 +95,8 @@ Los controles de filtros y escala económica dentro de las diapositivas son **re
 
 ## Qué consultar
 
+- `docs/iteracion-3.md`: cambios, uso de los siete paneles, validación y límites de esta misión.
+- `evidence/iteration-3/`: copias exactas de los JSON, resultados reproducidos y capturas nuevas de paneles.
 - `docs/iteracion-2.md`: informe breve de cambios y límites de la nueva defensa.
 - `docs/origen-y-alcance.md`: decisiones declaradas por el candidato, rol de las herramientas y tecnologías consideradas.
 - `docs/reto-original.md`: las 13 diapositivas y notas del archivo original de Totalplay.
@@ -169,13 +190,13 @@ python presentation-showcase/scripts/capture_tower.py
 Con la presentación servida en 8765:
 
 ```bash
-python presentation-showcase/scripts/validate_presentation.py
+python presentation-showcase/scripts/validate_contextual_evidence.py
 ```
 
-El script recorre todas las diapositivas, prueba teclado, filtros, escenarios, capturas, notas y sincronización de presentador, verifica enlaces e imágenes y guarda la revisión visual y el PDF. Los resultados de la ejecución final están en `evidence/iteration-2/results/presentation-qa.json`. No es una garantía universal para todos los dispositivos.
+El validador de misión 3 compara las 30 composiciones con V2, prueba los siete paneles, JSON, fuentes, controles remotos, cierre, pantalla completa y alternativa sin BroadcastChannel. Los resultados están en `evidence/iteration-3/results/contextual-qa.json`. Requiere Playwright y Pillow como herramientas auxiliares. No sobrescribe los registros ni el PDF anteriores. El script `validate_presentation.py` se conserva como herramienta histórica de V2 y no debe usarse para validar esta iteración: su copia independiente no incluye el nuevo componente. No es una garantía universal para todos los dispositivos.
 
 ## Tecnología y alcance
 
 HTML/CSS/JavaScript sin compilación, datos embebidos y fuentes locales Manrope e Inter con licencia incluida. Python se usa como herramienta de auditoría y servidor estático opcional. No hay API remota, analítica, credenciales, CDN ni despliegue público.
 
-Esta iteración trabaja exclusivamente en `presentation/conectapyme-junior-pov`, desde `bad88c56d850a87d188a9b0d7a4d515f6766f408`. La rama original `presentation/conectapyme-evidence-showcase` y `main` permanecen intactas. Se conservaron el dataset, resultados históricos y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.
+Esta iteración trabaja exclusivamente en `presentation/conectapyme-contextual-evidence`, desde `23a8efac164f8631dae57e9c9e8e3bcf9efe66ae`. La rama padre `presentation/conectapyme-junior-pov` se conserva intacta. La rama original `presentation/conectapyme-evidence-showcase` y `main` permanecen intactas. Se conservaron el dataset, resultados históricos y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.
