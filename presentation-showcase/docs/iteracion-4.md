@@ -9,4 +9,6 @@ Esta iteración simplifica la defensa sin duplicar la infraestructura de evidenc
 
 Los importes financieros se presentan como supuestos educativos reutilizando `financial_assumptions.json` y `finance-reproduced.json`. El resultado base de 500 plazas es `+$39,000 MXN` antes de reserva y el escenario nulo es `-$41,000 MXN`; no representan ventas observadas.
 
-Validación ejecutada: regeneración de materiales, 30 diapositivas, comprobación de sintaxis Python y revisión de consistencia de los títulos y controles nuevos. La validación visual completa del navegador requiere Playwright disponible en el entorno.
+Validación final ejecutada: regeneración de materiales, prueba de regresión UTF-8 (`scripts/validate_encoding.py`), sintaxis Python y JavaScript, `git diff --check`, y prueba Playwright con dos ventanas. La prueba bidireccional cubrió apertura desde el presentador, navegación 1 → 2 → 3 y 3 → 2 → 1, actualización del speech, ausencia del speech en audiencia, cierre desde ambas ventanas, reapertura y ausencia de errores JavaScript. Los IDs comprobados conservaron los siete paneles originales y `finance-story`.
+
+El PDF se regeneró desde este directorio con Playwright/Chromium, con 30 páginas y 16 diapositivas principales. Se verificó por extracción de texto que las páginas de organización y economía contienen los diseños de Misión 4. El renderizador Poppler no está instalado, por lo que la inspección visual se realizó mediante el PDF generado y su extracción de texto, no mediante PNGs de Poppler.

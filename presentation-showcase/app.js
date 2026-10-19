@@ -192,7 +192,7 @@ if(channel)channel.onmessage=e=>{
   if(m.options?.step!==undefined){presenterFinanceStep=Number(m.options.step)||0;renderPresenter();}
   clearTimeout(evidenceTimer);
   setEvidenceStatus(m.state==='open'?'Panel abierto en diapositivas. Puedes cerrarlo aquí o con Esc en esa ventana.':'Panel cerrado. La diapositiva sigue en el mismo lugar.');
-  if(m.state==='closed')pendingEvidence=null;
+  if(m.state==='closed'){pendingEvidence=null;presenterFinanceStep=null;renderPresenter();}
  }
 };
 function fullscreenElement(){return document.fullscreenElement || document.webkitFullscreenElement;}
@@ -331,7 +331,7 @@ let presenterFinanceStep=null;
 function financeSpeechBlock(){
  if(!isPresenter || presenterFinanceStep===null || !pendingEvidence || pendingEvidence.id!=='finance-story')return '';
  const speech=D.contextualEvidence.financeStorySpeeches?.[presenterFinanceStep]||'';
- return `<section class="finance-speech"><h3>Explicación financiera — Paso ${presenterFinanceStep+1} de 3</h3><strong>Speech opcional</strong><p class="note-speech">${esc(speech)}</p><p class="tiny muted">Duración estimada: 35–50 segundos</p></section>`;
+ return `<section class="finance-speech"><h3>Explicación financiera — Paso ${presenterFinanceStep+1} de 3</h3><strong>Speech opcional</strong><p class="note-speech">${esc(speech)}</p><p class="tiny muted">Duración estimada: 35–50 segundos</p><div class="finance-speech-nav"><button data-finance-step="${Math.max(0,presenterFinanceStep-1)}" ${presenterFinanceStep===0?'disabled':''}>← Anterior</button><button data-finance-step="${Math.min(2,presenterFinanceStep+1)}" ${presenterFinanceStep===2?'disabled':''}>Siguiente →</button></div></section>`;
 }
 function renderPresenter(){
  const s=slides[index];

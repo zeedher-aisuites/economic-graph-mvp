@@ -823,36 +823,36 @@ Estas notas aparecen únicamente en la vista del presentador cuando se abre `fin
 
 ### Paso 1 de 3
 
-Para evaluar si esta idea podrÃ­a ser rentable, primero establecÃ­ algunos supuestos. ImaginÃ© una inversiÃ³n de diez mil pesos para implementar la soluciÃ³n, seis mil para operarla y cincuenta pesos adicionales por cada plaza comercial.
+Para evaluar si esta idea podría ser rentable, primero establecí algunos supuestos. Imaginé una inversión de diez mil pesos para implementar la solución, seis mil para operarla y cincuenta pesos adicionales por cada plaza comercial.
 
-TambiÃ©n supuse que, con el mÃ©todo tradicional, contratarÃ­a el diez por ciento de las empresas, mientras que con el grafo podrÃ­a llegar al doce por ciento.
+También supuse que, con el método tradicional, contrataría el diez por ciento de las empresas, mientras que con el grafo podría llegar al doce por ciento.
 
-Esa mejora todavÃ­a no estÃ¡ demostrada. Es justamente lo que necesitarÃ­amos validar.
+Esa mejora todavía no está demostrada. Es justamente lo que necesitaríamos validar.
 
 **Duración estimada:** 35–50 segundos
 
 ### Paso 2 de 3
 
-Ahora imaginemos que aplicamos la soluciÃ³n a quinientas plazas comerciales.
+Ahora imaginemos que aplicamos la solución a quinientas plazas comerciales.
 
-Si el grafo consiguiera mejorar las activaciones del diez al doce por ciento, tendrÃ­amos diez clientes adicionales en promedio.
+Si el grafo consiguiera mejorar las activaciones del diez al doce por ciento, tendríamos diez clientes adicionales en promedio.
 
-Suponiendo ocho mil pesos de margen por cada uno, obtendrÃ­amos ochenta mil pesos de beneficio adicional.
+Suponiendo ocho mil pesos de margen por cada uno, obtendríamos ochenta mil pesos de beneficio adicional.
 
-DespuÃ©s restarÃ­a veinticinco mil pesos de esfuerzo comercial, diez mil de implementaciÃ³n y seis mil de operaciÃ³n.
+Después restaría veinticinco mil pesos de esfuerzo comercial, diez mil de implementación y seis mil de operación.
 
-El resultado serÃ­a de treinta y nueve mil pesos positivos, antes de considerar una reserva adicional de tres mil doscientos pesos. Es un escenario hipotÃ©tico, no una ganancia que ya conseguimos.
+El resultado sería de treinta y nueve mil pesos positivos, antes de considerar una reserva adicional de tres mil doscientos pesos. Es un escenario hipotético, no una ganancia que ya conseguimos.
 
 **Duración estimada:** 35–50 segundos
 
 ### Paso 3 de 3
 
-Pero tambiÃ©n me preguntÃ© quÃ© sucederÃ­a si mis supuestos no se cumplen.
+Pero también me pregunté qué sucedería si mis supuestos no se cumplen.
 
-Por eso preparÃ© cuatro escenarios: conservador, base, optimista y nulo.
+Por eso preparé cuatro escenarios: conservador, base, optimista y nulo.
 
-El escenario nulo es especialmente importante: si trabajamos con quinientas plazas y el grafo no consigue mejorar las activaciones, tendrÃ­amos un resultado negativo de cuarenta y un mil pesos antes de reserva.
+El escenario nulo es especialmente importante: si trabajamos con quinientas plazas y el grafo no consigue mejorar las activaciones, tendríamos un resultado negativo de cuarenta y un mil pesos antes de reserva.
 
-Esto me permite explicar que el proyecto podrÃ­a ser econÃ³micamente atractivo, pero no basta con desarrollar la tecnologÃ­a. Necesitamos demostrar que realmente mejora los resultados comerciales.
+Esto me permite explicar que el proyecto podría ser económicamente atractivo, pero no basta con desarrollar la tecnología. Necesitamos demostrar que realmente mejora los resultados comerciales.
 
 **Duración estimada:** 35–50 segundos
