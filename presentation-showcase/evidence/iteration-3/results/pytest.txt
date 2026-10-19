@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /workspace/conectapyme-contextual
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 285 items
+
+tests/integration/test_atlas_observable.py s                             [  0%]
+tests/test_check_connection.py ...                                       [  1%]
+tests/test_config.py ...................                                 [  8%]
+tests/test_control_tower.py ...........................                  [ 17%]
+tests/test_database.py .............                                     [ 22%]
+tests/test_design.py ..............                                      [ 27%]
+tests/test_finance.py .................................................. [ 44%]
+.........                                                                [ 47%]
+tests/test_finance_commands.py ..............                            [ 52%]
+tests/test_graph_commands.py ........                                    [ 55%]
+tests/test_mongo_observable.py ...........                               [ 59%]
+tests/test_observable.py .............................                   [ 69%]
+tests/test_ranking_commands.py ..................                        [ 75%]
+tests/test_rankings.py .............................................     [ 91%]
+tests/test_tower_read_model.py ........................                  [100%]
+
+=========================== short test summary info ============================
+SKIPPED [1] tests/integration/test_atlas_observable.py:13: Integración real no verificada: requiere activación explícita y base dedicada.
+======================= 284 passed, 1 skipped in 19.71s ========================

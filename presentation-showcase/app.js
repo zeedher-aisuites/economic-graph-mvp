@@ -143,6 +143,9 @@ const isPreview = params.has('preview');
 let presenting = false;
 let hadNativeFullscreen = false;
 let messageTimer;
+const peerId = globalThis.crypto?.randomUUID?.() || String(Math.random());
+let activeContext = null, pendingEvidence = null, evidenceTimer;
+
 if(isPreview) document.body.classList.add('preview-only');
 let channel;
 try { channel = new BroadcastChannel('conectapyme-evidence-deck'); } catch { /* URL hash navigation works without this optional API. */ }
@@ -154,6 +157,7 @@ function resize() {
 function goto(value, broadcast=true) {
  const n=typeof value==='string'?slides.findIndex(s=>s.id===value):value;
  if(n<0||n>=slides.length)return;
+ if(n!==index){closeContextual(true);}
  index=n;
  $$('.slide').forEach((el,i)=>{el.classList.toggle('active',i===n);el.setAttribute('aria-hidden',String(i!==n));el.inert=i!==n;});
  // Printing restores every slide regardless of the current presentation state.
@@ -172,7 +176,23 @@ function goto(value, broadcast=true) {
 }
 window.addEventListener('resize',resize);
 window.addEventListener('hashchange',()=>goto(location.hash.slice(1)));
-if(channel)channel.onmessage=e=>{if(e.data.type==='slide'&&!isPreview)goto(e.data.index,false);if(e.data.type==='presentation-start'&&isPresenter&&e.data.resetClock)started=Date.now();};
+if(channel)channel.onmessage=e=>{
+ const m=e.data;
+ if(m.type==='slide'&&!isPreview)goto(m.index,false);
+ if(m.type==='presentation-start'&&isPresenter&&m.resetClock)started=Date.now();
+ if(m.type==='contextual-open'&&!isPresenter&&!isPreview){
+  const target=slides.findIndex(s=>s.id===m.slideId && s.evidences?.some(x=>x.id===m.id));
+  if(target<0)return;
+  if(index!==target)goto(target,false);
+  showContextual(m.id,m.options,m);
+ }
+ if(m.type==='contextual-close'&&!isPresenter&&!isPreview&&activeContext?.requestId===m.requestId)closeContextual();
+ if(m.type==='contextual-state'&&isPresenter&&m.receiver===peerId&&pendingEvidence?.requestId===m.requestId){
+  clearTimeout(evidenceTimer);
+  setEvidenceStatus(m.state==='open'?'Panel abierto en diapositivas. Puedes cerrarlo aquí o con Esc en esa ventana.':'Panel cerrado. La diapositiva sigue en el mismo lugar.');
+  if(m.state==='closed')pendingEvidence=null;
+ }
+};
 function fullscreenElement(){return document.fullscreenElement || document.webkitFullscreenElement;}
 function presentationMessage(text, persistent=false){
  clearTimeout(messageTimer);
@@ -226,7 +246,57 @@ function focusAudience(){
  const url=new URL('index.html',location.href);url.hash=slides[index].id;
  window.open(url.href,'conectapyme-audience','width=1440,height=900');
 }
-function openPanel(title,body) {$('#overlay-title').textContent=title;$('#overlay-body').innerHTML=body;$('#overlay').showModal();}
+function openPanel(title,body,contextual=false) {
+ if(!contextual && activeContext){reportContext('closed');activeContext=null;}
+ $('#overlay').classList.toggle('contextual-panel',contextual);
+ $('#overlay-title').textContent=title;$('#overlay-body').innerHTML=body;$('#overlay').showModal();
+ $('#overlay-body').scrollTop=0;
+}
+function contextualButtons(s,presenter=false){
+ if(!s.evidences?.length)return '';
+ const remote=(id,label,opts)=>`<button data-contextual="${id}" data-context-options="${esc(JSON.stringify(opts))}">${label}</button>`;
+ const options=s.id==='cambio'?remote('leaders','Mostrar Panificadora',{company:'panificadora'})+remote('leaders','Mostrar Carga Urbana',{company:'carga'}):s.id==='arquitectura'?['global','industry','company'].map((f,i)=>remote('filters',['Filtro: general','Filtro: industria','Filtro: Jacaranda'][i],{filter:f})).join(''):'';
+ return `<section class="contextual-controls"><h3>Evidencias para mostrar</h3><p>${presenter?'Estos botones abren el panel en la ventana de diapositivas.':'Abre una explicación y después, si hace falta, sus datos y código.'}</p><div class="contextual-buttons">${s.evidences.map(e=>`<button data-contextual="${e.id}">${esc(e.label)} <span>→</span></button>`).join('')}</div>${presenter?`<div class="contextual-remote-options">${options}</div><button class="contextual-close-remote" data-action="close-contextual">Cerrar evidencia en diapositivas</button><p id="contextual-status" role="status" aria-live="polite">La exposición permanece en esta diapositiva. No se abren pestañas externas.</p>`:''}<details class="contextual-instructions"><summary>Cómo usar este apoyo</summary><p>${esc(s.evidence_note)}</p></details></section>`;
+}
+function setEvidenceStatus(text){const el=$('#contextual-status');if(el)el.textContent=text;}
+function reportContext(state){
+ if(channel && activeContext?.sender)channel.postMessage({type:'contextual-state',receiver:activeContext.sender,requestId:activeContext.requestId,state});
+}
+function showContextual(id,options={},request=null){
+ if(!slides[index].evidences?.some(x=>x.id===id))return;
+ const panel=window.ContextualEvidence.render(id,options||{});if(!panel)return;
+ activeContext={...(request||{}),id,options:options||{}};
+ openPanel(panel.title,panel.body,true);
+ reportContext('open');
+}
+function requestContextual(id,options={}){
+ if(!isPresenter){showContextual(id,options,activeContext?.id===id?activeContext:null);return;}
+ clearTimeout(evidenceTimer);
+ const request={type:'contextual-open',id,options,slideId:slides[index].id,requestId:peerId+'-'+Date.now(),sender:peerId};
+ pendingEvidence=request;
+ if(channel)channel.postMessage(request);
+ setEvidenceStatus('Enviando evidencia a la ventana de diapositivas…');
+ evidenceTimer=setTimeout(()=>{
+  if(pendingEvidence?.requestId!==request.requestId)return;
+  showContextual(id,options);
+  setEvidenceStatus('No llegó confirmación de la ventana de diapositivas. Se abrió una copia aquí. Puedes abrir el mismo panel desde Fuentes y evidencia en la ventana que compartes.');
+  const note=document.createElement('p');note.className='ce-warning';note.textContent='Sin confirmación de otra ventana: este panel se muestra aquí como alternativa. En la ventana de diapositivas también está disponible en Fuentes y evidencia.';$('#overlay-body').prepend(note);
+ },900);
+}
+function closeContextual(navigating=false){
+ clearTimeout(evidenceTimer);
+ if(isPresenter && pendingEvidence && channel)channel.postMessage({type:'contextual-close',requestId:pendingEvidence.requestId});
+ pendingEvidence=null;
+ if(activeContext){reportContext('closed');activeContext=null;if($('#overlay').open)$('#overlay').close();}
+ if(!navigating)setEvidenceStatus('Panel cerrado. La diapositiva sigue en el mismo lugar.');
+}
+$('#overlay').addEventListener('close',()=>{
+ // A queued close event may arrive after another panel has already opened.
+ if($('#overlay').open)return;
+ if(activeContext){reportContext('closed');activeContext=null;}
+ $('#overlay').classList.remove('contextual-panel');
+});
+
 function openIndex() {
  const grid = list => `<div class="index-grid">${list.map(s=>{const i=slides.indexOf(s);return `<button data-goto="${s.id}" class="${i===index?'current':''}"><span>${s.annex?'A'+String(i-mainCount+1).padStart(2,'0'):String(i+1).padStart(2,'0')}</span>${esc(s.title)}</button>`;}).join('')}</div>`;
  openPanel('Elige dónde continuar',`<p>Principal: ${mainCount} diapositivas · aproximadamente 14–18 minutos. Anexo: consulta por preguntas.</p><h3>Presentación principal</h3>${grid(slides.filter(s=>!s.annex))}<h3>Anexo técnico</h3>${grid(slides.filter(s=>s.annex))}`);
@@ -235,13 +305,13 @@ function notesHtml(s) {
  const words=s.speech.split(/\s+/).length;
  return `<p class="tiny muted">${words} palabras · ~${Math.round(words/140*60)} segundos a 140 palabras/minuto. Ajusta el ritmo al ensayar.</p><p class="note-speech">${esc(s.speech)}</p><h3>Qué señalar</h3><p>${esc(s.point)}</p><h3>Pregunta posible</h3><p><strong>${esc(s.question)}</strong></p><div class="answer-box">${esc(s.answer)}</div><h3>Si profundizan</h3><p>${esc(s.deep)}</p><p class="warning-text">${esc(s.warning)}</p>`;
 }
-function openNotes(){openPanel(slides[index].title,notesHtml(slides[index]));}
+function openNotes(){openPanel(slides[index].title,contextualButtons(slides[index])+notesHtml(slides[index]));}
 function sourceLinks(s) {
  return `<ul class="source-links">${s.sources.map(r=>`<li><a href="${r.url}" target="_blank" rel="noopener">${esc(r.path)}${r.start?':'+r.start+'–'+r.end:''} →</a><small>${esc(r.symbol||'Documento de referencia')} · ${r.original?'Fuente '+D.sourceCommit.slice(0,7):(r.provenance || 'Material de apoyo de esta defensa')}</small></li>`).join('')}</ul>`;
 }
 function openEvidence(n=index) {
  const s=slides[n];const capture=D.captures.find(c=>c.id===s.capture);const capturePath=capture?(capture.viewport_file||capture.file):'';
- openPanel('Evidencia · '+s.title,`<p class="tiny muted">Implementación auditada: ${D.sourceCommit}<br>Pruebas y capturas de la primera revisión: Codex · conservadas sin cambios. Relato de decisiones: declaración del candidato. Datos sintéticos.</p><table class="claim-table"><thead><tr><th>Afirmación</th><th>Tipo</th></tr></thead><tbody>${s.claims.map(c=>`<tr><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`).join('')}</tbody></table><h3>Verificar en código o documento</h3>${sourceLinks(s)}<h3>Reproducción</h3><pre class="code-path">${esc(s.command)}</pre>${capture?`<h3>Captura auténtica</h3><div class="evidence-images"><img src="evidence/${capturePath}" data-zoom="${capturePath.replace('screenshots/','')}" alt="${esc(capture.screen)}"></div><p class="tiny muted">${esc(capture.captured_at)} · ${esc(capture.mode)} · corte ${esc(capture.cut)}<br>Parámetros: ${esc(JSON.stringify(capture.parameters))}<br>${esc(capture.demonstrates)}</p>`:''}<h3>Límite de esta evidencia</h3><p class="warning-text">${esc(s.warning)}</p><div class="resources" style="color:var(--teal)"><a style="color:inherit" href="docs/trazabilidad.csv" download>Matriz completa ↓</a><a style="color:inherit" href="docs/guia-estudio.html" target="_blank" rel="noopener">Guion y defensa →</a><a style="color:inherit" href="evidence/results/pytest.txt" target="_blank" rel="noopener">Resultado de pruebas →</a></div>`);
+ openPanel('Evidencia · '+s.title,`${contextualButtons(s)}<p class="tiny muted">Implementación auditada: ${D.sourceCommit}<br>Pruebas y capturas de la primera revisión: Codex · conservadas sin cambios. Relato de decisiones: declaración del candidato. Datos sintéticos.</p><table class="claim-table"><thead><tr><th>Afirmación</th><th>Tipo</th></tr></thead><tbody>${s.claims.map(c=>`<tr><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`).join('')}</tbody></table><h3>Verificar en código o documento</h3>${sourceLinks(s)}<h3>Reproducción</h3><pre class="code-path">${esc(s.command)}</pre>${capture?`<h3>Captura auténtica</h3><div class="evidence-images"><img src="evidence/${capturePath}" data-zoom="${capturePath.replace('screenshots/','')}" alt="${esc(capture.screen)}"></div><p class="tiny muted">${esc(capture.captured_at)} · ${esc(capture.mode)} · corte ${esc(capture.cut)}<br>Parámetros: ${esc(JSON.stringify(capture.parameters))}<br>${esc(capture.demonstrates)}</p>`:''}<h3>Límite de esta evidencia</h3><p class="warning-text">${esc(s.warning)}</p><div class="resources" style="color:var(--teal)"><a style="color:inherit" href="docs/trazabilidad.csv" download>Matriz completa ↓</a><a style="color:inherit" href="docs/guia-estudio.html" target="_blank" rel="noopener">Guion y defensa →</a><a style="color:inherit" href="evidence/results/pytest.txt" target="_blank" rel="noopener">Resultado de pruebas →</a></div>`);
 }
 function zoom(file) {
  if($('#overlay').open)$('#overlay').close();
@@ -261,7 +331,7 @@ function renderPresenter(){
  presenterFrame.src='index.html?preview=1#'+s.id;
  $('#presenter-counter').textContent=`${index+1} / ${slides.length}`;
  $('#presenter-next').textContent='Siguiente: '+(slides[index+1]?.title||'Fin del anexo');
- $('.presenter-notes').innerHTML=`<h2>${esc(s.title)}</h2>${notesHtml(s)}<h3>Archivo o prueba para verificar</h3>${sourceLinks(s)}`;
+ $('.presenter-notes').innerHTML=`<h2>${esc(s.title)}</h2>${contextualButtons(s,true)}${notesHtml(s)}<h3>Archivo o prueba para verificar</h3>${sourceLinks(s)}`;
 }
 let started=Date.now();
 if(isPresenter){document.body.classList.add('presenter-mode');$('#presenter-view').hidden=false;setInterval(()=>{const t=Math.floor((Date.now()-started)/1000);if($('#timer'))$('#timer').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');},1000);}
@@ -271,9 +341,16 @@ function action(name){
  if(name==='presenter'){const url=new URL(location.href);url.search='?presenter=1';window.open(url.href,'conectapyme-presenter','width=1400,height=900');}
  if(name==='fullscreen'){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>{});else document.exitFullscreen?.();}
  if(name==='timer')started=Date.now();
+ if(name==='close-contextual')closeContextual();
 }
 document.addEventListener('click',e=>{
- const t=e.target.closest('button,a,img');if(!t)return;
+ const t=e.target.closest('[data-ce-zoom]') || e.target.closest('button,a,img');if(!t)return;
+ if(t.matches('[data-contextual]')){requestContextual(t.dataset.contextual,JSON.parse(t.dataset.contextOptions||'{}'));return;}
+ if(t.matches('[data-ce-zoom]')){
+  const current={...activeContext};
+  openPanel('Captura auténtica · filtros de Streamlit',`<button class="ce-return" data-contextual="filters" data-context-options='${esc(JSON.stringify(current.options||{}))}'>← Volver a la explicación</button><img class="ce-full-capture" src="evidence/screenshots/${esc(t.dataset.ceZoom)}" alt="Captura original completa y ampliada"><p class="ce-origin">Captura offline original, sin recortes ni modificaciones. Usa el desplazamiento para revisar la tabla; vuelve o cierra sin cambiar de diapositiva.</p>`,true);
+  return;
+ }
  if(t.matches('[data-action]'))action(t.dataset.action);
  if(t.matches('[data-goto]')){if($('#overlay').open)$('#overlay').close();goto(t.dataset.goto);}
  if(t.matches('[data-evidence]'))openEvidence(Number(t.dataset.evidence));
@@ -299,6 +376,7 @@ let touchX=0;
 $('#viewport').addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;},{passive:true});
 $('#viewport').addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-touchX;if(Math.abs(d)>70)goto(index+(d<0?1:-1));},{passive:true});
 goto(index,false);
+if(params.has('evidence')&&!isPreview&&!isPresenter)showContextual(params.get('evidence'));
 window.addEventListener('beforeprint',()=>{$$('.slide').forEach(el=>{el.inert=false;el.setAttribute('aria-hidden','false');});});
 window.addEventListener('afterprint',()=>goto(index,false));
-window.DECK_API={goto,setFilter,setScope,setTower,slides,beginPresentation,leavePresentation,isPresenting:()=>presenting};
+window.DECK_API={goto,setFilter,setScope,setTower,slides,beginPresentation,leavePresentation,isPresenting:()=>presenting,requestContextual,closeContextual};

@@ -294,6 +294,10 @@
       [
         "available_at determina desde cuándo se usa una observación en el corte.",
         "demostrado"
+      ],
+      [
+        "OBS-028 y OBS-047 son REPORTED; OBS-075 es CONFIRMED. Sus valores 2/3/3 mantienen el conflicto de sucursales.",
+        "demostrado"
       ]
     ],
     "command": "uv run pytest tests/test_observable.py tests/test_tower_read_model.py -q",
@@ -304,6 +308,13 @@
     "deep": "_attribute marca CONFLICTED si hay valores distintos en el historial visible. Las relaciones conservan historia de estados; las candidaturas usan normalización de nombres, sin identificación fuerte.",
     "warning": "CONFLICTED y UNKNOWN no significan que se haya demostrado un valor cero.",
     "origin": "Evidencia técnica conservada de V1, producida por Codex; enfoque narrado por el candidato. Sin atribución de ejecución manual personal.",
+    "evidences": [
+      {
+        "id": "hornos",
+        "label": "Ver las 3 observaciones originales"
+      }
+    ],
+    "evidence_note": "Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.",
     "sources": [
       {
         "path": "src/economic_graph/contracts.py",
@@ -426,6 +437,14 @@
       [
         "Top 5 comparte dos cuentas y sustituye tres en T2.",
         "demostrado"
+      ],
+      [
+        "Panificadora conserva 50 puntos y #1; Carga Urbana conserva 10 y #2. Ambas tienen cero vecinos confirmados utilizables en T2.",
+        "demostrado"
+      ],
+      [
+        "El empate de 10 puntos se resuelve por company_id público ascendente, sin interpretación comercial del desempate.",
+        "demostrado"
       ]
     ],
     "capture": "07-ai-global",
@@ -437,6 +456,13 @@
     "deep": "comparison calcula intersección, entered_graph y left_baseline. Las posiciones se asignan a todos los elegibles antes de seleccionar las primeras cinco.",
     "warning": "Los empates y la baja cobertura de atributos pueden influir en el orden.",
     "origin": "Evidencia técnica conservada de V1, producida por Codex; enfoque narrado por el candidato. Sin atribución de ejecución manual personal.",
+    "evidences": [
+      {
+        "id": "leaders",
+        "label": "¿Por qué se mantienen las primeras dos empresas?"
+      }
+    ],
+    "evidence_note": "Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.",
     "sources": [
       {
         "path": "src/economic_graph/rankings.py",
@@ -486,6 +512,14 @@
       [
         "Dos vecinos confirmados utilizables respaldan los diez puntos relacionales.",
         "demostrado"
+      ],
+      [
+        "OBS-026 y OBS-063 confirman dos vecinos económicos distintos que aportan 10 puntos a Jacaranda.",
+        "demostrado"
+      ],
+      [
+        "OBS-044/037/045/043/072 conservan contexto y aportan cero puntos a Jacaranda; las dos de Ruta Corta son afirmaciones distintas.",
+        "demostrado"
       ]
     ],
     "capture": "02-graph-cafe",
@@ -497,6 +531,17 @@
     "deep": "La red es una vista del resultado, no el motor del score. network_data resalta relationship_ids ya elegidos por _neighbor_feature. El acomodo circular no tiene significado comercial.",
     "warning": "El dibujo no demuestra centralidad comercial, intención de compra ni causalidad.",
     "origin": "Evidencia técnica conservada de V1, producida por Codex; enfoque narrado por el candidato. Sin atribución de ejecución manual personal.",
+    "evidences": [
+      {
+        "id": "confirmed",
+        "label": "Ver las 2 relaciones confirmadas (+10 puntos)"
+      },
+      {
+        "id": "context",
+        "label": "Ver las 5 observaciones de contexto (0 puntos)"
+      }
+    ],
+    "evidence_note": "Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.",
     "sources": [
       {
         "path": "src/economic_graph/tower_read_model.py",
@@ -547,6 +592,14 @@
       [
         "El calculador financiero tiene una entrada independiente del ledger empresarial.",
         "demostrado"
+      ],
+      [
+        "El JSON observable local tiene 83 registros; alimenta la ruta offline, sin consulta en vivo a Atlas.",
+        "demostrado"
+      ],
+      [
+        "La configuración financiera declara cinco plazas por bolsa y tres escenarios; el código deriva la escala de 500 y el escenario nulo.",
+        "demostrado"
       ]
     ],
     "command": "uv run python presentation-showcase/scripts/reproduce.py",
@@ -557,6 +610,21 @@
     "deep": "En T2 hay cinco llamadas a snapshot durante build_context: una directa, una interna en compare_rankings y tres para evolution. No se midió su rendimiento a escala.",
     "warning": "La separación de módulos no acredita una arquitectura de producción ni aislamiento por roles.",
     "origin": "Evidencia técnica conservada de V1, producida por Codex; enfoque narrado por el candidato. Sin atribución de ejecución manual personal.",
+    "evidences": [
+      {
+        "id": "ledger",
+        "label": "Ver datos de observations.json"
+      },
+      {
+        "id": "finance",
+        "label": "Ver supuestos financieros"
+      },
+      {
+        "id": "filters",
+        "label": "Ver filtros reales de Streamlit"
+      }
+    ],
+    "evidence_note": "Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.",
     "sources": [
       {
         "path": "app/control_tower.py",
