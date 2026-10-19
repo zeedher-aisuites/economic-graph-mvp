@@ -128,11 +128,12 @@ function setTower(i) {
  $$('[data-tower]').forEach(b=>b.setAttribute('aria-selected',String(Number(b.dataset.tower)===Number(i))));
 }
 function setScope(scope) {
- const names={conservative:'Conservador',base:'Base',optimistic:'Optimista',null:'Nulo'};
- const rows=D.summary.finance.filter(r=>r.scope===scope);
- $('#economic-cases').innerHTML=rows.map(r=>`<div class="economic-case"><h3>${names[r.scenario]}</h3><div class="amount ${Number(r.net_present_value_mxn)<0?'negative':''}">${money(r.net_present_value_mxn)}</div><p>Saldo antes de reserva · MXN</p><p>Δ activación: ${Number(r.activation_rate_increment)*100} pp<br>Reserva: $${Number(r.reserve_mxn).toLocaleString('es-MX')}<br>Tras reserva: ${money(r.net_after_reserve_mxn)}</p></div>`).join('');
- const base=rows.find(r=>r.scenario==='base');
- $('#economic-details').innerHTML=`<div><span class="eyebrow">Equilibrio del supuesto base</span><div class="number" style="margin-top:12px">${base.break_even.delta_pp} <small>pp</small></div><p>Mejora necesaria, no conseguida.</p></div><div style="padding-top:15px"><code>${scope==='hypothetical'?'500 × 0.02 × $8,000 = $80,000':'5 × 0.02 × $8,000 = $800'}<br>− costo comercial adicional − costos fijos y operación</code><p style="margin-top:13px">90 días para activar · horizonte 12 meses · reserva separada.</p></div>`;
+ const base5=D.summary.finance.find(r=>r.scope==='demo'&&r.scenario==='base');
+ const base500=D.summary.finance.find(r=>r.scope==='hypothetical'&&r.scenario==='base');
+ const cases=[['5 plazas',base5],['500 plazas',base500]];
+ const target=$('#economic-cases');
+ if(!target)return;
+ target.innerHTML=cases.map(([label,r])=>`<div class="economic-case"><h3>${label}</h3><div class="amount ${Number(r.net_present_value_mxn)<0?'negative':''}">${money(r.net_present_value_mxn)}</div><p>Resultado base antes de reserva · MXN</p><p>${label==='5 plazas'?'Con pocas empresas, el beneficio supuesto no alcanza para cubrir los costos.':'Con más empresas, podría superar los costos solo si conseguimos la mejora de activación supuesta.'}</p></div>`).join('');
  $$('[data-scope]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scope===scope)));
 }
 setFilter('all');setTower(0);setScope('hypothetical');
@@ -346,7 +347,7 @@ function action(name){
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-ce-zoom]') || e.target.closest('button,a,img');if(!t)return;
  if(t.matches('[data-contextual]')){requestContextual(t.dataset.contextual,JSON.parse(t.dataset.contextOptions||'{}'));return;}
- if(t.matches('[data-finance-step]')){requestContextual('financeStory',{step:Number(t.dataset.financeStep)});return;}
+ if(t.matches('[data-finance-step]')){requestContextual('finance-story',{step:Number(t.dataset.financeStep)});return;}
  if(t.matches('[data-ce-zoom]')){
   const current={...activeContext};
   openPanel('Captura auténtica · filtros de Streamlit',`<button class="ce-return" data-contextual="filters" data-context-options='${esc(JSON.stringify(current.options||{}))}'>← Volver a la explicación</button><img class="ce-full-capture" src="evidence/screenshots/${esc(t.dataset.ceZoom)}" alt="Captura original completa y ampliada"><p class="ce-origin">Captura offline original, sin recortes ni modificaciones. Usa el desplazamiento para revisar la tabla; vuelve o cierra sin cambiar de diapositiva.</p>`,true);

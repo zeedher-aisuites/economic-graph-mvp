@@ -85,7 +85,7 @@ window.ContextualEvidence = (() => {
   ];
   return {title:'¿Cómo calculé estos escenarios?',body:`<div class="finance-walk" data-finance-step="${step}">${screens[step]}</div><nav class="ce-tabs" aria-label="Pasos de explicación financiera"><button data-finance-step="${Math.max(0,step-1)}" ${step===0?'disabled':''}>← Anterior</button><button data-finance-step="0" ${step===0?'aria-current="step"':''}>1 · Costos</button><button data-finance-step="1" ${step===1?'aria-current="step"':''}>2 · $39,000</button><button data-finance-step="2" ${step===2?'aria-current="step"':''}>3 · Escenarios</button><button data-finance-step="${Math.min(2,step+1)}" ${step===2?'disabled':''}>Siguiente →</button></nav><p class="ce-origin">Speech opcional: explico los supuestos en primera persona y aclaro que son una hipótesis, no ventas observadas.</p>`};
  }
- const builders={hornos,leaders,confirmed,context,ledger,finance,filters,financeStory};
+ const builders={hornos,leaders,confirmed,context,ledger,finance,filters,'finance-story':financeStory};
  function render(id,options={}){
   if(!builders[id])return null;
   const result=builders[id](options);
