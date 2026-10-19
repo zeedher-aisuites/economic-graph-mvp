@@ -317,7 +317,13 @@ Cambia entre las cinco capturas; amplía una y muestra sus parámetros.
 
 **Límite:** La revisión se hizo en Linux; no sustituye una revisión nativa en Windows ni una prueba de carga.
 
-## 12. Puedo revisar cómo se comprobó el comportamiento
+### Evidencias para mostrar (opcionales)
+
+Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.
+
+- ¿Cómo calculé estos escenarios? · `finance-story`
+
+## 12. Cómo organicé y comprobé el desarrollo
 
 **Tipo:** Evidencia técnica · registros conservados · **Duración orientativa:** 54 s
 
@@ -343,7 +349,7 @@ Distingue funciones, dobles, AppTest, navegador e integración real.
 
 **Límite:** Cobertura alta no mide calidad comercial, producción, seguridad integral ni corrección de todos los casos.
 
-## 13. Calculé qué tendría que pasar para cubrir costos
+## 13. ¿Cuántas empresas necesitaría para que la idea valga la pena?
 
 **Tipo:** Hipótesis · cálculo reproducido · **Duración orientativa:** 56 s
 

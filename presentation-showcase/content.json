@@ -691,6 +691,13 @@
     "deep": "La automatización usa Playwright y Chromium del sistema. Conserva estados, texto visible, capturas originales y metadatos; no cambia la UI ni sus fuentes.",
     "warning": "La revisión se hizo en Linux; no sustituye una revisión nativa en Windows ni una prueba de carga.",
     "origin": "Evidencia técnica conservada de V1, producida por Codex; enfoque narrado por el candidato. Sin atribución de ejecución manual personal.",
+    "evidences": [
+      {
+        "id": "finance-story",
+        "label": "¿Cómo calculé estos escenarios?"
+      }
+    ],
+    "evidence_note": "Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.",
     "sources": [
       {
         "path": "app/control_tower.py",
@@ -732,7 +739,7 @@
   },
   {
     "id": "pruebas",
-    "title": "Puedo revisar cómo se comprobó el comportamiento",
+    "title": "Cómo organicé y comprobé el desarrollo",
     "chapter": "11 · Cómo se comprobó",
     "kind": "tests",
     "status": "Evidencia técnica · registros conservados",
@@ -805,7 +812,7 @@
   },
   {
     "id": "economia",
-    "title": "Calculé qué tendría que pasar para cubrir costos",
+    "title": "¿Cuántas empresas necesitaría para que la idea valga la pena?",
     "chapter": "12 · Condiciones económicas",
     "kind": "economics",
     "status": "Hipótesis · cálculo reproducido",

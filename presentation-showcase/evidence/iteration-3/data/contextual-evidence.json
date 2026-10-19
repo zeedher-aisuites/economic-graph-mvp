@@ -4,14 +4,14 @@
   "cut": "2026-09-15T12:00:00Z",
   "files": {
     "observations.json": {
-      "path": "data/observable/observations.json",
+      "path": "data\\observable\\observations.json",
       "url": "evidence/iteration-3/data/observations.json",
-      "sha256": "104d262e6a60a62b639b5305564c31914b723ef50c76c2bd8ea8a276086cd5b1"
+      "sha256": "57f2bd8a504fb2ea24e300440806f85c078f0747ed00ff244e69c4c6812e3fb8"
     },
     "financial_assumptions.json": {
-      "path": "config/financial_assumptions.json",
+      "path": "config\\financial_assumptions.json",
       "url": "evidence/iteration-3/data/financial_assumptions.json",
-      "sha256": "01b30684e5af6b8ad41ea8064d70c6edab69cfd5e77947eea431e1743d650653"
+      "sha256": "2881eedf9cadacf0901fe18149684b476db2dbd26531c037fd875cb720605435"
     }
   },
   "ledger": {

@@ -144,8 +144,8 @@ def main():
     )
     data = {
         "sourceCommit": COMMIT,
-        "presentationBaseCommit": "23a8efac164f8631dae57e9c9e8e3bcf9efe66ae",
-        "iteration": 3,
+        "presentationBaseCommit": "5fb3aaa369043733f5c722eb0cc9eaecfb237ed2",
+        "iteration": 4,
         "contextualEvidence": build_contextual(source_ref),
         "challengeQuestion": "¿Cómo construirías un Economic Graph de PyMEs para una Telco y cómo demostrarías que genera valor económico incremental?",
         "slides": SLIDES,

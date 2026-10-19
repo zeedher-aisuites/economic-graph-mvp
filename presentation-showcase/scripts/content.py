@@ -441,7 +441,7 @@ SLIDES = [
     },
     {
         "id": "pruebas",
-        "title": "Puedo revisar cómo se comprobó el comportamiento",
+        "title": "Cómo organicé y comprobé el desarrollo",
         "chapter": "11 · Cómo se comprobó",
         "kind": "tests",
         "status": "Evidencia técnica · registros conservados",
@@ -488,7 +488,7 @@ SLIDES = [
     },
     {
         "id": "economia",
-        "title": "Calculé qué tendría que pasar para cubrir costos",
+        "title": "¿Cuántas empresas necesitaría para que la idea valga la pena?",
         "chapter": "12 · Condiciones económicas",
         "kind": "economics",
         "status": "Hipótesis · cálculo reproducido",
@@ -1262,6 +1262,9 @@ CONTEXTUAL_EVIDENCES = {
         {"id": "ledger", "label": "Ver datos de observations.json"},
         {"id": "finance", "label": "Ver supuestos financieros"},
         {"id": "filters", "label": "Ver filtros reales de Streamlit"},
+    ],
+    "torre": [
+        {"id": "finance-story", "label": "¿Cómo calculé estos escenarios?"},
     ],
 }
 for slide in SLIDES:
