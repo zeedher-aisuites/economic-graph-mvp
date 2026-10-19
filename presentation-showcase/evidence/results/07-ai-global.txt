@@ -1,0 +1,106 @@
+Skip to main content
+keyboard_double_arrow_left
+
+Vista
+
+Resumen
+
+Graph Health
+
+AI Performance
+
+Business Funnel
+
+Economic Impact
+
+Período
+
+Fuente de datos
+
+Industria
+
+Empresa
+
+keyboard_arrow_right
+
+Filtros sin soporte real
+
+Deploy
+ConectaPyME · Control Tower
+
+CONTROL TOWER · PoC educativa · Sintético observable · Sin acciones comerciales
+
+Offline · T2: 2026-09-15T12:00:00Z · Segmento: 23/23 conocidas. Totales globales rotulados.
+
+AI Performance
+
+Comparación de reglas explicables, sin modelo predictivo entrenado. Puntos ≠ probabilidades.
+
+El grafo modifica 3 de las 5 selecciones comerciales
+
+Misma cohorte y capacidad. Cambiar la selección no demuestra mayores ventas ni autoriza contactos.
+
+Cuentas compartidas · global
+
+2
+
+Sustituciones · global
+
+3
+
+#1 · 50 puntos
+#1 · 50 puntos
+#2 · 10 puntos
+#2 · 10 puntos
+#3 · 0 puntos
+—
+—
+#3 · 10 puntos
+#4 · 0 puntos
+—
+—
+#4 · 10 puntos
+#5 · 0 puntos
+—
+—
+#5 · 5 puntos
+Compartida
+Solo baseline
+Entra con grafo
+Fuera del top-5
+Baseline
+Con grafo
+Panificadora Valle Claro
+Carga Urbana del Centro
+Comedor del Andén
+Café Jacaranda
+Mesa de Barrio
+Hornos del Centro
+Mapa Digital Studio
+Papelería Horizonte
+
+Posiciones y puntos globales. El segmento solo intersecta los top-5; no rellena plazas.
+
+Caso explicable · Café Jacaranda
+
+Posición baseline 10 → con grafo 3. 2 vecinos confirmados utilizables respaldan 10 puntos relacionales. Sin atribución de ventas.
+
+Cobertura individual · global
+
+3/21
+
+Señal relacional utilizable · global
+
+5/21
+
+Denominador: elegibles. Cobertura individual incluye valores observados de una sucursal con cero puntos.
+
+keyboard_arrow_right
+
+Auditar ranking, empates y filtros de score
+
+Selecciona una empresa en la barra lateral para abrir su ficha y conexiones.
+
+keyboard_arrow_right
+
+Procedencia técnica y reglas

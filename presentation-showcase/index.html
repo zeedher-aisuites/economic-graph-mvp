@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Defensa de ConectaPyME basada en código, pruebas y ejecución offline. Datos sintéticos; valor comercial pendiente de validar.">
+  <title>ConectaPyME — De relaciones a decisiones</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#stage">Ir a la diapositiva</a>
+  <div class="appbar" aria-label="Herramientas de presentación">
+    <a href="#inicio" class="brand"><span class="brand-icon">c<span>·</span></span> ConectaPyME <span class="brand-sub">/ EVIDENCIA EN CÓDIGO</span></a>
+    <div class="app-tools">
+      <button data-action="index" title="Índice (I)">Índice <kbd>I</kbd></button>
+      <button data-action="notes" title="Notas (N)">Notas <kbd>N</kbd></button>
+      <button data-action="presenter" title="Abrir vista de presentador (P)">Presentador <kbd>P</kbd></button>
+      <button data-action="fullscreen" title="Pantalla completa (F)">Pantalla completa <kbd>F</kbd></button>
+    </div>
+  </div>
+  <main id="viewport"><div id="stage" tabindex="-1" aria-label="Diapositivas"></div></main>
+  <nav class="deck-nav" aria-label="Navegación entre diapositivas">
+    <div class="nav-section" id="nav-section">Presentación principal</div>
+    <div class="nav-center"><button data-action="prev" aria-label="Diapositiva anterior">←</button><span id="counter" aria-live="polite">01 / 16</span><button data-action="next" aria-label="Siguiente diapositiva">→</button></div>
+    <div class="nav-evidence"><button data-action="evidence">Fuentes y evidencia <span>→</span></button></div>
+    <div id="progress"></div>
+  </nav>
+  <dialog id="overlay" aria-labelledby="overlay-title"><div class="dialog-top"><h2 id="overlay-title"></h2><button class="close" aria-label="Cerrar panel">✕</button></div><div id="overlay-body"></div></dialog>
+  <div id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="Captura ampliada"><button class="close" aria-label="Cerrar captura">✕</button><img alt="Captura original ampliada"><p></p></div>
+  <div id="presenter-view" hidden></div>
+  <div id="status" class="sr-only" aria-live="polite"></div>
+</body>
+</html>

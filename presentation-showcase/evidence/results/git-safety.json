@@ -1,0 +1,27 @@
+{
+  "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+  "mission_branch": "presentation/conectapyme-evidence-showcase",
+  "original_worktree": "/workspace/economic-graph-mvp",
+  "original_worktree_status": "",
+  "protected_paths_unchanged": [
+    "src",
+    "app",
+    "data",
+    "config",
+    "docs",
+    "design-data",
+    "tests",
+    "uv.lock",
+    "pyproject.toml",
+    "AGENTS.md"
+  ],
+  "diff_protected_paths": "",
+  "main_modified": false,
+  "remote_database_operations": 0,
+  "connection_config_changes": 0,
+  "protected_hashes": {
+    "data/observable/observations.json": "104d262e6a60a62b639b5305564c31914b723ef50c76c2bd8ea8a276086cd5b1",
+    "config/financial_assumptions.json": "01b30684e5af6b8ad41ea8064d70c6edab69cfd5e77947eea431e1743d650653",
+    "uv.lock": "feae2a026723e9c427b3771b7c3fb3d06f8e33d1444b24cf17ac6e6aac7623d8"
+  }
+}

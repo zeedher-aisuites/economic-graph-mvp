@@ -1,0 +1,112 @@
+2 options available.
+Skip to main content
+keyboard_double_arrow_left
+
+Vista
+
+Resumen
+
+Graph Health
+
+AI Performance
+
+Business Funnel
+
+Economic Impact
+
+Período
+
+Fuente de datos
+
+Industria
+
+Empresa
+
+keyboard_arrow_right
+
+Filtros sin soporte real
+
+Deploy
+ConectaPyME · Control Tower
+
+CONTROL TOWER · PoC educativa · Sintético observable · Sin acciones comerciales
+
+Supuestos agregados independientes del corte, empresa e industria. Filtros empresariales deshabilitados.
+
+Hipótesis educativas no calibradas. No son resultados de Totalplay ni de las PyMEs. Un saldo positivo no autoriza inversión.
+
+Escala del ejercicio
+
+Demostración · cinco plazas
+
+Escenario hipotético · 500 plazas
+
+Cuatro escenarios · saldo incremental hipotético
+
+Conservador
+
+−$33,900
+
+Saldo neto hipotético · MXN
+
+Reserva: $6,400.00 MXN
+
+Tras reserva: −$40,300
+
+Base
+
+−$15,450
+
+Saldo neto hipotético · MXN
+
+Reserva: $3,200.00 MXN
+
+Tras reserva: −$18,650
+
+Optimista
+
+−$5,125
+
+Saldo neto hipotético · MXN
+
+Reserva: $1,600.00 MXN
+
+Tras reserva: −$6,725
+
+Nulo
+
+−$16,250
+
+Saldo neto hipotético · MXN
+
+Reserva: $3,200.00 MXN
+
+Tras reserva: −$19,450
+
+MXN nominales en valor presente. El nulo conserva costos con incremento de conversión cero; la reserva se muestra aparte, sin duplicarla.
+
+¿Qué mejora tendría que ocurrir para cubrir el costo?
+
+Equilibrio · supuesto base
+
+40.625 pp
+
+Umbral con reserva · supuesto base
+
+48.625 pp
+
+pp = puntos porcentuales de incremento absoluto de conversión. Umbral hipotético, no efecto conseguido; depende de estos costos y márgenes no calibrados. Factibilidad algebraica base: ATTAINABLE
+
+Faltan resultados comerciales y un experimento válido para decidir invertir. ROI, CAC, LTV, payback y efecto causal observados: No disponibles.
+
+keyboard_arrow_right
+
+Auditar escenarios, componentes y supuestos
+
+keyboard_arrow_right
+
+Explorar sensibilidad · sin editar supuestos
+
+keyboard_arrow_right
+
+Experimento futuro y procedencia financiera

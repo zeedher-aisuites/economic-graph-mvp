@@ -1,0 +1,114 @@
+Skip to main content
+
+Vista
+
+Resumen
+
+Graph Health
+
+AI Performance
+
+Business Funnel
+
+Economic Impact
+
+Período
+
+Fuente de datos
+
+Industria
+
+Empresa
+
+keyboard_arrow_right
+
+Filtros sin soporte real
+
+Deploy
+ConectaPyME · Control Tower
+
+CONTROL TOWER · PoC educativa · Sintético observable · Sin acciones comerciales
+
+Offline · T2: 2026-09-15T12:00:00Z · Segmento: 23/23 conocidas. Totales globales rotulados.
+
+El grafo modifica 3 de las 5 selecciones comerciales
+
+Misma cohorte y capacidad. Cambiar la selección no demuestra mayores ventas ni autoriza contactos.
+
+Empresas conocidas · global
+
+23
+
+Afirmaciones económicas · global
+
+26
+
+Cuentas elegibles · global
+
+21
+
+Cambios en cinco plazas · global
+
+3
+
+Sintético observable · Afirmaciones no implica confirmación. Referencias separadas: 3; cinco cuentas por investigar.
+
+Selección tradicional · baseline
+
+Selección con grafo
+
+Top-5 global intersectado con el segmento; no se rellenan plazas al filtrar.
+
+Potencial hipotético · 500 plazas
+
+Conservador
+
+−$123,000
+
+Saldo neto hipotético · MXN
+
+Reserva: $6,400.00 MXN
+
+Tras reserva: −$129,400
+
+Base
+
++$39,000
+
+Saldo neto hipotético · MXN
+
+Reserva: $3,200.00 MXN
+
+Tras reserva: +$35,800
+
+Optimista
+
++$279,500
+
+Saldo neto hipotético · MXN
+
+Reserva: $1,600.00 MXN
+
+Tras reserva: +$277,900
+
+Nulo
+
+−$41,000
+
+Saldo neto hipotético · MXN
+
+Reserva: $3,200.00 MXN
+
+Tras reserva: −$44,200
+
+Hipótesis educativas no calibradas, independientes del corte y segmento. Cinco plazas y sus pérdidas se muestran en Economic Impact. Ningún saldo autoriza invertir.
+
+Qué falta comprobar
+
+Contactos, oportunidades, activaciones y ventas: No observado. Faltan cobertura, identidad fuerte, permiso de contacto, costos y márgenes reales. El experimento futuro deberá medir margen neto por cuenta asignada, con control y bolsas independientes suficientes. No se ha ejecutado.
+
+Selecciona una empresa en la barra lateral para abrir su ficha y conexiones.
+
+keyboard_arrow_right
+
+Procedencia técnica y reglas

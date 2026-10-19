@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Reto-AI-Engineering-SME-Economic-Graph.pptx",
+    "sha256": "0ef249c3d73c35b256e47e661c025cef1d5fbd004462f9bbec5c43a553558129",
+    "bytes": 3569396,
+    "role": "Referencia documental; sus afirmaciones requieren contrastarse con ejecución y código.",
+    "slides": 13
+  },
+  {
+    "name": "ConectaPyME_Defensa_Ejecutiva_V2_Notas_Orador.pptx",
+    "sha256": "68e99f3b3ea3b47ff2580a291e93ee6e7975504f3cc6f22d29a70ca7fee4082b",
+    "bytes": 496752,
+    "role": "Referencia documental; sus afirmaciones requieren contrastarse con ejecución y código.",
+    "slides": 18
+  },
+  {
+    "name": "ConectaPyME_Revision_Ejecutiva_005D_Con_Speech.pptx",
+    "sha256": "d4abc2f644231b5ef7d57b3e1d436fc83df604f50bbbdce83cd449adec2ee4f3",
+    "bytes": 117392,
+    "role": "Referencia documental; sus afirmaciones requieren contrastarse con ejecución y código.",
+    "slides": 24
+  },
+  {
+    "name": "ConectaPyME_Defensa_Ejecutiva_V2_Visualizacion.pdf",
+    "sha256": "12eead0892db552e8c09c7a880067ecd9d092bf5d36f878558a846dfc87e7a52",
+    "bytes": 244740,
+    "role": "Referencia documental; sus afirmaciones requieren contrastarse con ejecución y código."
+  }
+]

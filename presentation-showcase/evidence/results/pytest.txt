@@ -1,0 +1,101 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /workspace/conectapyme-showcase
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 285 items / 1 deselected / 284 selected
+
+tests/test_check_connection.py ...                                       [  1%]
+tests/test_config.py ...................                                 [  7%]
+tests/test_control_tower.py ...........................                  [ 17%]
+tests/test_database.py .............                                     [ 21%]
+tests/test_design.py ..............                                      [ 26%]
+tests/test_finance.py .................................................. [ 44%]
+.........                                                                [ 47%]
+tests/test_finance_commands.py ..............                            [ 52%]
+tests/test_graph_commands.py ........                                    [ 55%]
+tests/test_mongo_observable.py ...........                               [ 59%]
+tests/test_observable.py .............................                   [ 69%]
+tests/test_ranking_commands.py ..................                        [ 75%]
+tests/test_rankings.py .............................................     [ 91%]
+tests/test_tower_read_model.py ........................                  [100%]
+
+=============================== warnings summary ===============================
+tests/test_control_tower.py::test_default_is_executive_summary_t2_offline
+  tests/test_control_tower.py:54: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_default_is_executive_summary_t2_offline(app):
+
+tests/test_control_tower.py::test_five_pages_render_and_unsupported_filters_disabled[Resumen]
+tests/test_control_tower.py::test_five_pages_render_and_unsupported_filters_disabled[Graph Health]
+tests/test_control_tower.py::test_five_pages_render_and_unsupported_filters_disabled[AI Performance]
+tests/test_control_tower.py::test_five_pages_render_and_unsupported_filters_disabled[Business Funnel]
+tests/test_control_tower.py::test_five_pages_render_and_unsupported_filters_disabled[Economic Impact]
+  tests/test_control_tower.py:70: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize("page", PAGES)
+
+tests/test_control_tower.py::test_cut_controls_options_and_no_future_evolution[T0-12-28]
+tests/test_control_tower.py::test_cut_controls_options_and_no_future_evolution[T1-17-54]
+tests/test_control_tower.py::test_cut_controls_options_and_no_future_evolution[T2-23-83]
+  tests/test_control_tower.py:83: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize("cut,known,observations", [("T0", 12, 28), ("T1", 17, 54), ("T2", 23, 83)])
+
+tests/test_control_tower.py::test_company_selector_updates_network_and_detail_without_rescoring
+  tests/test_control_tower.py:95: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_company_selector_updates_network_and_detail_without_rescoring(app):
+
+tests/test_control_tower.py::test_industry_and_score_filters_preserve_global_rankings
+  tests/test_control_tower.py:122: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_industry_and_score_filters_preserve_global_rankings(app):
+
+tests/test_control_tower.py::test_funnel_missing_stages_are_text_not_zero
+  tests/test_control_tower.py:139: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_funnel_missing_stages_are_text_not_zero(app):
+
+tests/test_control_tower.py::test_finance_tables_match_module_and_do_not_depend_on_company_filters
+  tests/test_control_tower.py:146: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_finance_tables_match_module_and_do_not_depend_on_company_filters(app):
+
+tests/test_control_tower.py::test_atlas_requires_button_and_context_changes_invalidate_old_rows
+  tests/test_control_tower.py:168: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_atlas_requires_button_and_context_changes_invalidate_old_rows(app, monkeypatch):
+
+tests/test_control_tower.py::test_invalid_ledger_is_visible_and_finance_still_available
+  tests/test_control_tower.py:191: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_invalid_ledger_is_visible_and_finance_still_available(app, monkeypatch):
+
+tests/test_control_tower.py::test_atlas_error_does_not_reuse_previous_success
+  tests/test_control_tower.py:207: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_atlas_error_does_not_reuse_previous_success(app, monkeypatch):
+
+tests/test_control_tower.py::test_empty_eligible_population_has_no_percentage_with_zero_denominator
+  tests/test_control_tower.py:220: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_empty_eligible_population_has_no_percentage_with_zero_denominator(app, monkeypatch):
+
+tests/test_control_tower.py::test_graph_opens_focused_and_full_network_is_secondary
+  tests/test_control_tower.py:354: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_graph_opens_focused_and_full_network_is_secondary(app):
+
+tests/test_control_tower.py::test_focus_drops_future_account_when_cut_changes
+  tests/test_control_tower.py:377: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_focus_drops_future_account_when_cut_changes(app):
+
+tests/test_control_tower.py::test_all_technical_panels_are_collapsed_initially[Resumen]
+tests/test_control_tower.py::test_all_technical_panels_are_collapsed_initially[Graph Health]
+tests/test_control_tower.py::test_all_technical_panels_are_collapsed_initially[AI Performance]
+tests/test_control_tower.py::test_all_technical_panels_are_collapsed_initially[Business Funnel]
+tests/test_control_tower.py::test_all_technical_panels_are_collapsed_initially[Economic Impact]
+  tests/test_control_tower.py:390: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize("page", PAGES)
+
+tests/test_control_tower.py::test_economic_scale_switch_keeps_four_signed_scenarios_and_baseline_threshold
+  tests/test_control_tower.py:398: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_economic_scale_switch_keeps_four_signed_scenarios_and_baseline_threshold(app):
+
+tests/test_control_tower.py::test_returning_to_global_view_restores_funnel_without_changing_rankings
+  tests/test_control_tower.py:419: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    def test_returning_to_global_view_restores_funnel_without_changing_rankings(app):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /workspace/conectapyme-showcase/presentation-showcase/evidence/results/pytest.xml -
+=============== 284 passed, 1 deselected, 26 warnings in 19.32s ================

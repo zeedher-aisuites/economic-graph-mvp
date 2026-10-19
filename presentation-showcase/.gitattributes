@@ -1,0 +1,4 @@
+# Preserve raw captured/test output, including whitespace printed by the tools.
+evidence/results/*.txt -whitespace
+# Reference text preserves the spacing extracted from the uploaded documents.
+evidence/references/* -whitespace

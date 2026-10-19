@@ -1,0 +1,7 @@
+# Propuesta experimental de Codex. NO aplicada al motor original.
+# Fragmento de la condición del comprehension en snapshot().
+--- original/src/economic_graph/observable.py
++++ experimental-en-memoria/src/economic_graph/observable.py
+@@
+-            if row["available_at"] == latest["available_at"]
++            if parse_time(row["available_at"]) == parse_time(latest["available_at"])

@@ -1,0 +1,513 @@
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                              DISEÑO
+
+
+
+
+De relaciones económicas a decisiones comerciales
+ Economic Graph para adquisición B2B · Prototipo sintético de ConectaPyME
+
+
+
+
+  La decisión: a quién investigar primero y por qué.
+
+     01 · Construcción                                                             02 · Resultado observable          03 · Pregunta abierta
+     Grafo temporal, evidencia con                                                 En T2 cambian 3 de las 5 cuentas   ¿Ese cambio genera mayor margen
+     procedencia, políticas comparables y                                          priorizadas frente al baseline.    neto, después de los costos? Aún no
+     Control Tower.                                                                                                   se ha medido.
+
+
+
+
+   Lo demostrado es técnico. El efecto económico requiere un ensayo real.
+
+
+
+Base: reto original · ConectaPyME 005D · corte T2 sintético · revisión ejecutiva                                                                            01
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                            HIPÓTESIS
+
+
+
+
+Un equipo comercial no puede investigar todas las cuentas
+ La hipótesis: las relaciones económicas pueden enriquecer la priorización B2B.
+
+
+
+       S I T U AC I Ó N                                                             COMPARACIÓN CONTROLADA
+
+
+
+       Muchas PyMEs potenciales.                                                    Misma cohorte
+       Tiempo y recursos comerciales
+                                                                                    Misma capacidad: K = 5
+       limitados.
+                                                                                    Dos políticas explícitas
+       La pregunta real es qué investigar primero, no
+       cuántos nodos dibujamos.                                                     Resultado a validar: mayor margen neto por
+                                                                                    cuenta elegible.
+
+
+
+     Seis entregables cubiertos: negocio · grafo · AI/ML · arquitectura · caso económico · Control Tower
+
+
+
+Fuente: 005D slides 2–3 · docs/01-product-brief.md · Reto AI Engineer                                                                        02
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                     DEMOSTRADO
+
+
+
+
+El sistema conoce solo lo que estaba disponible
+ 30 PyMEs en la verdad del simulador; la información observable crece con cada corte.
+
+
+      T0 · ENERO                                                              T1 · MAYO                           T2 · SEPTIEMBRE
+
+
+
+      12                    PyMEs conocidas
+                                                                              17          PyMEs conocidas
+                                                                                                                  23          PyMEs conocidas
+
+
+      28 observaciones                                                        54 observaciones                    83 observaciones
+
+
+
+
+      7 PyMEs siguen desconocidas en T2                                                            available_at ≤ fecha de corte
+       No se usa evidencia del futuro ni se convierten reportes en confirmaciones.
+
+
+
+      T2: 26 afirmaciones económicas · 2 identidades candidatas · 2 atributos en conflicto
+
+
+Fuentes: docs/09-observability-plan.md · docs/10-design-validation.md · 005D slides 6–8                                                            03
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                       DEMOSTRADO
+
+
+
+
+La información relacional modifica 3 de 5 decisiones
+ Mismo cupo, mismas empresas elegibles: solo cambian las señales de priorización.
+
+
+     BASELINE                                                                                         CON GRAFO
+     10 puntos por sucursal adicional observable sin                                        3         Baseline + 5 puntos por vecino económico
+     conflicto. Máximo 5 sucursales.                                                        cambios   confirmado y distinto. Máximo 4 vecinos.
+
+
+
+
+       CASO AUDITABLE · CAFÉ JACARANDA
+
+
+
+
+        #10                                                                                             #3
+        sin grafo · 0 pts                                                                               con grafo · 10 pts
+
+
+
+
+        Dos vecinos confirmados explican el movimiento. No implican intención de compra.
+
+
+Fuentes: docs/12-commercial-ranking.md · docs/13-ranking-comparison.md · 005D slides 9–11                                                            04
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                                                 DISEÑO
+
+
+
+
+Diseño iterativo y reglas antes de machine learning
+ La arquitectura nació de las preguntas de datos; no de asumir que MongoDB era obligatorio.
+
+
+
+     1      Problema                               2      Modelo                                3    Evidencia               4 Cálculo                   5     Interfaz
+
+                                                                                                fuentes + fechas +
+    priorización B2B                              PyMEs + relaciones                                                         Python + reglas             Streamlit · Atlas opcional
+                                                                                                conflictos
+
+
+
+
+      POR QUÉ REGLAS                                                                                          CUÁNDO USAR ML
+      Con datos sintéticos y sin etiquetas reales de conversión,                                              Con ventas/activaciones verificadas, división temporal,
+      prioricé un baseline transparente, cortes sin fuga temporal                                             comparación predictiva, monitoreo y evidencia de que
+      y resultados auditables.                                                                                supera al baseline.
+
+
+
+
+    MongoDB fue una elección familiar y útil para probar procedencia; no una descalificación de SQL.
+
+
+Fuentes: 005D slides 12–14 · docs/04-architecture-overview.md · revisión del diseño iterativo                                                                                   05
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                       DEMOSTRADO
+
+
+
+
+La Control Tower muestra hasta dónde llega la evidencia
+ Cinco vistas funcionales, pero no ejecuta contactos ni campañas.
+
+
+               RESUMEN                                 GRAPH HEALTH                            AI PERFORMANCE      BUSINESS FUNNEL      ECONOMIC IMPACT
+
+           Estado general                            Fuentes y calidad                          Dos rankings     Selección comercial       Escenarios
+
+
+
+
+                           23                                                              21                                  5
+                         CONOCIDAS                                                       ELEGIBLES                        PRIORIZADAS
+
+
+
+
+      Contactos, oportunidades, activaciones y ventas: NO OBSERVADOS
+     Soporte técnico: 284 pruebas seleccionadas aprobadas, lectura Atlas T2 y 5 vistas locales; no son pruebas de escalabilidad.
+
+
+Fuentes: docs/17-control-tower-design.md · docs/18-control-tower-demo.md · 005D slides 15–17                                                            06
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                                    HIPÓTESIS
+
+
+
+
+El caso económico depende del uplift y de los costos
+ Escenarios calculados, no ventas reales ni ROI observado.
+
+
+
+
+    −$41,000                                                              +$39,000                                 −$15,450
+     500 plazas · uplift nulo                                             500 plazas · uplift supuesto de 2 pp     5 plazas · caso base hipotético
+
+
+
+
+       10 activaciones adicionales × $8,000 de margen = $80,000
+       $80,000 − $41,000 de costos netos = +$39,000 (500 plazas; mejora supuesta de 2 puntos)
+
+
+
+
+       BREAK-EVEN: $41,000 ÷ (500 × $8,000) = 1.025 pp                                                                                   Con reserva: 1.105 pp
+
+
+
+
+Supuestos ilustrativos: docs/16-financial-calculation.md · config/financial_assumptions.json · 005D slides 19–20                                                     07
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                               DISEÑO
+
+
+
+
+Un ensayo por bolsas demostraría valor incremental
+ Control y tratamiento con capacidad comparable; medir también las cuentas no contactadas.
+
+
+
+                                                                        PYMES ELEGIBLES + BOLSAS DE RELACIONES
+
+
+
+
+      CONTROL · baseline                                                                        TRATAMIENTO · con grafo
+      Bolsas asignadas a la política sin señales relacionales.                                  Bolsas asignadas a la política enriquecida. Mismo cupo y
+      Mismo cupo comercial.                                                                     seguimiento.
+
+
+
+
+              KPI primario: diferencia de margen neto por cuenta elegible originalmente asignada (ITT)
+
+
+Fuente: docs/15-incrementality-experiment.md · 005D slide 21 · piloto propuesto, NO ejecutado                                                                08
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                                      PENDIENTE
+
+
+
+
+Ruta de validación: negocio primero, escala después
+ Separa pruebas de impacto, exploración comercial y benchmarks técnicos.
+
+
+     GATE 1                                                GATE 2                                         GATE 3                        GATE 4
+
+
+     DATOS REALES                                          PILOTO CAUSAL                                  OPERACIÓN                     ESCALA &
+                                                                                                          GOBERNADA                     EXPLORACIÓN
+     Permisos, baseline,                                   Bolsas A/B y ranking oficial                   Ránkings privados bajo        Benchmarks 1k → 10k →
+     márgenes, activaciones y                              congelado para evaluación.                     demanda sin sobrescribir el   50k; Gephi en análisis
+     costos verificables.                                                                                 oficial.                      offline.
+
+
+
+
+        Experimentos futuros: rama Git y base MongoDB aisladas; medir tiempos, memoria, consultas y costos.
+
+
+
+Contexto de mejoras: revisión posterior a 005D · experimento de escalabilidad y Gephi aún no ejecutados                                                                09
+C O N E C TA P Y M E / D E F E N S A E J E C U T I VA                                                                                                  DISEÑO
+
+
+
+
+Decisión ejecutiva: validar antes de desplegar
+ El prototipo está construido; su impacto comercial todavía debe medirse.
+
+
+
+      SÍ PUEDO DEFENDER                                                                             NO PUEDO AFIRMAR
+      Cortes temporales; procedencia y conflictos; dos políticas                                    Mayor conversión, ventas adicionales, ROI observado,
+      auditables; 3 de 5 cambios; Control Tower y escenarios                                        rendimiento a 50,000 PyMEs o preparación para
+      reproducibles.                                                                                producción.
+
+
+
+
+        Siguiente decisión
+
+        ¿Hay datos, permisos y capacidad para financiar un piloto controlado?
+
+
+
+Fuentes: 005D slide 24 · docs/02-challenge-traceability.md · docs/15-incrementality-experiment.md                                                               10
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                               DEMOSTRADO
+
+
+
+
+Trazabilidad de los seis entregables
+ La historia ejecutiva es más corta; el reto original sigue cubierto.
+
+
+
+                    BUSINESS FRAMING                                                 ECONOMIC GRAPH
+      01                                                                        02
+                    Problema y comparación (slide 2)                                 Modelo observable (slides 3–4)
+
+
+
+
+                    AI/ML APPROACH                                                   ARCHITECTURE
+      03                                                                        04
+                    Reglas vs ML (slide 5)                                           Diseño iterativo (slide 5)
+
+
+
+
+                    ECONOMIC CASE                                                    CONTROL TOWER
+      05                                                                        06
+                    Cálculo, causalidad (7–8)                                        Cadena visible (slide 6)
+
+
+
+
+Base: seis entregables del reto AI Engineer · presentación 005D diapositiva 2                                                      11
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                                HIPÓTESIS
+
+
+
+
+El CRM sintético fue un laboratorio distinto
+ Sirve para pensar en fricción operativa; no alimenta el ranking del Economic Graph.
+
+
+
+
+     240                                                                     181                   16
+     leads ficticios                                                         contactos ficticios   cierres ficticios
+
+
+
+
+        100 de 181 contactos ocurrieron después de 24 horas en la simulación.
+        No hay base causal para atribuir pérdidas a esos retrasos.
+
+
+
+
+Fuente: 005D slides 4–5 · ConectaPyME Defensa Integral anterior · simulación independiente                                         12
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                                                          DEMOSTRADO
+
+
+
+
+Nodos, relaciones, evidencias y estados
+ Una mención económica no equivale a un vínculo confirmado.
+
+
+      NODOS                                                                 RELACIONES                                EVIDENCIA
+      PyMEs conocidas, atributos                                            SUPPLIES_TO, PARTNERS_WITH y              Fuente, fecha de disponibilidad,
+      observables y claves internas                                         REFERS_TO. Direccionalidad cuando         estado y posibles contradicciones.
+      estables. De 30 simuladas, 23                                         aplica.
+      conocidas en T2.
+
+
+
+
+                    CONFIRMADA                                            REPORTADA                        INFERIDA                        DESCARTADA
+
+
+
+
+        Regla de integridad: no fusionar identidades candidatas sin evidencia; mantener
+        conflictos visibles.
+
+
+
+
+Fuentes: docs/06-economic-graph-design.md · docs/10-design-validation.md · 005D slides 6–8                                                                 13
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                                         DEMOSTRADO
+
+
+
+
+Políticas exactas del experimento de ranking
+ Pesos exploratorios; no son probabilidades de compra.
+
+
+
+      POLÍTICA A · BASELINE                                                             POLÍTICA B · GRAFO
+      score_base = 10 × min(5, sucursales_adicionales_válidas)                          score_grafo = score_base + 5 × min(4,
+                                                                                        vecinos_confirmados_distintos)
+
+
+
+
+       Condiciones de comparación
+
+       Mismo universo elegible · K = 5 · corte T2 · sin información futura · desempates reproducibles
+
+
+
+
+Fuentes: docs/12-commercial-ranking.md · docs/13-ranking-comparison.md · 005D slide 9                                                    14
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                                                                      DEMOSTRADO
+
+
+
+
+Qué está probado técnicamente, y qué no
+ Las verificaciones se ejecutaron en el entorno integrado, no a escala empresarial.
+
+
+
+
+     284                                                                         83                                           5
+      pruebas seleccionadas aprobadas                                            observaciones T2 leídas en Atlas             vistas Streamlit funcionales
+
+
+
+
+       CÓMO LO DEFENDERÍA                                                                                 LO QUE NO PRUEBAN
+       Puedo explicar y reproducir: cortes temporales, fuentes,                                           No garantizan rendimiento con 50k empresas, seguridad,
+       criterios del ranking y lectura offline / Atlas.                                                   alta disponibilidad, ventas ni causalidad.
+
+
+
+
+Fuentes: reporte local de usuario · docs/11-atlas-integration-validation.md · 005D slide 17                                                                           15
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                                          HIPÓTESIS
+
+
+
+
+El umbral económico se puede recalcular
+ Ejemplo de 500 plazas bajo los supuestos financieros declarados.
+
+
+
+           Margen neto hipotético = N × uplift absoluto × margen unitario − costos incrementales
+
+
+
+        N                                              500                                       cuentas/plazas hipotéticas
+
+
+        Uplift                                         0 pp / 2 pp                               mejora absoluta no observada
+
+
+        Margen unitario                                $8,000 MXN                                supuesto por activación
+
+
+        Costo incremental                              $41,000 MXN                               neto del caso nulo 500 plazas
+
+
+        Resultado                                      −$41,000 / +$39,000                       nulo / caso base con 2 pp
+
+
+
+      Sin reserva: 1.025 pp | Con reserva: 1.105 pp. Sensibilidad a supuestos obligatoria.
+
+Fuente: docs/16-financial-calculation.md · 005D slides 19–20 · ninguna cifra es resultado real                                               16
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                                                  DISEÑO
+
+
+
+
+Condiciones para que el A/B sea interpretable
+ La independencia entre bolsas, el tamaño de muestra y el seguimiento importan.
+
+
+
+                   Bolsas sin interferencia dominante
+        1                                                                       Agrupar empresas relacionadas antes de aleatorizar.
+
+
+
+                   Aleatorización y cupo equivalente
+        2                                                                       Evitar que el tratamiento tenga más capacidad.
+
+
+
+                   Resultado por asignación original
+        3                                                                       Medir margen neto por cuenta elegible (ITT).
+
+
+
+                   Ventana y precisión predefinidas
+        4                                                                       Considerar tamaño de muestra, ICC y pérdidas de seguimiento.
+
+
+
+
+Fuente: docs/15-incrementality-experiment.md · piloto propuesto, no ejecutado                                                                     17
+C O N E C TA P Y M E / A N E XO PA R A P R E G U N TA S                                                                                              PENDIENTE
+
+
+
+
+Experimentos de escala y Gephi: alcance propuesto
+ No son resultados de la PoC: medir, observar cuellos de botella y decidir.
+
+
+
+
+      1,000                                                                   10,000                                 50,000
+      FASE 1                                                                   FASE 2                                FASE 3
+
+
+
+
+       MÉTRICAS DE BENCHMARK                                                                  EXPLORACIÓN VISUAL
+       Carga · consultas · reconstrucción temporal · ranking ·                                Gephi: comunidades, centralidad y visualización. No
+       memoria · costos. Rama y base MongoDB aisladas.                                        sustituye la prueba comercial ni el motor principal.
+
+
+
+
+      No alterar main ni el dataset de 30 PyMEs; no maquillar fallos ni prometer una escala no verificada.
+
+
+Referencia: conversación de revisión técnica posterior a 005D · no implementado / no medido                                                                      18
+

@@ -1,0 +1,8 @@
+{
+  "source_commit": "774dacd80e6410ca43299f63f19d9744a31929c0",
+  "source_path": "design-data/restricted/companies_world_design.json",
+  "source_sha256": "74f9f79af80280b8826c68e200e0b70d352778f3ccbcd394f2c4b19e1a863b85",
+  "company_count": 30,
+  "role": "Conteo del diseño restringido; no se usa en scoring, contexto comercial o UI.",
+  "reproduce": "uv run python presentation-showcase/scripts/reproduce.py"
+}
