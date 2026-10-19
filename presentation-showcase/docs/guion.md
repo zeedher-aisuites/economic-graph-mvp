@@ -317,13 +317,19 @@ Cambia entre las cinco capturas; amplía una y muestra sus parámetros.
 
 **Límite:** La revisión se hizo en Linux; no sustituye una revisión nativa en Windows ni una prueba de carga.
 
-## 12. Puedo revisar cómo se comprobó el comportamiento
+### Evidencias para mostrar (opcionales)
 
-**Tipo:** Evidencia técnica · registros conservados · **Duración orientativa:** 54 s
+Si quiero profundizar, aquí puedo mostrar los registros originales y después abrir su detalle técnico. Desde el presentador envío el panel a la ventana de diapositivas y puedo cerrarlo sin cambiar de sección. Son datos sintéticos offline y resultados reproducidos; no demuestran ventas ni una conexión en vivo a Atlas. Este apoyo es opcional y no forma parte del tiempo del discurso principal.
+
+- ¿Cómo calculé estos escenarios? · `finance-story`
+
+## 12. Cómo organicé y comprobé el desarrollo
+
+**Tipo:** Evidencia técnica · registros conservados · **Duración orientativa:** 51 s
 
 ### Discurso
 
-Para defender el prototipo necesito algo más que una pantalla que se vea bien. Cuento con un registro de doscientas ochenta y cuatro pruebas originales aprobadas y una integración remota excluida. Las pruebas de funciones revisan fechas, reglas y cálculos. Los dobles de MongoDB permiten comprobar consultas e idempotencia en memoria; no prueban una conexión real a Atlas. AppTest ejecuta Streamlit y revisa controles y tablas, mientras que el navegador permite observar cómo se muestra la aplicación. En el anexo también conservo un caso aislado de fechas equivalentes y su corrección experimental, separados del motor original. Estos registros respaldan comportamientos concretos y conservan quién los produjo. No los uso como garantía de ausencia de errores, preparación para producción o capacidad personal de repetirlos sin practicar.
+Para organizar el proyecto utilicé GitHub. Ahí fui manteniendo el código, la documentación y sus diferentes versiones. El repositorio es privado, pero puedo compartirlo si necesitan revisar cómo está construido. También trabajé con MongoDB Atlas desde mi cuenta personal, aunque para esta demostración estoy usando la versión offline y no presento la integración remota como verificada. Durante el desarrollo y la revisión se hicieron comprobaciones para los datos, los rankings, los cálculos y la interfaz. Codex ejecutó parte de las pruebas automatizadas que conservo; yo tomé las decisiones de alcance, revisé los resultados y preparé la forma de explicarlos. Mi intención fue mantener una prueba de concepto organizada y revisable, aunque todavía no sea un sistema listo para producción.
 
 ### Qué señalar
 
@@ -343,13 +349,13 @@ Distingue funciones, dobles, AppTest, navegador e integración real.
 
 **Límite:** Cobertura alta no mide calidad comercial, producción, seguridad integral ni corrección de todos los casos.
 
-## 13. Calculé qué tendría que pasar para cubrir costos
+## 13. ¿Cuántas empresas necesitaría para que la idea valga la pena?
 
-**Tipo:** Hipótesis · cálculo reproducido · **Duración orientativa:** 56 s
+**Tipo:** Hipótesis · cálculo reproducido · **Duración orientativa:** 55 s
 
 ### Discurso
 
-Después del resultado técnico me pregunté qué tendría que pasar para que la idea cubriera sus costos. El calculador sirve para explorar esa condición, no para reportar dinero ganado. En el caso base de quinientas plazas supongo que la activación pasa de diez a doce por ciento. Con ocho mil pesos de margen por activación y los costos declarados, el saldo calculado es más treinta y nueve mil pesos antes de reserva. Si mantengo esos costos pero quito la mejora de activación, el escenario nulo pierde cuarenta y un mil. Con cinco plazas, el caso base también es negativo. Por eso muestro ambas escalas y las pérdidas. Las cuentas están comprobadas aritméticamente, pero los supuestos todavía no están calibrados. No son ventas de las treinta empresas ni un ROI observado.
+Después de construir el prototipo me pregunté cuánto podría costarle a una empresa utilizar una solución como esta. Primero supuse diez mil pesos de implementación, seis mil de operación y cincuenta pesos más por cada empresa investigada. Después imaginé que, si el sistema ayuda a elegir mejores prospectos, podríamos pasar de una activación del diez al doce por ciento, con un margen supuesto de ocho mil pesos por nueva activación. Con cinco plazas, el posible beneficio no cubre los costos y el resultado es de menos quince mil cuatrocientos cincuenta pesos. Con quinientas plazas, y solamente si conseguimos esa mejora, el cálculo da treinta y nueve mil pesos positivos. Ambas cifras son supuestos, no ingresos observados. La viabilidad depende de conseguir una mejora real, no simplemente de utilizar IA.
 
 ### Qué señalar
 
@@ -810,3 +816,43 @@ Abre la matriz y muestra una fila con fuente, commit, comando y captura.
 **Reproducción:** `Consultar docs/trazabilidad.csv y evidence/source/manifest.json.`
 
 **Límite:** Una referencia facilita auditar; no convierte una hipótesis en un resultado observado.
+
+## Evidencia financiera opcional · tres pasos
+
+Estas notas aparecen únicamente en la vista del presentador cuando se abre `finance-story`; la audiencia ve solo la evidencia financiera.
+
+### Paso 1 de 3
+
+Para evaluar si esta idea podría ser rentable, primero establecí algunos supuestos. Imaginé una inversión de diez mil pesos para implementar la solución, seis mil para operarla y cincuenta pesos adicionales por cada plaza comercial.
+
+También supuse que, con el método tradicional, contrataría el diez por ciento de las empresas, mientras que con el grafo podría llegar al doce por ciento.
+
+Esa mejora todavía no está demostrada. Es justamente lo que necesitaríamos validar.
+
+**Duración estimada:** 35–50 segundos
+
+### Paso 2 de 3
+
+Ahora imaginemos que aplicamos la solución a quinientas plazas comerciales.
+
+Si el grafo consiguiera mejorar las activaciones del diez al doce por ciento, tendríamos diez clientes adicionales en promedio.
+
+Suponiendo ocho mil pesos de margen por cada uno, obtendríamos ochenta mil pesos de beneficio adicional.
+
+Después restaría veinticinco mil pesos de esfuerzo comercial, diez mil de implementación y seis mil de operación.
+
+El resultado sería de treinta y nueve mil pesos positivos, antes de considerar una reserva adicional de tres mil doscientos pesos. Es un escenario hipotético, no una ganancia que ya conseguimos.
+
+**Duración estimada:** 35–50 segundos
+
+### Paso 3 de 3
+
+Pero también me pregunté qué sucedería si mis supuestos no se cumplen.
+
+Por eso preparé cuatro escenarios: conservador, base, optimista y nulo.
+
+El escenario nulo es especialmente importante: si trabajamos con quinientas plazas y el grafo no consigue mejorar las activaciones, tendríamos un resultado negativo de cuarenta y un mil pesos antes de reserva.
+
+Esto me permite explicar que el proyecto podría ser económicamente atractivo, pero no basta con desarrollar la tecnología. Necesitamos demostrar que realmente mejora los resultados comerciales.
+
+**Duración estimada:** 35–50 segundos

@@ -9,6 +9,7 @@
 #slide-economia .slide-content{gap:16px}
 .economic-case p{margin-bottom:10px}
 .economic-case p:last-child,.economic-equation p{margin-bottom:0}
+.finance-launch{margin:18px 0;padding:13px 16px;border:1px solid var(--teal);border-radius:6px;background:transparent;color:var(--teal);font-weight:700}.finance-launch:hover{background:var(--teal);color:white}.ce-calculation-readable{grid-template-columns:1fr 1fr;gap:18px}.ce-calculation-readable strong{font-size:22px;line-height:1.35}.ce-finance-scenarios td,.ce-finance-scenarios th{font-size:18px;padding:14px 16px}.ce-finance-scenarios .ce-risk-row{background:#fff0df}.ce-risk{color:#a14e1e;font-size:12px;text-transform:uppercase;margin-left:8px}.finance-speech{border:2px solid var(--teal);background:#e6f2eb;padding:18px 20px;margin:20px 0;border-radius:8px}.finance-speech h3{margin-top:0;color:#006e63}.finance-speech .note-speech{margin:10px 0;font-size:17px!important}
 /* Misión 2: misma identidad, recorrido del candidato e inicio de exposición. */
 .challenge-grid{grid-template-columns:1.3fr 1fr;gap:25px}
 .challenge-grid .cover-title{font-size:70px;letter-spacing:-4px;margin:12px 0 22px}

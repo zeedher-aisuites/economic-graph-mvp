@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from content import FINANCE_STORY_SPEECHES
 from economic_graph.contracts import CUTS
 from economic_graph.finance import financial_report, load_financial_config
 from economic_graph.observable import load_observations
@@ -13,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 APP = ROOT / "presentation-showcase"
 OUT = APP / "evidence/iteration-3/data"
 COMMIT = "774dacd80e6410ca43299f63f19d9744a31929c0"
-BASE = "23a8efac164f8631dae57e9c9e8e3bcf9efe66ae"
+BASE = "5fb3aaa369043733f5c722eb0cc9eaecfb237ed2"
 GROUPS = {
     "hornos": ["OBS-028", "OBS-047", "OBS-075"],
     "panificadora": ["OBS-048", "OBS-076"],
@@ -143,10 +144,10 @@ def build_contextual(source_ref):
         (ledger_path, "observations.json"),
         (finance_path, "financial_assumptions.json"),
     ):
-        raw = original.read_bytes()
+        raw = original.read_bytes().replace(b"\r\n", b"\n")
         (OUT / target).write_bytes(raw)
         files[target] = {
-            "path": str(original.relative_to(ROOT)),
+            "path": original.relative_to(ROOT).as_posix(),
             "url": "evidence/iteration-3/data/" + target,
             "sha256": hashlib.sha256(raw).hexdigest(),
         }
@@ -164,6 +165,7 @@ def build_contextual(source_ref):
         "files": files,
         "ledger": json.loads(ledger_path.read_text(encoding="utf-8")),
         "financialConfig": json.loads(finance_path.read_text(encoding="utf-8")),
+        "financeStorySpeeches": FINANCE_STORY_SPEECHES,
         "finance": finance,
         "records": records,
         "groups": GROUPS,

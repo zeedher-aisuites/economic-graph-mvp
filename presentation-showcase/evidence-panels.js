@@ -6,7 +6,7 @@ window.ContextualEvidence = (() => {
  const state={REPORTED:'Reportada',CONFIRMED:'Confirmada',INFERRED:'Inferida',CONFLICTED:'En conflicto'};
  const type={SUPPLIES_TO:'Suministra a',PARTNERS_WITH:'Alianza',REFERS_TO:'Referencia comercial'};
  const amount=v=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(Number(v));
- const pct=v=>`${(Number(v)*100).toLocaleString('es-MX',{maximumFractionDigits:3})}%`;
+ const pct=v=>`${(Number(v)*100).toLocaleString('es-MX',{maximumFractionDigits:0})}%`;
  const proof=t=>`<div class="ce-proof">${t}</div>`;
  const warning=t=>`<p class="ce-warning">${t}</p>`;
  const table=(heads,rows)=>`<div class="ce-table-wrap"><table class="ce-table"><thead><tr>${heads.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
@@ -65,7 +65,28 @@ window.ContextualEvidence = (() => {
   const cap=window.DECK_DATA.captures.find(c=>c.id===ids[key]),r=P.filters[key].cafe;
   return {title:'Filtros reales · cambia lo visible, conserva la posición global',body:`<div class="ce-tabs">${tab('filters','Ranking general',{filter:'global'},key==='global')}${tab('filters','Por industria',{filter:'industry'},key==='industry')}${tab('filters','Solo Jacaranda',{filter:'company'},key==='company')}</div><div class="ce-filter-layout"><div>${proof(`Café Jacaranda <span>#${r['Posición baseline']} →</span> #${r['Posición grafo']}`)}<p>Baseline: ${r['Score baseline']} puntos.<br>Con grafo: ${r['Score grafo']} puntos.<br>${P.filters[key].rows.length} filas del ranking en esta selección.</p><ol><li><strong>build_context()</strong> calcula ambas políticas completas.</li><li><strong>segment_ids()</strong> selecciona los IDs que quiero ver.</li><li><strong>ranking_table()</strong> copia sus scores y posiciones globales.</li></ol><p>El Top 5 no se recalcula ni se rellena con otras empresas después de filtrar.</p></div><figure><button class="ce-capture-button" data-ce-zoom="${cap.id}.png"><img src="evidence/${cap.viewport_file}" alt="Captura auténtica con selectores de industria, empresa y período: ${esc(cap.screen)}"><span>Ampliar captura original →</span></button><figcaption>${esc(cap.screen)} · ${esc(cap.captured_at)}<br>Corte ${esc(cap.cut)} · ${esc(cap.mode)} · ${esc(JSON.stringify(cap.parameters))}</figcaption></figure></div>${warning('La imagen es una captura real conservada de Streamlit; no es una sesión en vivo. Los números del panel se reprodujeron con las funciones originales, no se leyeron de píxeles. No acredita acceso a Atlas.')}<details class="ce-secondary"><summary>Ver registro de la captura y tablas calculadas</summary>${json(cap)}${json(P.filters[key].rows)}</details>${technical('filters',null,'observations.json',P.filters)}`};
  }
- const builders={hornos,leaders,confirmed,context,ledger,finance,filters};
+ function financeStory(options={}){
+  const step=Math.max(0,Math.min(2,Number(options.step)||0));
+  const base=P.financialConfig.scenarios.find(x=>x.name==='base');
+  const value=x=>Number(x?.value ?? x ?? 0).toLocaleString('es-MX');
+  const implementation=base.costs.find(x=>x.cost_id==='implementation')?.amount;
+  const operation=base.costs.find(x=>x.cost_id==='data_and_operations')?.amount;
+  const margin=base.contract_margin_per_activation;
+  const commercial=base.incremental_commercial_cost_per_slot;
+  const r5=P.finance.results.find(x=>x.scope==='demo'&&x.scenario==='base');
+  const r500=P.finance.results.find(x=>x.scope==='hypothetical'&&x.scenario==='base');
+  const n500=P.finance.results.find(x=>x.scope==='hypothetical'&&x.scenario==='null');
+  const scenarioRows=['conservative','base','optimistic','null'].map(name=>({name,r5:P.finance.results.find(x=>x.scope==='demo'&&x.scenario===name),r500:P.finance.results.find(x=>x.scope==='hypothetical'&&x.scenario===name)}));
+  const scenarioName={conservative:'Conservador',base:'Base',optimistic:'Optimista',null:'Nulo'};
+  const speech=P.financeStorySpeeches?.[step]||'';
+  const screens=[
+   `<h2>Primero imaginé cuánto podría costar</h2><div class="ce-field-grid"><p><strong>Implementación</strong><br><span class="ce-big">$${value(implementation)}</span> MXN</p><p><strong>Operación</strong><br><span class="ce-big">$${value(operation)}</span> MXN</p><p><strong>Costo comercial</strong><br><span class="ce-big">$${value(commercial)}</span> por empresa</p><p><strong>Margen supuesto</strong><br><span class="ce-big">$${value(margin)}</span> por activación</p></div><p>Para este ejercicio supuse una activación de referencia de ${pct(base.baseline_activation_rate)} y una hipotética de ${pct(Number(base.baseline_activation_rate)+Number(base.activation_rate_increment))}. Son supuestos educativos; no representan el costo real de mi PoC ni un precio de venta.</p>`,
+   `<h2>¿De dónde salen los $${value(r500.net_present_value_mxn)}?</h2><div class="ce-calculation ce-calculation-readable"><div><span>Fórmula del beneficio</span><strong>500 plazas × ${pct(base.activation_rate_increment)} de mejora × $${value(margin)} = $${value(r500.selected_margin_increment_mxn)}</strong></div><div><span>Beneficio adicional hipotético</span><strong class="ce-value">+$${value(r500.selected_margin_increment_mxn)}</strong></div><div><span>Costos adicionales</span><strong>Esfuerzo comercial: −$${value(r500.commercial_cost_increment_mxn)}<br>Implementación: −$${value(r500.fixed_incremental_cost_mxn)}<br>Operación: −$${value(r500.operating_incremental_cost_mxn)}</strong></div><div><span>Resultado antes de reserva</span><strong class="ce-value">+$${value(r500.net_present_value_mxn)}</strong></div><div><span>Reserva</span><strong>$${value(r500.reserve_mxn)}</strong></div><div><span>Resultado después de reserva</span><strong class="ce-value">+$${value(r500.net_after_reserve_mxn)}</strong></div></div><p>No vuelvo a descontar importes que ya están expresados en valor presente.</p>`,
+   `<h2>¿Y si las cosas no salen como esperaba?</h2><div class="ce-table-wrap"><table class="ce-table ce-finance-scenarios"><thead><tr><th>Escenario</th><th>5 plazas</th><th>500 plazas</th></tr></thead><tbody>${scenarioRows.map(x=>`<tr class="${x.name==='null'?'ce-risk-row':''}"><td>${scenarioName[x.name]}</td><td>${amount(x.r5.net_present_value_mxn)}</td><td>${amount(x.r500.net_present_value_mxn)}${x.name==='null'?' <strong class="ce-risk">Riesgo</strong>':''}</td></tr>`).join('')}</tbody></table></div><p>El escenario nulo importa porque muestra el riesgo: si invierto en la solución y no mejora las activaciones, podría perder dinero. Estos cálculos me ayudan a imaginar cuándo podría convenir; todavía no demuestran que el grafo genere más ventas.</p>`
+  ];
+  return {title:'¿Cómo calculé estos escenarios?',speech,body:`<div class="finance-walk" data-finance-step="${step}">${screens[step]}</div><nav class="ce-tabs" aria-label="Pasos de explicación financiera"><button data-finance-step="${Math.max(0,step-1)}" ${step===0?'disabled':''}>← Anterior</button><button data-finance-step="0" ${step===0?'aria-current="step"':''}>1 · Costos</button><button data-finance-step="1" ${step===1?'aria-current="step"':''}>2 · $39,000</button><button data-finance-step="2" ${step===2?'aria-current="step"':''}>3 · Escenarios</button><button data-finance-step="${Math.min(2,step+1)}" ${step===2?'disabled':''}>Siguiente →</button></nav>`};
+ }
+ const builders={hornos,leaders,confirmed,context,ledger,finance,filters,'finance-story':financeStory};
  function render(id,options={}){
   if(!builders[id])return null;
   const result=builders[id](options);

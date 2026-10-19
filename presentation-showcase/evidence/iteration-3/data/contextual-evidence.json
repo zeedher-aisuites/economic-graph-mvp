@@ -1,6 +1,6 @@
 {
   "sourceCommit": "774dacd80e6410ca43299f63f19d9744a31929c0",
-  "presentationBase": "23a8efac164f8631dae57e9c9e8e3bcf9efe66ae",
+  "presentationBase": "5fb3aaa369043733f5c722eb0cc9eaecfb237ed2",
   "cut": "2026-09-15T12:00:00Z",
   "files": {
     "observations.json": {
@@ -1574,6 +1574,11 @@
       }
     ]
   },
+  "financeStorySpeeches": [
+    "Para evaluar si esta idea podría ser rentable, primero establecí algunos supuestos. Imaginé una inversión de diez mil pesos para implementar la solución, seis mil para operarla y cincuenta pesos adicionales por cada plaza comercial.\n\nTambién supuse que, con el método tradicional, contrataría el diez por ciento de las empresas, mientras que con el grafo podría llegar al doce por ciento.\n\nEsa mejora todavía no está demostrada. Es justamente lo que necesitaríamos validar.",
+    "Ahora imaginemos que aplicamos la solución a quinientas plazas comerciales.\n\nSi el grafo consiguiera mejorar las activaciones del diez al doce por ciento, tendríamos diez clientes adicionales en promedio.\n\nSuponiendo ocho mil pesos de margen por cada uno, obtendríamos ochenta mil pesos de beneficio adicional.\n\nDespués restaría veinticinco mil pesos de esfuerzo comercial, diez mil de implementación y seis mil de operación.\n\nEl resultado sería de treinta y nueve mil pesos positivos, antes de considerar una reserva adicional de tres mil doscientos pesos. Es un escenario hipotético, no una ganancia que ya conseguimos.",
+    "Pero también me pregunté qué sucedería si mis supuestos no se cumplen.\n\nPor eso preparé cuatro escenarios: conservador, base, optimista y nulo.\n\nEl escenario nulo es especialmente importante: si trabajamos con quinientas plazas y el grafo no consigue mejorar las activaciones, tendríamos un resultado negativo de cuarenta y un mil pesos antes de reserva.\n\nEsto me permite explicar que el proyecto podría ser económicamente atractivo, pero no basta con desarrollar la tecnología. Necesitamos demostrar que realmente mejora los resultados comerciales."
+  ],
   "finance": {
     "schema_version": "003b-finance-v1",
     "assumption_status": "educational_uncalibrated",

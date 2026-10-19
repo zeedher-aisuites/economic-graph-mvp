@@ -1,4 +1,9 @@
 # ruff: noqa: E501
+FINANCE_STORY_SPEECHES = [
+    "Para evaluar si esta idea podr\u00eda ser rentable, primero establec\u00ed algunos supuestos. Imagin\u00e9 una inversi\u00f3n de diez mil pesos para implementar la soluci\u00f3n, seis mil para operarla y cincuenta pesos adicionales por cada plaza comercial.\n\nTambi\u00e9n supuse que, con el m\u00e9todo tradicional, contratar\u00eda el diez por ciento de las empresas, mientras que con el grafo podr\u00eda llegar al doce por ciento.\n\nEsa mejora todav\u00eda no est\u00e1 demostrada. Es justamente lo que necesitar\u00edamos validar.",
+    "Ahora imaginemos que aplicamos la soluci\u00f3n a quinientas plazas comerciales.\n\nSi el grafo consiguiera mejorar las activaciones del diez al doce por ciento, tendr\u00edamos diez clientes adicionales en promedio.\n\nSuponiendo ocho mil pesos de margen por cada uno, obtendr\u00edamos ochenta mil pesos de beneficio adicional.\n\nDespu\u00e9s restar\u00eda veinticinco mil pesos de esfuerzo comercial, diez mil de implementaci\u00f3n y seis mil de operaci\u00f3n.\n\nEl resultado ser\u00eda de treinta y nueve mil pesos positivos, antes de considerar una reserva adicional de tres mil doscientos pesos. Es un escenario hipot\u00e9tico, no una ganancia que ya conseguimos.",
+    "Pero tambi\u00e9n me pregunt\u00e9 qu\u00e9 suceder\u00eda si mis supuestos no se cumplen.\n\nPor eso prepar\u00e9 cuatro escenarios: conservador, base, optimista y nulo.\n\nEl escenario nulo es especialmente importante: si trabajamos con quinientas plazas y el grafo no consigue mejorar las activaciones, tendr\u00edamos un resultado negativo de cuarenta y un mil pesos antes de reserva.\n\nEsto me permite explicar que el proyecto podr\u00eda ser econ\u00f3micamente atractivo, pero no basta con desarrollar la tecnolog\u00eda. Necesitamos demostrar que realmente mejora los resultados comerciales.",
+]
 """Fuente de verdad de la defensa en primera persona: misión 2, perspectiva del candidato."""
 
 SLIDES = [
@@ -441,7 +446,7 @@ SLIDES = [
     },
     {
         "id": "pruebas",
-        "title": "Puedo revisar cómo se comprobó el comportamiento",
+        "title": "Cómo organicé y comprobé el desarrollo",
         "chapter": "11 · Cómo se comprobó",
         "kind": "tests",
         "status": "Evidencia técnica · registros conservados",
@@ -463,16 +468,7 @@ SLIDES = [
             ("Atlas real no se verificó durante esta misión.", "pendiente"),
         ],
         "command": "uv run --group ui pytest -m 'not integration'",
-        "speech": "Para defender el prototipo necesito algo más que una pantalla que se vea bien. Cuento con un "
-        "registro de doscientas ochenta y cuatro pruebas originales aprobadas y una integración remota "
-        "excluida. Las pruebas de funciones revisan fechas, reglas y cálculos. Los dobles de MongoDB "
-        "permiten comprobar consultas e idempotencia en memoria; no prueban una conexión real a Atlas. "
-        "AppTest ejecuta Streamlit y revisa controles y tablas, mientras que el navegador permite "
-        "observar cómo se muestra la aplicación. En el anexo también conservo un caso aislado de fechas "
-        "equivalentes y su corrección experimental, separados del motor original. Estos registros "
-        "respaldan comportamientos concretos y conservan quién los produjo. No los uso como garantía de "
-        "ausencia de errores, preparación para producción o capacidad personal de repetirlos sin "
-        "practicar.",
+        "speech": "Para organizar el proyecto utilicé GitHub. Ahí fui manteniendo el código, la documentación y sus diferentes versiones. El repositorio es privado, pero puedo compartirlo si necesitan revisar cómo está construido. También trabajé con MongoDB Atlas desde mi cuenta personal, aunque para esta demostración estoy usando la versión offline y no presento la integración remota como verificada. Durante el desarrollo y la revisión se hicieron comprobaciones para los datos, los rankings, los cálculos y la interfaz. Codex ejecutó parte de las pruebas automatizadas que conservo; yo tomé las decisiones de alcance, revisé los resultados y preparé la forma de explicarlos. Mi intención fue mantener una prueba de concepto organizada y revisable, aunque todavía no sea un sistema listo para producción.",
         "point": "Distingue funciones, dobles, AppTest, navegador e integración real.",
         "question": "¿Tú ejecutaste personalmente todas estas pruebas y la depuración?",
         "answer": "Las ejecuciones automatizadas de la primera revisión fueron realizadas por Codex y conservan "
@@ -488,7 +484,7 @@ SLIDES = [
     },
     {
         "id": "economia",
-        "title": "Calculé qué tendría que pasar para cubrir costos",
+        "title": "¿Cuántas empresas necesitaría para que la idea valga la pena?",
         "chapter": "12 · Condiciones económicas",
         "kind": "economics",
         "status": "Hipótesis · cálculo reproducido",
@@ -511,15 +507,7 @@ SLIDES = [
         ],
         "capture": "15-economic-500",
         "command": "uv run python scripts/calculate_finance.py --sensitivity --format markdown",
-        "speech": "Después del resultado técnico me pregunté qué tendría que pasar para que la idea cubriera sus "
-        "costos. El calculador sirve para explorar esa condición, no para reportar dinero ganado. En el "
-        "caso base de quinientas plazas supongo que la activación pasa de diez a doce por ciento. Con "
-        "ocho mil pesos de margen por activación y los costos declarados, el saldo calculado es más "
-        "treinta y nueve mil pesos antes de reserva. Si mantengo esos costos pero quito la mejora de "
-        "activación, el escenario nulo pierde cuarenta y un mil. Con cinco plazas, el caso base también "
-        "es negativo. Por eso muestro ambas escalas y las pérdidas. Las cuentas están comprobadas "
-        "aritméticamente, pero los supuestos todavía no están calibrados. No son ventas de las treinta "
-        "empresas ni un ROI observado.",
+        "speech": "Después de construir el prototipo me pregunté cuánto podría costarle a una empresa utilizar una solución como esta. Primero supuse diez mil pesos de implementación, seis mil de operación y cincuenta pesos más por cada empresa investigada. Después imaginé que, si el sistema ayuda a elegir mejores prospectos, podríamos pasar de una activación del diez al doce por ciento, con un margen supuesto de ocho mil pesos por nueva activación. Con cinco plazas, el posible beneficio no cubre los costos y el resultado es de menos quince mil cuatrocientos cincuenta pesos. Con quinientas plazas, y solamente si conseguimos esa mejora, el cálculo da treinta y nueve mil pesos positivos. Ambas cifras son supuestos, no ingresos observados. La viabilidad depende de conseguir una mejora real, no simplemente de utilizar IA.",
         "point": "Alterna cinco y 500; compara base con nulo y señala que la reserva va aparte.",
         "question": "¿Los 39 mil pesos prueban ROI positivo?",
         "answer": "No. Son el resultado de supuestos de activación, margen y costos que todavía no medimos.",
@@ -1262,6 +1250,9 @@ CONTEXTUAL_EVIDENCES = {
         {"id": "ledger", "label": "Ver datos de observations.json"},
         {"id": "finance", "label": "Ver supuestos financieros"},
         {"id": "filters", "label": "Ver filtros reales de Streamlit"},
+    ],
+    "torre": [
+        {"id": "finance-story", "label": "¿Cómo calculé estos escenarios?"},
     ],
 }
 for slide in SLIDES:
