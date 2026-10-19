@@ -7,7 +7,7 @@ import html
 import json
 from pathlib import Path
 
-from content import SLIDES
+from content import FINANCE_STORY_SPEECHES, SLIDES
 from contextual_data import build_contextual
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -243,6 +243,20 @@ def main():
             ]
             guide += ["</ul>"]
         guide += ["</section>"]
+    lines += [
+        "## Evidencia financiera opcional · tres pasos",
+        "",
+        "Estas notas aparecen únicamente en la vista del presentador cuando se abre `finance-story`; la audiencia ve solo la evidencia financiera.",
+        "",
+    ]
+    for i, speech in enumerate(FINANCE_STORY_SPEECHES, 1):
+        lines += [f"### Paso {i} de 3", "", speech, "", "**Duración estimada:** 35–50 segundos", ""]
+    guide += [
+        '<section><h2 id="finance-story-speech">Evidencia financiera opcional</h2><p class="meta">Tres discursos para la vista del presentador; no se muestran a la audiencia.</p>',
+    ]
+    for i, speech in enumerate(FINANCE_STORY_SPEECHES, 1):
+        guide.append(f'<h3>Paso {i} de 3</h3><div class="box"><p>{html.escape(speech)}</p></div><p class="meta">Duración estimada: 35–50 segundos</p>')
+    guide.append('</section>')
     (DOCS / "guion.md").write_text("\n".join(lines), encoding="utf-8")
     (DOCS / "guia-estudio.html").write_text(
         doc_page("Guion y guía de defensa", "".join(guide)), encoding="utf-8"

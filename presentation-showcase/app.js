@@ -124,7 +124,7 @@ const towerViews = [
 function setTower(i) {
  const v=towerViews[i];
  $('#tower-image').innerHTML = screenshot(v[0],v[2]);
- $('#tower-description').innerHTML=`<span class="eyebrow">${v[2]}</span><div class="number" style="font-size:${i===3?'40':'60'}px;margin:20px 0">${v[1]}</div><p class="medium muted">${v[3]}</p><p class="tiny muted">Captura auténtica · ${D.captureDate}<br>Fuente ${D.sourceCommit.slice(0,7)} · Offline</p>`;
+ $('#tower-description').innerHTML=`<span class="eyebrow">${v[2]}</span><div class="number" style="font-size:${i===3?'40':'60'}px;margin:20px 0">${v[1]}</div><p class="medium muted">${v[3]}</p>${i===4?'<button class="finance-launch" data-contextual="finance-story">Ver explicación financiera en 3 pasos →</button>':''}<p class="tiny muted">Captura auténtica · ${D.captureDate}<br>Fuente ${D.sourceCommit.slice(0,7)} · Offline</p>`;
  $$('[data-tower]').forEach(b=>b.setAttribute('aria-selected',String(Number(b.dataset.tower)===Number(i))));
 }
 function setScope(scope) {
@@ -189,6 +189,7 @@ if(channel)channel.onmessage=e=>{
  }
  if(m.type==='contextual-close'&&!isPresenter&&!isPreview&&activeContext?.requestId===m.requestId)closeContextual();
  if(m.type==='contextual-state'&&isPresenter&&m.receiver===peerId&&pendingEvidence?.requestId===m.requestId){
+  if(m.options?.step!==undefined){presenterFinanceStep=Number(m.options.step)||0;renderPresenter();}
   clearTimeout(evidenceTimer);
   setEvidenceStatus(m.state==='open'?'Panel abierto en diapositivas. Puedes cerrarlo aquí o con Esc en esa ventana.':'Panel cerrado. La diapositiva sigue en el mismo lugar.');
   if(m.state==='closed')pendingEvidence=null;
@@ -261,7 +262,7 @@ function contextualButtons(s,presenter=false){
 }
 function setEvidenceStatus(text){const el=$('#contextual-status');if(el)el.textContent=text;}
 function reportContext(state){
- if(channel && activeContext?.sender)channel.postMessage({type:'contextual-state',receiver:activeContext.sender,requestId:activeContext.requestId,state});
+ if(channel && activeContext?.sender)channel.postMessage({type:'contextual-state',receiver:activeContext.sender,requestId:activeContext.requestId,state,options:activeContext.options||{}});
 }
 function showContextual(id,options={},request=null){
  if(!slides[index].evidences?.some(x=>x.id===id))return;
@@ -274,7 +275,9 @@ function requestContextual(id,options={}){
  if(!isPresenter){showContextual(id,options,activeContext?.id===id?activeContext:null);return;}
  clearTimeout(evidenceTimer);
  const request={type:'contextual-open',id,options,slideId:slides[index].id,requestId:peerId+'-'+Date.now(),sender:peerId};
- pendingEvidence=request;
+  pendingEvidence=request;
+  presenterFinanceStep=id==='finance-story'?Number(options.step)||0:null;
+  renderPresenter();
  if(channel)channel.postMessage(request);
  setEvidenceStatus('Enviando evidencia a la ventana de diapositivas…');
  evidenceTimer=setTimeout(()=>{
@@ -288,6 +291,8 @@ function closeContextual(navigating=false){
  clearTimeout(evidenceTimer);
  if(isPresenter && pendingEvidence && channel)channel.postMessage({type:'contextual-close',requestId:pendingEvidence.requestId});
  pendingEvidence=null;
+ presenterFinanceStep=null;
+ if(isPresenter)renderPresenter();
  if(activeContext){reportContext('closed');activeContext=null;if($('#overlay').open)$('#overlay').close();}
  if(!navigating)setEvidenceStatus('Panel cerrado. La diapositiva sigue en el mismo lugar.');
 }
@@ -322,6 +327,12 @@ function zoom(file) {
  viewer.hidden=false;$('button',viewer).focus();
 }
 let presenterFrame;
+let presenterFinanceStep=null;
+function financeSpeechBlock(){
+ if(!isPresenter || presenterFinanceStep===null || !pendingEvidence || pendingEvidence.id!=='finance-story')return '';
+ const speech=D.contextualEvidence.financeStorySpeeches?.[presenterFinanceStep]||'';
+ return `<section class="finance-speech"><h3>Explicación financiera — Paso ${presenterFinanceStep+1} de 3</h3><strong>Speech opcional</strong><p class="note-speech">${esc(speech)}</p><p class="tiny muted">Duración estimada: 35–50 segundos</p></section>`;
+}
 function renderPresenter(){
  const s=slides[index];
  const host=$('#presenter-view');
@@ -332,7 +343,7 @@ function renderPresenter(){
  presenterFrame.src='index.html?preview=1#'+s.id;
  $('#presenter-counter').textContent=`${index+1} / ${slides.length}`;
  $('#presenter-next').textContent='Siguiente: '+(slides[index+1]?.title||'Fin del anexo');
- $('.presenter-notes').innerHTML=`<h2>${esc(s.title)}</h2>${contextualButtons(s,true)}${notesHtml(s)}<h3>Archivo o prueba para verificar</h3>${sourceLinks(s)}`;
+ $('.presenter-notes').innerHTML=`<h2>${esc(s.title)}</h2>${contextualButtons(s,true)}${financeSpeechBlock()}${notesHtml(s)}<h3>Archivo o prueba para verificar</h3>${sourceLinks(s)}`;
 }
 let started=Date.now();
 if(isPresenter){document.body.classList.add('presenter-mode');$('#presenter-view').hidden=false;setInterval(()=>{const t=Math.floor((Date.now()-started)/1000);if($('#timer'))$('#timer').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');},1000);}
