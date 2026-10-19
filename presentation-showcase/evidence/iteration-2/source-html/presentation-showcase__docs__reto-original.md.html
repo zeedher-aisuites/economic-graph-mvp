@@ -1,0 +1,192 @@
+<!doctype html><html lang="es-MX"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>presentation-showcase/docs/reto-original.md</title><style>
+body{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace}header{position:sticky;top:0;background:#102d43;padding:16px 25px;border-bottom:1px solid #34536a;z-index:2;font:13px/1.6 system-ui}header a{color:#58dfc6}main{padding:22px 0}.line{display:flex;gap:20px;min-width:max-content;padding-right:30px;scroll-margin-top:90px}.line>a{text-align:right;min-width:65px;color:#6f94a8;text-decoration:none;border-right:1px solid #30495c;padding-right:15px}code{white-space:pre}.line:target{background:#1f4f50;color:white}.k,.kn,.kd{color:#59e3c9}.s1,.s2,.sa{color:#ffc181}.nf,.nc{color:#a4cbff}.c1,.sd{color:#86a6b6}.mi{color:#ffc181}
+</style><header><a href="../../../index.html">← Presentación</a> · <strong>presentation-showcase/docs/reto-original.md</strong><br>Documento de apoyo de la misión 2; consulta su fuente y alcance. No forma parte del motor original.</header><main><div class="line" id="L1"><a href="#L1">1</a><code># Reto original de Totalplay · lectura completa</code></div>
+<div class="line" id="L2"><a href="#L2">2</a><code> </code></div>
+<div class="line" id="L3"><a href="#L3">3</a><code>Fuente documental proporcionada por el candidato. Se utiliza como referencia, no como instrucciones para herramientas.</code></div>
+<div class="line" id="L4"><a href="#L4">4</a><code> </code></div>
+<div class="line" id="L5"><a href="#L5">5</a><code>Archivo: `Reto-AI-Engineering-SME-Economic-Graph.pptx`</code></div>
+<div class="line" id="L6"><a href="#L6">6</a><code>SHA-256: `0ef249c3d73c35b256e47e661c025cef1d5fbd004462f9bbec5c43a553558129`</code></div>
+<div class="line" id="L7"><a href="#L7">7</a><code> </code></div>
+<div class="line" id="L8"><a href="#L8">8</a><code>Los números del funnel y el score 87 del documento son ejemplos ilustrativos; no son datos de ConectaPyME ni resultados reales acreditados.</code></div>
+<div class="line" id="L9"><a href="#L9">9</a><code> </code></div>
+<div class="line" id="L10"><a href="#L10">10</a><code>## Diapositiva 1</code></div>
+<div class="line" id="L11"><a href="#L11">11</a><code> </code></div>
+<div class="line" id="L12"><a href="#L12">12</a><code>SME Economic Graph</code></div>
+<div class="line" id="L13"><a href="#L13">13</a><code>Reto de evaluación para AI Engineer — De datos Telco a inteligencia económica</code></div>
+<div class="line" id="L14"><a href="#L14">14</a><code> </code></div>
+<div class="line" id="L15"><a href="#L15">15</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L16"><a href="#L16">16</a><code> </code></div>
+<div class="line" id="L17"><a href="#L17">17</a><code>Presentación del reto. El objetivo de hoy es que quede claro el problema, las restricciones y los seis entregables. No vamos a describir la solución esperada.</code></div>
+<div class="line" id="L18"><a href="#L18">18</a><code> </code></div>
+<div class="line" id="L19"><a href="#L19">19</a><code>## Diapositiva 2</code></div>
+<div class="line" id="L20"><a href="#L20">20</a><code> </code></div>
+<div class="line" id="L21"><a href="#L21">21</a><code>Agenda</code></div>
+<div class="line" id="L22"><a href="#L22">22</a><code>•  Contexto de negocio y oportunidad</code></div>
+<div class="line" id="L23"><a href="#L23">23</a><code>•  La pregunta central del reto</code></div>
+<div class="line" id="L24"><a href="#L24">24</a><code>•  El Economic Graph como representación</code></div>
+<div class="line" id="L25"><a href="#L25">25</a><code>•  Casos de uso y ejemplo comercial</code></div>
+<div class="line" id="L26"><a href="#L26">26</a><code>•  Libertad tecnológica y expectativas de ingeniería</code></div>
+<div class="line" id="L27"><a href="#L27">27</a><code>•  Control Tower, incrementalidad y entregables</code></div>
+<div class="line" id="L28"><a href="#L28">28</a><code> </code></div>
+<div class="line" id="L29"><a href="#L29">29</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L30"><a href="#L30">30</a><code> </code></div>
+<div class="line" id="L31"><a href="#L31">31</a><code>Recorrido de 15 minutos. Al final quedan los seis entregables y el formato de entrega.</code></div>
+<div class="line" id="L32"><a href="#L32">32</a><code> </code></div>
+<div class="line" id="L33"><a href="#L33">33</a><code>## Diapositiva 3</code></div>
+<div class="line" id="L34"><a href="#L34">34</a><code> </code></div>
+<div class="line" id="L35"><a href="#L35">35</a><code>Contexto de negocio</code></div>
+<div class="line" id="L36"><a href="#L36">36</a><code>•  Señales disponibles bajo permisos, privacidad y gobierno</code></div>
+<div class="line" id="L37"><a href="#L37">37</a><code>•  Productos contratados, ubicación, industria y consumo de servicios</code></div>
+<div class="line" id="L38"><a href="#L38">38</a><code>•  Interacciones comerciales, comportamiento temporal y fuentes externas autorizadas</code></div>
+<div class="line" id="L39"><a href="#L39">39</a><code>•  Hoy cada PyME se analiza como una entidad independiente</code></div>
+<div class="line" id="L40"><a href="#L40">40</a><code>•  La oportunidad es leerla como parte de un ecosistema interconectado</code></div>
+<div class="line" id="L41"><a href="#L41">41</a><code> </code></div>
+<div class="line" id="L42"><a href="#L42">42</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L43"><a href="#L43">43</a><code> </code></div>
+<div class="line" id="L44"><a href="#L44">44</a><code>No se espera usar datos sensibles ni señales individuales de telecomunicaciones de forma incompatible con consentimiento, finalidad o regulación.</code></div>
+<div class="line" id="L45"><a href="#L45">45</a><code> </code></div>
+<div class="line" id="L46"><a href="#L46">46</a><code>## Diapositiva 4</code></div>
+<div class="line" id="L47"><a href="#L47">47</a><code> </code></div>
+<div class="line" id="L48"><a href="#L48">48</a><code>¿Cómo construirías un Economic Graph de PyMEs para una Telco y cómo demostrarías que genera valor económico incremental?</code></div>
+<div class="line" id="L49"><a href="#L49">49</a><code> </code></div>
+<div class="line" id="L50"><a href="#L50">50</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L51"><a href="#L51">51</a><code> </code></div>
+<div class="line" id="L52"><a href="#L52">52</a><code>Esta es la pregunta que debe responder toda la presentación del candidato. Todo lo demás es soporte.</code></div>
+<div class="line" id="L53"><a href="#L53">53</a><code> </code></div>
+<div class="line" id="L54"><a href="#L54">54</a><code>## Diapositiva 5</code></div>
+<div class="line" id="L55"><a href="#L55">55</a><code> </code></div>
+<div class="line" id="L56"><a href="#L56">56</a><code>Lo que no es este reto</code></div>
+<div class="line" id="L57"><a href="#L57">57</a><code>El reto no es una arquitectura técnica: es traducir una oportunidad de negocio en datos, grafo, modelos, decisiones e impacto económico medible</code></div>
+<div class="line" id="L58"><a href="#L58">58</a><code> </code></div>
+<div class="line" id="L59"><a href="#L59">59</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L60"><a href="#L60">60</a><code> </code></div>
+<div class="line" id="L61"><a href="#L61">61</a><code>Debe poder sostener la conversación con ingeniería y con un CEO en la misma sesión.</code></div>
+<div class="line" id="L62"><a href="#L62">62</a><code> </code></div>
+<div class="line" id="L63"><a href="#L63">63</a><code>## Diapositiva 6</code></div>
+<div class="line" id="L64"><a href="#L64">64</a><code> </code></div>
+<div class="line" id="L65"><a href="#L65">65</a><code>El grafo como representación</code></div>
+<div class="line" id="L66"><a href="#L66">66</a><code>•  Qué entidades son nodos y qué relaciones son edges</code></div>
+<div class="line" id="L67"><a href="#L67">67</a><code>•  Qué atributos pertenecen al nodo y qué atributos a la relación</code></div>
+<div class="line" id="L68"><a href="#L68">68</a><code>•  Relación económica, sectorial, geográfica y comercial</code></div>
+<div class="line" id="L69"><a href="#L69">69</a><code>•  Provenance, timestamp y confidence score en cada arista</code></div>
+<div class="line" id="L70"><a href="#L70">70</a><code>•  Cómo se mantiene y actualiza el grafo en producción</code></div>
+<div class="line" id="L71"><a href="#L71">71</a><code> </code></div>
+<div class="line" id="L72"><a href="#L72">72</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L73"><a href="#L73">73</a><code> </code></div>
+<div class="line" id="L74"><a href="#L74">74</a><code>Ejemplos de relaciones: PyME A tiene relación económica con PyME B; A pertenece a una industria; A opera en una zona; A es cliente de la Telco con un producto; B es proveedor o distribuidor de C.</code></div>
+<div class="line" id="L75"><a href="#L75">75</a><code> </code></div>
+<div class="line" id="L76"><a href="#L76">76</a><code>## Diapositiva 7</code></div>
+<div class="line" id="L77"><a href="#L77">77</a><code> </code></div>
+<div class="line" id="L78"><a href="#L78">78</a><code>Casos de uso: hay que priorizar</code></div>
+<div class="line" id="L79"><a href="#L79">79</a><code>•  B2B Acquisition: PyMEs similares o conectadas con clientes actuales</code></div>
+<div class="line" id="L80"><a href="#L80">80</a><code>•  Next Best Opportunity y cross-sell por contexto del ecosistema</code></div>
+<div class="line" id="L81"><a href="#L81">81</a><code>•  Economic Communities: clusters de actividad económica</code></div>
+<div class="line" id="L82"><a href="#L82">82</a><code>•  Ecosystem Expansion: proveedores y distribuidores de clusters penetrados</code></div>
+<div class="line" id="L83"><a href="#L83">83</a><code>•  Churn y Retention Intelligence a partir de cambios en la red</code></div>
+<div class="line" id="L84"><a href="#L84">84</a><code>•  Market Intelligence y, con fundamento legal, Credit o Risk</code></div>
+<div class="line" id="L85"><a href="#L85">85</a><code> </code></div>
+<div class="line" id="L86"><a href="#L86">86</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L87"><a href="#L87">87</a><code> </code></div>
+<div class="line" id="L88"><a href="#L88">88</a><code>Crédito y riesgo solo con fundamento legal, datos apropiados, explicabilidad y controles específicos. Se valora la decisión de por dónde empezar.</code></div>
+<div class="line" id="L89"><a href="#L89">89</a><code> </code></div>
+<div class="line" id="L90"><a href="#L90">90</a><code>## Diapositiva 8</code></div>
+<div class="line" id="L91"><a href="#L91">91</a><code> </code></div>
+<div class="line" id="L92"><a href="#L92">92</a><code>Ejemplo comercial</code></div>
+<div class="line" id="L93"><a href="#L93">93</a><code>•  El grafo detecta al proveedor como altamente conectado al ecosistema</code></div>
+<div class="line" id="L94"><a href="#L94">94</a><code>•  Es similar a empresas que adquieren un producto determinado</code></div>
+<div class="line" id="L95"><a href="#L95">95</a><code>•  El modelo genera un Opportunity Score de 87 sobre 100</code></div>
+<div class="line" id="L96"><a href="#L96">96</a><code>•  La acción es priorizar la prospección de esa PyME</code></div>
+<div class="line" id="L97"><a href="#L97">97</a><code>•  Queda por explicar cómo validas que la señal mejora el proceso actual</code></div>
+<div class="line" id="L98"><a href="#L98">98</a><code> </code></div>
+<div class="line" id="L99"><a href="#L99">99</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L100"><a href="#L100">100</a><code> </code></div>
+<div class="line" id="L101"><a href="#L101">101</a><code>El score no es el entregable: la decisión comercial y su validación sí lo son.</code></div>
+<div class="line" id="L102"><a href="#L102">102</a><code> </code></div>
+<div class="line" id="L103"><a href="#L103">103</a><code>## Diapositiva 9</code></div>
+<div class="line" id="L104"><a href="#L104">104</a><code> </code></div>
+<div class="line" id="L105"><a href="#L105">105</a><code>Libertad de solución</code></div>
+<div class="line" id="L106"><a href="#L106">106</a><code>•  Graph database, knowledge graph, embeddings o GNN son opciones, no requisitos</code></div>
+<div class="line" id="L107"><a href="#L107">107</a><code>•  Link prediction, community detection, similarity, GraphRAG, LLMs, reglas o híbridos</code></div>
+<div class="line" id="L108"><a href="#L108">108</a><code>•  Se espera discutir ingesta, normalización, features y actualización del grafo</code></div>
+<div class="line" id="L109"><a href="#L109">109</a><code>•  Evaluación offline, serving, observabilidad, drift, costo y latencia</code></div>
+<div class="line" id="L110"><a href="#L110">110</a><code>•  MLOps y GraphOps, seguridad, privacidad y gobierno</code></div>
+<div class="line" id="L111"><a href="#L111">111</a><code> </code></div>
+<div class="line" id="L112"><a href="#L112">112</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L113"><a href="#L113">113</a><code> </code></div>
+<div class="line" id="L114"><a href="#L114">114</a><code>Incluir tecnologías de moda sin justificación no aporta. Arquitecturas distintas pueden ser excelentes si las decisiones están justificadas.</code></div>
+<div class="line" id="L115"><a href="#L115">115</a><code> </code></div>
+<div class="line" id="L116"><a href="#L116">116</a><code>## Diapositiva 10</code></div>
+<div class="line" id="L117"><a href="#L117">117</a><code> </code></div>
+<div class="line" id="L118"><a href="#L118">118</a><code>Control Tower: la cadena obligatoria</code></div>
+<div class="line" id="L119"><a href="#L119">119</a><code>1</code></div>
+<div class="line" id="L120"><a href="#L120">120</a><code>Graph Health: cobertura, entidades resueltas, observado vs inferido, freshness</code></div>
+<div class="line" id="L121"><a href="#L121">121</a><code>2</code></div>
+<div class="line" id="L122"><a href="#L122">122</a><code>AI Performance: precision y recall, Precision at K, lift vs baseline, calibración, drift</code></div>
+<div class="line" id="L123"><a href="#L123">123</a><code>3</code></div>
+<div class="line" id="L124"><a href="#L124">124</a><code>Business Funnel: del universo de PyMEs a conversiones, segmentable</code></div>
+<div class="line" id="L125"><a href="#L125">125</a><code>4</code></div>
+<div class="line" id="L126"><a href="#L126">126</a><code>Economic Impact: incremental revenue, margen, CAC, LTV, ROI y payback</code></div>
+<div class="line" id="L127"><a href="#L127">127</a><code> </code></div>
+<div class="line" id="L128"><a href="#L128">128</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L129"><a href="#L129">129</a><code> </code></div>
+<div class="line" id="L130"><a href="#L130">130</a><code>La Control Tower es obligatoria y debe encadenar Model performance a Decision, a Commercial action, a Economic outcome. Puede ser dashboard funcional o prototipo.</code></div>
+<div class="line" id="L131"><a href="#L131">131</a><code> </code></div>
+<div class="line" id="L132"><a href="#L132">132</a><code>## Diapositiva 11</code></div>
+<div class="line" id="L133"><a href="#L133">133</a><code> </code></div>
+<div class="line" id="L134"><a href="#L134">134</a><code>Business funnel ilustrativo</code></div>
+<div class="line" id="L135"><a href="#L135">135</a><code>1,200,000</code></div>
+<div class="line" id="L136"><a href="#L136">136</a><code>Universo de PyMEs</code></div>
+<div class="line" id="L137"><a href="#L137">137</a><code>180,000</code></div>
+<div class="line" id="L138"><a href="#L138">138</a><code>Oportunidades detectadas</code></div>
+<div class="line" id="L139"><a href="#L139">139</a><code>35,000</code></div>
+<div class="line" id="L140"><a href="#L140">140</a><code>Qualified leads</code></div>
+<div class="line" id="L141"><a href="#L141">141</a><code>1,600</code></div>
+<div class="line" id="L142"><a href="#L142">142</a><code>Conversiones</code></div>
+<div class="line" id="L143"><a href="#L143">143</a><code> </code></div>
+<div class="line" id="L144"><a href="#L144">144</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L145"><a href="#L145">145</a><code> </code></div>
+<div class="line" id="L146"><a href="#L146">146</a><code>Entre qualified leads y conversiones hay 8,000 contactos activados. El funnel debe ser segmentable por industria, geografía, cluster, producto, canal, score y periodo.</code></div>
+<div class="line" id="L147"><a href="#L147">147</a><code> </code></div>
+<div class="line" id="L148"><a href="#L148">148</a><code>## Diapositiva 12</code></div>
+<div class="line" id="L149"><a href="#L149">149</a><code> </code></div>
+<div class="line" id="L150"><a href="#L150">150</a><code>Los seis entregables</code></div>
+<div class="line" id="L151"><a href="#L151">151</a><code>•  1 Business framing: qué problema resuelves primero, hipótesis y por qué genera valor</code></div>
+<div class="line" id="L152"><a href="#L152">152</a><code>•  2 Economic Graph: nodos, edges, fuentes, entity resolution, temporalidad y confidence</code></div>
+<div class="line" id="L153"><a href="#L153">153</a><code>•  3 AI/ML approach: modelos, entrenamiento, evaluación, inferencia y decisiones tecnológicas</code></div>
+<div class="line" id="L154"><a href="#L154">154</a><code>•  4 Architecture: end-to-end, escalabilidad, serving, MLOps y gobierno</code></div>
+<div class="line" id="L155"><a href="#L155">155</a><code>•  5 Caso económico: de inteligencia del grafo a ingresos, margen, ahorro o retención</code></div>
+<div class="line" id="L156"><a href="#L156">156</a><code>•  6 Control Tower: dashboard o prototipo que una desempeño técnico e impacto económico</code></div>
+<div class="line" id="L157"><a href="#L157">157</a><code> </code></div>
+<div class="line" id="L158"><a href="#L158">158</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L159"><a href="#L159">159</a><code> </code></div>
+<div class="line" id="L160"><a href="#L160">160</a><code>Entrega: brief de 2 a 3 páginas con contexto, reto, restricciones y entregables, más la presentación de la propuesta.</code></div>
+<div class="line" id="L161"><a href="#L161">161</a><code> </code></div>
+<div class="line" id="L162"><a href="#L162">162</a><code>## Diapositiva 13</code></div>
+<div class="line" id="L163"><a href="#L163">163</a><code> </code></div>
+<div class="line" id="L164"><a href="#L164">164</a><code>Learn, understand, anticipate, activate, measure</code></div>
+<div class="line" id="L165"><a href="#L165">165</a><code>El Economic Graph no es un fin</code></div>
+<div class="line" id="L166"><a href="#L166">166</a><code>tecnológico</code></div>
+<div class="line" id="L167"><a href="#L167">167</a><code>: es la</code></div>
+<div class="line" id="L168"><a href="#L168">168</a><code>capacidad</code></div>
+<div class="line" id="L169"><a href="#L169">169</a><code> de</code></div>
+<div class="line" id="L170"><a href="#L170">170</a><code>convertir</code></div>
+<div class="line" id="L171"><a href="#L171">171</a><code> la</code></div>
+<div class="line" id="L172"><a href="#L172">172</a><code>posición</code></div>
+<div class="line" id="L173"><a href="#L173">173</a><code> de la</code></div>
+<div class="line" id="L174"><a href="#L174">174</a><code>Data</code></div>
+<div class="line" id="L175"><a href="#L175">175</a><code> </code></div>
+<div class="line" id="L176"><a href="#L176">176</a><code>en</code></div>
+<div class="line" id="L177"><a href="#L177">177</a><code> el</code></div>
+<div class="line" id="L178"><a href="#L178">178</a><code>ecosistema</code></div>
+<div class="line" id="L179"><a href="#L179">179</a><code> </code></div>
+<div class="line" id="L180"><a href="#L180">180</a><code>PyME</code></div>
+<div class="line" id="L181"><a href="#L181">181</a><code> </code></div>
+<div class="line" id="L182"><a href="#L182">182</a><code>en</code></div>
+<div class="line" id="L183"><a href="#L183">183</a><code> valor</code></div>
+<div class="line" id="L184"><a href="#L184">184</a><code>económico</code></div>
+<div class="line" id="L185"><a href="#L185">185</a><code> incremental</code></div>
+<div class="line" id="L186"><a href="#L186">186</a><code>.</code></div>
+<div class="line" id="L187"><a href="#L187">187</a><code> </code></div>
+<div class="line" id="L188"><a href="#L188">188</a><code>### Notas de orador originales</code></div>
+<div class="line" id="L189"><a href="#L189">189</a><code> </code></div>
+<div class="line" id="L190"><a href="#L190">190</a><code>Tras la presentación habrá un ejercicio adicional en vivo con perspectiva de CEO. No hay una única respuesta correcta.</code></div></main></html>

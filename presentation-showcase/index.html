@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Defensa de ConectaPyME basada en código, pruebas y ejecución offline. Datos sintéticos; valor comercial pendiente de validar.">
-  <title>ConectaPyME — De relaciones a decisiones</title>
+  <title>ConectaPyME — Mi respuesta al reto de Totalplay</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script defer src="data.js"></script>
@@ -13,8 +13,10 @@
 <body>
   <a class="skip" href="#stage">Ir a la diapositiva</a>
   <div class="appbar" aria-label="Herramientas de presentación">
-    <a href="#inicio" class="brand"><span class="brand-icon">c<span>·</span></span> ConectaPyME <span class="brand-sub">/ EVIDENCIA EN CÓDIGO</span></a>
+    <a href="#inicio" class="brand"><span class="brand-icon">c<span>·</span></span> ConectaPyME <span class="brand-sub">/ MI RESPUESTA AL RETO</span></a>
     <div class="app-tools">
+      <button class="start-button" data-action="start">Iniciar presentación <span aria-hidden="true">▶</span></button>
+      <button class="resume-button" data-action="resume" hidden>Continuar aquí</button>
       <button data-action="index" title="Índice (I)">Índice <kbd>I</kbd></button>
       <button data-action="notes" title="Notas (N)">Notas <kbd>N</kbd></button>
       <button data-action="presenter" title="Abrir vista de presentador (P)">Presentador <kbd>P</kbd></button>
@@ -31,6 +33,8 @@
   <dialog id="overlay" aria-labelledby="overlay-title"><div class="dialog-top"><h2 id="overlay-title"></h2><button class="close" aria-label="Cerrar panel">✕</button></div><div id="overlay-body"></div></dialog>
   <div id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="Captura ampliada"><button class="close" aria-label="Cerrar captura">✕</button><img alt="Captura original ampliada"><p></p></div>
   <div id="presenter-view" hidden></div>
+  <div id="presentation-tools" hidden><button data-action="exit-presentation">Salir · Esc</button></div>
+  <div id="presentation-message" hidden role="status"><span></span><button data-action="dismiss-message" aria-label="Cerrar aviso">✕</button></div>
   <div id="status" class="sr-only" aria-live="polite"></div>
 </body>
 </html>

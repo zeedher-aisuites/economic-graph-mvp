@@ -44,6 +44,13 @@ function rankLists() {
 const pool = '<div class="pool-dots"><span></span><span></span><span></span><span></span><span></span></div>';
 function template(s) {
  switch (s.kind) {
+ case 'challenge': return `<div class="cover-grid challenge-grid"><div><div class="eyebrow">MI RESPUESTA AL RETO DE TOTALPLAY</div><div class="cover-title">ConectaPyME<span style="color:var(--mint)">.</span></div><blockquote class="challenge-question">¿Cómo construirías un Economic Graph de PyMEs para una Telco y cómo demostrarías que genera valor económico incremental?</blockquote><p class="challenge-route">Información <span>→</span> decisión comercial <span>→</span> valor medible</p><p class="small muted">Una PoC sintética para explorar adquisición B2B.</p></div><div>${graphSvg()}</div></div>`;
+ case 'approach': return `<div class="split narrow"><div class="centered"><span class="eyebrow">Antes de elegir tecnologías</span><div class="context-questions"><p><b>01</b> ¿Quién usaría el grafo?</p><p><b>02</b> ¿Qué decisión quería mejorar?</p><p><b>03</b> ¿Con qué datos podría decidir?</p></div></div><div class="case-choice centered"><span class="eyebrow">Caso que elegí del reto</span><h2>Adquisición B2B</h2><p class="lead">PyMEs similares o conectadas<br>con clientes actuales.</p><p class="medium muted">Lo acoté a una decisión:<br><strong>qué cinco cuentas investigar primero.</strong></p><span class="badge">ConectaPyME es una Telco ficticia</span></div></div><p class="line-note">Mi contexto operativo es una simulación. No es un diagnóstico de las operaciones reales de Totalplay.</p>`;
+ case 'hypothesis': return `<div class="hypothesis-statement">Las relaciones <span>podrían mejorar</span><br>qué prospectos investigo.</div><div class="hypothesis-chain"><span>Más contexto</span><b>→</b><span>Otra selección</span><b class="muted">⇢</b><span class="unverified">Acción comercial</span><b class="muted">⇢</b><span class="unverified">Mayor margen</span></div><div class="conditions">${[['01','Datos confiables','y autorizados'],['02','Vínculos relevantes','y verificados'],['03','Una referencia','para comparar'],['04','Capacidad real','para actuar'],['05','Resultados reales','para medir']].map(a=>`<div><span>${a[0]}</span><strong>${a[1]}</strong><p>${a[2]}</p></div>`).join('')}</div><p class="line-note">Puedo demostrar una selección distinta. Su utilidad comercial sigue siendo una hipótesis.</p>`;
+ case 'ai-workflow': return `<div class="workflow-rows"><div><span class="workflow-index">01</span><div><span class="eyebrow">Mi papel</span><h2>Alcance, hipótesis y decisiones</h2><p>Revisé propuestas y avances; pedí y autoricé modificaciones.</p></div></div><div><span class="workflow-index">02</span><div><span class="eyebrow">Apoyo para avanzar</span><h2>ChatGPT / GPT · Gemini · Codex</h2><p>Investigación, programación y documentación con asistencia de IA.</p></div></div><div><span class="workflow-index">03</span><div><span class="eyebrow">Responsabilidad al presentar</span><h2>Explicar y distinguir lo que está comprobado</h2><p>Dirigir el desarrollo, comprenderlo y validar personalmente son actividades diferentes.</p></div></div></div><p class="line-note">Los registros conservan el origen de las pruebas y capturas. No presento todo el código como escritura manual mía.</p>`;
+ case 'evolution': return `<div class="split narrow"><div class="centered"><span class="eyebrow">Primero lo necesario</span><h2>Datos reales.<br>Un objetivo claro.<br>Una comparación justa.</h2><p class="medium muted">Hoy utilizo reglas explicables.<br>Después evaluaría si un modelo<br>aporta una mejora comprobable.</p></div><div class="model-options">${[['Similitud','KNN','Con atributos apropiados.'],['Predicción u orden','Supervisados','Con etiquetas de activación o conversión.'],['Estructura de la red','Grafos / comunidades','Si ayudan a responder una pregunta concreta.'],['Decisiones secuenciales','RL','Solo con acciones, recompensas y evaluación adecuadas.']].map(a=>`<div><span class="eyebrow">${a[0]}</span><h3>${a[1]}</h3><p>${a[2]}</p></div>`).join('')}</div></div><p class="line-note">Opciones consideradas, no implementadas. Elegiría según el problema; también podría combinar reglas y modelos.</p>`;
+ case 'ml-detail': return `<table class="model-table"><thead><tr><th>Pregunta</th><th>Opción considerada</th><th>Qué necesitaría</th></tr></thead><tbody>${[['¿Qué empresas se parecen?','KNN','Atributos comparables, escalas y distancia apropiadas.'],['¿Quién podría activar o en qué orden investigar?','Clasificación / ranking supervisados','Etiquetas reales, separación temporal y evaluación contra reglas.'],['¿Cómo se agrupan o relacionan los negocios?','Técnicas de grafos / comunidades','Relaciones útiles y una pregunta definida; describir no es probar ventas.'],['¿Qué acción conviene en una secuencia?','Reinforcement Learning (RL)','Acciones, estados y recompensas observables; evaluación adecuada.'],['¿Conviene combinar enfoques?','Reglas + modelos','Una mejora comprobable que justifique su costo y complejidad.']].map(a=>`<tr>${a.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table><p class="line-note">Implementado: Python + reglas + historial + calculador + Streamlit. GPT/Gemini/Codex apoyaron el desarrollo; no son un predictor desplegado en el ranking.</p>`;
+
  case 'cover': return `<div class="cover-grid"><div><div class="eyebrow">SME ECONOMIC GRAPH</div><div class="cover-title">ConectaPyME<span style="color:var(--mint)">.</span></div><div class="cover-subtitle">Elegir a quién<br>investigar primero.</div><div class="cover-proof"><strong>3/5</strong><p>cuentas cambian al usar<br>relaciones confirmadas.<br><span class="muted">El valor comercial falta medirlo.</span></p></div></div><div>${graphSvg()}</div></div>`;
  case 'problem': return `<div class="split"><div class="centered"><p class="lead">La pregunta comercial es<br><strong>por dónde empezar.</strong></p><div class="node-field" aria-label="21 empresas elegibles, cinco priorizadas">${Array.from({length:21},(_,i)=>`<span class="business-dot ${i<5?'selected':''}">${i<5?'✓':'·'}</span>`).join('')}</div><p class="small muted">T2: 21 cuentas elegibles en la simulación.<br>La cobertura y el permiso de contacto siguen por validar.</p></div><div class="capacity centered"><span class="eyebrow">Misma capacidad en ambas políticas</span><div class="number">5</div><h2>lugares para investigar</h2><p class="medium muted">¿Qué cambia al agregar relaciones<br>a la información individual?</p></div></div><p class="line-note">Hipótesis de trabajo: mejores señales podrían ayudar a dedicar mejor el esfuerzo comercial.</p>`;
  case 'timeline': return `<div class="timeline">${D.summary.cuts.map((c,i)=>`<div class="time-step"><span class="eyebrow">${c.cut} · ${['15 ENE','15 MAY','15 SEP'][i]} 2026</span><div class="number">${c.companies}</div><p class="medium">empresas conocidas</p><div class="time-bar"><span style="width:${c.companies/30*100}%"></span></div><div class="observation"><strong>${c.observations}</strong><span>observaciones</span></div><span class="tiny muted">${c.relationship_claims} afirmaciones económicas · ${c.referrals} referencias</span></div>`).join('')}</div><div class="knowledge-rule"><code>available_at ≤ fecha de corte</code><span class="small">30 empresas en el diseño.<br><strong>7 aún no conocidas en T2.</strong></span><span class="tiny muted">Cortes: 12:00 UTC / 06:00 CDMX.<br>El diseño privado no completa el ranking.</span></div>`;
@@ -54,12 +61,12 @@ function template(s) {
  case 'architecture': return `${architectureSvg()}<div class="diagram-note"><span><strong>El ranking se calcula completo.</strong> Los filtros vienen después.</span><span class="tiny muted">MongoDB: alternativa de lectura.<br>Atlas real pendiente en esta misión.</span></div>`;
  case 'filters': return `<div class="split wide"><div class="reconstruction"><div class="interactive-label">Reconstrucción con resultados congelados del código</div><div style="margin-top:15px">${pills([['all','Todas'],['industry','Restaurantes y cafeterías'],['cafe','Solo Jacaranda']],'all','filter')}</div><div id="filter-table"></div><div class="rank-fixed"><span>Café Jacaranda<br><b>Posición general con grafo</b></span><strong id="fixed-position">#3</strong></div><p class="filter-state" id="filter-state"></p></div><div class="centered"><h2>Una fila visible<br>puede seguir en #3.</h2><p class="medium muted">Primero: ranking global.<br>Después: IDs del segmento.<br>Al final: copiar las mismas posiciones.</p><p class="small accent"><strong>El Top 5 no se rellena al filtrar.</strong></p><button class="text-button" data-open-capture="10-ranking-cafe-viewport.png">Ver captura de la app original →</button></div></div>`;
  case 'tower': return `<div><div class="tower-tabs" role="tablist" aria-label="Vistas de Control Tower">${['Resumen','Graph Health','AI Performance','Business Funnel','Economic Impact'].map((n,i)=>`<button role="tab" data-tower="${i}" aria-selected="${i===0}">${n}</button>`).join('')}</div><div class="tower-layout"><div id="tower-image"></div><div id="tower-description" class="tower-description"></div></div></div><p class="line-note">Aplicación original en Chromium · 16 estados capturados · fuente offline · sin acceso remoto a Atlas.</p>`;
- case 'tests': return `<div class="test-count"><div class="number accent">284</div><p><strong>pruebas originales aprobadas.</strong><br><span class="muted">1 integración remota excluida.<br>Ejecutadas por Codex en esta misión.</span></p></div><div class="test-layers"><div class="test-layer"><strong>Funciones</strong><p>Fechas, reglas y aritmética.<br>Resultados reproducibles.</p></div><div class="test-layer"><strong>Dobles de MongoDB</strong><p>Consultas e idempotencia.<br>Sin servidor real.</p></div><div class="test-layer"><strong>AppTest + Chromium</strong><p>Lógica de Streamlit<br>y revisión de pantallas.</p></div><div class="test-layer pending"><strong>Atlas real</strong><p>Pendiente de verificar.<br>No sustituido por dobles.</p></div></div><div class="coverage-strip"><div><strong>95.9%</strong><span>líneas · 904 / 943</span></div><div><strong>91.4%</strong><span>ramas · 362 / 396</span></div><div class="tiny muted" style="align-self:center">Cobertura: paquete <span class="mono">economic_graph</span>, incluido simulador.<br>No incluye <span class="mono">app/</span> ni <span class="mono">scripts/</span>. No prueba ausencia de errores.</div></div>`;
+ case 'tests': return `<div class="test-count"><div class="number accent">284</div><p><strong>pruebas originales aprobadas.</strong><br><span class="muted">1 integración remota excluida.<br>Registro automatizado conservado.</span></p></div><div class="test-layers"><div class="test-layer"><strong>Funciones</strong><p>Fechas, reglas y aritmética.<br>Resultados reproducibles.</p></div><div class="test-layer"><strong>Dobles de MongoDB</strong><p>Consultas e idempotencia.<br>Sin servidor real.</p></div><div class="test-layer"><strong>AppTest + Chromium</strong><p>Lógica de Streamlit<br>y revisión de pantallas.</p></div><div class="test-layer pending"><strong>Atlas real</strong><p>Pendiente de verificar.<br>No sustituido por dobles.</p></div></div><div class="coverage-strip"><div><strong>95.9%</strong><span>líneas · 904 / 943</span></div><div><strong>91.4%</strong><span>ramas · 362 / 396</span></div><div class="tiny muted" style="align-self:center">Cobertura: paquete <span class="mono">economic_graph</span>, incluido simulador.<br>No incluye <span class="mono">app/</span> ni <span class="mono">scripts/</span>. No prueba ausencia de errores.</div></div><button class="text-button" data-goto="depuracion">Revisar el caso aislado de fechas →</button>`;
  case 'debug': return `<div class="split"><div><p class="medium">Mismo instante. Dos formas de escribirlo.</p><div class="debug-date">12:00:00<span>Z</span><br>12:00:00<span>+00:00</span></div><div class="debug-outcomes"><div><span class="eyebrow orange">Vista original</span><strong>Descartada</strong></div><div><span class="eyebrow">Ranking original</span><strong>En conflicto</strong></div></div><p class="tiny muted" style="margin-top:15px">Fixture válido con estados opuestos simultáneos.<br>No aparece en el ledger aprobado, que normaliza las fechas.</p></div><div><span class="eyebrow">Corrección experimental en memoria</span><div style="margin-top:18px">${code('timezone_fixed')}</div><div class="pass-fail"><span class="fail">Original: 2 pruebas fallan</span><span class="pass">Copia: 2 pruebas pasan</span></div><p class="small muted" style="margin-top:21px">Hallazgo y experimento de Codex.<br>El motor y los datos originales siguen intactos.</p></div></div>`;
  case 'funnel': return `<div class="funnel-line"><div class="funnel-step"><span class="eyebrow">Conocimiento</span><div class="number">23</div><p>Empresas conocidas</p></div><span class="funnel-arrow">→</span><div class="funnel-step"><span class="eyebrow">Regla de adquisición</span><div class="number">21</div><p>Elegibles para ranking</p></div><span class="funnel-arrow">→</span><div class="funnel-step"><span class="eyebrow">Capacidad K = 5</span><div class="number accent">5</div><p>Priorizadas</p></div></div><p class="small muted">↳ 2 excluidas por servicio activo confirmado. Son una rama aparte.</p><div class="funnel-stop"><strong>No observado</strong><p>Contactos · oportunidades · activaciones · ventas.<br>No hay eventos para calcular conversión. Faltante no significa cero.</p></div><button class="text-button" data-open-capture="12-business-funnel-viewport.png">Abrir captura real del embudo →</button>`;
  case 'economics': return `<div class="economic-top"><span class="eyebrow">Supuestos educativos no calibrados · MXN en valor presente</span>${pills([['demo','5 plazas'],['hypothetical','500 plazas']],'hypothetical','scope')}</div><div id="economic-cases" class="economic-cases"></div><div id="economic-details" class="economic-equation"></div><p class="line-note">El calculador pregunta “¿qué tendría que pasar?”. El experimento mediría qué pasó realmente.</p>`;
  case 'experiment': return `<div class="experiment-arms"><div class="arm"><span class="eyebrow">Bolsas de control</span><h2>Baseline</h2>${pool}<p>Cinco plazas por bolsa.</p><span class="tiny muted">Misma oferta, esfuerzo y seguimiento.</span></div><div class="randomization">1:1<br><span class="tiny muted">al azar</span></div><div class="arm graph"><span class="eyebrow">Bolsas de tratamiento</span><h2>Con grafo</h2>${pool}<p>Cinco plazas por bolsa.</p><span class="tiny muted">Reducir cruces entre cuentas y equipos.</span></div></div><div class="experiment-kpi">Margen neto por <span class="accent">toda cuenta elegible asignada.</span></div><div class="grid3"><p class="small muted"><strong>90 días</strong> para activar.<br><strong>12 meses</strong> desde asignación.</p><p class="small muted"><strong>Falta:</strong> varianza, correlación dentro<br>de bolsas y unidades suficientes.</p><p class="small muted"><strong>Sin muestra calculada.</strong><br>El protocolo aún no se ejecuta.</p></div>`;
- case 'closing': return `<div class="closing-title">El ranking <span>cambia.</span><br>El valor falta medirlo.</div><div class="close-columns"><div><span class="eyebrow">Puedo demostrar</span><p style="margin-top:16px">Cortes y procedencia · reglas explicables.<br>Tres sustituciones · posiciones consistentes.<br>Control Tower offline · pruebas reproducidas.</p></div><div><span class="eyebrow" style="color:var(--orange)">Todavía falta</span><p style="margin-top:16px">Resultados comerciales y costos reales.<br>Atlas en esta misión · escala y producción.<br>Un experimento válido y práctica personal del código.</p></div></div><div class="annex-link"><span>La siguiente decisión: validar datos, permisos y viabilidad del experimento.</span><button data-goto="a-flujo">Explorar anexo técnico →</button></div>`;
+ case 'closing': return `<div class="closing-title">Construí una PoC.<br><span>El valor falta medirlo.</span></div><div class="close-columns"><div><span class="eyebrow">Puedo demostrar</span><p style="margin-top:16px">Cortes y procedencia · reglas explicables.<br>Tres sustituciones · posiciones consistentes.<br>Control Tower offline · pruebas reproducidas.</p></div><div><span class="eyebrow" style="color:var(--orange)">Todavía falta</span><p style="margin-top:16px">Resultados comerciales y costos reales.<br>Atlas en esta misión · escala y producción.<br>Un experimento válido y práctica personal del código.</p></div></div><div class="annex-link"><span>La siguiente decisión: validar datos, permisos y viabilidad del experimento.</span><button data-goto="a-flujo">Explorar anexo técnico →</button></div>`;
  case 'calltree': return `<div class="split wide"><div class="calltree">build_context(rows, cut)
 ├── <em>snapshot(rows, cut)</em> → view
 ├── <em>compare_rankings(rows, cut)</em>
@@ -92,8 +99,8 @@ Base después de reserva: <strong>+35,800 MXN</strong></div><div class="centered
  }
 }
 
-const darkKinds = ['cover','problem','rules','tests','economics','closing','calltree','atlas','map'];
-$('#stage').innerHTML = slides.map((s,i) => `<section class="slide ${darkKinds.includes(s.kind)?'dark':''} ${s.kind==='debug'?'warm':''}" id="slide-${s.id}" data-index="${i}" aria-label="${i+1}. ${esc(s.title)}" aria-hidden="true"><div class="slide-head"><span>${esc(s.chapter)}</span><span class="status-pill">${esc(s.status)}</span></div>${s.kind!=='cover' && s.kind!=='closing' ? `<h1>${esc(s.title)}</h1>` : ''}<div class="slide-content">${template(s)}</div><div class="slide-foot"><span>ConectaPyME / ${s.annex?'Anexo técnico':'Defensa con evidencia'} · Fuente ${D.sourceCommit.slice(0,7)} · Offline</span><button data-evidence="${i}">Fuentes, reproducción y límites →</button><span>${s.annex?'A'+String(i-mainCount+1).padStart(2,'0'):String(i+1).padStart(2,'0')}</span></div></section>`).join('');
+const darkKinds = ['cover','challenge','hypothesis','ai-workflow','problem','rules','tests','economics','closing','calltree','atlas','map'];
+$('#stage').innerHTML = slides.map((s,i) => `<section class="slide ${darkKinds.includes(s.kind)?'dark':''} ${s.kind==='debug'?'warm':''}" id="slide-${s.id}" data-index="${i}" aria-label="${i+1}. ${esc(s.title)}" aria-hidden="true"><div class="slide-head"><span>${esc(s.chapter)}</span><span class="status-pill">${esc(s.status)}</span></div>${s.kind!=='cover' && s.kind!=='challenge' && s.kind!=='closing' ? `<h1>${esc(s.title)}</h1>` : ''}<div class="slide-content">${template(s)}</div><div class="slide-foot"><span>ConectaPyME / ${s.annex?'Anexo técnico':'Mi respuesta al reto'} · PoC sintética</span><button data-evidence="${i}">Fuentes, reproducción y límites →</button><span>${s.annex?'A'+String(i-mainCount+1).padStart(2,'0'):String(i+1).padStart(2,'0')}</span></div></section>`).join('');
 // Small links retain the presentation's visual language without being navigation chrome.
 const extraStyle = document.createElement('style');
 extraStyle.textContent = '.text-button{background:none;color:var(--teal);font-size:13px;text-align:left;text-decoration:underline;text-underline-offset:5px;padding:7px 0;align-self:flex-start}.dark .text-button{color:var(--mint)}';
@@ -133,6 +140,9 @@ let index = Math.max(0,slides.findIndex(s=>s.id===location.hash.slice(1)));
 const params = new URLSearchParams(location.search);
 const isPresenter = params.has('presenter');
 const isPreview = params.has('preview');
+let presenting = false;
+let hadNativeFullscreen = false;
+let messageTimer;
 if(isPreview) document.body.classList.add('preview-only');
 let channel;
 try { channel = new BroadcastChannel('conectapyme-evidence-deck'); } catch { /* URL hash navigation works without this optional API. */ }
@@ -155,17 +165,71 @@ function goto(value, broadcast=true) {
  $$('[data-action=prev]').forEach(b=>b.disabled=index===0);
  $$('[data-action=next]').forEach(b=>b.disabled=index===slides.length-1);
  $('#status').textContent=s.title;
+ const resume=$('[data-action=resume]');if(resume)resume.hidden=index===0;
  if(isPresenter)renderPresenter();
  if(broadcast && channel)channel.postMessage({type:'slide',index,source:isPresenter?'presenter':'deck'});
  resize();
 }
 window.addEventListener('resize',resize);
 window.addEventListener('hashchange',()=>goto(location.hash.slice(1)));
-if(channel)channel.onmessage=e=>{if(e.data.type==='slide'&&!isPreview)goto(e.data.index,false);};
+if(channel)channel.onmessage=e=>{if(e.data.type==='slide'&&!isPreview)goto(e.data.index,false);if(e.data.type==='presentation-start'&&isPresenter&&e.data.resetClock)started=Date.now();};
+function fullscreenElement(){return document.fullscreenElement || document.webkitFullscreenElement;}
+function presentationMessage(text, persistent=false){
+ clearTimeout(messageTimer);
+ $('#presentation-message span').textContent=text;
+ $('#presentation-message').hidden=false;
+ if(!persistent)messageTimer=setTimeout(()=>{$('#presentation-message').hidden=true;},3500);
+}
+function fullscreenFallback(){
+ presentationMessage('Modo inmersivo activo. El navegador no permitió pantalla completa. Puedes usar F11 o la opción Pantalla completa de su menú. Para volver, pulsa Salir o Esc.',true);
+ resize();
+}
+function beginPresentation(fromStart=true){
+ if(isPresenter||isPreview)return;
+ if(fromStart){setFilter('all');setScope('hypothetical');setTower(0);goto(0);}
+ presenting=true;document.body.classList.add('presenting');$('#presentation-tools').hidden=false;
+ $('#stage').focus({preventScroll:true});resize();
+ if(channel)channel.postMessage({type:'presentation-start',resetClock:fromStart});
+ const el=document.documentElement;
+ const request=el.requestFullscreen||el.webkitRequestFullscreen;
+ if(fullscreenElement()){
+  hadNativeFullscreen=true;
+  presentationMessage('← → para avanzar · Esc o Salir para volver. Abre Presentador antes de iniciar si usarás notas en otra pantalla.');
+ } else if(!request){fullscreenFallback();}
+ else {
+  try{
+   // Called directly from the user's click; never requests capture or meeting permissions.
+   Promise.resolve(request.call(el,{navigationUI:'hide'})).then(()=>{
+    if(fullscreenElement()){
+     hadNativeFullscreen=true;
+     presentationMessage('← → para avanzar · Esc o Salir para volver.');
+    } else {fullscreenFallback();}
+   }).catch(fullscreenFallback);
+  }catch{fullscreenFallback();}
+ }
+}
+function leavePresentation(exitNative=true){
+ presenting=false;document.body.classList.remove('presenting');$('#presentation-tools').hidden=true;
+ clearTimeout(messageTimer);$('#presentation-message').hidden=true;resize();
+ const exit=document.exitFullscreen||document.webkitExitFullscreen;
+ if(exitNative&&fullscreenElement()&&exit){try{Promise.resolve(exit.call(document)).catch(()=>{});}catch{/* In-window exit still works. */}}
+}
+function fullscreenChanged(){
+ if(fullscreenElement()){hadNativeFullscreen=true;}
+ else if(hadNativeFullscreen){hadNativeFullscreen=false;if(presenting)leavePresentation(false);}
+ resize();
+}
+document.addEventListener('fullscreenchange',fullscreenChanged);
+document.addEventListener('webkitfullscreenchange',fullscreenChanged);
+function focusAudience(){
+ if(window.opener&&!window.opener.closed){window.opener.focus();return;}
+ const url=new URL('index.html',location.href);url.hash=slides[index].id;
+ window.open(url.href,'conectapyme-audience','width=1440,height=900');
+}
 function openPanel(title,body) {$('#overlay-title').textContent=title;$('#overlay-body').innerHTML=body;$('#overlay').showModal();}
 function openIndex() {
  const grid = list => `<div class="index-grid">${list.map(s=>{const i=slides.indexOf(s);return `<button data-goto="${s.id}" class="${i===index?'current':''}"><span>${s.annex?'A'+String(i-mainCount+1).padStart(2,'0'):String(i+1).padStart(2,'0')}</span>${esc(s.title)}</button>`;}).join('')}</div>`;
- openPanel('Elige dónde continuar',`<p>Principal: 16 diapositivas · aproximadamente 14–18 minutos. Anexo: consulta por preguntas.</p><h3>Presentación principal</h3>${grid(slides.filter(s=>!s.annex))}<h3>Anexo técnico</h3>${grid(slides.filter(s=>s.annex))}`);
+ openPanel('Elige dónde continuar',`<p>Principal: ${mainCount} diapositivas · aproximadamente 14–18 minutos. Anexo: consulta por preguntas.</p><h3>Presentación principal</h3>${grid(slides.filter(s=>!s.annex))}<h3>Anexo técnico</h3>${grid(slides.filter(s=>s.annex))}`);
 }
 function notesHtml(s) {
  const words=s.speech.split(/\s+/).length;
@@ -173,11 +237,11 @@ function notesHtml(s) {
 }
 function openNotes(){openPanel(slides[index].title,notesHtml(slides[index]));}
 function sourceLinks(s) {
- return `<ul class="source-links">${s.sources.map(r=>`<li><a href="${r.url}" target="_blank" rel="noopener">${esc(r.path)}${r.start?':'+r.start+'–'+r.end:''} →</a><small>${esc(r.symbol||'Documento de referencia')} · ${r.original?'Fuente '+D.sourceCommit.slice(0,7):'Creado por Codex en esta misión'}</small></li>`).join('')}</ul>`;
+ return `<ul class="source-links">${s.sources.map(r=>`<li><a href="${r.url}" target="_blank" rel="noopener">${esc(r.path)}${r.start?':'+r.start+'–'+r.end:''} →</a><small>${esc(r.symbol||'Documento de referencia')} · ${r.original?'Fuente '+D.sourceCommit.slice(0,7):(r.provenance || 'Material de apoyo de esta defensa')}</small></li>`).join('')}</ul>`;
 }
 function openEvidence(n=index) {
- const s=slides[n];const capture=D.captures.find(c=>c.id===s.capture);
- openPanel('Evidencia · '+s.title,`<p class="tiny muted">Implementación auditada: ${D.sourceCommit}<br>Auditoría nueva de Codex · fuente principal offline · datos sintéticos.</p><table class="claim-table"><thead><tr><th>Afirmación</th><th>Tipo</th></tr></thead><tbody>${s.claims.map(c=>`<tr><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`).join('')}</tbody></table><h3>Verificar en código o documento</h3>${sourceLinks(s)}<h3>Reproducción</h3><pre class="code-path">${esc(s.command)}</pre>${capture?`<h3>Captura auténtica</h3><div class="evidence-images"><img src="evidence/${capture.file}" data-zoom="${capture.file.replace('screenshots/','')}" alt="${esc(capture.screen)}"></div><p class="tiny muted">${esc(capture.captured_at)} · ${esc(capture.mode)} · corte ${esc(capture.cut)}<br>Parámetros: ${esc(JSON.stringify(capture.parameters))}<br>${esc(capture.demonstrates)}</p>`:''}<h3>Límite de esta evidencia</h3><p class="warning-text">${esc(s.warning)}</p><div class="resources" style="color:var(--teal)"><a style="color:inherit" href="docs/trazabilidad.csv" download>Matriz completa ↓</a><a style="color:inherit" href="docs/guia-estudio.html" target="_blank" rel="noopener">Guion y defensa →</a><a style="color:inherit" href="evidence/results/pytest.txt" target="_blank" rel="noopener">Resultado de pruebas →</a></div>`);
+ const s=slides[n];const capture=D.captures.find(c=>c.id===s.capture);const capturePath=capture?(capture.viewport_file||capture.file):'';
+ openPanel('Evidencia · '+s.title,`<p class="tiny muted">Implementación auditada: ${D.sourceCommit}<br>Pruebas y capturas de la primera revisión: Codex · conservadas sin cambios. Relato de decisiones: declaración del candidato. Datos sintéticos.</p><table class="claim-table"><thead><tr><th>Afirmación</th><th>Tipo</th></tr></thead><tbody>${s.claims.map(c=>`<tr><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`).join('')}</tbody></table><h3>Verificar en código o documento</h3>${sourceLinks(s)}<h3>Reproducción</h3><pre class="code-path">${esc(s.command)}</pre>${capture?`<h3>Captura auténtica</h3><div class="evidence-images"><img src="evidence/${capturePath}" data-zoom="${capturePath.replace('screenshots/','')}" alt="${esc(capture.screen)}"></div><p class="tiny muted">${esc(capture.captured_at)} · ${esc(capture.mode)} · corte ${esc(capture.cut)}<br>Parámetros: ${esc(JSON.stringify(capture.parameters))}<br>${esc(capture.demonstrates)}</p>`:''}<h3>Límite de esta evidencia</h3><p class="warning-text">${esc(s.warning)}</p><div class="resources" style="color:var(--teal)"><a style="color:inherit" href="docs/trazabilidad.csv" download>Matriz completa ↓</a><a style="color:inherit" href="docs/guia-estudio.html" target="_blank" rel="noopener">Guion y defensa →</a><a style="color:inherit" href="evidence/results/pytest.txt" target="_blank" rel="noopener">Resultado de pruebas →</a></div>`);
 }
 function zoom(file) {
  if($('#overlay').open)$('#overlay').close();
@@ -191,7 +255,7 @@ function renderPresenter(){
  const s=slides[index];
  const host=$('#presenter-view');
  if(!presenterFrame){
-  host.innerHTML=`<div class="presenter-toolbar"><strong>ConectaPyME · Presentador</strong><span id="presenter-counter"></span><span class="timer" id="timer">00:00</span><div><button data-action="prev">← Anterior</button><button data-action="next">Siguiente →</button><button data-action="timer">Reiniciar reloj</button></div></div><div class="presenter-layout"><div><iframe title="Diapositiva actual" class="presenter-preview"></iframe><p class="small muted" id="presenter-next"></p></div><div class="presenter-notes"></div></div>`;
+  host.innerHTML=`<div class="presenter-toolbar"><strong>ConectaPyME · Presentador</strong><span id="presenter-counter"></span><span class="timer" id="timer">00:00</span><div><button data-action="prev">← Anterior</button><button data-action="next">Siguiente →</button><button data-action="timer">Reiniciar reloj</button><button data-action="audience">Ir a diapositivas</button></div></div><div class="presenter-guidance">Para dos pantallas: mueve esta ventana a tu pantalla de notas. En la ventana de diapositivas pulsa <strong>Iniciar presentación</strong> o <strong>Continuar aquí</strong>. Tú eliges qué ventana compartir desde tu aplicación de reuniones; esta página no inicia la captura de pantalla.</div><div class="presenter-layout"><div><iframe title="Diapositiva actual" class="presenter-preview"></iframe><p class="small muted" id="presenter-next"></p></div><div class="presenter-notes"></div></div>`;
   presenterFrame=$('iframe',host);
  }
  presenterFrame.src='index.html?preview=1#'+s.id;
@@ -202,6 +266,7 @@ function renderPresenter(){
 let started=Date.now();
 if(isPresenter){document.body.classList.add('presenter-mode');$('#presenter-view').hidden=false;setInterval(()=>{const t=Math.floor((Date.now()-started)/1000);if($('#timer'))$('#timer').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');},1000);}
 function action(name){
+ if(name==='start')beginPresentation(true);if(name==='resume')beginPresentation(false);if(name==='exit-presentation')leavePresentation();if(name==='dismiss-message')$('#presentation-message').hidden=true;if(name==='audience')focusAudience();
  if(name==='prev')goto(index-1);if(name==='next')goto(index+1);if(name==='index')openIndex();if(name==='notes')openNotes();if(name==='evidence')openEvidence();
  if(name==='presenter'){const url=new URL(location.href);url.search='?presenter=1';window.open(url.href,'conectapyme-presenter','width=1400,height=900');}
  if(name==='fullscreen'){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>{});else document.exitFullscreen?.();}
@@ -220,7 +285,7 @@ document.addEventListener('click',e=>{
  if(t.matches('.close')){if(t.closest('#image-viewer'))$('#image-viewer').hidden=true;else $('#overlay').close();}
 });
 document.addEventListener('keydown',e=>{
- if(e.key==='Escape'){if(!$('#image-viewer').hidden){$('#image-viewer').hidden=true;e.preventDefault();}else if($('#overlay').open)$('#overlay').close();return;}
+ if(e.key==='Escape'){if(!$('#image-viewer').hidden){$('#image-viewer').hidden=true;e.preventDefault();}else if($('#overlay').open)$('#overlay').close();else if(presenting){leavePresentation();e.preventDefault();}return;}
  if(e.target.dataset.zoom && ['Enter',' '].includes(e.key)){e.preventDefault();zoom(e.target.dataset.zoom);return;}
  if(['BUTTON','A'].includes(e.target.tagName)&&['Enter',' '].includes(e.key))return;
  if($('#overlay').open||!$('#image-viewer').hidden||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.altKey||e.ctrlKey||e.metaKey)return;
@@ -236,4 +301,4 @@ $('#viewport').addEventListener('touchend',e=>{const d=e.changedTouches[0].clien
 goto(index,false);
 window.addEventListener('beforeprint',()=>{$$('.slide').forEach(el=>{el.inert=false;el.setAttribute('aria-hidden','false');});});
 window.addEventListener('afterprint',()=>goto(index,false));
-window.DECK_API={goto,setFilter,setScope,setTower,slides};
+window.DECK_API={goto,setFilter,setScope,setTower,slides,beginPresentation,leavePresentation,isPresenting:()=>presenting};

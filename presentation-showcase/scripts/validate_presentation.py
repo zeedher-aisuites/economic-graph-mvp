@@ -14,8 +14,8 @@ from zoneinfo import ZoneInfo
 from playwright.sync_api import Error, sync_playwright
 
 APP = Path(__file__).resolve().parents[1]
-OUT = APP / "evidence/results"
-SHOTS = APP / "evidence/presentation"
+OUT = APP / "evidence/iteration-2/results"
+SHOTS = APP / "evidence/iteration-2/presentation"
 BROWSER = os.environ.get("CHROMIUM_PATH", "/usr/bin/chromium")
 
 
@@ -23,7 +23,8 @@ def main():
     SHOTS.mkdir(exist_ok=True)
     report = {
         "run_at": datetime.now(ZoneInfo("America/Mexico_City")).isoformat(),
-        "origin": "Codex; no acredita ejecución personal del candidato",
+        "origin": "Validación de la presentación, misión 2, realizada por Codex. Las pruebas y capturas originales se conservan sin repetir ni atribuir al candidato.",
+        "base_commit": "bad88c56d850a87d188a9b0d7a4d515f6766f408",
         "javascript_errors": [],
         "failed_requests": [],
         "layouts": [],
@@ -46,7 +47,7 @@ def main():
         page.evaluate("document.fonts.ready")
         page.wait_for_timeout(350)
         slides = page.evaluate("window.DECK_API.slides.map(s=>({id:s.id,title:s.title}))")
-        assert len(slides) == 27
+        assert len(slides) == 30
         for width, height in [(1600, 1030), (1366, 768)]:
             page.set_viewport_size({"width": width, "height": height})
             for i, slide in enumerate(slides):
@@ -128,12 +129,27 @@ def main():
         report["checks"].append(
             "Cinco capturas de la torre cargadas; ampliación y cierre funcionan."
         )
-        for i in range(27):
+        for i in range(len(slides)):
             page.evaluate("i=>window.DECK_API.goto(i)", i)
             page.locator('[data-action="evidence"]').click()
             assert page.locator("#overlay .source-links a").count() > 0
             page.keyboard.press("Escape")
         content = json.loads((APP / "content.json").read_text())
+        for slide in content:
+            page.evaluate("id=>window.DECK_API.goto(id)", slide["id"])
+            page.locator('[data-action="notes"]').click()
+            assert page.locator(".note-speech").inner_text() == slide["speech"]
+            page.keyboard.press("Escape")
+        assert (
+            "¿Cómo construirías un Economic Graph de PyMEs para una Telco y cómo demostrarías que genera valor económico incremental?"
+            == page.evaluate("window.DECK_DATA.challengeQuestion")
+        )
+        assert sum(not x.get("annex") for x in content) == 16
+        recorded = json.loads((APP / "evidence/results/context-T2.json").read_text())
+        assert page.evaluate("window.DECK_DATA.context") == recorded
+        report["checks"].append(
+            "Guion de las 30 diapositivas idéntico a la fuente regenerada; pregunta del reto y datos técnicos conservados."
+        )
         checked = set()
         for slide in content:
             for source in slide["sources"]:
@@ -147,7 +163,7 @@ def main():
                 assert page.request.get("http://127.0.0.1:8765/" + path).status == 200
         report["source_links_checked"] = len(checked)
         report["checks"].append(
-            "Los 27 paneles de evidencia abren y todas las fuentes resuelven con anclas de línea."
+            "Los 30 paneles de evidencia abren y todas las fuentes resuelven con anclas de línea."
         )
 
         page.evaluate("window.DECK_API.goto('cafe')")
@@ -159,11 +175,113 @@ def main():
         page.evaluate("window.DECK_API.goto('arquitectura')")
         presenter.wait_for_function("location.hash==='#arquitectura'")
         presenter.locator('#presenter-view [data-action="next"]').click()
-        page.wait_for_function("location.hash==='#filtros'")
+        page.wait_for_function("location.hash==='#torre'")
         presenter.screenshot(path=str(SHOTS / "presentador.png"))
         presenter.close()
         report["checks"].append(
             "Presentador: notas e iframe, sincronización bidireccional con ventana principal."
+        )
+
+        # Real user-click fullscreen, clean mode, keyboard and both exit paths.
+        page.evaluate("window.DECK_API.goto('cafe')")
+        page.locator('[data-action="start"]').click()
+        page.wait_for_function("window.DECK_API.isPresenting()")
+        page.wait_for_timeout(500)
+        assert page.locator(".slide.active").get_attribute("data-index") == "0"
+        assert not page.locator(".appbar").is_visible()
+        assert not page.locator(".deck-nav").is_visible()
+        native = page.evaluate("!!document.fullscreenElement")
+        report["fullscreen"] = {
+            "native_api_accepted": native,
+            "clean_mode": True,
+            "starts_at_first_slide": True,
+        }
+        if not native:
+            assert page.locator("#presentation-message").is_visible()
+        page.set_viewport_size({"width": 1920, "height": 1080})
+        for i, slide in enumerate(slides):
+            page.evaluate("i=>window.DECK_API.goto(i)", i)
+            page.wait_for_timeout(100)
+            layout = page.evaluate("""() => {
+                const s=document.querySelector('.slide.active'),c=s.querySelector('.slide-content'),r=document.querySelector('#stage').getBoundingClientRect();
+                return {issues:(c.scrollWidth>c.clientWidth+2||c.scrollHeight>c.clientHeight+2)?['contenedor desbordado']:[],images:[...s.querySelectorAll('img')].map(e=>({loaded:e.complete&&e.naturalWidth>0})),stage_fits:r.width<=innerWidth+1,body_horizontal_scroll:document.body.scrollWidth>innerWidth+1};
+            }""")
+            report["layouts"].append(
+                {"slide": i + 1, "id": slide["id"], "viewport": "1920×1080 inmersivo", **layout}
+            )
+            if i in [0, 3, 15]:
+                page.screenshot(path=str(SHOTS / f"immersive-{i + 1:02d}.png"))
+        page.evaluate("window.DECK_API.goto(0)")
+        page.keyboard.press("ArrowRight")
+        assert page.locator(".slide.active").get_attribute("data-index") == "1"
+        page.keyboard.press("n")
+        assert page.locator("#overlay").is_visible()
+        page.keyboard.press("Escape")
+        assert page.evaluate("window.DECK_API.isPresenting()")
+        page.keyboard.press("Escape")
+        page.wait_for_function("!window.DECK_API.isPresenting()")
+        page.wait_for_function("!document.fullscreenElement")
+        page.evaluate("window.DECK_API.goto('cafe')")
+        page.locator('[data-action="resume"]').click()
+        page.wait_for_function("window.DECK_API.isPresenting()")
+        assert page.locator(".slide.active").get_attribute("data-index") == "8"
+        page.locator('[data-action="exit-presentation"]').click()
+        page.wait_for_function("!window.DECK_API.isPresenting()")
+        page.wait_for_function("!document.fullscreenElement")
+        # A browser-origin fullscreen exit also restores the ordinary interface.
+        page.locator('[data-action="resume"]').click()
+        page.wait_for_timeout(300)
+        if page.evaluate("!!document.fullscreenElement"):
+            page.evaluate("document.exitFullscreen()")
+            page.wait_for_function("!window.DECK_API.isPresenting()")
+            report["fullscreen"]["browser_exit_restores_normal"] = True
+        else:
+            page.evaluate("window.DECK_API.leavePresentation()")
+            report["fullscreen"]["browser_exit_restores_normal"] = (
+                "not exercised; native fullscreen unavailable"
+            )
+        report["checks"].append(
+            "Iniciar desde primera, continuar en actual, teclado, cierre de notas, Esc, botón Salir y salida nativa de pantalla completa."
+        )
+
+        # Controlled browser-API failure: validates the fallback without bypassing policy.
+        denied = context.new_page()
+        denied.add_init_script(
+            "Element.prototype.requestFullscreen=function(){window.__attempts=(window.__attempts||0)+1;return Promise.reject(new DOMException('Rechazo inyectado para QA','NotAllowedError'));};"
+        )
+        denied.goto("http://127.0.0.1:8765/")
+        denied.wait_for_function("window.DECK_API")
+        denied.locator('[data-action="start"]').click()
+        denied.wait_for_function(
+            "document.querySelector('#presentation-message').textContent.includes('F11')"
+        )
+        assert denied.evaluate("window.DECK_API.isPresenting() && !document.fullscreenElement")
+        assert denied.evaluate("window.__attempts") == 1
+        denied.keyboard.press("ArrowRight")
+        assert denied.locator(".slide.active").get_attribute("data-index") == "1"
+        denied.screenshot(path=str(SHOTS / "fullscreen-denied-fixture.png"))
+        denied.locator('[data-action="dismiss-message"]').click()
+        denied.keyboard.press("Escape")
+        assert not denied.evaluate("window.DECK_API.isPresenting()")
+        denied.close()
+        unsupported = context.new_page()
+        unsupported.add_init_script(
+            "Object.defineProperty(Element.prototype,'requestFullscreen',{value:undefined,configurable:true});Object.defineProperty(Element.prototype,'webkitRequestFullscreen',{value:undefined,configurable:true});"
+        )
+        unsupported.goto("http://127.0.0.1:8765/")
+        unsupported.wait_for_function("window.DECK_API")
+        unsupported.locator('[data-action="start"]').click()
+        assert unsupported.evaluate("window.DECK_API.isPresenting()")
+        assert "F11" in unsupported.locator("#presentation-message").inner_text()
+        unsupported.locator('[data-action="exit-presentation"]').click()
+        assert not unsupported.evaluate("window.DECK_API.isPresenting()")
+        unsupported.close()
+        report["fullscreen"]["controlled_denial_fallback"] = (
+            "PASS; API rejection fixture, not a natural denial"
+        )
+        report["fullscreen"]["controlled_unsupported_fallback"] = "PASS; API unavailable fixture"
+        report["checks"].append(
+            "Fallos controlados de fullscreen: rechazo y API ausente mantienen modo inmersivo, mensaje manual y salida funcional."
         )
 
         page.set_viewport_size({"width": 390, "height": 844})
@@ -183,7 +301,7 @@ def main():
         svg = page.locator(".architecture-svg").evaluate(
             "e=>{let n=e.cloneNode(true);n.setAttribute('xmlns','http://www.w3.org/2000/svg');n.setAttribute('width','1280');n.setAttribute('height','375');n.setAttribute('style','background:#f3f5ef;font-family:Arial,sans-serif');return n.outerHTML}"
         )
-        (APP / "assets/recorrido.svg").write_text(svg, encoding="utf-8")
+        report["original_diagram_reused"] = bool(svg)
         page.evaluate("window.DECK_API.goto(0)")
         page.evaluate(
             "window.DECK_API.setScope('hypothetical');window.DECK_API.setFilter('all');window.DECK_API.setTower(0)"
@@ -197,10 +315,10 @@ def main():
         )
         page.emulate_media(media="screen")
         info = subprocess.check_output(["pdfinfo", str(APP / "ConectaPyME.pdf")], text=True)
-        assert "Pages:           27" in info
+        assert "Pages:           30" in info
         report["pdf"] = {
             "file": "ConectaPyME.pdf",
-            "pages": 27,
+            "pages": 30,
             "format": "16:9, 1440×810 CSS px",
             "speaker_notes": "docs/guia-estudio.html, no incluidas en diapositivas PDF",
         }
@@ -245,7 +363,7 @@ def main():
             assert isolated.goto("http://127.0.0.1:8766/").status == 200
             isolated.wait_for_function("window.DECK_API")
             isolated.evaluate("document.fonts.ready")
-            for i in range(27):
+            for i in range(len(slides)):
                 isolated.evaluate("i=>window.DECK_API.goto(i)", i)
                 assert isolated.locator(".slide.active").count() == 1
             isolated.close()
@@ -258,7 +376,7 @@ def main():
         try:
             local.goto((clean / "index.html").as_uri())
             local.wait_for_function("window.DECK_API")
-            assert local.locator(".slide").count() == 27
+            assert local.locator(".slide").count() == 30
             local.evaluate("window.DECK_API.goto('cafe')")
             local.wait_for_function(
                 "document.querySelector('#slide-cafe img').complete && document.querySelector('#slide-cafe img').naturalWidth > 0"
@@ -274,7 +392,7 @@ def main():
         report["clean_install"] = {
             "standalone_copy": True,
             "http_server_as_readme": True,
-            "all_27_slides_traversed": True,
+            "all_30_slides_traversed": True,
             "file_url_with_network_offline": file_check,
             "requires_original_server": False,
             "runtime_packages_installed": 0,
@@ -283,6 +401,16 @@ def main():
             "Copia independiente verificada con servidor del README, sin instalar dependencias. Apertura file:// se registra aparte según política del navegador."
         )
         browser.close()
+    import hashlib
+
+    preservation = json.loads((OUT / "preservation-baseline.json").read_text())
+    changed = []
+    for rel, expected in preservation["files"].items():
+        path = APP.parent / rel
+        if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+            changed.append(rel)
+    report["preserved_original_files"] = {"count": len(preservation["files"]), "changed": changed}
+    assert not changed, changed
     failures = [
         row
         for row in report["layouts"]

@@ -57,7 +57,19 @@ def source_ref(ref):
                 raise ValueError(f"Símbolo no encontrado: {ref}")
             start, end = found.lineno, found.end_lineno
     filename = rel.replace("/", "__") + ".html"
-    target = E / "source-html" / filename
+    legacy = E / "source-html" / filename
+    if legacy.is_file():
+        # V1 evidence is immutable in this iteration; reuse its existing viewer and copy.
+        return {
+            "path": rel,
+            "symbol": symbol,
+            "start": start,
+            "end": end,
+            "url": "evidence/source-html/" + filename + "#L" + str(start),
+            "original": not rel.startswith("presentation-showcase/"),
+            "provenance": "Evidencia conservada de V1; registros automatizados de Codex",
+        }
+    target = E / "iteration-2/source-html" / filename
     target.parent.mkdir(parents=True, exist_ok=True)
     lexer = PythonLexer()
     formatter = HtmlFormatter(nowrap=True)
@@ -76,11 +88,11 @@ def source_ref(ref):
     target.write_text(
         f"""<!doctype html><html lang="es-MX"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(rel)}</title><style>
 body{{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace}}header{{position:sticky;top:0;background:#102d43;padding:16px 25px;border-bottom:1px solid #34536a;z-index:2;font:13px/1.6 system-ui}}header a{{color:#58dfc6}}main{{padding:22px 0}}.line{{display:flex;gap:20px;min-width:max-content;padding-right:30px;scroll-margin-top:90px}}.line>a{{text-align:right;min-width:65px;color:#6f94a8;text-decoration:none;border-right:1px solid #30495c;padding-right:15px}}code{{white-space:pre}}.line:target{{background:#1f4f50;color:white}}.k,.kn,.kd{{color:#59e3c9}}.s1,.s2,.sa{{color:#ffc181}}.nf,.nc{{color:#a4cbff}}.c1,.sd{{color:#86a6b6}}.mi{{color:#ffc181}}
-</style><header><a href="../../index.html">← Presentación</a> · <strong>{html.escape(rel)}</strong><br>{"Fuente auditada: " + COMMIT if not rel.startswith("presentation-showcase/") else "Creado por Codex para esta misión; no forma parte del motor original."}</header><main>{source_lines}</main></html>""",
+</style><header><a href="../../../index.html">← Presentación</a> · <strong>{html.escape(rel)}</strong><br>{"Fuente auditada: " + COMMIT if not rel.startswith("presentation-showcase/") else "Documento de apoyo de la misión 2; consulta su fuente y alcance. No forma parte del motor original."}</header><main>{source_lines}</main></html>""",
         encoding="utf-8",
     )
     # Preserve readable originals, including any source referenced beyond the initial inventory.
-    copy = E / "source" / rel
+    copy = E / "iteration-2/source" / rel
     copy.parent.mkdir(parents=True, exist_ok=True)
     copy.write_text(text, encoding="utf-8")
     return {
@@ -88,8 +100,9 @@ body{{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace
         "symbol": symbol,
         "start": start,
         "end": end,
-        "url": "evidence/source-html/" + filename + "#L" + str(start),
+        "url": "evidence/iteration-2/source-html/" + filename + "#L" + str(start),
         "original": not rel.startswith("presentation-showcase/"),
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo",
     }
 
 
@@ -130,6 +143,9 @@ def main():
     )
     data = {
         "sourceCommit": COMMIT,
+        "presentationBaseCommit": "bad88c56d850a87d188a9b0d7a4d515f6766f408",
+        "iteration": 2,
+        "challengeQuestion": "¿Cómo construirías un Economic Graph de PyMEs para una Telco y cómo demostrarías que genera valor económico incremental?",
         "slides": SLIDES,
         "summary": SUMMARY,
         "context": context,
@@ -154,16 +170,16 @@ def main():
     lines = [
         "# Guion de exposición y defensa técnica",
         "",
-        f"Fuente auditada: `{COMMIT}`. Capturas offline; datos sintéticos. Investigación y verificación nuevas realizadas por Codex.",
+        f"Misión 2 · Mi respuesta al reto de Totalplay. Implementación de respaldo: `{COMMIT}`. Capturas offline y datos sintéticos de la primera revisión, conservados.",
         "",
-        "Las notas están en primera persona para facilitar el ensayo. No atribuyen al candidato las verificaciones de esta misión. Duraciones estimadas a 140 palabras por minuto; practicar en voz alta.",
+        "El relato de alcance, hipótesis y decisiones corresponde a la declaración del candidato. La programación fue asistida por ChatGPT/GPT, Gemini y Codex según esa declaración. Las pruebas, capturas y el experimento de depuración de V1 fueron producidos por Codex y conservan su origen; no acreditan ejecución manual personal. Duraciones a 140 palabras por minuto; ensayar en voz alta.",
         "",
     ]
     guide = [
         '<p class="meta">Fuente '
         + COMMIT
         + " · Datos sintéticos · Atlas no verificado en esta misión.</p>",
-        "<p>Guion en primera persona. La investigación, capturas, pruebas y experimento nuevos fueron realizados por Codex. La comprensión y reproducción personal del candidato siguen por demostrar.</p>",
+        "<p>Mi relato de decisiones parte de mi declaración como candidato. Usé GPT, Gemini y Codex como apoyo. La evidencia automatizada de V1 conserva su origen en Codex; dirigir, comprender y ejecutar una validación son actividades distintas. Los anexos permiten estudiar y practicar sin inventar autoría.</p>",
         '<div class="toc">',
     ]
     for i, s in enumerate(SLIDES, 1):
@@ -237,7 +253,7 @@ def main():
                         f"{i:02d} · {s['title']}",
                         claim,
                         kind,
-                        "Código y ejecución offline; documentos cuando es diseño",
+                        "Reto original, declaración del candidato y evidencia técnica conservada según las fuentes",
                         "; ".join(f"{r['path']}:{r['start']}–{r['end']}" for r in s["sources"]),
                         COMMIT,
                         s["command"],
@@ -245,15 +261,17 @@ def main():
                         if s.get("capture")
                         else "Ver resultados y fuentes; sin captura asociada",
                         s["warning"],
-                        "Codex en esta misión; no experiencia personal atribuida al candidato",
+                        s.get(
+                            "origin", "Evidencia técnica de V1, producida por Codex y conservada"
+                        ),
                     ]
                 )
     brief = [
         "# Práctica personal recomendada",
         "",
-        "Trabajo preparado por Codex. No acredita por sí mismo una competencia personal del candidato.",
+        "Mi práctica para defender el proyecto: distinguir mis decisiones de las validaciones automatizadas registradas y comprobar mi comprensión con ejercicios concretos.",
         "",
-        "1. Explica sin leer por qué `available_at` evita usar evidencia futura.",
+        "1. Explica la pregunta del reto y por qué elegiste adquisición B2B; distingue el caso ficticio de Totalplay.",
         "2. Reproduce `reproduce.py` y explica 12/17/23, 28/54/83 y el caso Jacaranda.",
         "3. Dibuja las llamadas de `build_context()`; verifica cada rama en el código.",
         "4. Cambia industria y empresa en Streamlit; predice la posición global antes de mirar.",
@@ -269,7 +287,7 @@ def main():
     (DOCS / "practica-personal.md").write_text("\n".join(brief), encoding="utf-8")
     duration = sum(len(s["speech"].split()) for s in SLIDES if not s.get("annex")) / 140
     print(
-        f"{len(SLIDES)} diapositivas, 16 principales. Guion principal ~{duration:.1f} minutos a 140 palabras/minuto."
+        f"{len(SLIDES)} diapositivas, {sum(not s.get('annex') for s in SLIDES)} principales. Guion principal ~{duration:.1f} minutos a 140 palabras/minuto."
     )
     print("Fuentes resueltas, guion, HTML de estudio y matriz CSV generados.")
 

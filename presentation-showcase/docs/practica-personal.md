@@ -1,8 +1,8 @@
 # Práctica personal recomendada
 
-Trabajo preparado por Codex. No acredita por sí mismo una competencia personal del candidato.
+Mi práctica para defender el proyecto: distinguir mis decisiones de las validaciones automatizadas registradas y comprobar mi comprensión con ejercicios concretos.
 
-1. Explica sin leer por qué `available_at` evita usar evidencia futura.
+1. Explica la pregunta del reto y por qué elegiste adquisición B2B; distingue el caso ficticio de Totalplay.
 2. Reproduce `reproduce.py` y explica 12/17/23, 28/54/83 y el caso Jacaranda.
 3. Dibuja las llamadas de `build_context()`; verifica cada rama en el código.
 4. Cambia industria y empresa en Streamlit; predice la posición global antes de mirar.

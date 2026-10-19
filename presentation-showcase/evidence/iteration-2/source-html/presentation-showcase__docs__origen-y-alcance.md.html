@@ -1,0 +1,61 @@
+<!doctype html><html lang="es-MX"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>presentation-showcase/docs/origen-y-alcance.md</title><style>
+body{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace}header{position:sticky;top:0;background:#102d43;padding:16px 25px;border-bottom:1px solid #34536a;z-index:2;font:13px/1.6 system-ui}header a{color:#58dfc6}main{padding:22px 0}.line{display:flex;gap:20px;min-width:max-content;padding-right:30px;scroll-margin-top:90px}.line>a{text-align:right;min-width:65px;color:#6f94a8;text-decoration:none;border-right:1px solid #30495c;padding-right:15px}code{white-space:pre}.line:target{background:#1f4f50;color:white}.k,.kn,.kd{color:#59e3c9}.s1,.s2,.sa{color:#ffc181}.nf,.nc{color:#a4cbff}.c1,.sd{color:#86a6b6}.mi{color:#ffc181}
+</style><header><a href="../../../index.html">← Presentación</a> · <strong>presentation-showcase/docs/origen-y-alcance.md</strong><br>Documento de apoyo de la misión 2; consulta su fuente y alcance. No forma parte del motor original.</header><main><div class="line" id="L1"><a href="#L1">1</a><code># Mi respuesta al reto: origen, decisiones y alcance</code></div>
+<div class="line" id="L2"><a href="#L2">2</a><code> </code></div>
+<div class="line" id="L3"><a href="#L3">3</a><code>Esta página registra la perspectiva y las decisiones declaradas por el candidato en la solicitud de la misión 2. No es un historial automatizado de su actividad ni acredita que haya escrito manualmente cada archivo o ejecutado personalmente cada validación.</code></div>
+<div class="line" id="L4"><a href="#L4">4</a><code> </code></div>
+<div class="line" id="L5"><a href="#L5">5</a><code>## Qué me pidió el reto</code></div>
+<div class="line" id="L6"><a href="#L6">6</a><code> </code></div>
+<div class="line" id="L7"><a href="#L7">7</a><code>Fuente principal: el PPTX original de Totalplay, leído completo con sus notas y transcrito en `reto-original.md`. La diapositiva 4 pregunta: **¿Cómo construirías un Economic Graph de PyMEs para una Telco y cómo demostrarías que genera valor económico incremental?** Las diapositivas 5, 10 y 12 conectan datos, grafo, modelos, decisión, acción comercial e impacto, y establecen los seis entregables. Las opciones tecnológicas son alternativas que deben justificarse, no requisitos obligatorios.</code></div>
+<div class="line" id="L8"><a href="#L8">8</a><code> </code></div>
+<div class="line" id="L9"><a href="#L9">9</a><code>El reto propone información potencial de una Telco y ejemplos comerciales. No constituye una auditoría de operaciones reales de Totalplay. Sus cifras de funnel y score 87 son ilustrativas y no alimentan los resultados de esta PoC.</code></div>
+<div class="line" id="L10"><a href="#L10">10</a><code> </code></div>
+<div class="line" id="L11"><a href="#L11">11</a><code>## Cómo decidí empezar</code></div>
+<div class="line" id="L12"><a href="#L12">12</a><code> </code></div>
+<div class="line" id="L13"><a href="#L13">13</a><code>Antes de elegir tecnología quise definir qué empresa usaría la solución, qué decisión quería mejorar, qué datos tendría, qué relaciones podrían aportar información y cómo mediría una utilidad más allá de un dibujo.</code></div>
+<div class="line" id="L14"><a href="#L14">14</a><code> </code></div>
+<div class="line" id="L15"><a href="#L15">15</a><code>Elegí una Telco ficticia, ConectaPyME, y prioricé la opción del reto **B2B Acquisition: PyMEs similares o conectadas con clientes actuales**. Mi intención es explorar cómo decidir qué prospectos investigar primero. La empresa, el territorio y la operación son una simulación; no diagnostican a Totalplay.</code></div>
+<div class="line" id="L16"><a href="#L16">16</a><code> </code></div>
+<div class="line" id="L17"><a href="#L17">17</a><code>La PoC implementada compara reglas de sucursales y vecinos económicos confirmados. No implementa KNN ni otra similitud aprendida; tampoco añade un peso comercial por ser vecino de un cliente actual. La pertenencia al caso de uso expresa la intención del ejercicio, no una ampliación de la política aprobada.</code></div>
+<div class="line" id="L18"><a href="#L18">18</a><code> </code></div>
+<div class="line" id="L19"><a href="#L19">19</a><code>## Mi hipótesis</code></div>
+<div class="line" id="L20"><a href="#L20">20</a><code> </code></div>
+<div class="line" id="L21"><a href="#L21">21</a><code>Conocer relaciones económicas podría aportar una selección de prospectos más útil que analizar cada empresa aisladamente y, bajo condiciones adecuadas, contribuir al margen. Depende de datos confiables y autorizados, vínculos relevantes/verificados, comparación con una referencia, capacidad de actuar y resultados reales medidos. El cambio de tres lugares del Top 5 es evidencia técnica de una selección distinta, no de más ventas.</code></div>
+<div class="line" id="L22"><a href="#L22">22</a><code> </code></div>
+<div class="line" id="L23"><a href="#L23">23</a><code>## Cómo utilicé IA y cuál fue mi participación</code></div>
+<div class="line" id="L24"><a href="#L24">24</a><code> </code></div>
+<div class="line" id="L25"><a href="#L25">25</a><code>Según mi declaración, utilicé ChatGPT/GPT, Gemini y Codex para acelerar investigación, programación y documentación dentro del plazo. Mi papel fue definir alcance e hipótesis, revisar propuestas y avances, decidir qué tenía sentido y autorizar o pedir cambios. No atribuyo porcentajes, archivos concretos o secuencias de uso a cada herramienta sin un registro que lo respalde.</code></div>
+<div class="line" id="L26"><a href="#L26">26</a><code> </code></div>
+<div class="line" id="L27"><a href="#L27">27</a><code>Dirigir y revisar el desarrollo asistido por IA, comprender un resultado y ejecutar personalmente una validación son actividades diferentes. Los registros de pruebas, capturas y depuración de la misión 1 fueron producidos por Codex y conservan ese origen. La revisión de esta iteración valida la presentación, no cambia retroactivamente la autoría de esas evidencias. Mi capacidad personal de reproducirlas puede demostrarse en una práctica o evaluación en vivo.</code></div>
+<div class="line" id="L28"><a href="#L28">28</a><code> </code></div>
+<div class="line" id="L29"><a href="#L29">29</a><code>## Laboratorio y primera solución</code></div>
+<div class="line" id="L30"><a href="#L30">30</a><code> </code></div>
+<div class="line" id="L31"><a href="#L31">31</a><code>Decidí usar 30 empresas sintéticas por el tiempo limitado y la falta de datos reales de una Telco. El universo privado y el conocimiento observable están separados: 12/17/23 conocidas y 28/54/83 observaciones en T0/T1/T2. Solo se consulta `available_at &lt;= as_of`. No se completa el ranking con empresas del universo que todavía no eran conocidas.</code></div>
+<div class="line" id="L32"><a href="#L32">32</a><code> </code></div>
+<div class="line" id="L33"><a href="#L33">33</a><code>Empecé con reglas comprensibles: baseline individual y su versión con vecinos económicos confirmados. Es la política ya implementada `003a-conservative-v1`, sin cambio de pesos, K, elegibilidad, dataset o resultados en esta iteración. El primer objetivo es entender y comprobar el comportamiento antes de evaluar modelos aprendidos.</code></div>
+<div class="line" id="L34"><a href="#L34">34</a><code> </code></div>
+<div class="line" id="L35"><a href="#L35">35</a><code>## Tecnologías y estados</code></div>
+<div class="line" id="L36"><a href="#L36">36</a><code> </code></div>
+<div class="line" id="L37"><a href="#L37">37</a><code>| Estado | Elementos | Condición o límite |</code></div>
+<div class="line" id="L38"><a href="#L38">38</a><code>|---|---|---|</code></div>
+<div class="line" id="L39"><a href="#L39">39</a><code>| Utilizadas en la PoC | Python, reglas, registro JSON observable, Streamlit; ruta de persistencia MongoDB opcional | Atlas real sigue sin verificación nueva en estas misiones |</code></div>
+<div class="line" id="L40"><a href="#L40">40</a><code>| Utilizadas como apoyo al desarrollo, según declaración del candidato | ChatGPT/GPT, Gemini, Codex | No son un modelo predictivo desplegado dentro del ranking |</code></div>
+<div class="line" id="L41"><a href="#L41">41</a><code>| Implementada para exponer | HTML/CSS/JavaScript, fuentes y evidencias locales | Presentación independiente de Streamlit |</code></div>
+<div class="line" id="L42"><a href="#L42">42</a><code>| Considerada | KNN para estudiar similitud | Atributos apropiados, escalas/distancia y evaluación acordes; no implementado |</code></div>
+<div class="line" id="L43"><a href="#L43">43</a><code>| Considerados | Clasificación o ranking supervisados | Etiquetas reales de activación/conversión y evaluación temporal |</code></div>
+<div class="line" id="L44"><a href="#L44">44</a><code>| Consideradas | Técnicas de grafos y comunidades | Objetivo definido y datos apropiados; un cluster no demuestra valor comercial |</code></div>
+<div class="line" id="L45"><a href="#L45">45</a><code>| Considerado a mayor plazo | Reinforcement Learning (RL) | Decisiones secuenciales, acciones y recompensas observables y condiciones adecuadas para evaluar; no es un siguiente paso obligatorio |</code></div>
+<div class="line" id="L46"><a href="#L46">46</a><code>| Considerados | Híbridos de reglas y modelos | Justificar mejora frente a la referencia; no sumar complejidad por sí misma |</code></div>
+<div class="line" id="L47"><a href="#L47">47</a><code> </code></div>
+<div class="line" id="L48"><a href="#L48">48</a><code>## Los seis entregables y su profundidad actual</code></div>
+<div class="line" id="L49"><a href="#L49">49</a><code> </code></div>
+<div class="line" id="L50"><a href="#L50">50</a><code>| Entregable | Lo construido o definido | Lo que falta |</code></div>
+<div class="line" id="L51"><a href="#L51">51</a><code>|---|---|---|</code></div>
+<div class="line" id="L52"><a href="#L52">52</a><code>| Business Framing | Problema elegido, hipótesis y cupo de investigación | Relevancia en una Telco real y baseline comercial vigente |</code></div>
+<div class="line" id="L53"><a href="#L53">53</a><code>| Economic Graph | Cortes, fuentes, estados, conflictos y candidatos | Identidad fuerte, fuentes reales y proceso productivo de actualización |</code></div>
+<div class="line" id="L54"><a href="#L54">54</a><code>| AI/ML Approach | Dos políticas explicables y comparación reproducible | Etiquetas para precision/recall, lift, calibración, drift y modelos aprendidos |</code></div>
+<div class="line" id="L55"><a href="#L55">55</a><code>| Architecture | Módulos y rutas de ejecución de la PoC | Escala, serving productivo, gobierno y MLOps cuando corresponda |</code></div>
+<div class="line" id="L56"><a href="#L56">56</a><code>| Economic Case | Calculador de supuestos y protocolo experimental | Margen, ventas, costos y efecto causal observados |</code></div>
+<div class="line" id="L57"><a href="#L57">57</a><code>| Control Tower | Cinco vistas funcionales con evidencias | Etapas comerciales no observadas y métricas reales de impacto |</code></div>
+<div class="line" id="L58"><a href="#L58">58</a><code> </code></div>
+<div class="line" id="L59"><a href="#L59">59</a><code>Esta es una respuesta parcial y controlada al alcance amplio del reto, con capacidades de PoC, propuestas conceptuales y validaciones pendientes distinguidas. No se atribuyen a Totalplay datos, decisiones, procesos ni resultados no documentados.</code></div></main></html>
