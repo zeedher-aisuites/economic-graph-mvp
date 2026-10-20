@@ -1,8 +1,8 @@
 # ConectaPyME · Defensa basada en evidencia
 
-Misión 3 · Mi respuesta al reto de Totalplay, con siete evidencias contextuales opcionales.
+Versión anterior · ConectaPyME: caso de negocio B2B, con siete evidencias contextuales opcionales.
 
-Presentación local en español mexicano: **16 diapositivas principales y 14 de anexo**. Guion de aproximadamente 14–15 minutos a 140 palabras por minuto, más preguntas. Fuente auditada: `774dacd80e6410ca43299f63f19d9744a31929c0`. Datos sintéticos; escenarios financieros hipotéticos; Atlas y valor causal no verificados en esta misión.
+Presentación local en español mexicano: **16 diapositivas principales y 14 de anexo**. Guion de aproximadamente 14–15 minutos a 140 palabras por minuto, más preguntas. Fuente auditada: `774dacd80e6410ca43299f63f19d9744a31929c0`. Datos sintéticos; escenarios financieros hipotéticos; Atlas y valor causal no verificados en esta revisión.
 
 ## Abrir y presentar
 
@@ -61,10 +61,10 @@ Los paneles son exclusivos de la web y no forman parte de las 30 páginas obliga
 
 ## Windows: apertura desde una copia nueva
 
-Puedes descargar la rama `presentation/conectapyme-contextual-evidence` desde GitHub o clonarla en otra carpeta:
+Cuando exista el repositorio público, clónalo desde la URL que publique el propietario. Mientras tanto, para revisar esta copia local:
 
 ```powershell
-git clone --branch presentation/conectapyme-contextual-evidence --single-branch https://github.com/zeedher-aisuites/economic-graph-mvp.git ConectaPyME-presentacion
+git clone --branch release/conectapyme-public-portfolio --single-branch <URL_DEL_REPOSITORIO_PRIVADO> ConectaPyME-presentacion
 cd ConectaPyME-presentacion
 py -m http.server 8765 --bind 127.0.0.1 --directory presentation-showcase
 ```
@@ -95,14 +95,9 @@ Los controles de filtros y escala económica dentro de las diapositivas son **re
 
 ## Qué consultar
 
-- `docs/iteracion-3.md`: cambios, uso de los siete paneles, validación y límites de esta misión.
 - `evidence/iteration-3/`: copias exactas de los JSON, resultados reproducidos y capturas nuevas de paneles.
-- `docs/iteracion-2.md`: informe breve de cambios y límites de la nueva defensa.
-- `docs/origen-y-alcance.md`: decisiones declaradas por el candidato, rol de las herramientas y tecnologías consideradas.
-- `docs/reto-original.md`: las 13 diapositivas y notas del archivo original de Totalplay.
 - `docs/guia-estudio.html`: discurso completo, qué señalar, pregunta, respuesta sencilla, profundidad técnica, archivo y limitaciones por diapositiva.
 - `docs/guion.md`: versión editable del guion.
-- `docs/auditoria.html` y `docs/auditoria.md`: auditoría técnica de V1 conservada como antecedente, con arquitectura, componentes y resultados originales.
 - `docs/trazabilidad.csv`: matriz compatible con Excel, codificación UTF-8 con BOM.
 - `docs/practica-personal.md`: ejercicios para comprender y reproducir el proyecto sin atribuirte el trabajo nuevo de Codex.
 - `evidence/screenshots/manifest.json`: captura, fecha, commit, corte, modo y parámetros.
@@ -137,7 +132,7 @@ uv run --group ui pytest tests/test_control_tower.py tests/test_tower_read_model
 
 Los comandos de reproducción técnica de esta sección pertenecen al proyecto original y pueden volver a generar registros. En esta iteración se conservaron intactas las evidencias de V1; no es necesario repetirlos para abrir la presentación.
 
-La auditoría reproducida lee el universo restringido solo para contar empresas, sin usarlo para puntuar. El script vuelve a generar evidencias locales; la presentación ya incluye las obtenidas en esta misión. Los registros existentes conservan el commit auditado. Una reproducción posterior registra su propio estado de Git.
+La auditoría reproducida lee el universo restringido solo para contar empresas, sin usarlo para puntuar. El script vuelve a generar evidencias locales; la presentación ya incluye las obtenidas en esta revisión. Los registros existentes conservan el commit auditado. Una reproducción posterior registra su propio estado de Git.
 
 Cobertura auxiliar, sin cambiar `uv.lock`:
 
@@ -155,7 +150,7 @@ El motor original no se modificó. El defecto no aparece en el ledger aprobado: 
 uv run pytest presentation-showcase/experiments/test_timezone_conflict.py -q
 ```
 
-Resultado de esta misión: dos aprobadas. Para observar los **dos fallos esperados del original**:
+Resultado de esta revisión: dos aprobadas. Para observar los **dos fallos esperados del original**:
 
 ```bash
 SHOWCASE_SNAPSHOT_VARIANT=original uv run pytest presentation-showcase/experiments/test_timezone_conflict.py -q
@@ -179,7 +174,7 @@ La presentación no requiere esta generación para abrirse. Para editar texto, m
 uv run python presentation-showcase/scripts/build_material.py
 ```
 
-Para recapturar y revisar automáticamente se requiere Playwright como herramienta auxiliar y Chromium. En esta misión se usó Playwright del entorno y `/usr/bin/chromium`, sin descargas adicionales exitosas. Los scripts aceptan `CHROMIUM_PATH` para otra ubicación. Puedes instalar Playwright en un entorno auxiliar o usar `uv run --with playwright`; no modifica las dependencias del proyecto. Si falta un navegador y tu política de red lo permite, instala Chromium para Playwright y configura su ruta.
+Para recapturar y revisar automáticamente se requiere Playwright como herramienta auxiliar y Chromium. En esta revisión se usó Playwright del entorno y `/usr/bin/chromium`, sin descargas adicionales exitosas. Los scripts aceptan `CHROMIUM_PATH` para otra ubicación. Puedes instalar Playwright en un entorno auxiliar o usar `uv run --with playwright`; no modifica las dependencias del proyecto. Si falta un navegador y tu política de red lo permite, instala Chromium para Playwright y configura su ruta.
 
 Con la Control Tower encendida en el puerto 8501:
 
@@ -193,10 +188,10 @@ Con la presentación servida en 8765:
 python presentation-showcase/scripts/validate_contextual_evidence.py
 ```
 
-El validador de misión 3 compara las 30 composiciones con V2, prueba los siete paneles, JSON, fuentes, controles remotos, cierre, pantalla completa y alternativa sin BroadcastChannel. Los resultados están en `evidence/iteration-3/results/contextual-qa.json`. Requiere Playwright y Pillow como herramientas auxiliares. No sobrescribe los registros ni el PDF anteriores. El script `validate_presentation.py` se conserva como herramienta histórica de V2 y no debe usarse para validar esta iteración: su copia independiente no incluye el nuevo componente. No es una garantía universal para todos los dispositivos.
+El validador de versión anterior compara las 30 composiciones con V2, prueba los siete paneles, JSON, fuentes, controles remotos, cierre, pantalla completa y alternativa sin BroadcastChannel. Los resultados están en `evidence/iteration-3/results/contextual-qa.json`. Requiere Playwright y Pillow como herramientas auxiliares. No sobrescribe los registros ni el PDF anteriores. El script `validate_presentation.py` se conserva como herramienta histórica de V2 y no debe usarse para validar esta iteración: su copia independiente no incluye el nuevo componente. No es una garantía universal para todos los dispositivos.
 
 ## Tecnología y alcance
 
 HTML/CSS/JavaScript sin compilación, datos embebidos y fuentes locales Manrope e Inter con licencia incluida. Python se usa como herramienta de auditoría y servidor estático opcional. No hay API remota, analítica, credenciales, CDN ni despliegue público.
 
-Esta iteración trabaja exclusivamente en `presentation/conectapyme-contextual-evidence`, desde `23a8efac164f8631dae57e9c9e8e3bcf9efe66ae`. La rama padre `presentation/conectapyme-junior-pov` se conserva intacta. La rama original `presentation/conectapyme-evidence-showcase` y `main` permanecen intactas. Se conservaron el dataset, resultados históricos y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.
+Esta copia presenta ConectaPyME como un proyecto autónomo. La exportación pública futura comenzará desde el estado aprobado por el propietario, sin incluir el historial Git privado. Se conservaron el dataset, resultados y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.

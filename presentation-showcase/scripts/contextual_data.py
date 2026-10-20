@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from content import FINANCE_STORY_SPEECHES
+
 from economic_graph.contracts import CUTS
 from economic_graph.finance import financial_report, load_financial_config
 from economic_graph.observable import load_observations

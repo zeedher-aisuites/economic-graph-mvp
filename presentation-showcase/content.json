@@ -1,8 +1,8 @@
 [
   {
     "id": "inicio",
-    "title": "Mi respuesta al reto de Totalplay",
-    "chapter": "El reto de Totalplay",
+    "title": "ConectaPyME: caso de negocio B2B",
+    "chapter": "El caso de negocio B2B",
     "kind": "challenge",
     "status": "El reto · mi punto de partida",
     "refs": [
@@ -16,14 +16,14 @@
       ]
     ],
     "capture": null,
-    "command": "Consultar el reto original, diapositivas 4, 5, 10 y 12; extracción completa en docs/reto-original.md.",
+    "command": "Consultar el contexto técnico, diapositivas 4, 5, 10 y 12; extracción completa en docs/reto-original.md.",
     "speech": "Cuando recibí el reto, entendí que no se trataba solamente de dibujar conexiones o elegir una base de datos. La pregunta era cómo construir un Economic Graph de pequeñas empresas para una Telco y cómo demostrar que genera valor económico incremental. Para mí, eso significa conectar información con una decisión comercial y después medir si esa decisión deja un beneficio adicional frente a una referencia. ConectaPyME es mi respuesta a esa pregunta. El grafo representa empresas y sus relaciones económicas. Preparé una prueba de concepto pequeña, con datos sintéticos, para explorar una parte del problema. En esta presentación voy a explicar cómo elegí el alcance, cómo trabajé con asistencia de IA, qué hace el prototipo y qué resultados puedo defender. También voy a separar lo que funciona técnicamente de lo que todavía necesitaría medir con datos reales.",
     "point": "Señala la pregunta completa y la cadena información → decisión → valor medible.",
-    "question": "¿Qué te pidió Totalplay, más allá de una arquitectura?",
+    "question": "¿Qué decisión de negocio intenta mejorar ConectaPyME?",
     "answer": "Conectar datos y relaciones con una decisión comercial y explicar cómo mediría un beneficio económico adicional. La arquitectura es parte del soporte.",
     "deep": "Las diapositivas 4 y 5 del reto fijan la pregunta y su intención; 10 y 12 establecen Control Tower y seis entregables.",
     "warning": "El prototipo no acredita ventas, ROI ni un efecto económico real; las cifras ilustrativas del reto no son resultados de ConectaPyME.",
-    "origin": "Documento original de Totalplay y enfoque declarado por el candidato.",
+    "origin": "Contexto de negocio y enfoque declarado para el portafolio.",
     "sources": [
       {
         "path": "presentation-showcase/docs/reto-original.md",
@@ -32,7 +32,7 @@
         "end": 190,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__reto-original.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "presentation-showcase/docs/origen-y-alcance.md",
@@ -41,7 +41,7 @@
         "end": 59,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__origen-y-alcance.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       }
     ]
   },
@@ -67,11 +67,11 @@
       ]
     ],
     "command": "uv run python scripts/rank_companies.py --as-of T2",
-    "speech": "Antes de elegir tecnologías, me hice varias preguntas. ¿Qué empresa usaría el grafo? ¿Qué decisión necesitaba mejorar? ¿Qué información tendría disponible? ¿Y cómo sabría si las conexiones servían para algo? El reto ofrecía varias posibilidades y elegí adquisición de clientes empresariales: investigar pequeñas empresas similares o conectadas con clientes actuales. Para aterrizarlo definí una Telco ficticia, ConectaPyME, y una decisión concreta: a quién investigar primero cuando hay más cuentas que tiempo. En la demostración uso cinco lugares. Eso me permite comparar dos listas sin cambiar la capacidad comercial. La empresa, su territorio y su contexto operativo son una simulación. No estoy describiendo ni diagnosticando los procesos reales de Totalplay. Tampoco significa que las seleccionadas ya estén listas para recibir una llamada; todavía faltaría validar cobertura, identidad y permiso de contacto.",
+    "speech": "Antes de elegir tecnologías, me hice varias preguntas. ¿Qué empresa usaría el grafo? ¿Qué decisión necesitaba mejorar? ¿Qué información tendría disponible? ¿Y cómo sabría si las conexiones servían para algo? El reto ofrecía varias posibilidades y elegí adquisición de clientes empresariales: investigar pequeñas empresas similares o conectadas con clientes actuales. Para aterrizarlo definí una Telco ficticia, ConectaPyME, y una decisión concreta: a quién investigar primero cuando hay más cuentas que tiempo. En la demostración uso cinco lugares. Eso me permite comparar dos listas sin cambiar la capacidad comercial. La empresa, su territorio y su contexto operativo son una simulación. No estoy describiendo ni diagnosticando los procesos reales de una empresa. Tampoco significa que las seleccionadas ya estén listas para recibir una llamada; todavía faltaría validar cobertura, identidad y permiso de contacto.",
     "point": "Muestra el caso B2B Acquisition del reto y la decisión acotada de cinco lugares.",
-    "question": "¿Estás afirmando que Totalplay tiene ese problema comercial?",
+    "question": "¿Estás afirmando que este problema existe en una empresa real?",
     "answer": "No. Elegí una posibilidad del reto y la desarrollé en una Telco ficticia. Tendría que validar el problema y el proceso real con la empresa.",
-    "deep": "La intención de adquisición está en la diapositiva 7 del reto. K=5 pertenece a la política de la PoC, no a una capacidad comercial medida en Totalplay.",
+    "deep": "La intención de adquisición está en la diapositiva 7 del reto. K=5 pertenece a la política de la PoC, no a una capacidad comercial medida.",
     "warning": "El caso de uso elegido no implica que ya se haya implementado similitud aprendida o una política especial para vecinos de clientes actuales.",
     "capture": null,
     "origin": "Enfoque declarado por el candidato; K respaldado por la implementación.",
@@ -83,7 +83,7 @@
         "end": 190,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__reto-original.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "presentation-showcase/docs/origen-y-alcance.md",
@@ -92,7 +92,7 @@
         "end": 59,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__origen-y-alcance.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "src/economic_graph/rankings.py",
@@ -131,7 +131,7 @@
       "presentation-showcase/docs/origen-y-alcance.md"
     ],
     "command": "Consultar docs/reto-original.md y docs/origen-y-alcance.md.",
-    "origin": "Declaración del candidato en la misión 2; formulada con apoyo de IA.",
+    "origin": "Declaración del candidato en la versión anterior; formulada con apoyo de IA.",
     "chapter": "02 · La hipótesis comercial",
     "sources": [
       {
@@ -141,7 +141,7 @@
         "end": 190,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__reto-original.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "presentation-showcase/docs/origen-y-alcance.md",
@@ -150,7 +150,7 @@
         "end": 59,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__origen-y-alcance.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       }
     ]
   },
@@ -176,7 +176,7 @@
       "presentation-showcase/docs/origen-y-alcance.md"
     ],
     "command": "Consultar docs/reto-original.md y docs/origen-y-alcance.md.",
-    "origin": "Declaración del candidato en la misión 2; formulada con apoyo de IA.",
+    "origin": "Declaración del candidato en la versión anterior; formulada con apoyo de IA.",
     "chapter": "03 · Mi estrategia de trabajo",
     "sources": [
       {
@@ -186,7 +186,7 @@
         "end": 190,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__reto-original.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "presentation-showcase/docs/origen-y-alcance.md",
@@ -195,7 +195,7 @@
         "end": 59,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__origen-y-alcance.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       }
     ]
   },
@@ -759,7 +759,7 @@
         "demostrado"
       ],
       [
-        "Atlas real no se verificó durante esta misión.",
+        "Atlas real no se verificó durante esta revisión.",
         "pendiente"
       ]
     ],
@@ -966,7 +966,7 @@
       "docs/12-commercial-ranking.md"
     ],
     "command": "Consultar docs/reto-original.md y docs/origen-y-alcance.md.",
-    "origin": "Declaración del candidato en la misión 2; formulada con apoyo de IA.",
+    "origin": "Declaración del candidato en la versión anterior; formulada con apoyo de IA.",
     "chapter": "14 · Cómo la haría evolucionar",
     "sources": [
       {
@@ -976,7 +976,7 @@
         "end": 59,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__origen-y-alcance.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "presentation-showcase/docs/reto-original.md",
@@ -985,7 +985,7 @@
         "end": 190,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__reto-original.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "docs/12-commercial-ranking.md",
@@ -1015,7 +1015,7 @@
         "demostrado"
       ],
       [
-        "Atlas, escala, producción y valor causal siguen pendientes de validación en esta misión.",
+        "Atlas, escala, producción y valor causal siguen pendientes de validación en esta revisión.",
         "pendiente"
       ]
     ],
@@ -1354,7 +1354,7 @@
       ]
     ],
     "command": "uv run pytest tests/test_mongo_observable.py -q",
-    "speech": "MemoryCollection y MemoryDatabase son objetos de Python que imitan solo las operaciones que necesita el código. Guardan documentos en diccionarios, registran consultas y usan copias para evitar cambios accidentales. La primera carga inserta ochenta y tres observaciones; la segunda no agrega ninguna. Eso prueba idempotencia: repetir la misma operación no duplica los datos. También hay pruebas que rechazan otra base, colecciones sin propiedad compatible y cambios en documentos existentes antes de escribir. En esta misión esas escrituras ocurrieron únicamente en memoria, no en Atlas. El doble ayuda a probar rápido y sin credenciales, pero no reproduce todos los tipos BSON, índices, permisos, concurrencia o comportamiento del servidor. Para afirmar integración necesito otra comprobación contra una instancia real autorizada.",
+    "speech": "MemoryCollection y MemoryDatabase son objetos de Python que imitan solo las operaciones que necesita el código. Guardan documentos en diccionarios, registran consultas y usan copias para evitar cambios accidentales. La primera carga inserta ochenta y tres observaciones; la segunda no agrega ninguna. Eso prueba idempotencia: repetir la misma operación no duplica los datos. También hay pruebas que rechazan otra base, colecciones sin propiedad compatible y cambios en documentos existentes antes de escribir. En esta revisión esas escrituras ocurrieron únicamente en memoria, no en Atlas. El doble ayuda a probar rápido y sin credenciales, pero no reproduce todos los tipos BSON, índices, permisos, concurrencia o comportamiento del servidor. Para afirmar integración necesito otra comprobación contra una instancia real autorizada.",
     "point": "Señala 83 insertadas en memoria → 0 nuevas y el diccionario de consultas.",
     "question": "¿Qué no reproduce MemoryCollection?",
     "answer": "No es un servidor completo: no prueba red, autenticación, rendimiento, concurrencia real ni todos los detalles de MongoDB.",
@@ -1485,12 +1485,12 @@
         "demostrado"
       ],
       [
-        "No se ejecutaron conexiones, lecturas ni escrituras remotas durante esta misión.",
+        "No se ejecutaron conexiones, lecturas ni escrituras remotas durante esta revisión.",
         "pendiente"
       ]
     ],
     "command": "No ejecutar la integración que escribe; revisión de código y dobles únicamente.",
-    "speech": "La ruta de Atlas existe y puedo explicar su código, pero no la presento como verificada en esta misión. Primero construye una referencia local, valida que la base sea la dedicada, lee observaciones disponibles al corte y vuelve a preparar el contexto. Después compara la huella de la entrada visible con la local. Si son distintas, bloquea la demostración comparable; no reemplaza datos remotos ni inventa cifras de respaldo. Esa función no hace ping. El proyecto tiene otra función para comprobar conexión y una prueba de integración que sí hace carga, por eso quedó excluida. La configuración y la red disponibles no bastaban para esa lectura, y se acordó trabajar offline. No cambié credenciales ni configuraciones para intentar resolverlo. Los reportes históricos de Atlas permanecen como antecedentes, no como una ejecución nueva.",
+    "speech": "La ruta de Atlas existe y puedo explicar su código, pero no la presento como verificada en esta revisión. Primero construye una referencia local, valida que la base sea la dedicada, lee observaciones disponibles al corte y vuelve a preparar el contexto. Después compara la huella de la entrada visible con la local. Si son distintas, bloquea la demostración comparable; no reemplaza datos remotos ni inventa cifras de respaldo. Esa función no hace ping. El proyecto tiene otra función para comprobar conexión y una prueba de integración que sí hace carga, por eso quedó excluida. La configuración y la red disponibles no bastaban para esa lectura, y se acordó trabajar offline. No cambié credenciales ni configuraciones para intentar resolverlo. Los reportes históricos de Atlas permanecen como antecedentes, no como una ejecución nueva.",
     "point": "Señala base dedicada, filtro temporal y comparación de SHA-256; diferencia ping de lectura.",
     "question": "¿Qué necesitarías para afirmar que Atlas funciona?",
     "answer": "Una comprobación de conexión y una lectura real autorizada, con base y permisos correctos, sin confundirlas con dobles.",
@@ -1861,7 +1861,7 @@
         "end": 59,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__origen-y-alcance.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "presentation-showcase/docs/reto-original.md",
@@ -1870,7 +1870,7 @@
         "end": 190,
         "url": "evidence/iteration-2/source-html/presentation-showcase__docs__reto-original.md.html#L1",
         "original": false,
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo"
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo"
       },
       {
         "path": "docs/12-commercial-ranking.md",
@@ -1896,7 +1896,7 @@
     ],
     "claims": [
       [
-        "Los seis entregables tienen referencias, comandos y límites en la matriz de esta misión.",
+        "Los seis entregables tienen referencias, comandos y límites en la matriz de esta revisión.",
         "demostrado"
       ]
     ],

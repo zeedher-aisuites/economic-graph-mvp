@@ -1,10 +1,10 @@
 # Guion de exposición y defensa técnica
 
-Misión 3 · Mi respuesta al reto de Totalplay con evidencias opcionales. Implementación de respaldo: `774dacd80e6410ca43299f63f19d9744a31929c0`. Capturas offline y datos sintéticos de la primera revisión, conservados.
+Versión anterior · ConectaPyME: caso de negocio B2B con evidencias opcionales. Implementación de respaldo: `774dacd80e6410ca43299f63f19d9744a31929c0`. Capturas offline y datos sintéticos de la primera revisión, conservados.
 
 El relato de alcance, hipótesis y decisiones corresponde a la declaración del candidato. La programación fue asistida por ChatGPT/GPT, Gemini y Codex según esa declaración. Las pruebas, capturas y el experimento de depuración de V1 fueron producidos por Codex y conservan su origen; no acreditan ejecución manual personal. Duraciones a 140 palabras por minuto; ensayar en voz alta.
 
-## 01. Mi respuesta al reto de Totalplay
+## 01. ConectaPyME: caso de negocio B2B
 
 **Tipo:** El reto · mi punto de partida · **Duración orientativa:** 59 s
 
@@ -18,7 +18,7 @@ Señala la pregunta completa y la cadena información → decisión → valor me
 
 ### Pregunta del evaluador
 
-¿Qué te pidió Totalplay, más allá de una arquitectura?
+¿Qué decisión de negocio intenta mejorar ConectaPyME?
 
 **Respuesta sencilla:** Conectar datos y relaciones con una decisión comercial y explicar cómo mediría un beneficio económico adicional. La arquitectura es parte del soporte.
 
@@ -26,7 +26,7 @@ Señala la pregunta completa y la cadena información → decisión → valor me
 
 **Verificar en:** presentation-showcase/docs/reto-original.md:1–190; presentation-showcase/docs/origen-y-alcance.md:1–59
 
-**Reproducción:** `Consultar el reto original, diapositivas 4, 5, 10 y 12; extracción completa en docs/reto-original.md.`
+**Reproducción:** `Consultar el contexto técnico, diapositivas 4, 5, 10 y 12; extracción completa en docs/reto-original.md.`
 
 **Límite:** El prototipo no acredita ventas, ROI ni un efecto económico real; las cifras ilustrativas del reto no son resultados de ConectaPyME.
 
@@ -36,7 +36,7 @@ Señala la pregunta completa y la cadena información → decisión → valor me
 
 ### Discurso
 
-Antes de elegir tecnologías, me hice varias preguntas. ¿Qué empresa usaría el grafo? ¿Qué decisión necesitaba mejorar? ¿Qué información tendría disponible? ¿Y cómo sabría si las conexiones servían para algo? El reto ofrecía varias posibilidades y elegí adquisición de clientes empresariales: investigar pequeñas empresas similares o conectadas con clientes actuales. Para aterrizarlo definí una Telco ficticia, ConectaPyME, y una decisión concreta: a quién investigar primero cuando hay más cuentas que tiempo. En la demostración uso cinco lugares. Eso me permite comparar dos listas sin cambiar la capacidad comercial. La empresa, su territorio y su contexto operativo son una simulación. No estoy describiendo ni diagnosticando los procesos reales de Totalplay. Tampoco significa que las seleccionadas ya estén listas para recibir una llamada; todavía faltaría validar cobertura, identidad y permiso de contacto.
+Antes de elegir tecnologías, me hice varias preguntas. ¿Qué empresa usaría el grafo? ¿Qué decisión necesitaba mejorar? ¿Qué información tendría disponible? ¿Y cómo sabría si las conexiones servían para algo? El reto ofrecía varias posibilidades y elegí adquisición de clientes empresariales: investigar pequeñas empresas similares o conectadas con clientes actuales. Para aterrizarlo definí una Telco ficticia, ConectaPyME, y una decisión concreta: a quién investigar primero cuando hay más cuentas que tiempo. En la demostración uso cinco lugares. Eso me permite comparar dos listas sin cambiar la capacidad comercial. La empresa, su territorio y su contexto operativo son una simulación. No estoy describiendo ni diagnosticando los procesos reales de una empresa. Tampoco significa que las seleccionadas ya estén listas para recibir una llamada; todavía faltaría validar cobertura, identidad y permiso de contacto.
 
 ### Qué señalar
 
@@ -44,11 +44,11 @@ Muestra el caso B2B Acquisition del reto y la decisión acotada de cinco lugares
 
 ### Pregunta del evaluador
 
-¿Estás afirmando que Totalplay tiene ese problema comercial?
+¿Estás afirmando que este problema existe en una empresa real?
 
 **Respuesta sencilla:** No. Elegí una posibilidad del reto y la desarrollé en una Telco ficticia. Tendría que validar el problema y el proceso real con la empresa.
 
-**Si profundiza:** La intención de adquisición está en la diapositiva 7 del reto. K=5 pertenece a la política de la PoC, no a una capacidad comercial medida en Totalplay.
+**Si profundiza:** La intención de adquisición está en la diapositiva 7 del reto. K=5 pertenece a la política de la PoC, no a una capacidad comercial medida.
 
 **Verificar en:** presentation-showcase/docs/reto-original.md:1–190; presentation-showcase/docs/origen-y-alcance.md:1–59; src/economic_graph/rankings.py:12–22
 
@@ -563,7 +563,7 @@ Activa los tres filtros y observa que #10 y #3 permanecen iguales.
 
 ### Discurso
 
-MemoryCollection y MemoryDatabase son objetos de Python que imitan solo las operaciones que necesita el código. Guardan documentos en diccionarios, registran consultas y usan copias para evitar cambios accidentales. La primera carga inserta ochenta y tres observaciones; la segunda no agrega ninguna. Eso prueba idempotencia: repetir la misma operación no duplica los datos. También hay pruebas que rechazan otra base, colecciones sin propiedad compatible y cambios en documentos existentes antes de escribir. En esta misión esas escrituras ocurrieron únicamente en memoria, no en Atlas. El doble ayuda a probar rápido y sin credenciales, pero no reproduce todos los tipos BSON, índices, permisos, concurrencia o comportamiento del servidor. Para afirmar integración necesito otra comprobación contra una instancia real autorizada.
+MemoryCollection y MemoryDatabase son objetos de Python que imitan solo las operaciones que necesita el código. Guardan documentos en diccionarios, registran consultas y usan copias para evitar cambios accidentales. La primera carga inserta ochenta y tres observaciones; la segunda no agrega ninguna. Eso prueba idempotencia: repetir la misma operación no duplica los datos. También hay pruebas que rechazan otra base, colecciones sin propiedad compatible y cambios en documentos existentes antes de escribir. En esta revisión esas escrituras ocurrieron únicamente en memoria, no en Atlas. El doble ayuda a probar rápido y sin credenciales, pero no reproduce todos los tipos BSON, índices, permisos, concurrencia o comportamiento del servidor. Para afirmar integración necesito otra comprobación contra una instancia real autorizada.
 
 ### Qué señalar
 
@@ -615,7 +615,7 @@ Contrasta una aserción de la prueba con una captura auténtica.
 
 ### Discurso
 
-La ruta de Atlas existe y puedo explicar su código, pero no la presento como verificada en esta misión. Primero construye una referencia local, valida que la base sea la dedicada, lee observaciones disponibles al corte y vuelve a preparar el contexto. Después compara la huella de la entrada visible con la local. Si son distintas, bloquea la demostración comparable; no reemplaza datos remotos ni inventa cifras de respaldo. Esa función no hace ping. El proyecto tiene otra función para comprobar conexión y una prueba de integración que sí hace carga, por eso quedó excluida. La configuración y la red disponibles no bastaban para esa lectura, y se acordó trabajar offline. No cambié credenciales ni configuraciones para intentar resolverlo. Los reportes históricos de Atlas permanecen como antecedentes, no como una ejecución nueva.
+La ruta de Atlas existe y puedo explicar su código, pero no la presento como verificada en esta revisión. Primero construye una referencia local, valida que la base sea la dedicada, lee observaciones disponibles al corte y vuelve a preparar el contexto. Después compara la huella de la entrada visible con la local. Si son distintas, bloquea la demostración comparable; no reemplaza datos remotos ni inventa cifras de respaldo. Esa función no hace ping. El proyecto tiene otra función para comprobar conexión y una prueba de integración que sí hace carga, por eso quedó excluida. La configuración y la red disponibles no bastaban para esa lectura, y se acordó trabajar offline. No cambié credenciales ni configuraciones para intentar resolverlo. Los reportes históricos de Atlas permanecen como antecedentes, no como una ejecución nueva.
 
 ### Qué señalar
 

@@ -89,7 +89,7 @@ def source_ref(ref):
     target.write_text(
         f"""<!doctype html><html lang="es-MX"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(rel)}</title><style>
 body{{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace}}header{{position:sticky;top:0;background:#102d43;padding:16px 25px;border-bottom:1px solid #34536a;z-index:2;font:13px/1.6 system-ui}}header a{{color:#58dfc6}}main{{padding:22px 0}}.line{{display:flex;gap:20px;min-width:max-content;padding-right:30px;scroll-margin-top:90px}}.line>a{{text-align:right;min-width:65px;color:#6f94a8;text-decoration:none;border-right:1px solid #30495c;padding-right:15px}}code{{white-space:pre}}.line:target{{background:#1f4f50;color:white}}.k,.kn,.kd{{color:#59e3c9}}.s1,.s2,.sa{{color:#ffc181}}.nf,.nc{{color:#a4cbff}}.c1,.sd{{color:#86a6b6}}.mi{{color:#ffc181}}
-</style><header><a href="../../../index.html">← Presentación</a> · <strong>{html.escape(rel)}</strong><br>{"Fuente auditada: " + COMMIT if not rel.startswith("presentation-showcase/") else "Documento de apoyo de la misión 2; consulta su fuente y alcance. No forma parte del motor original."}</header><main>{source_lines}</main></html>""",
+</style><header><a href="../../../index.html">← Presentación</a> · <strong>{html.escape(rel)}</strong><br>{"Fuente auditada: " + COMMIT if not rel.startswith("presentation-showcase/") else "Documento de apoyo de la versión anterior; consulta su fuente y alcance. No forma parte del motor original."}</header><main>{source_lines}</main></html>""",
         encoding="utf-8",
     )
     # Preserve readable originals, including any source referenced beyond the initial inventory.
@@ -103,7 +103,7 @@ body{{background:#0b2033;color:#d5e3e8;margin:0;font:14px/1.7 Consolas,monospace
         "end": end,
         "url": "evidence/iteration-2/source-html/" + filename + "#L" + str(start),
         "original": not rel.startswith("presentation-showcase/"),
-        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y reto original según el archivo",
+        "provenance": "Documento nuevo de apoyo; decisiones declaradas por el candidato y contexto técnico según el archivo",
     }
 
 
@@ -172,7 +172,7 @@ def main():
     lines = [
         "# Guion de exposición y defensa técnica",
         "",
-        f"Misión 3 · Mi respuesta al reto de Totalplay con evidencias opcionales. Implementación de respaldo: `{COMMIT}`. Capturas offline y datos sintéticos de la primera revisión, conservados.",
+        f"Versión anterior · ConectaPyME: caso de negocio B2B con evidencias opcionales. Implementación de respaldo: `{COMMIT}`. Capturas offline y datos sintéticos de la primera revisión, conservados.",
         "",
         "El relato de alcance, hipótesis y decisiones corresponde a la declaración del candidato. La programación fue asistida por ChatGPT/GPT, Gemini y Codex según esa declaración. Las pruebas, capturas y el experimento de depuración de V1 fueron producidos por Codex y conservan su origen; no acreditan ejecución manual personal. Duraciones a 140 palabras por minuto; ensayar en voz alta.",
         "",
@@ -180,7 +180,7 @@ def main():
     guide = [
         '<p class="meta">Fuente '
         + COMMIT
-        + " · Datos sintéticos · Atlas no verificado en esta misión.</p>",
+        + " · Datos sintéticos · Atlas no verificado en esta revisión.</p>",
         "<p>Mi relato de decisiones parte de mi declaración como candidato. Usé GPT, Gemini y Codex como apoyo. La evidencia automatizada de V1 conserva su origen en Codex; dirigir, comprender y ejecutar una validación son actividades distintas. Los anexos permiten estudiar y practicar sin inventar autoría.</p>",
         '<div class="toc">',
     ]
@@ -255,8 +255,10 @@ def main():
         '<section><h2 id="finance-story-speech">Evidencia financiera opcional</h2><p class="meta">Tres discursos para la vista del presentador; no se muestran a la audiencia.</p>',
     ]
     for i, speech in enumerate(FINANCE_STORY_SPEECHES, 1):
-        guide.append(f'<h3>Paso {i} de 3</h3><div class="box"><p>{html.escape(speech)}</p></div><p class="meta">Duración estimada: 35–50 segundos</p>')
-    guide.append('</section>')
+        guide.append(
+            f'<h3>Paso {i} de 3</h3><div class="box"><p>{html.escape(speech)}</p></div><p class="meta">Duración estimada: 35–50 segundos</p>'
+        )
+    guide.append("</section>")
     (DOCS / "guion.md").write_text("\n".join(lines), encoding="utf-8")
     (DOCS / "guia-estudio.html").write_text(
         doc_page("Guion y guía de defensa", "".join(guide)), encoding="utf-8"
@@ -286,7 +288,7 @@ def main():
                         f"{i:02d} · {s['title']}",
                         claim,
                         kind,
-                        "Reto original, declaración del candidato y evidencia técnica conservada según las fuentes",
+                        "Contexto técnico, declaración del candidato y evidencia técnica conservada según las fuentes",
                         "; ".join(f"{r['path']}:{r['start']}–{r['end']}" for r in s["sources"]),
                         COMMIT,
                         s["command"],
