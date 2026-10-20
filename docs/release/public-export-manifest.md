@@ -18,4 +18,4 @@ Capturas, anexos y documentación técnica adicional, después de revisar rutas,
 
 `design-data/`, documentación de Atlas, capturas históricas y archivos cuyo origen dependa de un entorno privado.
 
-El script `scripts/export_public_portfolio.py` trabaja en modo simulación por defecto, rechaza sobrescribir una carpeta no vacía y nunca elimina archivos del repositorio fuente.
+El script `scripts/export_public_portfolio.py` trabaja en modo simulación por defecto, rechaza sobrescribir una carpeta no vacía y nunca elimina archivos del repositorio fuente. La versión actual del brief es `briefs/conectapyme-executive-brief.pdf`, generada con `briefs/build_brief_pdf.py` desde el HTML editable: 3 páginas A4, 5,926 bytes, SHA-256 `fdbc6f83deb8d376534ab3080f25a585548a425193acd983d721353aafa679ac`.
