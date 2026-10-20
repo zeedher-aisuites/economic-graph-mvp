@@ -44,7 +44,7 @@ Muestra el caso B2B Acquisition del reto y la decisión acotada de cinco lugares
 
 ### Pregunta del evaluador
 
-¿Estás afirmando que Totalplay tiene ese problema comercial?
+¿Estás afirmando que este problema existe en una empresa real?
 
 **Respuesta sencilla:** No. Elegí una posibilidad del reto y la desarrollé en una Telco ficticia. Tendría que validar el problema y el proceso real con la empresa.
 
