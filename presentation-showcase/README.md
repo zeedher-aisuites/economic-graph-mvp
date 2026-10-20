@@ -61,10 +61,10 @@ Los paneles son exclusivos de la web y no forman parte de las 30 páginas obliga
 
 ## Windows: apertura desde una copia nueva
 
-Puedes descargar la rama `la versión pública aprobada` desde GitHub o clonarla en otra carpeta:
+Cuando exista el repositorio público, clónalo desde la URL que publique el propietario. Mientras tanto, para revisar esta copia local:
 
 ```powershell
-git clone --branch la versión pública aprobada --single-branch https://github.com/zeedher-aisuites/economic-graph-mvp.git ConectaPyME-presentacion
+git clone --branch release/conectapyme-public-portfolio --single-branch <URL_DEL_REPOSITORIO_PRIVADO> ConectaPyME-presentacion
 cd ConectaPyME-presentacion
 py -m http.server 8765 --bind 127.0.0.1 --directory presentation-showcase
 ```
@@ -194,4 +194,4 @@ El validador de versión anterior compara las 30 composiciones con V2, prueba lo
 
 HTML/CSS/JavaScript sin compilación, datos embebidos y fuentes locales Manrope e Inter con licencia incluida. Python se usa como herramienta de auditoría y servidor estático opcional. No hay API remota, analítica, credenciales, CDN ni despliegue público.
 
-Esta iteración trabaja exclusivamente en `la versión pública aprobada`, desde `23a8efac164f8631dae57e9c9e8e3bcf9efe66ae`. La rama padre `una versión privada anterior` se conserva intacta. La rama original `presentation/conectapyme-evidence-showcase` y `main` permanecen intactas. Se conservaron el dataset, resultados históricos y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.
+Esta copia presenta ConectaPyME como un proyecto autónomo. La exportación pública futura comenzará desde el estado aprobado por el propietario, sin incluir el historial Git privado. Se conservaron el dataset, resultados y lógica de negocio. No se verificaron Atlas real, ROI, conversiones, ML predictivo, carga a gran escala o producción.

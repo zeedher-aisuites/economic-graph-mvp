@@ -255,8 +255,10 @@ def main():
         '<section><h2 id="finance-story-speech">Evidencia financiera opcional</h2><p class="meta">Tres discursos para la vista del presentador; no se muestran a la audiencia.</p>',
     ]
     for i, speech in enumerate(FINANCE_STORY_SPEECHES, 1):
-        guide.append(f'<h3>Paso {i} de 3</h3><div class="box"><p>{html.escape(speech)}</p></div><p class="meta">Duración estimada: 35–50 segundos</p>')
-    guide.append('</section>')
+        guide.append(
+            f'<h3>Paso {i} de 3</h3><div class="box"><p>{html.escape(speech)}</p></div><p class="meta">Duración estimada: 35–50 segundos</p>'
+        )
+    guide.append("</section>")
     (DOCS / "guion.md").write_text("\n".join(lines), encoding="utf-8")
     (DOCS / "guia-estudio.html").write_text(
         doc_page("Guion y guía de defensa", "".join(guide)), encoding="utf-8"

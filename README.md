@@ -14,7 +14,7 @@ Está pensado para Product Managers, líderes comerciales, analistas e ingeniero
 
 ## Qué se construyó
 
-- Ledger observable con 30 empresas sintéticas y 83 observaciones disponibles en T2.
+- Ledger observable con un universo sintético de 30 empresas. En T2 se conocen 23 empresas y 21 son elegibles para la demostración; las 83 observaciones corresponden al ledger disponible en ese corte.
 - Vista temporal T0/T1/T2, conflictos, fuentes e identidades candidatas.
 - Ranking baseline frente a ranking con relaciones económicas confirmadas.
 - Control Tower local en Streamlit con cinco vistas y modo offline.
@@ -31,7 +31,7 @@ Está pensado para Product Managers, líderes comerciales, analistas e ingeniero
 
 ## Resultados demostrables y límites
 
-La demo reproduce los cortes T0, T1 y T2, conserva la procedencia de las observaciones y explica las contribuciones del ranking. En el escenario financiero base, 5 plazas producen −$15,450 MXN y 500 plazas producen +$39,000 MXN antes de reserva; el escenario nulo de 500 plazas produce −$41,000 MXN. Son supuestos educativos, no ingresos observados.
+La demo reproduce los cortes T0, T1 y T2, conserva la procedencia de las observaciones y explica las contribuciones del ranking. Las cinco plazas son una capacidad comercial ilustrativa, no el tamaño del universo. En el escenario financiero base, 5 plazas producen −$15,450 MXN y 500 plazas producen +$39,000 MXN antes de reserva; el escenario nulo de 500 plazas produce −$41,000 MXN. Son supuestos educativos, no ingresos observados.
 
 La mejora de activación del 10% al 12% todavía tendría que validarse con un experimento comercial autorizado. No existe modelo entrenado, campaña, A/B test, despliegue productivo ni evidencia causal.
 

@@ -1,19 +1,20 @@
-from pathlib import Path
 import subprocess
 import sys
-
+from pathlib import Path
 
 SCRIPT = Path(__file__).parents[1] / "scripts" / "export_public_portfolio.py"
 
 
 def run_export(destination: Path, *extra: str):
-    return subprocess.run([sys.executable, str(SCRIPT), str(destination), *extra], capture_output=True, text=True)
+    return subprocess.run(
+        [sys.executable, str(SCRIPT), str(destination), *extra], capture_output=True, text=True
+    )
 
 
 def test_export_dry_run_and_manifest(tmp_path):
     result = run_export(tmp_path / "package")
     assert result.returncode == 0, result.stderr
-    assert 'conectapyme-public-export-v1' in result.stdout
+    assert "conectapyme-public-export-v1" in result.stdout
 
 
 def test_export_rejects_repository_destination():

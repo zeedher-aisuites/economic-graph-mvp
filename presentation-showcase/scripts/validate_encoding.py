@@ -26,7 +26,11 @@ def main():
         assert "podrÃ­a" not in text and "inversiÃ³n" not in text, f"Mojibake en speech de {path}"
     source = FILES[0].read_text(encoding="utf-8")
     assert r"podr\u00eda" in source and r"inversi\u00f3n" in source
-    payload = json.loads((ROOT / "presentation-showcase/evidence/iteration-3/data/contextual-evidence.json").read_text(encoding="utf-8"))
+    payload = json.loads(
+        (
+            ROOT / "presentation-showcase/evidence/iteration-3/data/contextual-evidence.json"
+        ).read_text(encoding="utf-8")
+    )
     generated = "\n".join(payload["financeStorySpeeches"])
     assert generated == speeches
     assert all(word in generated for word in EXPECTED)

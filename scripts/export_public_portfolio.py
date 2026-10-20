@@ -1,21 +1,65 @@
 """Create a verified, non-publishing copy of the approved public package."""
+
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
-import shutil
 import re
+import shutil
 from pathlib import Path
 
-REQUIRED = ("README.md", "pyproject.toml", "uv.lock", ".python-version", ".env.example", "src", "app", "scripts", "tests", "config", "data/observable", "briefs", "case-studies/telcomx", "docs/04-architecture-overview.md", "docs/12-commercial-ranking.md", "docs/14-incremental-economic-case.md", "docs/16-financial-calculation.md", "docs/18-control-tower-demo.md", "docs/release/public-export-manifest.md")
-PRESENTATION_REQUIRED = ("presentation-showcase/index.html", "presentation-showcase/app.js", "presentation-showcase/data.js", "presentation-showcase/content.json", "presentation-showcase/evidence-panels.js", "presentation-showcase/style.css", "presentation-showcase/README.md", "presentation-showcase/ConectaPyME.pdf", "presentation-showcase/assets", "presentation-showcase/evidence/iteration-3/data", "presentation-showcase/evidence/iteration-3/panels", "presentation-showcase/docs/guion.md", "presentation-showcase/docs/guia-estudio.html", "presentation-showcase/docs/trazabilidad.csv")
+REQUIRED = (
+    "README.md",
+    "pyproject.toml",
+    "uv.lock",
+    ".python-version",
+    ".env.example",
+    "src",
+    "app",
+    "scripts",
+    "tests",
+    "config",
+    "data/observable",
+    "briefs",
+    "case-studies/telcomx",
+    "docs/04-architecture-overview.md",
+    "docs/12-commercial-ranking.md",
+    "docs/14-incremental-economic-case.md",
+    "docs/16-financial-calculation.md",
+    "docs/18-control-tower-demo.md",
+    "docs/release/public-export-manifest.md",
+)
+PRESENTATION_REQUIRED = (
+    "presentation-showcase/index.html",
+    "presentation-showcase/app.js",
+    "presentation-showcase/data.js",
+    "presentation-showcase/content.json",
+    "presentation-showcase/evidence-panels.js",
+    "presentation-showcase/style.css",
+    "presentation-showcase/README.md",
+    "presentation-showcase/ConectaPyME.pdf",
+    "presentation-showcase/assets",
+    "presentation-showcase/evidence/iteration-3/data",
+    "presentation-showcase/evidence/iteration-3/panels",
+    "presentation-showcase/docs/guion.md",
+    "presentation-showcase/docs/guia-estudio.html",
+    "presentation-showcase/docs/trazabilidad.csv",
+)
 FORBIDDEN_NAMES = {".git", ".env", ".env.local", ".env.production", "__pycache__"}
 FORBIDDEN_TEXT = ("ghp_", "github_pat_", "BEGIN PRIVATE KEY")
 
 
 def files_under(path: Path):
-    return [path] if path.is_file() else [p for p in path.rglob("*") if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"]
+    return (
+        [path]
+        if path.is_file()
+        else [
+            p
+            for p in path.rglob("*")
+            if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"
+        ]
+    )
 
 
 def broken_links(source: Path, root: Path) -> list[str]:
@@ -55,9 +99,20 @@ def main() -> int:
         relative = source.relative_to(root)
         if any(part in FORBIDDEN_NAMES for part in relative.parts):
             violations.append(f"forbidden path: {relative}")
-        elif source.suffix.lower() in {".html", ".md", ".json", ".py", ".js", ".css", ".csv", ".txt"}:
+        elif source.suffix.lower() in {
+            ".html",
+            ".md",
+            ".json",
+            ".py",
+            ".js",
+            ".css",
+            ".csv",
+            ".txt",
+        }:
             data = source.read_bytes()
-            if source.name != "export_public_portfolio.py" and any(token.encode() in data for token in FORBIDDEN_TEXT):
+            if source.name != "export_public_portfolio.py" and any(
+                token.encode() in data for token in FORBIDDEN_TEXT
+            ):
                 violations.append(f"sensitive text: {relative}")
         violations.extend(broken_links(source, root))
     if violations:
@@ -65,7 +120,13 @@ def main() -> int:
     records = []
     for source in sorted(set(selected)):
         relative = source.relative_to(root)
-        records.append({"path": relative.as_posix(), "sha256": hashlib.sha256(source.read_bytes()).hexdigest(), "bytes": source.stat().st_size})
+        records.append(
+            {
+                "path": relative.as_posix(),
+                "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+                "bytes": source.stat().st_size,
+            }
+        )
         print(f"COPY {relative}")
         if args.apply:
             target = output / relative
@@ -74,7 +135,9 @@ def main() -> int:
     manifest = {"schema": "conectapyme-public-export-v1", "files": records}
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
     if args.apply:
-        (output / "PUBLIC-EXPORT-MANIFEST.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (output / "PUBLIC-EXPORT-MANIFEST.json").write_text(
+            json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
     return 0
 
 
