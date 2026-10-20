@@ -69,7 +69,7 @@
     "command": "uv run python scripts/rank_companies.py --as-of T2",
     "speech": "Antes de elegir tecnologías, me hice varias preguntas. ¿Qué empresa usaría el grafo? ¿Qué decisión necesitaba mejorar? ¿Qué información tendría disponible? ¿Y cómo sabría si las conexiones servían para algo? El reto ofrecía varias posibilidades y elegí adquisición de clientes empresariales: investigar pequeñas empresas similares o conectadas con clientes actuales. Para aterrizarlo definí una Telco ficticia, ConectaPyME, y una decisión concreta: a quién investigar primero cuando hay más cuentas que tiempo. En la demostración uso cinco lugares. Eso me permite comparar dos listas sin cambiar la capacidad comercial. La empresa, su territorio y su contexto operativo son una simulación. No estoy describiendo ni diagnosticando los procesos reales de una empresa. Tampoco significa que las seleccionadas ya estén listas para recibir una llamada; todavía faltaría validar cobertura, identidad y permiso de contacto.",
     "point": "Muestra el caso B2B Acquisition del reto y la decisión acotada de cinco lugares.",
-    "question": "¿Estás afirmando que Totalplay tiene ese problema comercial?",
+    "question": "¿Estás afirmando que este problema existe en una empresa real?",
     "answer": "No. Elegí una posibilidad del reto y la desarrollé en una Telco ficticia. Tendría que validar el problema y el proceso real con la empresa.",
     "deep": "La intención de adquisición está en la diapositiva 7 del reto. K=5 pertenece a la política de la PoC, no a una capacidad comercial medida.",
     "warning": "El caso de uso elegido no implica que ya se haya implementado similitud aprendida o una política especial para vecinos de clientes actuales.",
