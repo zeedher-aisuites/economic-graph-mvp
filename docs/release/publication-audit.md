@@ -21,4 +21,6 @@ No se encontraron credenciales reales en el inventario inicial. `.env.example` c
 
 `AGENTS.md`, `.codex/`, `.env`, bitácoras y decisiones internas, referencias completas del reto original, conversaciones, material bruto de TelcoMx y capturas con perfiles o tokens.
 
-La exportación futura debe seguir `docs/release/public-export-manifest.md`, copiar a una carpeta nueva sin `.git` y no publicar automáticamente.
+La exportación futura debe seguir `docs/release/public-export-manifest.md`, copiar a una carpeta nueva sin `.git` y no publicar automáticamente. En esta iteración el exportador usa una lista explícita, excluye `evidence/source`, `__pycache__` y archivos históricos, valida enlaces locales, genera hashes SHA-256 y rechaza destinos dentro del repositorio o no vacíos. La simulación local terminó con código 0.
+
+La suite del proyecto no pudo ejecutarse en este entorno: `uv` no pudo persistir su intérprete y el Python auxiliar no incluye `pytest`. La validación offline completa queda pendiente en Windows con el procedimiento del README.

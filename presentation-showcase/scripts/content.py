@@ -4,13 +4,13 @@ FINANCE_STORY_SPEECHES = [
     "Ahora imaginemos que aplicamos la soluci\u00f3n a quinientas plazas comerciales.\n\nSi el grafo consiguiera mejorar las activaciones del diez al doce por ciento, tendr\u00edamos diez clientes adicionales en promedio.\n\nSuponiendo ocho mil pesos de margen por cada uno, obtendr\u00edamos ochenta mil pesos de beneficio adicional.\n\nDespu\u00e9s restar\u00eda veinticinco mil pesos de esfuerzo comercial, diez mil de implementaci\u00f3n y seis mil de operaci\u00f3n.\n\nEl resultado ser\u00eda de treinta y nueve mil pesos positivos, antes de considerar una reserva adicional de tres mil doscientos pesos. Es un escenario hipot\u00e9tico, no una ganancia que ya conseguimos.",
     "Pero tambi\u00e9n me pregunt\u00e9 qu\u00e9 suceder\u00eda si mis supuestos no se cumplen.\n\nPor eso prepar\u00e9 cuatro escenarios: conservador, base, optimista y nulo.\n\nEl escenario nulo es especialmente importante: si trabajamos con quinientas plazas y el grafo no consigue mejorar las activaciones, tendr\u00edamos un resultado negativo de cuarenta y un mil pesos antes de reserva.\n\nEsto me permite explicar que el proyecto podr\u00eda ser econ\u00f3micamente atractivo, pero no basta con desarrollar la tecnolog\u00eda. Necesitamos demostrar que realmente mejora los resultados comerciales.",
 ]
-"""Fuente de verdad de la defensa en primera persona: misión 2, perspectiva del candidato."""
+"""Fuente de verdad de la defensa en primera persona: versión anterior, perspectiva del candidato."""
 
 SLIDES = [
     {
         "id": "inicio",
-        "title": "Mi respuesta al reto de Totalplay",
-        "chapter": "El reto de Totalplay",
+        "title": "ConectaPyME: caso de negocio B2B",
+        "chapter": "El caso de negocio B2B",
         "kind": "challenge",
         "status": "El reto · mi punto de partida",
         "refs": [
@@ -24,7 +24,7 @@ SLIDES = [
             )
         ],
         "capture": None,
-        "command": "Consultar el reto original, diapositivas 4, 5, 10 y 12; extracción completa en "
+        "command": "Consultar el contexto técnico, diapositivas 4, 5, 10 y 12; extracción completa en "
         "docs/reto-original.md.",
         "speech": "Cuando recibí el reto, entendí que no se trataba solamente de dibujar conexiones o elegir una "
         "base de datos. La pregunta era cómo construir un Economic Graph de pequeñas empresas para una "
@@ -37,14 +37,14 @@ SLIDES = [
         "resultados puedo defender. También voy a separar lo que funciona técnicamente de lo que todavía "
         "necesitaría medir con datos reales.",
         "point": "Señala la pregunta completa y la cadena información → decisión → valor medible.",
-        "question": "¿Qué te pidió Totalplay, más allá de una arquitectura?",
+        "question": "¿Qué decisión de negocio intenta mejorar ConectaPyME?",
         "answer": "Conectar datos y relaciones con una decisión comercial y explicar cómo mediría un beneficio "
         "económico adicional. La arquitectura es parte del soporte.",
         "deep": "Las diapositivas 4 y 5 del reto fijan la pregunta y su intención; 10 y 12 establecen Control "
         "Tower y seis entregables.",
         "warning": "El prototipo no acredita ventas, ROI ni un efecto económico real; las cifras ilustrativas del "
         "reto no son resultados de ConectaPyME.",
-        "origin": "Documento original de Totalplay y enfoque declarado por el candidato.",
+        "origin": "Contexto de negocio y enfoque declarado para el portafolio.",
     },
     {
         "id": "problema",
@@ -73,14 +73,14 @@ SLIDES = [
         "quién investigar primero cuando hay más cuentas que tiempo. En la demostración uso cinco "
         "lugares. Eso me permite comparar dos listas sin cambiar la capacidad comercial. La empresa, su "
         "territorio y su contexto operativo son una simulación. No estoy describiendo ni diagnosticando "
-        "los procesos reales de Totalplay. Tampoco significa que las seleccionadas ya estén listas para "
+        "los procesos reales de una empresa. Tampoco significa que las seleccionadas ya estén listas para "
         "recibir una llamada; todavía faltaría validar cobertura, identidad y permiso de contacto.",
         "point": "Muestra el caso B2B Acquisition del reto y la decisión acotada de cinco lugares.",
         "question": "¿Estás afirmando que Totalplay tiene ese problema comercial?",
         "answer": "No. Elegí una posibilidad del reto y la desarrollé en una Telco ficticia. Tendría que validar "
         "el problema y el proceso real con la empresa.",
         "deep": "La intención de adquisición está en la diapositiva 7 del reto. K=5 pertenece a la política de la "
-        "PoC, no a una capacidad comercial medida en Totalplay.",
+        "PoC, no a una capacidad comercial medida.",
         "warning": "El caso de uso elegido no implica que ya se haya implementado similitud aprendida o una "
         "política especial para vecinos de clientes actuales.",
         "capture": None,
@@ -124,7 +124,7 @@ SLIDES = [
             "presentation-showcase/docs/origen-y-alcance.md",
         ],
         "command": "Consultar docs/reto-original.md y docs/origen-y-alcance.md.",
-        "origin": "Declaración del candidato en la misión 2; formulada con apoyo de IA.",
+        "origin": "Declaración del candidato en la versión anterior; formulada con apoyo de IA.",
         "chapter": "02 · La hipótesis comercial",
     },
     {
@@ -165,7 +165,7 @@ SLIDES = [
             "presentation-showcase/docs/origen-y-alcance.md",
         ],
         "command": "Consultar docs/reto-original.md y docs/origen-y-alcance.md.",
-        "origin": "Declaración del candidato en la misión 2; formulada con apoyo de IA.",
+        "origin": "Declaración del candidato en la versión anterior; formulada con apoyo de IA.",
         "chapter": "03 · Mi estrategia de trabajo",
     },
     {
@@ -465,7 +465,7 @@ SLIDES = [
                 "Cobertura medida: 95.9% de líneas y 91.4% de ramas de economic_graph, sin app ni scripts.",
                 "demostrado",
             ),
-            ("Atlas real no se verificó durante esta misión.", "pendiente"),
+            ("Atlas real no se verificó durante esta revisión.", "pendiente"),
         ],
         "command": "uv run --group ui pytest -m 'not integration'",
         "speech": "Para organizar el proyecto utilicé GitHub. Ahí fui manteniendo el código, la documentación y sus diferentes versiones. El repositorio es privado, pero puedo compartirlo si necesitan revisar cómo está construido. También trabajé con MongoDB Atlas desde mi cuenta personal, aunque para esta demostración estoy usando la versión offline y no presento la integración remota como verificada. Durante el desarrollo y la revisión se hicieron comprobaciones para los datos, los rankings, los cálculos y la interfaz. Codex ejecutó parte de las pruebas automatizadas que conservo; yo tomé las decisiones de alcance, revisé los resultados y preparé la forma de explicarlos. Mi intención fue mantener una prueba de concepto organizada y revisable, aunque todavía no sea un sistema listo para producción.",
@@ -605,7 +605,7 @@ SLIDES = [
             "docs/12-commercial-ranking.md",
         ],
         "command": "Consultar docs/reto-original.md y docs/origen-y-alcance.md.",
-        "origin": "Declaración del candidato en la misión 2; formulada con apoyo de IA.",
+        "origin": "Declaración del candidato en la versión anterior; formulada con apoyo de IA.",
         "chapter": "14 · Cómo la haría evolucionar",
     },
     {
@@ -626,7 +626,7 @@ SLIDES = [
                 "demostrado",
             ),
             (
-                "Atlas, escala, producción y valor causal siguen pendientes de validación en esta misión.",
+                "Atlas, escala, producción y valor causal siguen pendientes de validación en esta revisión.",
                 "pendiente",
             ),
         ],
@@ -844,7 +844,7 @@ SLIDES = [
         "evitar cambios accidentales. La primera carga inserta ochenta y tres observaciones; la segunda "
         "no agrega ninguna. Eso prueba idempotencia: repetir la misma operación no duplica los datos. "
         "También hay pruebas que rechazan otra base, colecciones sin propiedad compatible y cambios en "
-        "documentos existentes antes de escribir. En esta misión esas escrituras ocurrieron únicamente "
+        "documentos existentes antes de escribir. En esta revisión esas escrituras ocurrieron únicamente "
         "en memoria, no en Atlas. El doble ayuda a probar rápido y sin credenciales, pero no reproduce "
         "todos los tipos BSON, índices, permisos, concurrencia o comportamiento del servidor. Para "
         "afirmar integración necesito otra comprobación contra una instancia real autorizada.",
@@ -920,7 +920,7 @@ SLIDES = [
                 "demostrado",
             ),
             (
-                "No se ejecutaron conexiones, lecturas ni escrituras remotas durante esta misión.",
+                "No se ejecutaron conexiones, lecturas ni escrituras remotas durante esta revisión.",
                 "pendiente",
             ),
         ],
@@ -1208,7 +1208,7 @@ SLIDES = [
         "refs": ["docs/02-challenge-traceability.md", "presentation-showcase/docs/auditoria.md"],
         "claims": [
             (
-                "Los seis entregables tienen referencias, comandos y límites en la matriz de esta misión.",
+                "Los seis entregables tienen referencias, comandos y límites en la matriz de esta revisión.",
                 "demostrado",
             )
         ],
